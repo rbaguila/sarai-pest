@@ -1,0 +1,38 @@
+<template name="pestLibUpdate">
+	{{> top_nav}}
+		{{> pestLibCMS}}
+	{{> footer}}
+</template>
+
+<template name="pestLibCMS">
+
+  <div class="container">
+    <br/>
+    <div class="col-md-3"> <h4> insert side-nav here </h4> </div>
+    <div class="panel panel-default col-md-9">
+
+      <label for="searchlabel"> Search Label Text </label>
+      <input type="text" class="form-control" id="searchlabel" value="{{getCMS.searchLabelText}}">
+
+
+      <label> Choose Pest Type To View </label>
+      {{#each pestType}}
+        <div class="checkbox">
+          <label><input type="checkbox" id="{{this}}" value="{{this}}" checked="{{isChecked this}}">{{this}}</label>
+        </div>
+      {{/each}}
+      
+      <label for="pestsperpage"> Number of Pests Per Page </label>
+      <input type="number" min="1" max="999999" pattern="[0-9]{1,2}" id="pestsperpage" value="{{getCMS.pestsPerPage}}" class="form-control" >
+
+      <div class="text-center">
+        <button id="saveBTN" class="btn btn-success">Save</button>
+        <button id="cancelBTN" class="btn btn-danger">Cancel</button>
+        <button id="viewChangesBTN" class="btn btn-info">View Changes</button>
+      </div>
+  
+    </div>
+  </div>
+
+</template>
+

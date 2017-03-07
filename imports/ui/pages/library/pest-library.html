@@ -1,0 +1,63 @@
+<template name="pestsLib">
+	
+	<center>
+		<div>
+			<h3> {{getCMS.searchLabelText}} </h3>
+		</div>
+
+		<div class="col-sm-12">
+			<div class="searchbar">
+		      <input class="form-control" id="search" placeholder="Search">
+		    </div>
+		</div>
+	</center>
+
+	<br/><br/>
+
+	<div>
+		{{#each getCMS.viewPestType}}
+			{{setPageSessions this}}
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<h3 class="pest-category-label"> {{this}} Pests </h3>
+			</div>
+
+			<div class="container">
+				{{#each displayPest this}}
+			    	{{> individualPest}}
+			    {{/each}}
+		    </div>
+
+		    <div class="text-center">
+		    	<ul class="pagination">
+					{{#each setPagination this}}
+				  		<li class="{{#if isCurrentPage num}} active {{/if}}">
+				  			<a class="page-number" name="{{getCurrentPestType}}">{{num}}</a>
+				  		</li>
+					{{/each}}
+				</ul>
+		    </div>
+		{{/each}}
+    </div>
+
+</template>
+
+<template name="individualPest">
+	<div class="pest-data-body col-sm-4 col-md-3 col-lg-3">
+		<div class="panel panel-default">
+			<div class="fixed-panel panel-body">
+				<div>
+					<img src="{{image}}" class="img-thumbnail fixed-image" alt="{{name}}" width="200" height="200"/>
+				</div>
+				<div>
+					<span>{{name}}</span>
+			  	</div>
+		  	</div>
+		  
+		  	<div class="panel-footer">
+				<a class="view-page" href="/entity/{{_id}}">
+					View Page
+		 		</a>
+		  	</div>
+		</div>
+	</div>
+</template>
