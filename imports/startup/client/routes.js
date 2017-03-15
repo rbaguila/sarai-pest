@@ -6,6 +6,7 @@ import '../../ui/layouts/body/body.js';
 import '../../ui/pages/home/home.js';
 import '../../ui/pages/not-found/not-found.js';
 import '../../ui/pages/library/library.js';
+import '../../ui/pages/cms/pest-lib-update.js';
 
 // Set up all routes in the app
 FlowRouter.route('/', {
@@ -21,6 +22,20 @@ FlowRouter.route('/library', {
   action() {
     BlazeLayout.render('App_body', { main: 'App_library' });
   },
+});
+
+FlowRouter.route("/pests-lib-update", {
+  name: 'App.pests-lib-update',
+  action() {
+    BlazeLayout.render("App_body", {main: "pestLibUpdate"})
+  }
+});
+
+FlowRouter.route("/entity/:_id", {
+  name: 'App.library',
+  action() {
+    BlazeLayout.render("App_body", {main: "entityPage"})
+  }
 });
 
 FlowRouter.notFound = {
