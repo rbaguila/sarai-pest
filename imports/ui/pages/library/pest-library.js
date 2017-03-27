@@ -1,4 +1,4 @@
-import { Pests } from '/imports/api/pests/pests.js';
+import { Pests, PestsIndex } from '/imports/api/pests/pests.js';
 import { CMS } from '/imports/api/cms/cms.js';
 import { Meteor } from 'meteor/meteor';
 import './pest-library.html';
@@ -11,6 +11,21 @@ Template.pestsLib.onCreated(function () {
 });
 
 Template.pestsLib.helpers({
+
+	pestsIndex(){
+		return PestsIndex
+	},
+
+	searchAttributes() {
+    return {
+      placeholder: 'Search',
+      class: 'form-control'
+    };
+  },
+
+  equals: function(v1, v2) {
+		return (v1 === v2);
+	},
 
 	getCMS(){
 		return CMS.findOne({info:'finalLib'});
@@ -25,7 +40,7 @@ Template.pestsLib.helpers({
 
 			pestCount = pestCount%pestsPerPage == 0? Math.floor(pestCount/pestsPerPage) : Math.floor(pestCount/pestsPerPage+1);
 			Session.set(currentPest + " Count", pestCount);
-			console.log(Session.get(currentPest + " Count"));
+			// console.log(Session.get(currentPest + " Count"));
 	},
 
 	getCurrentPestType(){
@@ -55,7 +70,7 @@ Template.pestsLib.events({
 	'click .page-number'(event) {
 		currentPest = $(event.target).attr("name");
 		Session.set(currentPest, this.num); // stores the current page number of typeOfPest
-		console.log(currentPest + " page: " + Session.get(currentPest));
+		// console.log(currentPest + " page: " + Session.get(currentPest));
 	},
 });
 
