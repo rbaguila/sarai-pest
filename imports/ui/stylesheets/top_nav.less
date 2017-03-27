@@ -2,9 +2,19 @@
   background-color: #396834;
   border-radius: 0px;
   margin-bottom: 0px;
-  
+  .navbar-toggle{
+    background-color: #396834;
+    border-color: white;
+    margin-top: 1em;
+    .icon-bar {
+      background-color: #fff;
+    }
+  }
+  .navbar-header{
+    margin-left: 1em;
+  }
   .login-buttons{
-      margin-top: 20px;
+      margin-top: 1.5em;
 
       #login-sign-in-link, .login-link-text a {
           text-decoration: none;
@@ -17,20 +27,29 @@
           }
       }
   }
-
-  .links{
-      margin-top: 20px;
-      color: white;
-      margin-right: 30px;
-      a{
+  #navbar{
+    .links{
+        margin-top: 0.5em;
         color: white;
-        text-decoration: none;
-        margin-right: 30px;
-      }
-      a:hover{
-        color: white;
-        font-weight: bold;
-        margin-right: 30px;
-      }
+        margin-right: 2em;
+        a{
+          color: white;
+          text-decoration: none;
+          margin-right: 2em;
+        }
+        a:hover{
+          color: white;
+          font-weight: bold;
+          margin-right: 2em;
+          background-color: transparent;
+        }
+        .active{
+          color: white;
+          font-weight: bold;
+          margin-right: 2em;
+          background-color: transparent;
+        }
+        
+    }
   }
 }
