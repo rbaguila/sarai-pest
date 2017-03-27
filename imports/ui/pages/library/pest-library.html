@@ -7,27 +7,20 @@
 
 		<div class="col-sm-12">
 			<div class="searchbar">
-					{{> EasySearch.Input index=pestsIndex attributes=searchAttributes }}
-
-			    <!-- <ul>
-			        {{#EasySearch.Each index=pestsIndex }}
-			            <li>Name of the player: {{name}}</li>
-			        {{/EasySearch.Each}}
-			    </ul> -->
-		      <!-- <input class="form-control" id="search" placeholder="Search"> -->
-
-		      
+					{{> EasySearch.Input index=pestsIndex attributes=searchAttributes }}		      
 		  </div>
 		</div>
-	
-
-	<br/><br/>
 	</center>
+	
+	<br/><br/>
 	{{#EasySearch.IfInputEmpty index=pestsIndex }}
   <center>
-    <div class="padded examples">For example "Rice"</div>
+    <div><h4>For example "Rice"</h4></div>
   </center>
   {{else}}
+  <center>
+    <div><h4>SEARCH RESULTS</h4></div>
+  </center>
     <div class="wrapper">
 			{{#EasySearch.IfSearching index=pestsIndex}}
 			  {{>spinner}}
