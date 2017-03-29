@@ -1,13 +1,53 @@
 <template name="pestsLib">
 	
-	<div class="text-center">
-		<h3> {{getPestLibCMS.searchLabelText}} </h3>
-	</div>
+	<center>
+		<div>
+			<h3> {{getCMS.searchLabelText}} </h3>
+		</div>
+
+		<div class="col-sm-12">
+			<div class="searchbar">
+					{{> EasySearch.Input index=pestsIndex attributes=searchAttributes }}		      
+		  </div>
+		</div>
+	</center>
+
+	<br/><br/>
+	{{#EasySearch.IfInputEmpty index=pestsIndex }}
+  <center>
+    <div><h4>For example "Rice"</h4></div>
+  </center>
+  {{else}}
+  <center>
+    <div><h4>SEARCH RESULTS</h4></div>
+  </center>
+    <div class="wrapper">
+			{{#EasySearch.IfSearching index=pestsIndex}}
+			  {{>spinner}}
+			{{/EasySearch.IfSearching}}
+
+	    <div class="container">
+				{{#EasySearch.Each index=pestsIndex}}		
+					{{#if equals type "Pest"}}
+					    {{> individualPest}}
+			    {{/if}}
+				{{/EasySearch.Each}}
+			</div>
+
+			<div class="container">
+				{{#EasySearch.IfNoResults index=pestsIndex}}
+				  <div>No results found!</div>
+				{{/EasySearch.IfNoResults}}
+			</div>
+
+		</div>
+  {{/EasySearch.IfInputEmpty}}
+
 	
-	{{> searchBar}}
+	<br/><br/>
 
 	<div>
-		{{#each getPestLibCMS.viewPestType}}
+		{{#each getCMS.viewPestType}}
 			{{setPageSessions this}}
 			<div class="col-sm-12 col-md-12 col-lg-12">
 				<h3 class="pest-category-label"> {{this}} Pests </h3>
@@ -34,7 +74,7 @@
 </template>
 
 <template name="individualPest">
-	<div class="pest-data-body col-sm-4 col-md-3 col-lg-3">
+	<div class="pest-data-body col-xs-6 col-sm-4 col-md-3 col-lg-3">
 		<div class="panel panel-default">
 			<div class="fixed-panel panel-body">
 				<div>
@@ -54,7 +94,7 @@
 	</div>
 </template>
 
-<template name="searchBar">
+<!-- <template name="searchBar">
 	<center>
 		<div class="col-sm-12">
 			<div class="searchbar">
@@ -78,4 +118,4 @@
 			<div>No results found!</div>
 		{{/EasySearch.IfNoResults}}
 	</center>
-</template>
+</template> -->

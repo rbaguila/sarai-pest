@@ -40,7 +40,7 @@ Meteor.startup(() => {
         {
           info: 'finalLib',
           bannerContentPosition: 'middle',
-          bannerImage: '',
+          bannerImage: '/img/banners/pest_lib_banner.jpg',
           bannerImageID: '',
           bannerHeadText: 'Pest Library',
           bannerSubText: 'An online library for Rice and Corn Pests',

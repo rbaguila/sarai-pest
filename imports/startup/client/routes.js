@@ -24,11 +24,26 @@ FlowRouter.route('/library', {
   },
 });
 
-FlowRouter.route("/pests-lib-update", {
+// FlowRouter.route("/pests-lib-update", {
+//   name: 'App.pests-lib-update',
+//   action() {
+//     BlazeLayout.render("App_body", {main: "pestLibUpdate"})
+//   }
+// });
+
+FlowRouter.route('/pests-lib-update', {
   name: 'App.pests-lib-update',
-  action() {
-    BlazeLayout.render("App_body", {main: "pestLibUpdate"})
-  }
+  action: function(params) {
+      Tracker.autorun(function() {
+          if (!Meteor.userId()) {
+            BlazeLayout.render("App_body", {main: "App_home"})
+            alert("User is not allowed to access the page.")
+            FlowRouter.redirect('/');
+          } else {
+            BlazeLayout.render("App_body", {main: "pestLibUpdate"})
+          }
+      });
+    }
 });
 
 FlowRouter.route("/entity/:_id", {
