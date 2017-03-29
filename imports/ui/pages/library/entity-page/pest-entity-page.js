@@ -8,7 +8,25 @@ Template.entityPage.onCreated(function () {
 
 Template.entity.helpers({
 	pest(){
-		console.log(Pests.findOne({_id: FlowRouter.current().params._id }));
 		return Pests.findOne({_id: FlowRouter.current().params._id});
+	},
+});
+
+Template.entity.events({
+
+	'click .back': function(event){
+		FlowRouter.go("/library");
+	},
+
+	'click .facebook': function(event){
+		FlowRouter.go("facebook.com");
+	},
+
+	'click .twitter': function(event){
+		FlowRouter.go("twitter.com");
+	},
+
+	'click .google': function(event){
+		FlowRouter.go("gmail.com");
 	},
 });

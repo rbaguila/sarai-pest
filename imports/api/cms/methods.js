@@ -5,7 +5,9 @@ import { check } from 'meteor/check';
 import { CMS } from './cms.js';
 
 Meteor.methods({
-  'cms.updatePestLib'(searchlabel, pestType, pestNumbers) {
+  'cms.updatePestLib'(bannerText, bannerSubText, searchlabel, pestType, pestNumbers) {
+    check(bannerText, String);
+    check(bannerSubText, String);
     check(searchlabel, String);
     //check(pestType, Object);
     check(pestNumbers, Number);
@@ -13,6 +15,8 @@ Meteor.methods({
     CMS.update( {info: "finalLib"}, 
     	{ $set: 
     		{ 
+          bannerHeadText : bannerText,
+          bannerSubText : bannerSubText,
     			searchLabelText: searchlabel,
 		    	viewPestType: pestType,
 		    	pestsPerPage: pestNumbers 

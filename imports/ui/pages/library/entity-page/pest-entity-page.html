@@ -5,125 +5,146 @@
 </template>
 
 <template name="entity">
-	<div class="panel panel-default">
-	  <div class="panel-body text-center">
+<div class="content">
+	<div class="container">
+		<div class="panel panel-default">
+		  <div class="panel-body text-center">
 
-	  	<div class="col-sm-12 col-md-12 col-lg-12">
-	  		<h2> {{pest.name}} </h2>
-	  	</div>
+		  	<div class="col-sm-12 col-md-12 col-lg-12">
+		  		<a class="col-sm-1 col-md-1 col-lg-1 back">
+	  				<img class="back-button" src="/img/back.png" alt="back">
+	  			</a>
+		  		<h2 class="col-sm-11 col-md-11 col-lg-11 pest-name"> {{pest.name}} </h2>
+		  	</div>
 
-	  	<div class="col-sm-6 col-md-6 col-lg-6">
-	  		<img src="{{pest.image}}" class="img-thumbnail" alt="{{pest.name}}" width="400" height="400">
-	  	</div>
+		  	<div class="col-sm-6 col-md-6 col-lg-6">
+		  		<div class="col-sm-12 col-md-12 col-lg-12 well">
+		  			<img src="{{pest.image}}" class="img-thumbnail" alt="{{pest.name}}" width="400" height="400">
+		  		</div>
+		  		<!-- SOCIAL MEDIA BUTTONS -->
+		  		<div>
+		  			<a class="facebook">
+		  				<img class="social-media-button" src="/img/social-media/facebook.png" alt="facebook">
+		  			</a>
+		  			<a class="twitter">
+		  				<img class="social-media-button" src="/img/social-media/twitter.png" alt="twitter">
+		  			</a>
+		  			<a class="google">
+		  				<img class="social-media-button" src="/img/social-media/google_plus.png" alt="google+">
+		  			</a>
+		  		</div>
+		  	</div>
 
-	  	<div class="col-sm-6 col-md-6 col-lg-6">
-	  		<ul class="list-group">
-				<li class="list-group-item list-group-item-success">
-					<p class="labelText"> Common Names </p>
-					{{pest.eng_name}} 
-					<p class="labelText"> Filipino Names </p>
-					{{pest.fil_name}} 
-				</li>
-				<li class="list-group-item list-group-item-info">
-					<p class="labelText"> Scientific Names </p>
-					<i> {{pest.sci_name}} </i> 
-				</li>
-				<li class="list-group-item list-group-item-warning">
-					<p class="labelText"> Threatening Stage </p>
-					{{pest.stage_threatening}} 
-				</li>
-				<li class="list-group-item list-group-item-danger">
-					<p class="labelText"> Plant Affected </p>
-					{{pest.plant_affected}} 
-				</li>
-			</ul>
-	  	</div>
+		  	<div class="col-sm-6 col-md-6 col-lg-6">
+		  		<ul class="list-group">
+					<li class="list-group-item">
+						<p class="labelText"> Common Names </p>
+						{{pest.eng_name}} 
+						<p class="labelText"> Filipino Names </p>
+						{{pest.fil_name}} 
+					</li>
+					<li class="list-group-item">
+						<p class="labelText"> Scientific Names </p>
+						<i> {{pest.sci_name}} </i> 
+					</li>
+					<li class="list-group-item">
+						<p class="labelText"> Threatening Stage </p>
+						{{pest.stage_threatening}} 
+					</li>
+					<li class="list-group-item">
+						<p class="labelText"> Plant Affected </p>
+						{{pest.plant_affected}} 
+					</li>
+				</ul>
+		  	</div>
 
-	  	<div class="pest-tab col-sm-11 col-md-11 col-lg-11">
-	  		<ul class="nav nav-tabs">
-			  <li class="active"><a data-toggle="tab" href="#english"> English </a></li>
-			  <li><a data-toggle="tab" href="#filipino"> Filipino </a></li>
-			</ul>
-	  	</div>
+		  	<div class="pest-tab col-sm-11 col-md-11 col-lg-11">
+		  		<ul class="nav nav-tabs">
+				  <li class="active"><a data-toggle="tab" href="#english"> English </a></li>
+				  <li><a data-toggle="tab" href="#filipino"> Filipino </a></li>
+				</ul>
+		  	</div>
 
-	  	<div class="pest-tab tab-content text-center col-sm-11 col-md-11 col-lg-11">
-	  		<!-- ENGLISH TAB -->
-			<div id="english" class="tab-pane fade in active">
-				<div class="panel panel-success">
-				 	<div class="panel-heading">
-				 		<p class="titleLabel">How to identify a {{pest.name}}</p>
-				 	</div>
-					<div class="panel-body">
-						{{#if pest.symptoms}}	
-							<h4>&emsp;{{pest.symptoms}}</h4>
-						{{/if}}
+		  	<div class="pest-tab tab-content text-center col-sm-11 col-md-11 col-lg-11">
+		  		<!-- ENGLISH TAB -->
+				<div id="english" class="tab-pane fade in active">
+					<div class="panel panel-success">
+					 	<div class="panel-heading">
+					 		<p class="titleLabel">How to identify a {{pest.name}}</p>
+					 	</div>
+						<div class="panel-body">
+							{{#if pest.symptoms}}	
+								<h4>&emsp;{{pest.symptoms}}</h4>
+							{{/if}}
 
-						<br>
+							<br>
 
-						{{#if pest.description}}
-							<h4>&emsp;{{pest.description}}</h4>
-						{{/if}}
+							{{#if pest.description}}
+								<h4>&emsp;{{pest.description}}</h4>
+							{{/if}}
+						</div>
 					</div>
+
+					{{#if pest.effect}}
+					<div class="panel panel-success">
+						<div class="panel-heading .panel-success">
+							<p class="titleLabel">Signs of a {{pest.name}} Infestation</p>
+						</div>
+						<div class="panel-body">
+							<h4>&emsp;{{pest.effect}}</h4>
+						</div>
+					</div>
+					{{/if}}
+
+
+					{{#if pest.treatment}}
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<p class="titleLabel">How to manage {{pest.name}}</p>
+						</div>
+						<div class="panel-body">
+							<h4>&emsp;{{pest.treatment}}</h4>
+						</div>
+					</div>
+					{{/if}}
 				</div>
+				<!-- END OF ENGLISH TAB -->
 
-				{{#if pest.effect}}
-				<div class="panel panel-success">
-					<div class="panel-heading .panel-success">
-						<p class="titleLabel">Signs of a {{pest.name}} Infestation</p>
+				<!-- FILIPINO TAB -->
+				<div id="filipino" class="tab-pane fade">
+					<div class="panel panel-success">		
+						<div class="panel-heading">
+							<p class="titleLabel">Paano malalaman ang {{pest.fil_name}}</p>
+						</div>
+						<div class="panel-body">
+							{{#if pest.fil_symptoms}}	
+							<h4>&emsp;{{pest.fil_symptoms}}</h4>
+							{{/if}}
+
+							<br>
+
+							{{#if pest.fil_description}}
+							<h4>&emsp;{{pest.fil_description}}</h4>
+							{{/if}}
+						</div>
 					</div>
-					<div class="panel-body">
-						<h4>&emsp;{{pest.effect}}</h4>
+
+					{{#if pest.fil_effect}}
+					<div class="panel panel-success">
+						<div class="panel-heading">	
+							<p class="titleLabel">Mga sinyales na apektado ng {{pest.fil_name}}</p>
+						</div>
+						<div class="panel-body">
+							<h4>&emsp;{{pest.fil_effect}}</h4>
+						</div>
 					</div>
+					{{/if}}
 				</div>
-				{{/if}}
-
-
-				{{#if pest.treatment}}
-				<div class="panel panel-success">
-					<div class="panel-heading">
-						<p class="titleLabel">How to manage {{pest.name}}</p>
-					</div>
-					<div class="panel-body">
-						<h4>&emsp;{{pest.treatment}}</h4>
-					</div>
-				</div>
-				{{/if}}
+				<!-- END OF FILIPINO TAB -->
 			</div>
-			<!-- END OF ENGLISH TAB -->
 
-			<!-- FILIPINO TAB -->
-			<div id="filipino" class="tab-pane fade">
-				<div class="panel panel-success">		
-					<div class="panel-heading">
-						<p class="titleLabel">Paano malalaman ang {{pest.fil_name}}</p>
-					</div>
-					<div class="panel-body">
-						{{#if pest.fil_symptoms}}	
-						<h4>&emsp;{{pest.fil_symptoms}}</h4>
-						{{/if}}
-
-						<br>
-
-						{{#if pest.fil_description}}
-						<h4>&emsp;{{pest.fil_description}}</h4>
-						{{/if}}
-					</div>
-				</div>
-
-				{{#if pest.fil_effect}}
-				<div class="panel panel-success">
-					<div class="panel-heading">	
-						<p class="titleLabel">Mga sinyales na apektado ng {{pest.fil_name}}</p>
-					</div>
-					<div class="panel-body">
-						<h4>&emsp;{{pest.fil_effect}}</h4>
-					</div>
-				</div>
-				{{/if}}
-			</div>
-			<!-- END OF FILIPINO TAB -->
+		  </div>
 		</div>
-
-	  </div>
 	</div>
+</div>
 </template>

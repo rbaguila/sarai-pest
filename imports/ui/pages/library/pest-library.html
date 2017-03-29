@@ -1,21 +1,13 @@
 <template name="pestsLib">
 	
-	<center>
-		<div>
-			<h3> {{getCMS.searchLabelText}} </h3>
-		</div>
-
-		<div class="col-sm-12">
-			<div class="searchbar">
-		      <input class="form-control" id="search" placeholder="Search">
-		    </div>
-		</div>
-	</center>
-
-	<br/><br/>
+	<div class="text-center">
+		<h3> {{getPestLibCMS.searchLabelText}} </h3>
+	</div>
+	
+	{{> searchBar}}
 
 	<div>
-		{{#each getCMS.viewPestType}}
+		{{#each getPestLibCMS.viewPestType}}
 			{{setPageSessions this}}
 			<div class="col-sm-12 col-md-12 col-lg-12">
 				<h3 class="pest-category-label"> {{this}} Pests </h3>
@@ -60,4 +52,30 @@
 		  	</div>
 		</div>
 	</div>
+</template>
+
+<template name="searchBar">
+	<center>
+		<div class="col-sm-12">
+			<div class="searchbar">
+		      {{> EasySearch.Input index=pestsIndex placeholder="Search" noDocumentsOnEmpty="true"}}
+		    </div>
+	    </div>
+
+		<div>
+			{{#EasySearch.IfSearching index=pestsIndex}}
+			  <div>Searching</div>
+			{{/EasySearch.IfSearching}}
+
+	        <div class="container">
+				{{#EasySearch.Each index=pestsIndex}}
+					{{> individualPest}}
+				{{/EasySearch.Each}}
+			</div>
+		</div>
+
+		{{#EasySearch.IfNoResults index=pestsIndex }}
+			<div>No results found!</div>
+		{{/EasySearch.IfNoResults}}
+	</center>
 </template>
