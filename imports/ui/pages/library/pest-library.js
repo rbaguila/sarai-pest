@@ -72,19 +72,6 @@ Template.pestsLib.events({
 	'click .page-number'(event) {
 		currentPest = $(event.target).attr("name");
 		Session.set(currentPest, this.num); // stores the current page number of typeOfPest
-		// console.log(currentPest + " page: " + Session.get(currentPest));
 	},
-});
-
-// FOR SEARCHING
-const PestsIndex = new Index({
-  collection: Pests,
-  limit: 20,
-  fields: ['eng_name', 'fil_name', 'sci_name', 'symptoms'],
-  engine: new MinimongoEngine(),
-});
-
-Template.searchBar.helpers({
-  pestsIndex: () => PestsIndex
 });
 
