@@ -6,6 +6,10 @@ Template.entityPage.onCreated(function () {
   Meteor.subscribe('pests.all');
 });
 
+Template.entity.onRendered(function () {
+	 $('[data-toggle="tooltip"]').tooltip(); 
+});
+
 Template.entity.helpers({
 	pest(){
 		return Pests.findOne({_id: FlowRouter.current().params._id});

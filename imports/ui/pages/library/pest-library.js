@@ -13,6 +13,7 @@ Template.pestsLib.onRendered(function() {
 	Session.set("currentPage", "finalLib"); // set the current page to change banner
 });
 
+var currentPest = "";
 
 Template.pestsLib.helpers({
 
@@ -41,9 +42,9 @@ Template.pestsLib.helpers({
 		var pestsPerPage = parseInt(CMS.findOne({info:'finalLib'}).pestsPerPage);
 
 			Session.set(currentPest, 1);
-			pestCount = pestCount%pestsPerPage == 0? Math.floor(pestCount/pestsPerPage) : Math.floor(pestCount/pestsPerPage+1);
+			pestCount = pestCount % pestsPerPage == 0? Math.floor(pestCount/pestsPerPage) : Math.floor(pestCount/pestsPerPage+1);
 			Session.set(currentPest + " Count", pestCount);
-			// console.log(Session.get(currentPest + " Count"));
+			//console.log(Session.get(currentPest + " Count"));
 	},
 
 	getCurrentPestType(){
