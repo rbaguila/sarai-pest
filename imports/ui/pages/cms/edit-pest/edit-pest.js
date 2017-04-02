@@ -10,7 +10,6 @@ Template.editPestCMS.onRendered(function () {
 	$('[data-toggle="tooltip"]').tooltip(); 
 });
 
-
 Template.editPestCMS.helpers({
 	getPests(){
 		return Pests.find();
@@ -25,5 +24,16 @@ Template.button.events({
 
 	'click .remove': function(event, template) {
 		console.log("DELETE: " + this.id);
+		var answer = confirm("Are you sure you want to delete " + this.name + "?");
+        if(answer){
+			Meteor.call('pests.removePest', this.id, (error) => {
+		      if (error) {
+		        alert(error.error);
+		      } else {
+	        	alert("Pest successfully removed!");
+	        	event.preventDefault();	
+		      }
+    		});
+    	}
 	},
 });
