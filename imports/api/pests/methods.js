@@ -5,122 +5,122 @@ import { check } from 'meteor/check';
 import { Pests } from './pests.js';
 
 Meteor.methods({
-  'pests.addPest'(pestName, engName, sciName, image, treatment, classification, order, plantAffected, description, symptoms, stageThreatening, partDestroyed, effect, stageAffected, filName, filTreatment, filClassification, filPlantAffected, filDescription, filSymptoms, filStageThreatening, filPartDestroyed, filEffect, filStageAffected) {
-    check(pestName, String);
-    check(engName, String);
-    check(sciName, String);
-    check(image, String);
+  'pests.addPest'( newPest ) {
+    check(newPest.pestName, String);
+    check(newPest.engName, String);
+    check(newPest.sciName, String);
+    check(newPest.image, String);
     // ENGLISH
-    check(treatment, String);
-    check(classification, String);
-    check(order, String);
-    check(plantAffected, String);
-    check(description, String);
-    check(symptoms, String);
-    check(stageThreatening, String);
-    check(partDestroyed, String);
-    check(effect, String);
-    check(stageAffected, String);
+    check(newPest.treatment, String);
+    check(newPest.classification, String);
+    check(newPest.order, String);
+    check(newPest.plantAffected, String);
+    check(newPest.description, String);
+    check(newPest.symptoms, String);
+    check(newPest.stageThreatening, String);
+    check(newPest.partDestroyed, String);
+    check(newPest.effect, String);
+    check(newPest.stageAffected, String);
     // FILIPINO
-    check(filName, String);
-    check(filTreatment, String);
-    check(filClassification, String);
-    check(filPlantAffected, String);
-    check(filDescription, String);
-    check(filSymptoms, String);
-    check(filStageThreatening, String);
-    check(filPartDestroyed, String);
-    check(filEffect, String);
-    check(filStageAffected, String);
+    check(newPest.filName, String);
+    check(newPest.filTreatment, String);
+    check(newPest.filClassification, String);
+    check(newPest.filPlantAffected, String);
+    check(newPest.filDescription, String);
+    check(newPest.filSymptoms, String);
+    check(newPest.filStageThreatening, String);
+    check(newPest.filPartDestroyed, String);
+    check(newPest.filEffect, String);
+    check(newPest.filStageAffected, String);
 
     Pests.insert(
   		{ 
         type: 'Pest',
-        fil_stage_plant_affected: filStageAffected,
-        fil_effect: filEffect,
-        fil_part_destroyed: filPartDestroyed,
-        fil_stage_threatening: filStageThreatening,
-        fil_symptoms: filSymptoms,
-        fil_description: filDescription,
-        fil_plant_affected: filPlantAffected,
-        fil_classification: filClassification,
-        fil_treatment: filTreatment,
-        fil_name: filName,
-        stage_plant_affected: stageAffected,
-        effect: effect,
-        part_destroyed: partDestroyed,
-        stage_threatening: stageThreatening,
-        symptoms: symptoms,
-        description: description,
-        plant_affected: plantAffected,
-        order: order,
-        classification: classification,
-        treatment: treatment,
-        sci_name: sciName,
-        eng_name: engName,
-        name: pestName,
-        image: image
+        fil_stage_plant_affected: newPest.filStageAffected,
+        fil_effect: newPest.filEffect,
+        fil_part_destroyed: newPest.filPartDestroyed,
+        fil_stage_threatening: newPest.filStageThreatening,
+        fil_symptoms: newPest.filSymptoms,
+        fil_description: newPest.filDescription,
+        fil_plant_affected: newPest.filPlantAffected,
+        fil_classification: newPest.filClassification,
+        fil_treatment: newPest.filTreatment,
+        fil_name: newPest.filName,
+        stage_plant_affected: newPest.stageAffected,
+        effect: newPest.effect,
+        part_destroyed: newPest.partDestroyed,
+        stage_threatening: newPest.stageThreatening,
+        symptoms: newPest.symptoms,
+        description: newPest.description,
+        plant_affected: newPest.plantAffected,
+        order: newPest.order,
+        classification: newPest.classification,
+        treatment: newPest.treatment,
+        sci_name: newPest.sciName,
+        eng_name: newPest.engName,
+        name: newPest.pestName,
+        image: newPest.image
 	    } 
 	);
   },
 
-  'pests.editPest'(id, pestName, engName, sciName, image, treatment, classification, order, plantAffected, description, symptoms, stageThreatening, partDestroyed, effect, stageAffected, filName, filTreatment, filClassification, filPlantAffected, filDescription, filSymptoms, filStageThreatening, filPartDestroyed, filEffect, filStageAffected) {
-    check(id, String);
-    check(pestName, String);
-    check(engName, String);
-    check(sciName, String);
-    check(image, String);
+  'pests.editPest'( editPest ) {
+    check(editPest.id, String);
+    check(editPest.pestName, String);
+    check(editPest.engName, String);
+    check(editPest.sciName, String);
+    check(editPest.image, String);
     // ENGLISH
-    check(treatment, String);
-    check(classification, String);
-    check(order, String);
-    check(plantAffected, String);
-    check(description, String);
-    check(symptoms, String);
-    check(stageThreatening, String);
-    check(partDestroyed, String);
-    check(effect, String);
-    check(stageAffected, String);
+    check(editPest.treatment, String);
+    check(editPest.classification, String);
+    check(editPest.order, String);
+    check(editPest.plantAffected, String);
+    check(editPest.description, String);
+    check(editPest.symptoms, String);
+    check(editPest.stageThreatening, String);
+    check(editPest.partDestroyed, String);
+    check(editPest.effect, String);
+    check(editPest.stageAffected, String);
     // FILIPINO
-    check(filName, String);
-    check(filTreatment, String);
-    check(filClassification, String);
-    check(filPlantAffected, String);
-    check(filDescription, String);
-    check(filSymptoms, String);
-    check(filStageThreatening, String);
-    check(filPartDestroyed, String);
-    check(filEffect, String);
-    check(filStageAffected, String);
+    check(editPest.filName, String);
+    check(editPest.filTreatment, String);
+    check(editPest.filClassification, String);
+    check(editPest.filPlantAffected, String);
+    check(editPest.filDescription, String);
+    check(editPest.filSymptoms, String);
+    check(editPest.filStageThreatening, String);
+    check(editPest.filPartDestroyed, String);
+    check(editPest.filEffect, String);
+    check(editPest.filStageAffected, String);
  
-    Pests.update( {_id: id},
+    Pests.update( {_id: editPest.id},
         {
             $set:
             { 
-                fil_stage_plant_affected: filStageAffected,
-                fil_effect: filEffect,
-                fil_part_destroyed: filPartDestroyed,
-                fil_stage_threatening: filStageThreatening,
-                fil_symptoms: filSymptoms,
-                fil_description: filDescription,
-                fil_plant_affected: filPlantAffected,
-                fil_classification: filClassification,
-                fil_treatment: filTreatment,
-                fil_name: filName,
-                stage_plant_affected: stageAffected,
-                effect: effect,
-                part_destroyed: partDestroyed,
-                stage_threatening: stageThreatening,
-                symptoms: symptoms,
-                description: description,
-                plant_affected: plantAffected,
-                order: order,
-                classification: classification,
-                treatment: treatment,
-                sci_name: sciName,
-                eng_name: engName,
-                name: pestName,
-                image: image
+                fil_stage_plant_affected: editPest.filStageAffected,
+                fil_effect: editPest.filEffect,
+                fil_part_destroyed: editPest.filPartDestroyed,
+                fil_stage_threatening: editPest.filStageThreatening,
+                fil_symptoms: editPest.filSymptoms,
+                fil_description: editPest.filDescription,
+                fil_plant_affected: editPest.filPlantAffected,
+                fil_classification: editPest.filClassification,
+                fil_treatment: editPest.filTreatment,
+                fil_name: editPest.filName,
+                stage_plant_affected: editPest.stageAffected,
+                effect: editPest.effect,
+                part_destroyed: editPest.partDestroyed,
+                stage_threatening: editPest.stageThreatening,
+                symptoms: editPest.symptoms,
+                description: editPest.description,
+                plant_affected: editPest.plantAffected,
+                order: editPest.order,
+                classification: editPest.classification,
+                treatment: editPest.treatment,
+                sci_name: editPest.sciName,
+                eng_name: editPest.engName,
+                name: editPest.pestName,
+                image: editPest.image
             } 
         }
     );

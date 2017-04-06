@@ -16,6 +16,8 @@ Template.editPestCMS.helpers({
 	}
 });
 
+var id = "";
+
 Template.button.events({
 	'click .edit': function(event, template) {
 		console.log("EDIT: " + this.id);
@@ -24,16 +26,19 @@ Template.button.events({
 
 	'click .remove': function(event, template) {
 		console.log("DELETE: " + this.id);
-		var answer = confirm("Are you sure you want to delete " + this.name + "?");
-        if(answer){
-			Meteor.call('pests.removePest', this.id, (error) => {
-		      if (error) {
-		        alert(error.error);
-		      } else {
-	        	alert("Pest successfully removed!");
-	        	event.preventDefault();	
-		      }
-    		});
-    	}
+		id = this.id;
+		$('#deletePest').modal('show');
+	},
+
+	'click .confirmDelete' : function(event) {
+		$('#deletePest').modal('hide');
+		Meteor.call('pests.removePest', id, (error) => {
+	      if (error) {
+	        alert(error.error);
+	      } else {
+        	$('#pestDeleted').modal('show');
+        	event.preventDefault();	
+	      }
+		});
 	},
 });

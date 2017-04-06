@@ -21,75 +21,50 @@ Template.pestEntity.events({
 		event.preventDefault();
 
 		var id = FlowRouter.current().params._id;
-		
-		// GET THE VALUES
-		var pestName = $("#pestName").val();
-		var engName = $("#engName").val();
-		var sciName = $("#sciName").val();
 
 		if($("#pestImage").val() == undefined){
-			var image = Pests.findOne({ _id: id }).image;
+			var imageURL = Pests.findOne({ _id: id }).image;
 		} else{
-			var image = $("#pestImage").val();	
+			var imageURL = $("#pestImage").val();	
 		} 
 
-		// for ENGLISH
-		var treatment = $("#treatment").val();
-		var classification = $("#classification").val();
-		var order = $("#order").val();
-		var plantAffected = $("#plantAffected").val();
-		var description = $("#description").val();
-		var symptoms = $("#symptoms").val();
-		var stageThreatening = $("#stageThreatening").val();
-		var partDestroyed = $("#partDestroyed").val();
-		var effect = $("#effect").val();
-		var stageAffected = $("#stageAffected").val();
-
-		// for FILIPINO
-		var filName = $("#filName").val();
-		var filTreatment = $("#filTreatment").val();
-		var filClassification = $("#filClassification").val();
-		var filPlantAffected = $("#filPlantAffected").val();
-		var filDescription = $("#filDescription").val();
-		var filSymptoms = $("#filSymptoms").val();
-		var filStageThreatening = $("#filStageThreatening").val();
-		var filPartDestroyed = $("#filPartDestroyed").val();
-		var filEffect = $("#filEffect").val();
-		var filStageAffected = $("#filStageAffected").val();
-
-		console.log(pestName);
-		console.log(engName);
-		console.log(sciName);
-		console.log(image);
-
-		console.log("\n" + treatment);
-		console.log(classification);
-		console.log(order);
-		console.log(plantAffected);
-		console.log(description);
-		console.log(symptoms);
-		console.log(stageThreatening);
-		console.log(partDestroyed);
-		console.log(effect);
-		console.log(stageAffected);
-
-		console.log("\n" + filName);
-		console.log(filTreatment);
-		console.log(filClassification);
-		console.log(filPlantAffected);
-		console.log(filDescription);
-		console.log(filSymptoms);
-		console.log(filStageThreatening);
-		console.log(filPartDestroyed);
-		console.log(filEffect);
-		console.log(filStageAffected);
+		// GET THE VALUES
+		var editPest = {
+			id : id,
+			pestName : $("#pestName").val(),
+			engName : $("#engName").val(),
+			sciName : $("#sciName").val(),
+			image : imageURL,
+			// for ENGLISH
+			treatment : $("#treatment").val(),
+			classification : $("#classification").val(),
+			order : $("#order").val(),
+			plantAffected : $("#plantAffected").val(),
+			description : $("#description").val(),
+			symptoms : $("#symptoms").val(),
+			stageThreatening : $("#stageThreatening").val(),
+			partDestroyed : $("#partDestroyed").val(),
+			effect : $("#effect").val(),
+			stageAffected : $("#stageAffected").val(),
+			// for FILIPINO
+			filName : $("#filName").val(),
+			filTreatment : $("#filTreatment").val(),
+			filClassification : $("#filClassification").val(),
+			filPlantAffected : $("#filPlantAffected").val(),
+			filDescription : $("#filDescription").val(),
+			filSymptoms : $("#filSymptoms").val(),
+			filStageThreatening : $("#filStageThreatening").val(),
+			filPartDestroyed : $("#filPartDestroyed").val(),
+			filEffect : $("#filEffect").val(),
+			filStageAffected : $("#filStageAffected").val(),
+		}
 
 		// UPDATES THE DATABASE
-		Meteor.call('pests.editPest', id, pestName, engName, sciName, image, treatment, classification, order, plantAffected, description, symptoms, stageThreatening, partDestroyed, effect, stageAffected, filName, filTreatment, filClassification, filPlantAffected, filDescription, filSymptoms, filStageThreatening, filPartDestroyed, filEffect, filStageAffected, (error) => {
+		Meteor.call('pests.editPest', editPest, (error) => {
 	      if (error) {
 	        alert(error.error);
 	      } else {
-	        alert("Pest successfully edited!");
+	        $('.editSuccess').modal('show');
 	      }
 	    });
 	},
