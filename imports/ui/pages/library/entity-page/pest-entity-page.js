@@ -7,7 +7,8 @@ Template.entityPage.onCreated(function () {
 });
 
 Template.entity.onRendered(function () {
-	 $('[data-toggle="tooltip"]').tooltip(); 
+	 $('[data-toggle="tooltip"]').tooltip();
+	 $('.swipebox').swipebox(); 
 });
 
 Template.entity.helpers({

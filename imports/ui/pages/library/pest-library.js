@@ -1,7 +1,6 @@
-import { Pests, PestsIndex } from '/imports/api/pests/pests.js';
+import { Pests, PestsIndex} from '/imports/api/pests/pests.js';
 import { CMS } from '/imports/api/cms/cms.js';
 import { Meteor } from 'meteor/meteor';
-import { Index, MinimongoEngine } from 'meteor/easy:search';
 import './pest-library.html';
 
 Template.pestsLib.onCreated(function () {
@@ -11,6 +10,18 @@ Template.pestsLib.onCreated(function () {
 
 Template.pestsLib.onRendered(function() {
 	Session.set("currentPage", "finalLib"); // set the current page to change banner
+	// this.PaginatedStuff = new Meteor.Pagination(Pests, {
+	// 	// route: "/library",
+	// 	// router: "iron-router",
+	// 	// routerTemplate: "paginatedStuff",
+	// 	// routerLayout: "pestsLib",
+	// 	templateName: 'paginatedStuff',
+	// 	itemTemplate: 'stuffListItem',
+	// 	perPage: 8,
+	// 	sort: {
+	// 		name: 1
+	// 	}
+	// });
 });
 
 var currentPest = "";
