@@ -1,76 +1,172 @@
 <template name="pestsLib">
-	
-	<center>
-		<div>
-			<h3> {{getCMS.searchLabelText}} </h3>
-		</div>
+	<style>
+		.nav-tabs > li {
+		    float:none;
+		    display:inline-block;
+		    zoom:1;
+		}
 
-		<div class="col-sm-12">
-			<div class="searchbar">
-					{{> EasySearch.Input index=pestsIndex attributes=searchAttributes }}		      
-		  </div>
-		</div>
-	</center>
-
-	<br/><br/>
-	{{#EasySearch.IfInputEmpty index=pestsIndex }}
-  <center>
-    <div><h4>For example "Rice"</h4></div>
-  </center>
-  {{else}}
-  <center>
-    <div><h4>SEARCH RESULTS</h4></div>
-  </center>
-    <div class="wrapper">
-			{{#EasySearch.IfSearching index=pestsIndex}}
-			  {{>spinner}}
-			{{/EasySearch.IfSearching}}
-
-	    <div class="container">
-				{{#EasySearch.Each index=pestsIndex}}		
-					{{#if equals type "Pest"}}
-					    {{> individualPest}}
-			    {{/if}}
-				{{/EasySearch.Each}}
-			</div>
-
-			<div class="container">
-				{{#EasySearch.IfNoResults index=pestsIndex}}
-				  <div>No results found!</div>
-				{{/EasySearch.IfNoResults}}
-			</div>
-
-		</div>
-  {{/EasySearch.IfInputEmpty}}
-
-	
-	<br/><br/>
-
+		.nav-tabs {
+		    text-align:center;
+		}
+	</style>
 	<div>
-		{{#each getCMS.viewPestType}}
-			{{setPageSessions this}}
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				<h3 class="pest-category-label"> {{this}} Pests </h3>
+		<ul class="nav nav-tabs">
+		  <li class="active"><a data-toggle="pill" href="#pests" class="pest-lib" name="Pest">PESTS</a></li>
+		  <li><a data-toggle="pill" href="#diseases" class="disease-lib" name="Disease">DISEASES</a></li>
+		</ul>
+		
+		<div class="tab-content">
+			<!-- PESTS -->
+			<div id="pests" class="tab-pane fade in active">
+				<center>
+					<div>
+						<h3> Search the library for pests </h3>
+					</div>
+
+					<div class="col-sm-12">
+						<div class="searchbar">
+								{{> EasySearch.Input index=pestsIndex attributes=searchAttributes }}		      
+					  </div>
+					</div>
+				</center>
+
+				<br/><br/>
+				{{#EasySearch.IfInputEmpty index=pestsIndex }}
+				<center>
+					<div><h4>For example "Rice"</h4></div>
+				</center>
+				{{else}}
+				<center>
+					<div><h4>SEARCH RESULTS</h4></div>
+				</center>
+				<div class="wrapper">
+					{{#EasySearch.IfSearching index=pestsIndex}}
+					  {{>spinner}}
+					{{/EasySearch.IfSearching}}
+
+			    	<div class="container">
+						{{#EasySearch.Each index=pestsIndex}}		
+							{{#if equals type "Pest"}}
+							    {{> individualPest}}
+					    {{/if}}
+						{{/EasySearch.Each}}
+					</div>
+
+					<div class="container">
+						{{#EasySearch.IfNoResults index=pestsIndex}}
+						  <div>No results found!</div>
+						{{/EasySearch.IfNoResults}}
+					</div>
+
+				</div>
+				{{/EasySearch.IfInputEmpty}}
+
+				
+				<br/><br/>
+
+				<div>
+					{{#each getCMS.viewPestType}}
+						{{setPageSessionsPest this}}
+						<div class="col-sm-12 col-md-12 col-lg-12">
+							<h3 class="pest-category-label"> {{this}} Pests </h3>
+						</div>
+
+						<div class="container">
+							{{#each displayPest this}}
+						    	{{> individualPest}}
+						    {{/each}}
+					    </div>
+
+					    <div class="text-center">
+					    	<ul class="pagination">
+								{{#each setPestPagination this}}
+							  		<li class="{{#if isCurrentPestPage num}} active {{/if}}">
+							  			<a class="page-number-pest" name="{{getCurrentPestType}}">{{num}}</a>
+							  		</li>
+								{{/each}}
+							</ul>
+					    </div>
+					{{/each}}
+			    </div>
 			</div>
 
-			<div class="container">
-				{{#each displayPest this}}
-			    	{{> individualPest}}
-			    {{/each}}
-		    </div>
+			<!-- DISEASES -->
+			<div id="diseases" class="tab-pane fade">
+				<center>
+					<div>
+						<h3> Search the library for diseases </h3>
+					</div>
 
-		    <div class="text-center">
-		    	<ul class="pagination">
-					{{#each setPagination this}}
-				  		<li class="{{#if isCurrentPage num}} active {{/if}}">
-				  			<a class="page-number" name="{{getCurrentPestType}}">{{num}}</a>
-				  		</li>
+					<div class="col-sm-12">
+						<div class="searchbar">
+								{{> EasySearch.Input index=pestsIndex attributes=searchAttributes }}		      
+					  </div>
+					</div>
+				</center>
+
+				<br/><br/>
+				{{#EasySearch.IfInputEmpty index=pestsIndex }}
+				<center>
+					<div><h4>For example "Rice"</h4></div>
+				</center>
+				{{else}}
+				<center>
+					<div><h4>SEARCH RESULTS</h4></div>
+				</center>
+				<div class="wrapper">
+					{{#EasySearch.IfSearching index=pestsIndex}}
+					  {{>spinner}}
+					{{/EasySearch.IfSearching}}
+
+			    	<div class="container">
+						{{#EasySearch.Each index=pestsIndex}}		
+							{{#if equals type "Disease"}}
+							    {{> individualPest}}
+					    {{/if}}
+						{{/EasySearch.Each}}
+					</div>
+
+					<div class="container">
+						{{#EasySearch.IfNoResults index=pestsIndex}}
+						  <div>No results found!</div>
+						{{/EasySearch.IfNoResults}}
+					</div>
+
+				</div>
+				{{/EasySearch.IfInputEmpty}}
+
+				
+				<br/><br/>
+
+				<div>
+					{{#each getCMS.viewPestType}}
+						{{setPageSessionsDisease this}}
+						<div class="col-sm-12 col-md-12 col-lg-12">
+							<h3 class="pest-category-label"> {{this}} Diseases </h3>
+						</div>
+
+						<div class="container">
+							{{#each displayDisease this}}
+						    	{{> individualPest}}
+						    {{/each}}
+					    </div>
+
+					    <div class="text-center">
+					    	<ul class="pagination">
+								{{#each setDiseasePagination this}}
+							  		<li class="{{#if isCurrentDiseasePage num}} active {{/if}}">
+							  			<a class="page-number-disease" name="{{getCurrentDiseaseType}}">{{num}}</a>
+							  		</li>
+								{{/each}}
+							</ul>
+					    </div>
 					{{/each}}
-				</ul>
-		    </div>
-		{{/each}}
-    </div>
+			    </div>
+			</div>
+		</div>
 
+	</div>
 </template>
 
 <template name="individualPest">
