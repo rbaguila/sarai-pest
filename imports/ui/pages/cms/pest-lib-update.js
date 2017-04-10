@@ -14,19 +14,24 @@ Template.pestLibUpdate.onRendered(function() {
 
 Template.pestLibCMS.helpers({
 
+	getCMS(){
+		return CMS.findOne({info: "finalLib"});
+	},
+
 	pestType(){
 		var data = Pests.find().fetch();
 		var distinctData = _.uniq(data, false, function(d) {return d.plant_affected});
 		return _.pluck(distinctData, "plant_affected");
 	},
 
-	getCMS(){
-		return CMS.findOne({info: "finalLib"});
-	},
-
 	isChecked(pestType) {
 		return CMS.find({info: "finalLib", viewPestType: pestType}).count() > 0? true : false;
 	},
+
+	isSelected(position){
+		var banner = CMS.findOne({info:'finalLib'});
+		return position == banner.bannerContentPosition; // may error daw sa bannerContentPosition!!!!!???
+	}
 });
 
 Template.pestLibCMS.events({
@@ -34,6 +39,8 @@ Template.pestLibCMS.events({
 		event.preventDefault();
 		
 		// GET THE VALUES
+		var bannerText = $("#bannerText").val();
+		var bannerSubText = $("#bannerSubText").val();
 		var searchlabel = $("#searchlabel").val();
 		var pestNumbers = parseInt( $("#pestsperpage").val() );
 
@@ -43,7 +50,7 @@ Template.pestLibCMS.events({
 		});
 		
 		// UPDATES THE DATABASE
-		Meteor.call('cms.updatePestLib', searchlabel, pestType, pestNumbers, (error) => {
+		Meteor.call('cms.updatePestLib', bannerText, bannerSubText, searchlabel, pestType, pestNumbers, (error) => {
 	      if (error) {
 	        alert(error.error);
 	      } else {

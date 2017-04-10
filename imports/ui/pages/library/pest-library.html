@@ -8,43 +8,44 @@
 		<div class="col-sm-12">
 			<div class="searchbar">
 					{{> EasySearch.Input index=pestsIndex attributes=searchAttributes }}		      
-		  </div>
+		  	</div>
 		</div>
 	</center>
 
-	<br/><br/>
 	{{#EasySearch.IfInputEmpty index=pestsIndex }}
-  <center>
-    <div><h4>For example "Rice"</h4></div>
-  </center>
-  {{else}}
-  <center>
-    <div><h4>SEARCH RESULTS</h4></div>
-  </center>
-    <div class="wrapper">
-			{{#EasySearch.IfSearching index=pestsIndex}}
-			  {{>spinner}}
-			{{/EasySearch.IfSearching}}
+	<center>
+		<div><h4>For example "Rice"</h4></div>
+	</center>
 
-	    <div class="container">
-				{{#EasySearch.Each index=pestsIndex}}		
-					{{#if equals type "Pest"}}
-					    {{> individualPest}}
-			    {{/if}}
-				{{/EasySearch.Each}}
-			</div>
+	{{else}}
+	<center>
+		<div><h4>SEARCH RESULTS</h4></div>
+	</center>
 
-			<div class="container">
-				{{#EasySearch.IfNoResults index=pestsIndex}}
-				  <div>No results found!</div>
-				{{/EasySearch.IfNoResults}}
-			</div>
+	<div class="wrapper">
+		{{#EasySearch.IfSearching index=pestsIndex}}
+			{{>spinner}}
+		{{/EasySearch.IfSearching}}
 
+		<div class="container">
+		{{#EasySearch.Each index=pestsIndex}}		
+			{{#if equals type "Pest"}}
+				{{> individualPest}}
+			{{/if}}
+		{{/EasySearch.Each}}
 		</div>
-  {{/EasySearch.IfInputEmpty}}
 
-	
-	<br/><br/>
+		<div class="container">
+		{{#EasySearch.IfNoResults index=pestsIndex}}
+			<center><div>No results found!</div></center>
+		{{/EasySearch.IfNoResults}}
+		</div>
+
+	</div>
+
+	{{/EasySearch.IfInputEmpty}}
+
+	<br/>
 
 	<div>
 		{{#each getCMS.viewPestType}}
@@ -70,8 +71,18 @@
 		    </div>
 		{{/each}}
     </div>
+    <!-- {{> paginatedStuff}} -->
 
 </template>
+
+<!-- <template name="paginatedStuff">
+    {{> pages}}
+    {{> pagesNav}}  Bottom navigation
+</template>
+
+<template name="stuffListItem">
+	{{name}}
+</template> -->
 
 <template name="individualPest">
 	<div class="pest-data-body col-xs-6 col-sm-4 col-md-3 col-lg-3">
@@ -93,3 +104,29 @@
 		</div>
 	</div>
 </template>
+
+<!-- <template name="searchBar">
+	<center>
+		<div class="col-sm-12">
+			<div class="searchbar">
+		      {{> EasySearch.Input index=pestsIndex placeholder="Search" noDocumentsOnEmpty="true"}}
+		    </div>
+	    </div>
+
+		<div>
+			{{#EasySearch.IfSearching index=pestsIndex}}
+			  <div>Searching</div>
+			{{/EasySearch.IfSearching}}
+
+	        <div class="container">
+				{{#EasySearch.Each index=pestsIndex}}
+					{{> individualPest}}
+				{{/EasySearch.Each}}
+			</div>
+		</div>
+
+		{{#EasySearch.IfNoResults index=pestsIndex }}
+			<div>No results found!</div>
+		{{/EasySearch.IfNoResults}}
+	</center>
+</template> -->

@@ -40,7 +40,7 @@ Meteor.startup(() => {
         {
           info: 'finalLib',
           bannerContentPosition: 'middle',
-          bannerImage: '',
+          bannerImage: '/img/banners/pest_lib_banner.jpg',
           bannerImageID: '',
           bannerHeadText: 'Pest Library',
           bannerSubText: 'An online library for Rice and Corn Pests',
@@ -81,7 +81,11 @@ Meteor.startup(() => {
           sci_name: 'Spodoptera exempta (Walker)/Mythimna separata Walker/Spodoptera mauritia Boisduval',
           eng_name: 'African Armyworm, Black Armyworm, Nutgrass Armyworm, True Armyworm, Hail Worm, Mystery Armyworm, Rain Worm',
           name: 'Black Armyworm adult',
-          image: '/img/pests/BlackArmywormadult.jpg'
+          image: '/img/pests/BlackArmywormadult.jpg',
+          image_gallery: [
+            '/img/pests/BlackArmywormadult.jpg',
+            '/img/pests/BlackArmywormlarva.jpg'
+          ]
        },
 
         {
@@ -109,7 +113,10 @@ Meteor.startup(() => {
           sci_name: 'Spodoptera exempta (Walker)/Mythimna separata Walker/Spodoptera mauritia Boisduval',
           eng_name: 'African Armyworm, Black Armyworm, Nutgrass Armyworm, True Armyworm, Hail Worm, Mystery Armyworm, Rain Worm',
           name: 'Black Armyworm larva',
-          image: '/img/pests/BlackArmywormlarva.jpg'
+          image: '/img/pests/BlackArmywormlarva.jpg',
+          image_gallery: [
+            '/img/pests/BlackArmywormlarva.jpg',
+          ]
        },
 
         {
@@ -137,7 +144,10 @@ Meteor.startup(() => {
           sci_name: 'Spodoptera litura (Fabricius)',
           eng_name: 'Common Cutworm, Grass Cutworm, Vegetable Cutworm, Tobacco Cutworm, Tobacco Caterpillar, Taro Caterpillar',
           name: 'Common Cutworm adult',
-          image: '/img/pests/CommonCutwormadult.jpg'
+          image: '/img/pests/CommonCutwormadult.jpg',
+          image_gallery: [
+            '/img/pests/CommonCutwormadult.jpg',
+          ]
        },
         
         {
@@ -165,7 +175,10 @@ Meteor.startup(() => {
           sci_name: 'Spodoptera litura (Fabricius)',
           eng_name: 'Common Cutworm, Grass Cutworm, Vegetable Cutworm, Tobacco Cutworm, Tobacco Caterpillar, Taro Caterpillar',
           name: 'Common Cutworm larva',
-          image: '/img/pests/CommonCutwormlarva.jpg'
+          image: '/img/pests/CommonCutwormlarva.jpg',
+          image_gallery: [
+            '/img/pests/CommonCutwormlarva.jpg',
+          ]
        },
 
         {
@@ -193,7 +206,10 @@ Meteor.startup(() => {
           sci_name: 'Mythimna separata (Walker)',
           eng_name: 'Ear-cutting caterpillar, Oriental Armyworm, Northern Armyworm',
           name: 'Ear-cutting Caterpillar adult',
-          image: '/img/pests/Ear-cuttingCaterpillaradult.jpg'
+          image: '/img/pests/Ear-cuttingCaterpillaradult.jpg',
+          image_gallery: [
+            '/img/pests/Ear-cuttingCaterpillaradult.jpg',
+          ]
        },
 
         {
@@ -221,7 +237,10 @@ Meteor.startup(() => {
           sci_name: 'Mythimna separata (Walker)',
           eng_name: 'Ear-cutting caterpillar, Oriental Armyworm, Northern Armyworm',
           name: 'Ear-cutting Caterpillar larva',
-          image: '/img/pests/Ear-cuttingCaterpillarlarva.jpg'
+          image: '/img/pests/Ear-cuttingCaterpillarlarva.jpg',
+          image_gallery: [
+            '/img/pests/Ear-cuttingCaterpillarlarva.jpg',
+          ]
        },
         
         {
@@ -249,7 +268,10 @@ Meteor.startup(() => {
           sci_name: 'Melanitis leda ismene Cramer',
           eng_name: 'Green Horned Caterpillar (larva), Common Evening Brown (adult)',
           name: 'Greenhorned Caterpillar adult',
-          image: '/img/pests/GreenhornedCaterpillaradult.jpg'
+          image: '/img/pests/GreenhornedCaterpillaradult.jpg',
+          image_gallery: [
+            '/img/pests/GreenhornedCaterpillaradult.jpg',
+          ]
        },
 
         {
@@ -277,7 +299,10 @@ Meteor.startup(() => {
           sci_name: 'Melanitis leda ismene Cramer',
           eng_name: 'Green Horned Caterpillar (larva), Common Evening Brown (adult)',
           name: 'Greenhorned Caterpillar larva',
-          image: '/img/pests/GreenhornedCaterpillarlarva.jpg'
+          image: '/img/pests/GreenhornedCaterpillarlarva.jpg',
+          image_gallery: [
+            '/img/pests/GreenhornedCaterpillarlarva.jpg',
+          ]
        },
         
         {
@@ -305,7 +330,10 @@ Meteor.startup(() => {
           sci_name: 'Nymphula depunctalis (Guenée)',
           eng_name: 'Rice Caseworm',
           name: 'Rice Caseworm adult',
-          image: '/img/pests/RiceCasewormadult.jpg'
+          image: '/img/pests/RiceCasewormadult.jpg',
+          image_gallery: [
+            '/img/pests/RiceCasewormadult.jpg',
+          ]
        },
         
         {
@@ -333,7 +361,10 @@ Meteor.startup(() => {
           sci_name: 'Naranga aenescens (Moore)',
           eng_name: 'Green Semilooper',
           name: 'Rice Green Semilooper adult',
-          image: '/img/pests/RiceGreenSemilooperadult.jpg'
+          image: '/img/pests/RiceGreenSemilooperadult.jpg',
+          image_gallery: [
+            '/img/pests/RiceGreenSemilooperadult.jpg',
+          ]
        },
 
         {
@@ -349,7 +380,10 @@ Meteor.startup(() => {
           fil_name: '',
           eng_name: 'Green Semilooper',
           name: 'Rice Green Semilooper larva',
-          image: '/img/pests/RiceGreenSemilooperlarva.jpg'
+          image: '/img/pests/RiceGreenSemilooperlarva.jpg',
+          image_gallery: [
+            '/img/pests/RiceGreenSemilooperlarva.jpg',
+          ]
        },
         
         {
@@ -377,7 +411,10 @@ Meteor.startup(() => {
           sci_name: 'Cnaphalocrocis medinalis (Guenée)',
           eng_name: 'Rice Leaffolder',
           name: 'Rice Leaffolder adult',
-          image: '/img/pests/RiceLeaffolderadult.jpg'
+          image: '/img/pests/RiceLeaffolderadult.jpg',
+          image_gallery: [
+            '/img/pests/RiceLeaffolderadult.jpg',
+          ]
        },
 
         {
@@ -405,7 +442,10 @@ Meteor.startup(() => {
           sci_name: 'Cnaphalocrocis medinalis (Guenée)',
           eng_name: 'Rice Leaffolder',
           name: 'Rice Leaffolder larva',
-          image: '/img/pests/RiceLeaffolderlarva.jpg'
+          image: '/img/pests/RiceLeaffolderlarva.jpg',
+          image_gallery: [
+            '/img/pests/RiceLeaffolderlarva.jpg',
+          ]
        },
         
         {
@@ -434,7 +474,10 @@ Meteor.startup(() => {
           fil_name: '',
           eng_name: 'Rice Skipper, Small Branded Swift, Black Branded Swift, Lesser Millet Skipper',
           name: 'Rice Skipper adult',
-          image: '/img/pests/RiceSkipperadult.jpg'
+          image: '/img/pests/RiceSkipperadult.jpg',
+          image_gallery: [
+            '/img/pests/RiceSkipperadult.jpg',
+          ]
        },
 
         {
@@ -463,7 +506,10 @@ Meteor.startup(() => {
           fil_name: '',
           eng_name: 'Rice Skipper, Small Branded Swift, Black Branded Swift, Lesser Millet Skipper',
           name: 'Rice Skipper larva',
-          image: '/img/pests/RiceSkipperlarva.jpg'
+          image: '/img/pests/RiceSkipperlarva.jpg',
+          image_gallery: [
+            '/img/pests/RiceSkipperlarva.jpg',
+          ]
        },
         
         {
@@ -491,7 +537,10 @@ Meteor.startup(() => {
           sci_name: 'Scirpophaga innotata (Walker)',
           eng_name: 'White Stemborer',
           name: 'White Stemborer',
-          image: '/img/pests/WhiteStemborer.jpg'
+          image: '/img/pests/WhiteStemborer.jpg',
+          image_gallery: [
+            '/img/pests/WhiteStemborer.jpg',
+          ]
        },
         
         {
@@ -519,7 +568,10 @@ Meteor.startup(() => {
           sci_name: 'Scirpophaga incertulas (Walker)',
           eng_name: 'Yellow Stemborer',
           name: 'Yellow Stemborer adult',
-          image: '/img/pests/YellowStemboreradult.jpg'
+          image: '/img/pests/YellowStemboreradult.jpg',
+          image_gallery: [
+            '/img/pests/YellowStemboreradult.jpg',
+          ]
        },
 
         {
@@ -547,7 +599,10 @@ Meteor.startup(() => {
           sci_name: 'Scirpophaga incertulas (Walker)',
           eng_name: 'Yellow Stemborer',
           name: 'Yellow Stemborer larva',
-          image: '/img/pests/YellowStemborerlarva.jpg'
+          image: '/img/pests/YellowStemborerlarva.jpg',
+          image_gallery: [    
+            '/img/pests/YellowStemborerlarva.jpg',
+          ]
        },
 
         {
@@ -575,7 +630,10 @@ Meteor.startup(() => {
           sci_name: 'Chrysodeixis chalcites Esper',
           eng_name: 'Corn Semilooper, Tomato Looper, Green Gardern Looper (larva); Golden Twin Spot (adult)',
           name: 'Corn Semilooper adult',
-          image: '/img/pests/CornSemilooperadult.jpg'
+          image: '/img/pests/CornSemilooperadult.jpg',
+          image_gallery: [
+            '/img/pests/CornSemilooperadult.jpg',
+          ]
        },
 
         {
@@ -603,7 +661,10 @@ Meteor.startup(() => {
           sci_name: 'Chrysodeixis chalcites Esper',
           eng_name: 'Corn Semilooper, Tomato Looper, Green Gardern Looper (larva); Golden Twin Spot (adult)',
           name: 'Corn Semilooper larva',
-          image: '/img/pests/CornSemilooperlarva.jpg'
+          image: '/img/pests/CornSemilooperlarva.jpg',
+          image_gallery: [
+            '/img/pests/CornSemilooperlarva.jpg',
+          ]
        },
 
         {
@@ -631,7 +692,10 @@ Meteor.startup(() => {
           sci_name: 'Ostrinia furnacalis Guenee',
           eng_name: 'Asian/Oriental Cornborer',
           name: 'Asian Cornborer adult',
-          image: '/img/pests/AsianCornboreradult.jpg'
+          image: '/img/pests/AsianCornboreradult.jpg',
+          image_gallery: [
+            '/img/pests/AsianCornboreradult.jpg',
+          ]
        },
 
         {
@@ -659,7 +723,10 @@ Meteor.startup(() => {
           sci_name: 'Helicoverpa armigera Hubner',
           eng_name: 'Corn Earworm, Cotton Bollwormm, Tobacco Budworm (larva); Scarce Bordered Straw (adult)',
           name: 'Corn Earworm adult',
-          image: '/img/pests/CornEarwormadult.jpg'
+          image: '/img/pests/CornEarwormadult.jpg',
+          image_gallery: [
+            '/img/pests/CornEarwormadult.jpg',
+          ]
        },
 
         {
@@ -688,10 +755,12 @@ Meteor.startup(() => {
           fil_name: '',
           eng_name: 'Corn Earworm, Cotton Bollwormm, Tobacco Budworm (larva); Scarce Bordered Straw (adult)',
           name: 'Corn Earworm larva',
-          image: '/img/pests/CornEarwormlarva.jpg'
+          image: '/img/pests/CornEarwormlarva.jpg',
+          image_gallery: [
+            '/img/pests/CornEarwormlarva.jpg',
+          ]
        },
 
-        //FREI
         {
           type: 'Pest',
           fil_stage_plant_affected: '',
@@ -717,7 +786,10 @@ Meteor.startup(() => {
           sci_name: 'Chaetocnema pulicaria',
           eng_name: 'Corn Flea Beetle, Clover Flea Beetle',
           name: 'Corn Flea Beetle',
-          image: '/img/pests/CornFleaBeetle.jpg'
+          image: '/img/pests/CornFleaBeetle.jpg',
+          image_gallery: [
+            '/img/pests/CornFleaBeetle.jpg',
+          ]
        },
 
         {
@@ -745,7 +817,10 @@ Meteor.startup(() => {
           sci_name: 'Leptispa Pygmaea',
           eng_name: 'Rice Blue Beetle',
           name: 'Leptispa',
-          image: '/img/pests/Leptispa.jpg'
+          image: '/img/pests/Leptispa.jpg',
+          image_gallery: [
+            '/img/pests/Leptispa.jpg',
+          ]
        },
 
         {
@@ -773,7 +848,10 @@ Meteor.startup(() => {
           sci_name: 'Sitophilus Oryzae',
           eng_name: 'Rice Weevil',
           name: 'Rice Weevil',
-          image: '/img/pests/RiceWeevil.jpg'
+          image: '/img/pests/RiceWeevil.jpg',
+          image_gallery: [
+            '/img/pests/RiceWeevil.jpg',
+          ]
        },
 
         {
@@ -801,7 +879,10 @@ Meteor.startup(() => {
           sci_name: 'Dicladispa Armigera',
           eng_name: 'Rice Hispa, Spiny Beetle',
           name: 'Rice Hispa',
-          image: '/img/pests/RiceHispa.jpg'
+          image: '/img/pests/RiceHispa.jpg',
+          image_gallery: [
+            '/img/pests/RiceHispa.jpg',
+          ]
        },
 
         {
@@ -829,7 +910,10 @@ Meteor.startup(() => {
           sci_name: 'Phyllophaga',
           eng_name: 'White Grub, Scarab Larvae',
           name: 'White Grub Larva',
-          image: '/img/pests/WhiteGrubLarva.jpg'
+          image: '/img/pests/WhiteGrubLarva.jpg',
+          image_gallery: [
+            '/img/pests/WhiteGrubLarva.jpg',
+          ]
        },
 
         //JASON
@@ -858,7 +942,10 @@ Meteor.startup(() => {
           sci_name: 'Euscyrtus Concinnus',
           eng_name: 'Cricket, Gryllids',
           name: 'Field Cricket',
-          image: '/img/pests/FieldCricket.jpg'
+          image: '/img/pests/FieldCricket.jpg',
+          image_gallery: [
+            '/img/pests/FieldCricket.jpg',
+          ]
        },
 
         {
@@ -886,7 +973,10 @@ Meteor.startup(() => {
           sci_name: 'Tettigoniidae sp.',
           eng_name: 'Katydid, Bush Cricket, Long-horned Grasshopper',
           name: 'Katydid',
-          image: '/img/pests/Katydid.jpg'
+          image: '/img/pests/Katydid.jpg',
+          image_gallery: [
+            '/img/pests/Katydid.jpg',
+          ]
        },
 
         {
@@ -914,7 +1004,10 @@ Meteor.startup(() => {
           sci_name: 'Oxya hyla intricata ',
           eng_name: 'Rice Grasshopper, Short-horned Grasshopper',
           name: 'Short-horned Grasshopper',
-          image: '/img/pests/Short-hornedGrasshopper.jpg'
+          image: '/img/pests/Short-hornedGrasshopper.jpg',
+          image_gallery: [
+            '/img/pests/Short-hornedGrasshopper.jpg',
+          ]
        },
 
         {
@@ -942,7 +1035,10 @@ Meteor.startup(() => {
           sci_name: 'Locusta migratoria manilensis',
           eng_name: 'Oriental Migratory Locust, Asiatic Migratory Locust',
           name: 'Oriental Migratory Locust',
-          image: '/img/pests/OrientalMigratoryLocust.jpg'
+          image: '/img/pests/OrientalMigratoryLocust.jpg',
+          image_gallery: [
+            '/img/pests/OrientalMigratoryLocust.jpg',
+          ]
        },
 
         {
@@ -970,7 +1066,10 @@ Meteor.startup(() => {
           sci_name: 'Gryllotalpa orientalis',
           eng_name: 'Short-winged Mole Cricket, Southern Mole Cricket, Tawny Mole Cricket',
           name: 'Mole Cricket',
-          image: '/img/pests/MoleCricket.jpg'
+          image: '/img/pests/MoleCricket.jpg',
+          image_gallery: [
+            '/img/pests/MoleCricket.jpg',
+          ]
        },
 
         //JV
@@ -999,7 +1098,10 @@ Meteor.startup(() => {
           sci_name: 'Nilaparvata lugens',
           eng_name: 'Brown Planthopper, Planthopper',
           name: 'Brown Planthopper',
-          image: '/img/pests/BrownPlanthopper.jpg'
+          image: '/img/pests/BrownPlanthopper.jpg',
+          image_gallery: [
+            '/img/pests/BrownPlanthopper.jpg',
+          ]
        },
 
         {
@@ -1027,7 +1129,10 @@ Meteor.startup(() => {
           sci_name: 'Nephotettix malayanus, Nephotettix virescens, Nephotettix nigropictus Stal',
           eng_name: 'Green Leafhopper, Leafhopper, Hopper',
           name: 'Green Leafhopper',
-          image: '/img/pests/GreenLeafhopper.jpg'
+          image: '/img/pests/GreenLeafhopper.jpg',
+          image_gallery: [
+            '/img/pests/GreenLeafhopper.jpg',
+          ]
        }, 
 
         {
@@ -1055,7 +1160,10 @@ Meteor.startup(() => {
           sci_name: 'Recilia dorsalis',
           eng_name: 'Zigzag Leafhopper',
           name: 'Zigzag Leafhopper',
-          image: '/img/pests/ZigzagLeafhopper.jpg'
+          image: '/img/pests/ZigzagLeafhopper.jpg',
+          image_gallery: [
+            '/img/pests/ZigzagLeafhopper.jpg',
+          ]
        },
 
         {
@@ -1083,7 +1191,10 @@ Meteor.startup(() => {
           sci_name: 'Scotinophara coarctata',
           eng_name: 'Black Bug, Common Black Bug',
           name: 'Black Bug',
-          image: '/img/pests/BlackBug.jpg'
+          image: '/img/pests/BlackBug.jpg',
+          image_gallery: [
+            '/img/pests/BlackBug.jpg',
+          ]
        },
 
         {
@@ -1111,7 +1222,10 @@ Meteor.startup(() => {
           sci_name: 'Orseolia oryzae',
           eng_name: 'Gall Midge, Rice Gall Midge, Asian Gall Midge',
           name: 'Rice Gall Midge',
-          image: '/img/pests/RiceGallMidge.jpg'
+          image: '/img/pests/RiceGallMidge.jpg',
+          image_gallery: [
+            '/img/pests/RiceGallMidge.jpg',
+          ]
        },
 
         {
@@ -1139,7 +1253,10 @@ Meteor.startup(() => {
           sci_name: 'Brevennia rehi',
           eng_name: 'Rice Mealy Bug, Mealy Bug',
           name: 'Rice Mealy Bug',
-          image: '/img/pests/RiceMealyBug.jpg'
+          image: '/img/pests/RiceMealyBug.jpg',
+          image_gallery: [
+            '/img/pests/RiceMealyBug.jpg',
+          ]
        },
 
         {
@@ -1167,7 +1284,10 @@ Meteor.startup(() => {
           sci_name: 'Leptocorisa Varicornis, Leptocorisa oratorius Fab., Leptocorisa acuta Thunberg',
           eng_name: 'Rice Paddy Bug, Rice Bug, Paddy Bug',
           name: 'Rice Paddy Bug',
-          image: '/img/pests/RicePaddyBug.jpg'
+          image: '/img/pests/RicePaddyBug.jpg',
+          image_gallery: [
+            '/img/pests/RicePaddyBug.jpg',
+          ]
        },
 
         {
@@ -1195,7 +1315,10 @@ Meteor.startup(() => {
           sci_name: 'Tetraneura nigriabdominalis',
           eng_name: 'Rice Root Aphid, Aphid',
           name: 'Rice Root Aphid',
-          image: '/img/pests/RiceRootAphid.jpg'
+          image: '/img/pests/RiceRootAphid.jpg',
+          image_gallery: [
+            '/img/pests/RiceRootAphid.jpg',
+          ]
        },
 
         {
@@ -1223,91 +1346,10 @@ Meteor.startup(() => {
           sci_name: 'Hydrellia philippina (Ferino)',
           eng_name: '',
           name: 'Rice Whorl Maggot',
-          image: '/img/pests/RiceWhorlMaggot.jpg'
-       },
-
-        {
-          type: 'Pest',
-          fil_stage_plant_affected: 'Mula transplanting hanggang sa vegetative na stage.',
-          fil_effect:'Kinakain nito ang malilit pa lang na palay. Kung hindi ito makokontrol, malaki ang magiging epekto nito sa ani. Kaya nitong putulin ang mga palay mula sa pinakapuno nito.',
-          fil_part_destroyed: 'Dahon at katawan',
-          fil_stage_threatening: 'Lahat ng yugto maliban sa itlog',
-          fil_symptoms: 'Golden apple snails ay madaling makita dahil sa laki at kulay nito. Ang mga itlog nito ay madaling makita dahil sa kulay nito na bright pink.',
-          fil_description: '',
-          fil_plant_affected: '',
-          fil_classification: '',
-          fil_treatment:'Kultural na pamamaraan: Manu-manong tanggalin ang mga itlog nito pati na rin ang mga golden snails. Maglagay ng screen wires sa bunganga ng irigasyon, ito ay magsisilbing harang sa mga golden snails at sa mga itlog nito. Bawasan minsan ang tubig ng palayan upang mabawasan ang aktibidad ng mga mga golden apple snails. Ilebel ang palayan upang pantay ang tubig. Ilipat ang pananim kapag ito ay medyo malaki na.; Natural na pamaraan: Kinakain ng mga pulang langgam ang mga itlog ng golden apple snails. Kinakain din ng mga itik ang mga itlog ng golden apple snails pati na rin ang bagong pisang itlog. Maglagay ng maliliit na kanal upang dito pumunta ang mga kuhol.; Kemikal na pamamaraan: Gumamit ng molluscicides.',
-          fil_name: 'Golden Kuhol',
-          stage_plant_affected: '',
-          effect: '',
-          part_destroyed: '',
-          stage_threatening: '',
-          symptoms: '',
-          description: '',
-          plant_affected: 'Rice',
-          order: '',
-          classification: '',
-          treatment: '',
-          sci_name: 'Pomacea canaliculata, Pomacea maculata',
-          eng_name: '',
-          name: 'Golden Apple Snail',
-          image: '/img/pests/GoldenAppleSnail.jpg'
-       },
-
-        {
-          type: 'Pest',
-          fil_stage_plant_affected: 'Mula transplanting hanggang sa vegetative na stage.',
-          fil_effect:'Mayroong mga uban at ang mga butil ay hindi puno dahil nginunguya ito ng ibon.',
-          fil_part_destroyed: 'Dahon at katawan',
-          fil_stage_threatening: 'Lahat ng yugto maliban sa itlog',
-          fil_symptoms: 'May mga nawawalang parte ng palay o mga nawawalang laman ng butil palay.',
-          fil_description: '',
-          fil_plant_affected: '',
-          fil_classification: '',
-          fil_treatment:'Kultural na pamamaraan: Bugawin ang mga ibon gamit ang mga noisemakers, scarecrows, flags, atbp',
-          fil_name: 'Mayang Pula at Mayang Simbahan',
-          stage_plant_affected: '',
-          effect: '',
-          part_destroyed: '',
-          stage_threatening: '',
-          symptoms: '',
-          description: '',
-          plant_affected: 'Rice',
-          order: '',
-          classification: '',
-          treatment: '',
-          sci_name: 'Lonchura Malacca, Passer montanus',
-          eng_name: '',
-          name: 'Maya',
-          image: '/img/pests/Maya.jpg'
-       },
-
-        {
-          type: 'Pest',
-          fil_stage_plant_affected: 'Buong palay',
-          fil_effect:'Ang mga dagang bukid ay kayang kainin at sirain ang buong palay. Ang mga bagong transplant na palay ay kayang-kayang bunutin ng daga. Kaya nitong magparami hanggang mayroon ito pagkain.',
-          fil_part_destroyed: 'Dahon at katawan',
-          fil_stage_threatening: '',
-          fil_symptoms: 'Mapapansin ang mga hukay o butas sa palayan na nagsisilbing bahay ng mga daga. May mga nawawalang parte ng palay o mismong tundos. Pahilis na pagkakaputol ng palay.',
-          fil_description:'Kulay kayumanggi, mabilis tumakbo',
-          fil_plant_affected: '',
-          fil_classification: '',
-          fil_treatment:'Kultural na pamamaraan: Panatilihing malinis ang pilapil. Hulihin ang mga daga gamit ng mga pain. Tuluy-tuloy na pagpapain kasabay ang mga karatig na palayan. Hulihin at patayin ang mga daga sa pagbabaha, paghuhukay ng mga lungga o pagsunog ng mga lungga. Magtanim kasabay ng mga karatig na palayan.',
-          fil_name: 'Dagang bukid',
-          stage_plant_affected: '',
-          effect: '',
-          part_destroyed: '',
-          stage_threatening: '',
-          symptoms: '',
-          description: '',
-          plant_affected: 'Rice',
-          order: '',
-          classification: '',
-          treatment: '',
-          sci_name: 'Rattus rattus mindanensis Mearns, Rattus norvegicus, Rattus argentiventer Robinson & Kloss 1916',
-          eng_name: '',
-          name: 'Rat',
-          image: '/img/pests/Rat.jpg'
+          image: '/img/pests/RiceWhorlMaggot.jpg',
+          image_gallery: [
+            '/img/pests/RiceWhorlMaggot.jpg',
+          ] 
        },
 
         {
@@ -1335,7 +1377,10 @@ Meteor.startup(() => {
           sci_name: 'Chilo suppressalis Walker',
           eng_name: '',
           name:'Striped Stemborer',
-          image: '/img/pests/StripedStemborer.jpg'
+          image: '/img/pests/StripedStemborer.jpg',
+          image_gallery: [
+            '/img/pests/StripedStemborer.jpg',
+          ]
        },
 
         {
@@ -1363,7 +1408,10 @@ Meteor.startup(() => {
           sci_name: 'Sesamia inferens Walker',
           eng_name: '',
           name:'Pink Stemborer',
-          image: '/img/pests/PinkStemborer.jpg'
+          image: '/img/pests/PinkStemborer.jpg',
+          image_gallery: [
+            '/img/pests/PinkStemborer.jpg',
+          ]
        }
     ];
 

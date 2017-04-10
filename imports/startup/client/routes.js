@@ -7,6 +7,9 @@ import '../../ui/pages/home/home.js';
 import '../../ui/pages/not-found/not-found.js';
 import '../../ui/pages/library/library.js';
 import '../../ui/pages/cms/pest-lib-update.js';
+import '../../ui/pages/cms/insert-pest/insert-pest.js';
+import '../../ui/pages/cms/edit-pest/edit-pest.js';
+import '../../ui/pages/cms/edit-pest/edit-pest-entity.js';
 
 // Set up all routes in the app
 FlowRouter.route('/', {
@@ -24,13 +27,6 @@ FlowRouter.route('/library', {
   },
 });
 
-// FlowRouter.route("/pests-lib-update", {
-//   name: 'App.pests-lib-update',
-//   action() {
-//     BlazeLayout.render("App_body", {main: "pestLibUpdate"})
-//   }
-// });
-
 FlowRouter.route('/pests-lib-update', {
   name: 'App.pests-lib-update',
   action: function(params) {
@@ -41,6 +37,51 @@ FlowRouter.route('/pests-lib-update', {
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "pestLibUpdate"})
+          }
+      });
+    }
+});
+
+FlowRouter.route('/insert-pest', {
+  name: 'App.insert-pest',
+  action: function(params) {
+      Tracker.autorun(function() {
+          if (!Meteor.userId()) {
+            BlazeLayout.render("App_body", {main: "App_home"})
+            alert("User is not allowed to access the page.")
+            FlowRouter.redirect('/');
+          } else {
+            BlazeLayout.render("App_body", {main: "insertPest"})
+          }
+      });
+    }
+});
+
+FlowRouter.route('/edit-pest', {
+  name: 'App.edit-pest',
+  action: function(params) {
+      Tracker.autorun(function() {
+          if (!Meteor.userId()) {
+            BlazeLayout.render("App_body", {main: "App_home"})
+            alert("User is not allowed to access the page.")
+            FlowRouter.redirect('/');
+          } else {
+            BlazeLayout.render("App_body", {main: "editPest"})
+          }
+      });
+    }
+});
+
+FlowRouter.route("/edit-pest/:_id", {
+  name: 'App.library',
+  action: function(params) {
+      Tracker.autorun(function() {
+          if (!Meteor.userId()) {
+            BlazeLayout.render("App_body", {main: "App_home"})
+            alert("User is not allowed to access the page.")
+            FlowRouter.redirect('/');
+          } else {
+            BlazeLayout.render("App_body", {main: "editPestEntity"})
           }
       });
     }

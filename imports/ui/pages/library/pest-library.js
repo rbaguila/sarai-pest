@@ -1,14 +1,30 @@
-import { Pests, PestsIndex } from '/imports/api/pests/pests.js';
+import { Pests, PestsIndex} from '/imports/api/pests/pests.js';
 import { CMS } from '/imports/api/cms/cms.js';
 import { Meteor } from 'meteor/meteor';
 import './pest-library.html';
 
-var currentPests = "";
-
 Template.pestsLib.onCreated(function () {
-  Meteor.subscribe('pests.all');
-  Meteor.subscribe('cms.all');
+	Meteor.subscribe('pests.all');
+	Meteor.subscribe('cms.all');
 });
+
+Template.pestsLib.onRendered(function() {
+	Session.set("currentPage", "finalLib"); // set the current page to change banner
+	// this.PaginatedStuff = new Meteor.Pagination(Pests, {
+	// 	// route: "/library",
+	// 	// router: "iron-router",
+	// 	// routerTemplate: "paginatedStuff",
+	// 	// routerLayout: "pestsLib",
+	// 	templateName: 'paginatedStuff',
+	// 	itemTemplate: 'stuffListItem',
+	// 	perPage: 8,
+	// 	sort: {
+	// 		name: 1
+	// 	}
+	// });
+});
+
+var currentPest = "";
 
 Template.pestsLib.helpers({
 
@@ -17,13 +33,13 @@ Template.pestsLib.helpers({
 	},
 
 	searchAttributes() {
-    return {
-      placeholder: 'Search',
-      class: 'form-control'
-    };
-  },
+	    return {
+	      placeholder: 'Search',
+	      class: 'form-control'
+	    };
+	},
 
-  equals: function(v1, v2) {
+  	equals: function(v1, v2) {
 		return (v1 === v2);
 	},
 
@@ -35,12 +51,11 @@ Template.pestsLib.helpers({
 		currentPest = type;
 		var pestCount = Pests.find({'type': 'Pest', 'plant_affected': type}).count();
 		var pestsPerPage = parseInt(CMS.findOne({info:'finalLib'}).pestsPerPage);
-		//var pestsPerPage = 4;
-			Session.set(currentPest, 1);
 
-			pestCount = pestCount%pestsPerPage == 0? Math.floor(pestCount/pestsPerPage) : Math.floor(pestCount/pestsPerPage+1);
+			Session.set(currentPest, 1);
+			pestCount = pestCount % pestsPerPage == 0? Math.floor(pestCount/pestsPerPage) : Math.floor(pestCount/pestsPerPage+1);
 			Session.set(currentPest + " Count", pestCount);
-			// console.log(Session.get(currentPest + " Count"));
+			//console.log(Session.get(currentPest + " Count"));
 	},
 
 	getCurrentPestType(){
@@ -48,8 +63,7 @@ Template.pestsLib.helpers({
 	},
 
 	displayPest(type){
-		var pestsPerPage = parseInt(CMS.findOne({info:'finalLib'}).pestsPerPage);
-		//var pestsPerPage = 4;
+		var pestsPerPage = parseInt( CMS.findOne({info:'finalLib'}).pestsPerPage );
 		return Pests.find({'type': 'Pest', 'plant_affected': type}, {sort: {name: 1}, skip:(Session.get(currentPest)-1)*pestsPerPage, limit:pestsPerPage});
 	},
 
@@ -63,14 +77,13 @@ Template.pestsLib.helpers({
 
 	isCurrentPage(page){
 		return Session.equals(currentPest, page);
-	}
+	},
 });
 
 Template.pestsLib.events({
 	'click .page-number'(event) {
 		currentPest = $(event.target).attr("name");
 		Session.set(currentPest, this.num); // stores the current page number of typeOfPest
-		// console.log(currentPest + " page: " + Session.get(currentPest));
 	},
 });
 
