@@ -10,18 +10,6 @@ Template.pestsLib.onCreated(function () {
 
 Template.pestsLib.onRendered(function() {
 	Session.set("currentPage", "finalLib"); // set the current page to change banner
-	// this.PaginatedStuff = new Meteor.Pagination(Pests, {
-	// 	// route: "/library",
-	// 	// router: "iron-router",
-	// 	// routerTemplate: "paginatedStuff",
-	// 	// routerLayout: "pestsLib",
-	// 	templateName: 'paginatedStuff',
-	// 	itemTemplate: 'stuffListItem',
-	// 	perPage: 8,
-	// 	sort: {
-	// 		name: 1
-	// 	}
-	// });
 });
 
 var currentPest = "";
@@ -45,45 +33,37 @@ Template.pestsLib.helpers({
 
 	getCMS(){
 		return CMS.findOne({info:'finalLib'});
-	},
-
-	setPageSessions(type) {
-		currentPest = type;
-		var pestCount = Pests.find({'type': 'Pest', 'plant_affected': type}).count();
-		var pestsPerPage = parseInt(CMS.findOne({info:'finalLib'}).pestsPerPage);
-
-			Session.set(currentPest, 1);
-			pestCount = pestCount % pestsPerPage == 0? Math.floor(pestCount/pestsPerPage) : Math.floor(pestCount/pestsPerPage+1);
-			Session.set(currentPest + " Count", pestCount);
-			//console.log(Session.get(currentPest + " Count"));
-	},
-
-	getCurrentPestType(){
-		return currentPest;
-	},
-
-	displayPest(type){
-		var pestsPerPage = parseInt( CMS.findOne({info:'finalLib'}).pestsPerPage );
-		return Pests.find({'type': 'Pest', 'plant_affected': type}, {sort: {name: 1}, skip:(Session.get(currentPest)-1)*pestsPerPage, limit:pestsPerPage});
-	},
-
-	setPagination(type){
-		var count = Session.get(type + " Count");
-		var pages = [];
-		for(var i = 1; i<=count; i++)
-			pages.push({num: i});
-		return pages;
-	},
-
-	isCurrentPage(page){
-		return Session.equals(currentPest, page);
-	},
+	}
 });
 
-Template.pestsLib.events({
-	'click .page-number'(event) {
-		currentPest = $(event.target).attr("name");
-		Session.set(currentPest, this.num); // stores the current page number of typeOfPest
-	},
+
+// PAGINATION
+Template.pestPaginate.onCreated(function () {
+	var pestsPerPage = parseInt( CMS.findOne({info:'finalLib'}).pestsPerPage );
+    this.pagination = new Meteor.Pagination(Pests, {
+    	perPage: pestsPerPage,
+        sort: {
+            name: 1
+        }
+    });
+});
+
+Template.pestPaginate.helpers({
+    isReady: function () {
+        return Template.instance().pagination.ready();
+    },
+    templatePagination: function () {
+        return Template.instance().pagination;
+    },
+    documents: function (type) {
+    	Template.instance().pagination.filters({'type': 'Pest', 'plant_affected': type});
+        return Template.instance().pagination.getPage();
+    },
+    // optional helper used to return a callback that should be executed before changing the page
+    clickEvent: function() {
+        return function(e, templateInstance, clickedPage) {
+            e.preventDefault();
+        };
+    }
 });
 

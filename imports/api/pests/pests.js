@@ -8,5 +8,3 @@ export const PestsIndex = new Index({
   fields: ['eng_name','fil_name','sci_name','symptoms'],
   engine: new MinimongoEngine(),
 });
-
-//export const Pagination = new Meteor.Pagination(Pests);

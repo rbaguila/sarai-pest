@@ -9,9 +9,9 @@ Template.insertPestCMS.onCreated(function () {
 });
 
 Template.insertPestCMS.events({
-	'change #pestImage': function(event, template) {
+	// 'change #pestImage': function(event, template) {
 	  
-	},
+	// },
 
 	'click #saveBTN': function(event){
 		event.preventDefault();

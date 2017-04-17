@@ -48,41 +48,32 @@
 	<br/>
 
 	<div>
-		{{#each getCMS.viewPestType}}
-			{{setPageSessions this}}
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				<h3 class="pest-category-label"> {{this}} Pests </h3>
-			</div>
+	{{#each getCMS.viewPestType}}
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<h3 class="pest-category-label"> {{this}} Pests </h3>
+		</div>
 
-			<div class="container">
-				{{#each displayPest this}}
-			    	{{> individualPest}}
-			    {{/each}}
-		    </div>
-
-		    <div class="text-center">
-		    	<ul class="pagination">
-					{{#each setPagination this}}
-				  		<li class="{{#if isCurrentPage num}} active {{/if}}">
-				  			<a class="page-number" name="{{getCurrentPestType}}">{{num}}</a>
-				  		</li>
-					{{/each}}
-				</ul>
-		    </div>
-		{{/each}}
+		{{> pestPaginate}}
+	    
+	{{/each}}
     </div>
-    <!-- {{> paginatedStuff}} -->
 
 </template>
 
-<!-- <template name="paginatedStuff">
-    {{> pages}}
-    {{> pagesNav}}  Bottom navigation
+<template name="pestPaginate">
+	<div>
+	{{#if isReady}}
+		<div class="container">
+			{{#each documents this}}
+				{{> individualPest}}
+			{{/each}}
+		</div>
+		{{> defaultBootstrapPaginator pagination=templatePagination limit=10 containerClass="text-center" onClick=clickEvent}}
+	{{else}}
+		Loading...
+	{{/if}}
+	</div>
 </template>
-
-<template name="stuffListItem">
-	{{name}}
-</template> -->
 
 <template name="individualPest">
 	<div class="pest-data-body col-xs-6 col-sm-4 col-md-3 col-lg-3">
