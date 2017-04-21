@@ -9,7 +9,7 @@ import '../../ui/pages/library/library.js';
 import '../../ui/pages/cms/pest-lib-update.js';
 import '../../ui/pages/cms/insert-pest/insert-pest.js';
 import '../../ui/pages/cms/edit-pest/edit-pest.js';
-import '../../ui/pages/cms/edit-pest/edit-pest-entity.js';
+import '../../ui/pages/cms/edit-pest-entity/edit-pest-entity.js';
 
 // Set up all routes in the app
 FlowRouter.route('/', {

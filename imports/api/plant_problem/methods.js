@@ -2,7 +2,7 @@
 
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
-import { Pests } from './pests.js';
+import { Plant_Problem } from './plant_problem.js';
 
 Meteor.methods({
   'pests.addPest'( newPest ) {
@@ -33,9 +33,10 @@ Meteor.methods({
     check(newPest.filEffect, String);
     check(newPest.filStageAffected, String);
 
-    Pests.insert(
+    Plant_Problem.insert(
   		{ 
         type: 'Pest',
+        keywords: newPest.keywords,
         fil_stage_plant_affected: newPest.filStageAffected,
         fil_effect: newPest.filEffect,
         fil_part_destroyed: newPest.filPartDestroyed,
@@ -93,7 +94,7 @@ Meteor.methods({
     check(editPest.filEffect, String);
     check(editPest.filStageAffected, String);
  
-    Pests.update( {_id: editPest.id},
+    Plant_Problem.update( {_id: editPest.id},
         {
             $set:
             { 
@@ -126,9 +127,15 @@ Meteor.methods({
     );
   },
 
+  'pests.editKeyword'(id, keywords){
+    Plant_Problem.update( {_id: id},
+        { $set: { keywords: keywords } }
+    );
+  },
+
   'pests.removePest'(id){
     check(id, String);
 
-    Pests.remove( { _id: id } );
+    Plant_Problem.remove( { _id: id } );
   },
 });

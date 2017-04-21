@@ -6,12 +6,19 @@
 
 <template name="insertPestCMS">
 
+	{{> cms_navbar}}
+	
 	<div class="container">
 		<br/>
 	    <div class="col-md-3"> <h4> insert side-nav here </h4> </div>
 
 	    <div class="panel panel-default col-md-9">
-	    	<center> <h3>Insert Pest</h3> </center>
+	    	<div class="col-sm-12 col-md-12 col-lg-12 text-center">
+		    	<a class="col-sm-1 col-md-1 col-lg-1 back">
+	  				<img class="back-button" src="/img/back.png" alt="back" data-toggle="tooltip" title="Back" data-placement="right">
+	  			</a>
+		    	<h3 class="col-sm-11 col-md-11 col-lg-11 pest-name"> Insert Pest </h3>
+		    </div>
 
 	    	<label for="pestName"> Pest Name </label>
       		<input type="text" class="form-control" id="pestName" value="">

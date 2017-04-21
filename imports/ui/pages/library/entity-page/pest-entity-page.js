@@ -1,9 +1,9 @@
-import { Pests } from '/imports/api/pests/pests.js';
+import { Plant_Problem } from '/imports/api/plant_problem/plant_problem.js';
 import { Meteor } from 'meteor/meteor';
 import './pest-entity-page.html';
 
 Template.entityPage.onCreated(function () {
-  Meteor.subscribe('pests.all');
+  Meteor.subscribe('plant_problem.all');
 });
 
 Template.entity.onRendered(function () {
@@ -13,7 +13,7 @@ Template.entity.onRendered(function () {
 
 Template.entity.helpers({
 	pest(){
-		return Pests.findOne({_id: FlowRouter.current().params._id});
+		return Plant_Problem.findOne({_id: FlowRouter.current().params._id});
 	},
 });
 

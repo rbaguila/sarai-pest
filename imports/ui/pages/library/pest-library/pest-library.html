@@ -7,8 +7,12 @@
 
 		<div class="col-sm-12">
 			<div class="searchbar">
-					{{> EasySearch.Input index=pestsIndex attributes=searchAttributes }}		      
+					{{> EasySearch.Input index=pestsIndex attributes=searchAttributes }}
+					<!-- {{> searchResults}} -->
 		  	</div>
+
+		  	{{> advanced_search}}
+
 		</div>
 	</center>
 
@@ -52,12 +56,14 @@
 		<div class="col-sm-12 col-md-12 col-lg-12">
 			<h3 class="pest-category-label"> {{this}} Pests </h3>
 		</div>
-
 		{{> pestPaginate}}
-	    
 	{{/each}}
     </div>
 
+</template>
+
+<template name="searchResults">
+	<input type="text" id='search-input'>
 </template>
 
 <template name="pestPaginate">
@@ -70,7 +76,7 @@
 		</div>
 		{{> defaultBootstrapPaginator pagination=templatePagination limit=10 containerClass="text-center" onClick=clickEvent}}
 	{{else}}
-		Loading...
+		{{> spinner}}
 	{{/if}}
 	</div>
 </template>
@@ -93,6 +99,17 @@
 		 		</a>
 		  	</div>
 		</div>
+	</div>
+</template>
+
+<template name="advanced_search">
+	<div class="dropdown">
+		<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Advanced Search <span class="caret"></span></button>
+		<ul class="dropdown-menu">
+			<li><a href="#">HTML</a></li>
+			<li><a href="#">CSS</a></li>
+			<li><a href="#">JavaScript</a></li>
+		</ul>
 	</div>
 </template>
 

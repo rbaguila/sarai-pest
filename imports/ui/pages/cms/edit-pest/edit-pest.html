@@ -6,31 +6,52 @@
 
 <template name="editPestCMS">
 
+	{{> cms_navbar}}
+
 	<div class="container">
 		<br/>
-	    <div class="col-md-3"> <h4> insert side-nav here </h4> </div>
+	    <div class="col-md-3">
+	    	 <button type="button" id="btnRespNav" class="btn btn-success slideout-menu-toggle" data-toggle="collapse" data-target="#login-navbar-collapse"> sidenav </button>
+	    {{> slideMenu}}
+	    </div>
 
-	    <div class="panel panel-default col-md-9">
-	    	<ul class="list-group">
-    		{{#each getPests}}
-	    		<li class="list-group-item">
-	    			<div class="media">
-	    				<div class="media-left">
-	    					<img src="{{image}}" class="media-object" style="width:60px">
-	    				</div>
-						<div class="media-body">
-							<h4>{{name}}</h4>
-						</div>
-						<div class="media-right">
-							<div class="btn-group-xs">
-							  {{> button text="edit" color="primary" id=_id}}
-							  {{> button text="remove" color="danger" id=_id name=name }}
-							</div>
-						</div>
-					</div>
-	    		</li>
-	    	{{/each}}
+
+	    <div class="col-md-9">
+	    	<div class="text-center">
+				<button id="addBTN" class="btn btn-success">Add Pest</button>
+			</div>
+    		<ul class="nav nav-tabs nav-justified">
+    			{{#each getPestsType}}
+					<li><a data-toggle="tab" href="#{{rewritePestType}}"> {{this}} Pest</a></li>
+				{{/each}}
 			</ul>
+
+			<div class="tab-content">
+				{{#each getPestsType}}
+				  	<div id="{{rewritePestType}}" class="tab-pane fade in active">
+					<ul class="list-group">
+					{{#each listPests this}}
+						<li class="list-group-item">
+			    			<div class="media">
+			    				<div class="media-left">
+			    					<img src="{{image}}" class="media-object" style="width:60px">
+			    				</div>
+								<div class="media-body">
+									<h4>{{name}}</h4>
+								</div>
+								<div class="media-right">
+									<div class="btn-group-xs">
+									  {{> button text="edit" color="primary" id=_id}}
+									  {{> button text="remove" color="danger" id=_id }}
+									</div>
+								</div>
+							</div>
+			    		</li>
+					{{/each}}
+					</ul>
+				</div>
+				{{/each}}
+			</div>
 	    </div>
 	</div>
 	
