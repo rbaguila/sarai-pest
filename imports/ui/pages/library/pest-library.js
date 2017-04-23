@@ -112,6 +112,14 @@ Template.pestsLib.helpers({
 		return pages;
 	},
 
+	setDiseasePagination(type){
+		var count = Session.get(type + " Disease Count");
+		var pages = [];
+		for(var i = 1; i<=count; i++)
+			pages.push({num: i});
+		return pages;
+	},
+
 	isCurrentPestPage(page){
 		return Session.equals(currentPest, page);
 	},

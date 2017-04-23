@@ -1411,10 +1411,7 @@ Meteor.startup(() => {
           sci_name: 'Sesamia inferens Walker',
           eng_name: '',
           name:'Pink Stemborer',
-          image: '/img/pests/PinkStemborer.jpg',
-          image_gallery: [
-            '/img/pests/PinkStemborer.jpg',
-          ]
+          image: '/img/pests/PinkStemborer.jpg'
        },
 
     //---------------------------DISEASES--------------------------

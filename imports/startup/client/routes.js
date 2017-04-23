@@ -7,6 +7,7 @@ import '../../ui/pages/home/home.js';
 import '../../ui/pages/not-found/not-found.js';
 import '../../ui/pages/library/library.js';
 import '../../ui/pages/cms/pest-lib-update.js';
+import '../../ui/pages/pestId/pest-id.js'
 import '../../ui/pages/cms/insert-pest/insert-pest.js';
 import '../../ui/pages/cms/edit-pest/edit-pest.js';
 import '../../ui/pages/cms/edit-pest/edit-pest-entity.js';
