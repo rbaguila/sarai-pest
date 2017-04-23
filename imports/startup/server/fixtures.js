@@ -1415,7 +1415,6 @@ Meteor.startup(() => {
           image_gallery: [
             '/img/pests/PinkStemborer.jpg',
           ]
-          image: '/img/pests/PinkStemborer.jpg'
        },
 
     //---------------------------DISEASES--------------------------
