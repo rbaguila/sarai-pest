@@ -11,6 +11,7 @@ import '../../ui/pages/pestId/pest-id.js'
 import '../../ui/pages/cms/insert-pest/insert-pest.js';
 import '../../ui/pages/cms/edit-pest/edit-pest.js';
 import '../../ui/pages/cms/edit-pest/edit-pest-entity.js';
+import '../../ui/pages/pestId/pest-id.js'
 
 // Set up all routes in the app
 FlowRouter.route('/', {
