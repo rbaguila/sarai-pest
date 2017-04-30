@@ -1411,7 +1411,10 @@ Meteor.startup(() => {
           sci_name: 'Sesamia inferens Walker',
           eng_name: '',
           name:'Pink Stemborer',
-          image: '/img/pests/PinkStemborer.jpg'
+          image: '/img/pests/PinkStemborer.jpg',
+          image_gallery: [
+            '/img/pests/PinkStemborer.jpg',
+          ]
        },
 
         {
@@ -1480,7 +1483,7 @@ Meteor.startup(() => {
             '/img/pests/BananaRootBorerAdult.jpg',
             '/img/pests/BananaRootBorerAdult2.jpg',
             '/img/pests/BananaRootBorerAdult3.jpg',
-      '/img/pests/BananaRootBorerAdult4.jpg',
+            '/img/pests/BananaRootBorerAdult4.jpg',
           ]
        },
        
@@ -1843,7 +1846,6 @@ Meteor.startup(() => {
           ]
 
        },
-
     //---------------------------DISEASES--------------------------
         {
           type: 'Disease',
@@ -2570,7 +2572,7 @@ Meteor.startup(() => {
           eng_name: 'Banana rust, banana leaf rust',
           name: 'Banana Rust',
           image: '/img/diseases/BananaRust.jpg'
-          
+
        }
        
             
