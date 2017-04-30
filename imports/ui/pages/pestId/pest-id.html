@@ -1,0 +1,177 @@
+<template name="pestId">
+	{{> top_nav}}
+	{{> banner}}
+	<style>
+		.nav-tabs > li {
+		    float:none;
+		    display:inline-block;
+		    zoom:1;
+		}
+
+		.nav-tabs {
+		    text-align:center;
+		}
+
+		table .permanent {
+			text-align:center;
+		}
+	</style>
+	<script>
+		function choosePest() {
+			document.getElementById('diseaseDiv').style.display = 'none';
+			var x = document.getElementById('pestDiv');
+			if (x.style.display === 'none') {
+				x.style.display = 'block';
+			} else {
+				x.style.display = 'none';
+			}
+		}
+
+		function chooseDisease() {
+			document.getElementById('pestDiv').style.display = 'none';
+			var x = document.getElementById('diseaseDiv');
+			if (x.style.display === 'none') {
+				x.style.display = 'block';
+			} else {
+				x.style.display = 'none';
+			}
+		}
+	</script>
+	<div>
+		
+
+		<div class="tab-content">
+			
+			<div id="image" class="tab-pane fade in active">
+				<br/><br/><br/><br/><br/>
+				<!-- Ontology-based -->
+				<center>
+					<div class="table-responsive">
+						<table width="400">
+							<tbody>
+								<tr>
+									<td><h4>Plant Problem</h4></td>
+								</tr>
+								<tr>
+									<td><input type="radio" name="radiopd" id="radioPest" onchange="choosePest()">Pest</td>
+									<td></td>
+									<td><input type="radio" name="radiopd" id="radioDisease" onchange="chooseDisease()">Disease</td>
+								</tr>
+								<tr>
+									<td><br/></td>
+								</tr>
+								<tr>
+									<td><h4>Type of Crop Affected</h4></td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" value="" id="checkRice">Rice</td>
+									<td><input type="checkbox" value="" id="checkCorn">Corn</td>
+									<td></td>
+									<td><input type="checkbox" value="" id="checkBanana">Banana</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--if radioPest was chosen-->
+					<div id="pestDiv" class="table-responsive" style="display:none;">
+						<table width="500">
+							<tbody>
+								<tr>
+									<td><br/></td>
+								</tr>
+								<tr>
+									<td><h4>The observed pest is</h4></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" value="" id="checkFly">Fly-like</td>
+									<td><input type="checkbox" value="" id="checkCaterpillar">Caterpillar-like</td>
+									<td><input type="checkbox" value="" id="checkMaggot">Maggot</td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" value="" id="checkBeetle">Beetle-like</td>
+									<td><input type="checkbox" value="" id="checkMoth">Moth-like</td>
+									<td><input type="checkbox" value="" id="checkUnitBody">Two or one unit body</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--if radioDisease was chosen-->
+					<div id="diseaseDiv" class="table-responsive" style="display:none;">
+						<table width="400">
+							<tbody>
+								<tr>
+									<td><br/></td>
+								</tr>
+								<tr>
+									<td><h4>The disease is</h4></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" value="" id="checkFungal">Fungal</td>
+									<td><input type="checkbox" value="" id="checkBacterial">Bacterial</td>
+									<td><input type="checkbox" value="" id="checkViral">Viral</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</center>
+
+				
+				<br/>
+				<br/>
+				<!-- Image Processing -->
+				<!-- Upload Image Here -->
+				<div>
+					<div class="col-sm-6 col-md-6 col-lg-6 col-md-offset-3">
+						<img src="/img/drop-here.png" alt="drop-here" width="100%" height="295px">
+					</div>
+				</div>
+				<!-- Image Processing Guidelines -->
+				<div id="id-guidelines" class="container">
+					<div class="row">
+						<div class="col-sm-6 col-md-6 col-lg-6 col-md-offset-3">
+							<br/>
+							<p>Guidelines:</p>
+							<ol>
+								<li>Open the directory of the pest/disease image you want to upload.</li>
+								<li>Drag the pest/disease image into the box above.</li>
+								<li>Pest/Disease image must be an actual pest.</li>
+								<li>For better accuracy, the image must be close up and must have a clean background.</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+		<div>
+			{{#each getCMS.viewType}}
+				{{setPageSessions this}}
+				<div class="col-sm-12 col-md-12 col-lg-12">
+					<h3 class="pest-category-label"> {{this}}s </h3>
+				</div>
+
+				<div class="container">
+					{{#each displayPest this}}
+				    	{{> individualPest}}
+				    {{/each}}
+			    </div>
+
+			    <div class="text-center">
+			    	<!-- <ul class="pagination">
+						{{#each setPagination this}}
+					  		<li class="{{#if isCurrentPage num}} active {{/if}}">
+					  			<a class="page-number" name="{{getCurrentPestType}}">{{num}}</a>
+					  		</li>
+						{{/each}}
+					</ul> -->
+					<a href="/library" type="button" class="btn btn-default">View More</a>
+			    </div>
+				<br/><br/>	
+			{{/each}}
+		</div>
+	</div>
+	{{> footer}}
+</template>

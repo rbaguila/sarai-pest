@@ -38,20 +38,24 @@ Template.pestLibCMS.helpers({
 Template.pestLibCMS.events({
 	'click #saveBTN': function(event){
 		event.preventDefault();
-		
-		// GET THE VALUES
-		var bannerText = $("#bannerText").val();
-		var bannerSubText = $("#bannerSubText").val();
-		var searchlabel = $("#searchlabel").val();
-		var pestNumbers = parseInt( $("#pestsperpage").val() );
 
 		var pestType = [];
 		$( "input[type=checkbox]:checked" ).map(function() {
 		    pestType.push($( this ).val());
 		});
 		
+		// GET THE VALUES
+		var newCMS = {
+			bannerText : $("#bannerText").val(),
+			bannerSubText : $("#bannerSubText").val(),
+			searchlabel : $("#searchlabel").val(),
+			pestNumbers : parseInt( $("#pestsperpage").val() ),
+			diseaseNumbers : parseInt( $("#diseasesperpage").val() ),
+			pestType : pestType
+		}
+		
 		// UPDATES THE DATABASE
-		Meteor.call('cms.updatePestLib', bannerText, bannerSubText, searchlabel, pestType, pestNumbers, (error) => {
+		Meteor.call('cms.updatePestLib', newCMS, (error) => {
 	      if (error) {
 	        alert(error.error);
 	      } else {
