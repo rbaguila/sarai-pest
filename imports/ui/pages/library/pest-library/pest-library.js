@@ -1,8 +1,6 @@
 import { Plant_Problem, PestsIndex } from '/imports/api/plant_problem/plant_problem.js';
 import { CMS } from '/imports/api/cms/cms.js';
-import { SearchableCollection } from '/imports/api/search/search.js';
 import { Meteor } from 'meteor/meteor';
-import { Tracker } from 'meteor/tracker';
 import './pest-library.html';
 
 Template.pestsLib.onCreated(function () {
@@ -13,8 +11,6 @@ Template.pestsLib.onCreated(function () {
 Template.pestsLib.onRendered(function() {
 	Session.set("currentPage", "finalLib"); // set the current page to change banner
 });
-
-var currentPest = "";
 
 Template.pestsLib.helpers({
 
@@ -35,35 +31,14 @@ Template.pestsLib.helpers({
 
 	getCMS(){
 		return CMS.findOne({info:'finalLib'});
-	}
+	},
 });
 
-// SEARCH
-/*
-	// do a search every time the querystring changes
-	Tracker.autorun(function(){
-		console.log("tracking...");
-		var q = Session.get('querystring'); // reactive
-		if (q) {
-			Meteor.subscribe('search', q);
-		}
-	});
-
-	// populate the `searchResults` template with result
-	Template.searchResults.results = function () {
-		SearchableCollection.find();
-		console.log(SearchableCollection.find());
-	};
-
-	// update the querystring when the search input changes
-	Template.searchResults.events({
-	  'keyup #search-input': function (ev, template) {
-	  	//console.log(template.find('#search-input').value);
-	    var value = template.find('#search-input').value;
-	    Session.set('querystring', value);
-	  }
-	});
-*/
+Template.advanced_search.helpers({
+	getCMS(){
+		return CMS.findOne({info:'finalLib'});
+	},
+});
 
 // PAGINATION
 Template.pestPaginate.onCreated(function () {
@@ -89,8 +64,8 @@ Template.pestPaginate.helpers({
     },
     // optional helper used to return a callback that should be executed before changing the page
     clickEvent: function() {
-        return function(e, templateInstance, clickedPage) {
-            e.preventDefault();
+        return function(event, templateInstance, clickedPage) {
+            event.preventDefault();
         };
     }
 });

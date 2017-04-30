@@ -17,7 +17,6 @@ Template.insertPestCMS.onRendered(function () {
 Template.insertPestCMS.events({
 	
 	'click #saveBTN': function(event){
-		event.preventDefault();
 		
 		var str = $("#description").val() + $("#symptoms").val();
 

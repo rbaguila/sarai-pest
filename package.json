@@ -9,6 +9,6 @@
     "bcrypt": "^1.0.2",
     "elasticsearch": "^13.0.0-rc2",
     "fibers": "^1.0.15",
-    "meteor-node-stubs": "~0.2.3"
+    "meteor-node-stubs": "^0.2.6"
   }
 }

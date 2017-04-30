@@ -9,8 +9,5 @@ import '../../api/plant_problem/server/publications.js';
 import '../../api/cms/methods.js';
 import '../../api/cms/server/publications.js';
 
-import '../../api/search/methods.js';
-import '../../api/search/server/publications.js';
-
 // for IMAGE GALLERY
 import '../../api/images/images.js';

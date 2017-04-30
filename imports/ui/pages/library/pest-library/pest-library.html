@@ -6,13 +6,11 @@
 		</div>
 
 		<div class="col-sm-12">
+			{{> advanced_search}}
+			<br/><br/>
 			<div class="searchbar">
-					{{> EasySearch.Input index=pestsIndex attributes=searchAttributes }}
-					<!-- {{> searchResults}} -->
+				{{> EasySearch.Input index=pestsIndex attributes=searchAttributes }}
 		  	</div>
-
-		  	{{> advanced_search}}
-
 		</div>
 	</center>
 
@@ -23,7 +21,7 @@
 
 	{{else}}
 	<center>
-		<div><h4>SEARCH RESULTS</h4></div>
+		<div><h4>Search Results</h4></div>
 	</center>
 
 	<div class="wrapper">
@@ -60,10 +58,6 @@
 	{{/each}}
     </div>
 
-</template>
-
-<template name="searchResults">
-	<input type="text" id='search-input'>
 </template>
 
 <template name="pestPaginate">
@@ -103,13 +97,18 @@
 </template>
 
 <template name="advanced_search">
-	<div class="dropdown">
-		<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Advanced Search <span class="caret"></span></button>
-		<ul class="dropdown-menu">
-			<li><a href="#">HTML</a></li>
-			<li><a href="#">CSS</a></li>
-			<li><a href="#">JavaScript</a></li>
-		</ul>
+	<button class="btn btn-success" data-toggle="collapse" data-target="#search"> Advanced Search </button>
+
+	<div id="search" class="collapse">
+		<div class="container well">
+		<form>
+		{{#each getCMS.viewPestType}}
+			<label class="checkbox-inline">
+				<input type="checkbox" value="{{this}}">{{this}}
+			</label>
+		{{/each}}
+		</form>
+		</div>
 	</div>
 </template>
 
