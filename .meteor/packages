@@ -31,5 +31,10 @@ fortawesome:fontawesome
 session
 easy:search
 sacha:spin
-alethes:pages
 horka:swipebox
+tomi:upload-server
+tomi:upload-jquery
+kurounin:pagination
+kurounin:pagination-blaze
+sunkay:easy-side-menu
+easysearch:elasticsearch

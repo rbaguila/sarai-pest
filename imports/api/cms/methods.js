@@ -5,21 +5,22 @@ import { check } from 'meteor/check';
 import { CMS } from './cms.js';
 
 Meteor.methods({
-  'cms.updatePestLib'(bannerText, bannerSubText, searchlabel, pestType, pestNumbers) {
-    check(bannerText, String);
-    check(bannerSubText, String);
-    check(searchlabel, String);
-    //check(pestType, Object);
-    check(pestNumbers, Number);
+  'cms.updatePestLib'( newCMS ) {
+    check(newCMS.bannerText, String);
+    check(newCMS.bannerSubText, String);
+    check(newCMS.searchlabel, String);
+    check(newCMS.pestNumbers, Number);
+    check(newCMS.diseaseNumbers, Number);
 
     CMS.update( {info: "finalLib"}, 
     	{ $set: 
     		{ 
-          bannerHeadText : bannerText,
-          bannerSubText : bannerSubText,
-    			searchLabelText: searchlabel,
-		    	viewPestType: pestType,
-		    	pestsPerPage: pestNumbers 
+          bannerHeadText : newCMS.bannerText,
+          bannerSubText : newCMS.bannerSubText,
+    			searchLabelText: newCMS.searchlabel,
+		    	viewPestType: newCMS.pestType,
+		    	pestsPerPage: newCMS.pestNumbers,
+          diseasesPerPage: newCMS.diseaseNumbers 
 		    } 
 	    }
 	);

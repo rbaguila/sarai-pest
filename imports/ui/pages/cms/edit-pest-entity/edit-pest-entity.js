@@ -1,39 +1,46 @@
 import { Plant_Problem } from '/imports/api/plant_problem/plant_problem.js';
 import { Meteor } from 'meteor/meteor';
-import './insert-pest.html';
+import './edit-pest-entity.html';
 import '../components/cms-navbar.html';
 
-var imageURL = "";
-
-Template.insertPestCMS.onCreated(function () {
-	Meteor.subscribe('plant_problem.all');
+Template.entityPage.onCreated(function () {
+  Meteor.subscribe('plant_problem.all');
 });
 
-Template.insertPestCMS.onRendered(function () {
+Template.pestEntity.onRendered(function () {
 	 $('[data-toggle="tooltip"]').tooltip(); 
 });
 
+Template.pestEntity.helpers({
+	pest(){
+		return Plant_Problem.findOne({_id: FlowRouter.current().params._id});
+	},
+});
 
-Template.insertPestCMS.events({
-	
+Template.pestEntity.events({
 	'click #saveBTN': function(event){
-		
-		var str = $("#description").val() + $("#symptoms").val();
+		event.preventDefault();
 
-		var keywords = extractKeyword(str);
+		var id = FlowRouter.current().params._id;
+
+		if($("#pestImage").val() == undefined){
+			var imageURL = Plant_Problem.findOne({ _id: id }).image;
+		} else{
+			var imageURL = $("#pestImage").val();	
+		} 
 
 		// GET THE VALUES
-		var newPest = {
+		var editPest = {
+			id : id,
 			pestName : $("#pestName").val(),
 			engName : $("#engName").val(),
 			sciName : $("#sciName").val(),
 			image : imageURL,
-			keywords : keywords,
 			// for ENGLISH
 			treatment : $("#treatment").val(),
 			classification : $("#classification").val(),
 			order : $("#order").val(),
-			plantAffected : $("#plantAffected").val()==""? "Uncategorized" : $("#plantAffected").val(),
+			plantAffected : $("#plantAffected").val(),
 			description : $("#description").val(),
 			symptoms : $("#symptoms").val(),
 			stageThreatening : $("#stageThreatening").val(),
@@ -52,27 +59,66 @@ Template.insertPestCMS.events({
 			filEffect : $("#filEffect").val(),
 			filStageAffected : $("#filStageAffected").val(),
 		}
-		
-		console.log(newPest.keywords);
-		
-		// INSERT THE PEST TO THE DATABASE
-		Meteor.call('pests.addPest', newPest, (error) => {
+
+		// UPDATES THE DATABASE
+		Meteor.call('pests.editPest', editPest, (error) => {
 	      if (error) {
 	        alert(error.error);
 	      } else {
-	        $('.insertSuccess').modal('show');
+	        $('.editSuccess').modal('show');
 	      }
 	    });
 	},
+});
 
-	'click #cancelBTN': function(event){
-		event.preventDefault();
-		FlowRouter.go('/edit-pest');
-	},
-
+Template.pestEntity.events({
 	'click .back-button': function(event) {
 		FlowRouter.go('/edit-pest');
 	},	
+
+	'click #generateKeyword': function(event) {
+		var str = $("#description").val() + $("#symptoms").val();
+		var keywords = extractKeyword(str);
+		var id = FlowRouter.current().params._id;
+
+		// UPDATES THE DATABASE
+		Meteor.call('pests.editKeyword', id, keywords, (error) => {
+	      if (error) {
+	        alert(error.error);
+	      } else {
+			FlowRouter.go('/edit-pest/' + id);
+	      }
+	    });
+	},	
+});
+
+var name = "";
+Template.keywordButton.events({
+	'click .remove': function(event, template) {
+		$('#deleteKeyword').modal('show');
+		name = this.id;
+	},
+
+	'click .confirmDelete' : function(event) {
+		$('#deleteKeyword').modal('hide');
+		var count = 0;
+		var keyword = Plant_Problem.findOne({_id: FlowRouter.current().params._id}).keywords;
+		var newKeywords = [];
+		for(var i=0; i<keyword.length; i++){
+			if( !(keyword[i] == name) ) newKeywords[count++] = keyword[i]
+		}
+
+		var id = FlowRouter.current().params._id;
+
+		// UPDATES THE DATABASE
+		Meteor.call('pests.editKeyword', id, newKeywords, (error) => {
+	      if (error) {
+	        alert(error.error);
+	      } else {
+			FlowRouter.go('/edit-pest/' + id);
+	      }
+	    });
+	},
 });
 
 function extractKeyword(words){

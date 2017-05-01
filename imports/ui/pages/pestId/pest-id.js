@@ -1,13 +1,13 @@
-import { Pests, PestsIndex } from '/imports/api/pests/pests.js';
+import { Plant_Problem, PestsIndex } from '/imports/api/plant_problem/plant_problem.js';
 import { CMS } from '/imports/api/cms/cms.js';
 import { Meteor } from 'meteor/meteor';
 import './pest-id.html';
-import '../library/pest-library.html'
+import '../library/pest-library/pest-library.html'
 
 var currentPests = "";
 
 Template.pestId.onCreated(function () {
-  Meteor.subscribe('pests.all');
+  Meteor.subscribe('plant_problem.all');
   Meteor.subscribe('cms.all');
 });
 
@@ -33,7 +33,7 @@ Template.pestId.helpers({
 	},
 
 	getType(){
-		return Pests.find({})
+		return Plant_Problem.find({})
 	},
 
 	setPageSessionsNew(type) {
@@ -44,7 +44,7 @@ Template.pestId.helpers({
 
 	setPageSessions(type) {
 		currentPest = type;
-		var pestCount = Pests.find({'type': type}).count();
+		var pestCount = Plant_Problem.find({'type': type}).count();
 		//var pestsPerPage = parseInt(CMS.findOne({info:'finalLib'}).pestsPerPage);
 		var pestsPerPage = 4;
 		Session.set(currentPest, 1);
@@ -61,7 +61,7 @@ Template.pestId.helpers({
 	displayPest(type){
 		//var pestsPerPage = parseInt(CMS.findOne({info:'finalLib'}).pestsPerPage);
 		var pestsPerPage = 4;
-		return Pests.find({'type': type}, {sort: {name: 1}, skip:(Session.get(currentPest)-1)*pestsPerPage, limit:pestsPerPage});
+		return Plant_Problem.find({'type': type}, {sort: {name: 1}, skip:(Session.get(currentPest)-1)*pestsPerPage, limit:pestsPerPage});
 	},
 
 	setPagination(type){

@@ -2,7 +2,7 @@
 
 import { Meteor } from 'meteor/meteor';
 import { Links } from '../../api/links/links.js';
-import { Pests } from '../../api/pests/pests.js';
+import { Plant_Problem } from '../../api/plant_problem/plant_problem.js';
 import { CMS } from '../../api/cms/cms.js';
 
 Meteor.startup(() => {
@@ -47,7 +47,8 @@ Meteor.startup(() => {
           searchLabelText: ['Search the library for pests', 'Search the library for diseases'],
           viewType: ['Pest', 'Disease'],
           viewPestType: ['Rice', 'Corn', 'Banana'],
-          pestsPerPage: 8
+          pestsPerPage: 8,
+          diseasesPerPage: 8
         }
     ];
 
@@ -55,12 +56,13 @@ Meteor.startup(() => {
   }
 
   // if the Pests collection is empty
-  if (Pests.find().count() === 0) {
+  if (Plant_Problem.find().count() === 0) {
     const data = [
 
     //--------------------------PESTS--------------------------
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: 'Sira ang mga dulo ng dahon pati ang mga gilid nito. Kaya nitong kainin ang buong dahon. Kaya rin nitong maputol ang uhay mula sa puno nito.',
           fil_part_destroyed: 'Puno, dahon, murang palay, uhay',
@@ -93,6 +95,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: 'Sira ang mga dulo ng dahon pati ang mga gilid nito. Kaya nitong kainin ang buong dahon. Kaya rin nitong maputol ang uhay mula sa puno nito.',
           fil_part_destroyed: 'Puno, dahon, murang palay, uhay',
@@ -124,6 +127,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -155,6 +159,7 @@ Meteor.startup(() => {
         
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -186,6 +191,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -217,6 +223,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -248,6 +255,7 @@ Meteor.startup(() => {
         
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -279,6 +287,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -310,6 +319,7 @@ Meteor.startup(() => {
         
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: 'Pagkaputol ng mga dahon ng pakanang dahilig na parang ginupit ng gunting. Pagkakaroon ng mga binilot na dahon na nagsisilbing proteksyon ng uod. Ang dahon ay nagmumukhang manipis na papel at hindi pantay-pantay na pagkaputol ng dahon. Sa ibang kaso, nagiging bansot ang mga dahon dahil mas gusto ng caseworn umatake sa murang yugto ng pagtubo ng palay.',
           fil_part_destroyed: 'Dahon, mga batang seedlings',
@@ -341,6 +351,7 @@ Meteor.startup(() => {
         
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -372,6 +383,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           stage_threatening: 'Adult, larva',
           symptoms: '',
           description: 'Eggs: Yellow and develop purple to violet markings as they mature, laid in small clusters on leaf blades; Larva: Moves like inchworms, arching their backs as they go; Adult: Yellow orange with two diagonal, dark red bands on each front wing.',
@@ -391,6 +403,7 @@ Meteor.startup(() => {
         
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect:'Nakarolyo ang dahon. Pagkasira ng dahon at pag-iiba ng kulay nito. Mukhang nasunog at mahina ang dahon.',
           fil_part_destroyed:'Dahon',
@@ -422,6 +435,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect:'Nakarolyo ang dahon. Pagkasira ng dahon at pag-iiba ng kulay nito. Mukhang nasunog at mahina ang dahon.',
           fil_part_destroyed:'Dahon',
@@ -453,6 +467,7 @@ Meteor.startup(() => {
         
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -485,6 +500,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -517,6 +533,7 @@ Meteor.startup(() => {
         
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected:'Aksip',
           fil_effect:'Sa vegetative stage, nagdudulot ng dead tillers or deadhearts ang stem borer. Pagkakaroon ng uban sa reproductive stage. Pagkakaroon ng butas sa mga suwi at puno. Namamatay ang puno ng palay kung saan ang pinaka-ubod nito ay natutuyo. Kapansin-pansin din na ito ay madaling bunutin.',
           fil_part_destroyed:'katawan, suwi at uhay',
@@ -548,6 +565,7 @@ Meteor.startup(() => {
         
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected:'Aksip',
           fil_effect:'Sa vegetative stage, nagdudulot ng dead tillers or deadhearts ang stem borer. Pagkakaroon ng uban sa reproductive stage. Pagkakaroon ng butas sa mga suwi at puno. Namamatay ang puno ng palay kung saan ang pinaka-ubod nito ay natutuyo. Kapansin-pansin din na ito ay madaling bunutin.',
           fil_part_destroyed:'katawan, suwi at uhay',
@@ -579,6 +597,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected:'Aksip',
           fil_effect:'Sa vegetative stage, nagdudulot ng dead tillers or deadhearts ang stem borer. Pagkakaroon ng uban sa reproductive stage. Pagkakaroon ng butas sa mga suwi at puno. Namamatay ang puno ng palay kung saan ang pinaka-ubod nito ay natutuyo. Kapansin-pansin din na ito ay madaling bunutin.',
           fil_part_destroyed:'katawan, suwi at uhay',
@@ -610,6 +629,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -641,6 +661,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -672,6 +693,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -703,6 +725,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -734,6 +757,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -766,6 +790,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -797,6 +822,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -828,6 +854,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -859,6 +886,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -890,6 +918,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -922,6 +951,7 @@ Meteor.startup(() => {
         //JASON
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -953,6 +983,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -984,6 +1015,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -1015,6 +1047,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -1046,6 +1079,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -1078,6 +1112,7 @@ Meteor.startup(() => {
         //JV
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect:'Sinisipsip ng plant hopper ang katas ng palay kaya nagiging chlorotic (maputla o naninilaw) ang mga dahon nito. Nagsisimula ito sa tip ng dahon patungo sa gitnang bahagi ng dahon hanggang sa tuluyan itong mamatay, ang kondisyong ito ang tinatawag na hopperburn. Sa umpisa, mukha lang may patse-patse sa palayan, ngunit mabilis itong dumami sa pamamagitan ng paglipat-lipat nito mula sa isang palay patungo sa kabila. Ang brown plant hopper ay maaaring mayroon dalang rice ragged stunt at grassy stunt virus.',
           fil_part_destroyed:'Katawan',
@@ -1109,6 +1144,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect:'Kapag hindi masyadong marami ang green leaf hopper sa inyong palayan, hindi masyado pansin ang epekto nito. Madaling lumawak ang epekto ng green leaf hopper dahil kaya nitong lumipat patungo sa iba pang palay. Pinapasok ng leaf hopper ang malakarayom na nguso nito sa leaf tissue, sa paraang ito maaring masalin ng leaf hopper ang virus na dala nito. Ang mga palayan na may green leaf hopper ay maaaring mayroon ding tungro o yellow-dwarf disease. Ito ay may kakaunting suwi at naninilaw hanggang sa matuyo ang apektadong palay (dahil sa tungro).',
           fil_part_destroyed:'Dahon',
@@ -1140,6 +1176,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -1171,6 +1208,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -1202,6 +1240,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -1233,6 +1272,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -1264,6 +1304,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect:'Sa soft dough stage, sinisipsip ng rice bugs ang mga butil kaya ito nagkakaroon ng sira o kaya pagkawala ng laman ng mga butil',
           fil_part_destroyed: '',
@@ -1295,6 +1336,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -1326,6 +1368,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: 'Mula transplanting hanggang sa vegetative na stage.',
           fil_effect:'Kinakain ng rice whorl maggot ang mga umuusbong pa lang na mga dahon. Ito ang nagiging dahilan ng pagkakaroon ng mga sugat sa mga dahon. Nababansot at naninilaw ang mga dahon at nagkakaroon ng mga butas-butas. Madaling nasisira ang mga dahon sa hampas ng hangin.',
           fil_part_destroyed: 'Dahon',
@@ -1357,6 +1400,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected:'Aksip',
           fil_effect:'Sa vegetative stage, nagdudulot ng dead tillers or deadhearts ang stem borer. Pagkakaroon ng uban sa reproductive stage. Pagkakaroon ng butas sa mga suwi at puno. Namamatay ang puno ng palay kung saan ang pinaka-ubod nito ay natutuyo. Kapansin-pansin din na ito ay madaling bunutin.',
           fil_part_destroyed:'katawan, suwi at uhay',
@@ -1388,6 +1432,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected:'Aksip',
           fil_effect:'Sa vegetative stage, nagdudulot ng dead tillers or deadhearts ang stem borer. Pagkakaroon ng uban sa reproductive stage. Pagkakaroon ng butas sa mga suwi at puno. Namamatay ang puno ng palay kung saan ang pinaka-ubod nito ay natutuyo. Kapansin-pansin din na ito ay madaling bunutin.',
           fil_part_destroyed:'katawan, suwi at uhay',
@@ -2578,6 +2623,6 @@ Meteor.startup(() => {
             
     ];
 
-    data.forEach(pests => Pests.insert(pests));
+    data.forEach(plant_problem => Plant_Problem.insert(plant_problem));
   }
 });

@@ -6,6 +6,8 @@
 
 <template name="pestLibCMS">
 
+  {{> cms_navbar}}
+
   <div class="container">
     <br/>
     <div class="col-md-3"> <h4> insert side-nav here </h4> </div>
@@ -42,6 +44,9 @@
       
       <label for="pestsperpage"> Number of Pests Per Page </label>
       <input type="number" min="1" max="999999" pattern="[0-9]{1,2}" id="pestsperpage" value="{{getCMS.pestsPerPage}}" class="form-control" >
+
+      <label for="diseasesperpage"> Number of Diseases Per Page </label>
+      <input type="number" min="1" max="999999" pattern="[0-9]{1,2}" id="diseasesperpage" value="{{getCMS.diseasesPerPage}}" class="form-control" >
 
       <div class="text-center">
         <button id="saveBTN" class="btn btn-success">Save</button>
