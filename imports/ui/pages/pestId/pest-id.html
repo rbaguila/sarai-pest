@@ -11,28 +11,118 @@
 		.nav-tabs {
 		    text-align:center;
 		}
+
+		table .permanent {
+			text-align:center;
+		}
 	</style>
+	<script>
+		function choosePest() {
+			document.getElementById('diseaseDiv').style.display = 'none';
+			$('[name="classType"]').attr('checked', false);
+			var x = document.getElementById('pestDiv');
+			if (x.style.display === 'none') {
+				x.style.display = 'block';
+			} else {
+				x.style.display = 'none';
+			}
+		}
+
+		function chooseDisease() {
+			document.getElementById('pestDiv').style.display = 'none';
+			$('[name="classType"]').attr('checked', false);
+			var x = document.getElementById('diseaseDiv');
+			if (x.style.display === 'none') {
+				x.style.display = 'block';
+			} else {
+				x.style.display = 'none';
+			}
+		}
+	</script>
 	<div>
-		<ul class="nav nav-tabs">
-		  <li class="active"><a data-toggle="pill" href="#image">IMAGE PROCESSING</a></li>
-		  <li><a data-toggle="pill" href="#ontology">ONTOLOGY-BASED</a></li>
-		</ul>
+		
 
 		<div class="tab-content">
-			<!-- Image Processing -->
+			
 			<div id="image" class="tab-pane fade in active">
-				<br/>
-				<!-- Radio button -->
+				<br/><!-- <br/><br/><br/><br/> -->
+				<!-- Ontology-based -->
 				<center>
-					<label class="radio-inline"><input checked type="radio" name="optradio">Pest</label>
-					<label class="radio-inline"><input type="radio" name="optradio">Disease</label>
+					<div class="table-responsive">
+						<table width="400">
+							<tbody>
+								<tr>
+									<td><h4>Plant Problem</h4></td>
+								</tr>
+								<tr>
+									<td><input type="radio" name="radiopd" class= "probType" id="Pest" onchange="choosePest()">Pest</td>
+									<td></td>
+									<td><input type="radio" name="radiopd" class= "probType" id="Disease" onchange="chooseDisease()">Disease</td>
+								</tr>
+								<tr>
+									<td><br/></td>
+								</tr>
+								<tr>
+									<td><h4>Type of Crop Affected</h4></td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" name="cropAffected" value="" id="Rice">Rice</td>
+									<td><input type="checkbox" name="cropAffected" value="" id="Corn">Corn</td>
+									<td></td>
+									<td><input type="checkbox" name="cropAffected" value="" id="Banana">Banana</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--if radioPest was chosen-->
+					<div id="pestDiv" class="table-responsive" style="display:none;">
+						<table width="500">
+							<tbody>
+								<tr>
+									<td><br/></td>
+								</tr>
+								<tr>
+									<td><h4>The observed pest is</h4></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><input type="radio" name="classType" value="" id="Fly-like">Fly-like</td>
+									<td><input type="radio" name="classType" value="" id="Caterpillar-like">Caterpillar-like</td>
+									<td><input type="radio" name="classType" value="" id="Maggot">Maggot</td>
+								</tr>
+								<tr>
+									<td><input type="radio" name="classType" value="" id="Beetle-like">Beetle-like</td>
+									<td><input type="radio" name="classType" value="" id="Moth-like">Moth-like</td>
+									<td><input type="radio" name="classType" value="" id="Two or one unit body">Two or one unit body</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--if radioDisease was chosen-->
+					<div id="diseaseDiv" class="table-responsive" style="display:none;">
+						<table width="400">
+							<tbody>
+								<tr>
+									<td><br/></td>
+								</tr>
+								<tr>
+									<td><h4>The disease is</h4></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><input type="radio" name="classType" value="" id="Fungal">Fungal</td>
+									<td><input type="radio" name="classType" value="" id="Bacterial">Bacterial</td>
+									<td><input type="radio" name="classType" value="" id="Viral">Viral</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</center>
-				<!-- Button -->
-				<!-- <center>
-					<button type="button" class="btn btn-default">Pest</button>
-						<button type="button" class="btn btn-default">Disease</button>
-				</center> -->
+
+				
+				<!-- <br/> -->
 				<br/>
+				<!-- Image Processing -->
 				<!-- Upload Image Here -->
 				<div>
 					<div class="col-sm-6 col-md-6 col-lg-6 col-md-offset-3">
@@ -55,22 +145,22 @@
 					</div>
 				</div>
 			</div>
-			<!-- Ontology-based -->
-			<div id="ontology" class="tab-pane fade">
-				<br/>
-				<div class="col-sm-4 col-md-4 col-lg-4 col-md-offset-4">
-					<label>Types of Crops Affected</label>
-				</div>
-				<br/>
-				<div class="col-sm-4 col-md-4 col-lg-4 col-md-offset-4">
-					<center>
-						<label class="checkbox-inline"><input type="checkbox" value="">Rice</label>
-						<label class="checkbox-inline"><input type="checkbox" value="">Corn</label>
-						<label class="checkbox-inline"><input type="checkbox" value="">Banana</label>
-					</center>
-				</div>
-			</div>
+
+			<!-- <div class="container">
+				{{#each displayPest this}}
+			    	{{> individualPest}}
+			    {{/each}}
+		    </div> -->
+			
 		</div>
+
+		{{#if showResult}}
+			<div class="container">
+				{{#each displayInitial}}
+			    	{{> individualPest}}
+			    {{/each}}
+		    </div>
+		{{/if}}
 
 		<div>
 			{{#each getCMS.viewType}}
