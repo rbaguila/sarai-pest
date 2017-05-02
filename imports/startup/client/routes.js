@@ -10,8 +10,7 @@ import '../../ui/pages/cms/pest-lib-update.js';
 import '../../ui/pages/pestId/pest-id.js'
 import '../../ui/pages/cms/insert-pest/insert-pest.js';
 import '../../ui/pages/cms/edit-pest/edit-pest.js';
-import '../../ui/pages/cms/edit-pest/edit-pest-entity.js';
-import '../../ui/pages/pestId/pest-id.js'
+import '../../ui/pages/cms/edit-pest-entity/edit-pest-entity.js';
 
 // Set up all routes in the app
 FlowRouter.route('/', {
@@ -28,13 +27,6 @@ FlowRouter.route('/library', {
     BlazeLayout.render('App_body', { main: 'App_library' });
   },
 });
-
-// FlowRouter.route("/pests-lib-update", {
-//   name: 'App.pests-lib-update',
-//   action() {
-//     BlazeLayout.render("App_body", {main: "pestLibUpdate"})
-//   }
-// });
 
 FlowRouter.route('/pests-id', {
   name: 'App.pests-id',

@@ -2,7 +2,7 @@
 
 import { Meteor } from 'meteor/meteor';
 import { Links } from '../../api/links/links.js';
-import { Pests } from '../../api/pests/pests.js';
+import { Plant_Problem } from '../../api/plant_problem/plant_problem.js';
 import { CMS } from '../../api/cms/cms.js';
 
 Meteor.startup(() => {
@@ -47,7 +47,8 @@ Meteor.startup(() => {
           searchLabelText: ['Search the library for pests', 'Search the library for diseases'],
           viewType: ['Pest', 'Disease'],
           viewPestType: ['Rice', 'Corn', 'Banana'],
-          pestsPerPage: 8
+          pestsPerPage: 8,
+          diseasesPerPage: 8
         }
     ];
 
@@ -55,12 +56,13 @@ Meteor.startup(() => {
   }
 
   // if the Pests collection is empty
-  if (Pests.find().count() === 0) {
+  if (Plant_Problem.find().count() === 0) {
     const data = [
 
     //--------------------------PESTS--------------------------
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: 'Sira ang mga dulo ng dahon pati ang mga gilid nito. Kaya nitong kainin ang buong dahon. Kaya rin nitong maputol ang uhay mula sa puno nito.',
           fil_part_destroyed: 'Puno, dahon, murang palay, uhay',
@@ -79,7 +81,7 @@ Meteor.startup(() => {
           description: 'Eggs: Pale-yellowish and becomes dark brown just before hatching. The black head-capsules of the larvae can be seen through the shells. Each egg is about 0.5 mm in diameter, conical with a slightly rounded apex and a densely sculpted surface; Larvae: Develops from grey-green with white-yellow stripes down its back when small, to black with thin blue lines down the middle of the back and yellow-green lines outside the blue lines when fully grown. It measures 2 to 3cm long, has a velvety-black upper surface with pale lateral lines, a green or yellow ventral surface, and no hairs on the body. There are three parallel lines on the dorsal surface of the prothoracic (first body) segment and a stripe running longitudinally down the mid-dorsal surface of the body is always paler than the black pigmentation on either side of it. The head is always shiny-black; Pupa: Mahogany-brown, 10-14mm long, with a smooth, shiny surface; Adult: It is 14-18mm long and has a 29-32mm wing span. The abdomen is covered with pale grey-brown scales (except for the tip in the female which has black hair-scales). Forewings are dark-brown with distinctive grey-black markings. Hindwings are white with dark veins.',
           plant_affected: 'Rice',
           order: 'Lepidoptera: Noctuidae',
-          classification: '',
+          classification: 'Moth-like',
           treatment: 'Many animals, birds and insects prey on the African armyworm at different stages of its life cycle. These natural enemies should be encouraged by maintaining natural surroundings with plenty of breeding places for them, including trees and shrubs. Night birds and bats feed on the African armyworm moths, and lacewings, wasps, parasitic wasps and spiders eat the caterpillars; Avoid burning and overgrazing of grasslands which are the natural habitat and food store of the caterpillars. Burning often causes outbreaks because as soon as temperatures rise, eggs are laid in large quantities on the fresh new grass.',
           sci_name: 'Spodoptera exempta (Walker)/Mythimna separata Walker/Spodoptera mauritia Boisduval',
           eng_name: 'African Armyworm, Black Armyworm, Nutgrass Armyworm, True Armyworm, Hail Worm, Mystery Armyworm, Rain Worm',
@@ -93,6 +95,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: 'Sira ang mga dulo ng dahon pati ang mga gilid nito. Kaya nitong kainin ang buong dahon. Kaya rin nitong maputol ang uhay mula sa puno nito.',
           fil_part_destroyed: 'Puno, dahon, murang palay, uhay',
@@ -111,7 +114,7 @@ Meteor.startup(() => {
           description: 'Eggs: Pale-yellowish and becomes dark brown just before hatching. The black head-capsules of the larvae can be seen through the shells. Each egg is about 0.5 mm in diameter, conical with a slightly rounded apex and a densely sculpted surface; Larvae: Develops from grey-green with white-yellow stripes down its back when small, to black with thin blue lines down the middle of the back and yellow-green lines outside the blue lines when fully grown. It measures 2 to 3cm long, has a velvety-black upper surface with pale lateral lines, a green or yellow ventral surface, and no hairs on the body. There are three parallel lines on the dorsal surface of the prothoracic (first body) segment and a stripe running longitudinally down the mid-dorsal surface of the body is always paler than the black pigmentation on either side of it. The head is always shiny-black; Pupa: Mahogany-brown, 10-14mm long, with a smooth, shiny surface; Adult: It is 14-18mm long and has a 29-32mm wing span. The abdomen is covered with pale grey-brown scales (except for the tip in the female which has black hair-scales). Forewings are dark-brown with distinctive grey-black markings. Hindwings are white with dark veins.',
           plant_affected: 'Rice',
           order: 'Lepidoptera: Noctuidae',
-          classification: '',
+          classification: 'Caterpillar-like',
           treatment: 'Many animals, birds and insects prey on the African armyworm at different stages of its life cycle. These natural enemies should be encouraged by maintaining natural surroundings with plenty of breeding places for them, including trees and shrubs. Night birds and bats feed on the African armyworm moths, and lacewings, wasps, parasitic wasps and spiders eat the caterpillars; Avoid burning and overgrazing of grasslands which are the natural habitat and food store of the caterpillars. Burning often causes outbreaks because as soon as temperatures rise, eggs are laid in large quantities on the fresh new grass.',
           sci_name: 'Spodoptera exempta (Walker)/Mythimna separata Walker/Spodoptera mauritia Boisduval',
           eng_name: 'African Armyworm, Black Armyworm, Nutgrass Armyworm, True Armyworm, Hail Worm, Mystery Armyworm, Rain Worm',
@@ -124,6 +127,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -142,7 +146,7 @@ Meteor.startup(() => {
           description: 'Egg: Laid in clusters covered with short yellowish brown hairs from the abdominal tips of the female moths. Each egg is pearly white, round, and has a ridged surface; Larva: Brown or green with longitudinal stripes, with black spots ringing the body about one-fourth of the body length behind the head; Adult: Has 15-20mm long grey-brown body, and a wingspan of 30-38mm. The forewings are grey to reddish-brown with a strongly variegated pattern and paler lines along the veins, and the hindwings are greyish-white with grey margins.',
           plant_affected: 'Rice',
           order: 'Lepidoptera: Noctuidae',
-          classification: '',
+          classification: 'Moth-like',
           treatment: 'Seedbeds should be established far from large areas of weeds, remove weeds from areas outside of fields, and plow all uncultivated land. In insecticides, sprays are more effective than granules. High dosages are required to kill large armyworm and cutworm larvae. Spraying should be done late in the afternoon before the larvae leave their resting places to climb up the plants. Because damage is normally concentrated in discrete areas of a rice field, only areas where damage occurs should be sprayed.',
           sci_name: 'Spodoptera litura (Fabricius)',
           eng_name: 'Common Cutworm, Grass Cutworm, Vegetable Cutworm, Tobacco Cutworm, Tobacco Caterpillar, Taro Caterpillar',
@@ -155,6 +159,7 @@ Meteor.startup(() => {
         
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -173,7 +178,7 @@ Meteor.startup(() => {
           description: 'Egg: Laid in clusters covered with short yellowish brown hairs from the abdominal tips of the female moths. Each egg is pearly white, round, and has a ridged surface; Larva: Brown or green with longitudinal stripes, with black spots ringing the body about one-fourth of the body length behind the head; Adult: Has 15-20mm long grey-brown body, and a wingspan of 30-38mm. The forewings are grey to reddish-brown with a strongly variegated pattern and paler lines along the veins, and the hindwings are greyish-white with grey margins.',
           plant_affected: 'Rice',
           order: 'Lepidoptera: Noctuidae',
-          classification: '',
+          classification: 'Caterpillar-like',
           treatment: 'Seedbeds should be established far from large areas of weeds, remove weeds from areas outside of fields, and plow all uncultivated land. In insecticides, sprays are more effective than granules. High dosages are required to kill large armyworm and cutworm larvae. Spraying should be done late in the afternoon before the larvae leave their resting places to climb up the plants. Because damage is normally concentrated in discrete areas of a rice field, only areas where damage occurs should be sprayed.',
           sci_name: 'Spodoptera litura (Fabricius)',
           eng_name: 'Common Cutworm, Grass Cutworm, Vegetable Cutworm, Tobacco Cutworm, Tobacco Caterpillar, Taro Caterpillar',
@@ -186,6 +191,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -204,7 +210,7 @@ Meteor.startup(() => {
           description: 'Egg: Laid in rows along leaves, which fold over and protect the eggs. The pale yellow, spherical eggs can be seen when the leaf blade is unfolded; Larva: Usually light brown or gray green, with a longitudinal dark band midway down the side of the body; Pupa: Shiny, yellowish-brown; Adult: Wing span is 38-48 mm. Forewings are grayish-yellow, with dark-gray or reddish-yellow tint. External wing margin blackened obliquely from top backward, with dark stroke and with a row of dark points. Hindwings are gray, with dark external margin. Antennae are thread-like.',
           plant_affected: 'Rice',
           order: 'Lepidoptera: Noctuidae',
-          classification: '',
+          classification: 'Moth-like',
           treatment: 'Weeding, inter-row cultivations, removal of crop residues from fields after harvesting, deep autumn plowing, optimal dates of early sowing, cultivation of resistant varieties, insecticide treatments of crops, release of such entomophages as Trichogramma spp.',
           sci_name: 'Mythimna separata (Walker)',
           eng_name: 'Ear-cutting caterpillar, Oriental Armyworm, Northern Armyworm',
@@ -217,6 +223,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -235,7 +242,7 @@ Meteor.startup(() => {
           description: 'Egg: Laid in rows along leaves, which fold over and protect the eggs. The pale yellow, spherical eggs can be seen when the leaf blade is unfolded; Larva: Usually light brown or gray green, with a longitudinal dark band midway down the side of the body; Pupa: Shiny, yellowish-brown; Adult: Wing span is 38-48 mm. Forewings are grayish-yellow, with dark-gray or reddish-yellow tint. External wing margin blackened obliquely from top backward, with dark stroke and with a row of dark points. Hindwings are gray, with dark external margin. Antennae are thread-like.',
           plant_affected: 'Rice',
           order: 'Lepidoptera: Noctuidae',
-          classification: '',
+          classification: 'Caterpillar-like',
           treatment: 'Weeding, inter-row cultivations, removal of crop residues from fields after harvesting, deep autumn plowing, optimal dates of early sowing, cultivation of resistant varieties, insecticide treatments of crops, release of such entomophages as Trichogramma spp.',
           sci_name: 'Mythimna separata (Walker)',
           eng_name: 'Ear-cutting caterpillar, Oriental Armyworm, Northern Armyworm',
@@ -248,6 +255,7 @@ Meteor.startup(() => {
         
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -266,7 +274,7 @@ Meteor.startup(() => {
           description: 'Egg: Laid in small clusters openly on the leaf blades. Each egg is spherical and shiny; Larva: Has two pairs of white or black horns; one pair on their heads and another pair projecting from the abdomen; Adult: Has two white ring spots on the front wing and seven on the back wing of the top side. On the underside, there are three spots on the front wing and six on the back wing, all ringed with violet and yellow circles.',
           plant_affected: 'Rice',
           order: 'Lepidoptera: Satyridae',
-          classification: '',
+          classification: 'Moth-like',
           treatment: '',
           sci_name: 'Melanitis leda ismene Cramer',
           eng_name: 'Green Horned Caterpillar (larva), Common Evening Brown (adult)',
@@ -279,6 +287,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -297,7 +306,7 @@ Meteor.startup(() => {
           description: 'Egg: Laid in small clusters openly on the leaf blades. Each egg is spherical and shiny; Larva: Has two pairs of white or black horns; one pair on their heads and another pair projecting from the abdomen; Adult: Has two white ring spots on the front wing and seven on the back wing of the top side. On the underside, there are three spots on the front wing and six on the back wing, all ringed with violet and yellow circles.',
           plant_affected: 'Rice',
           order: 'Lepidoptera: Satyridae',
-          classification: '',
+          classification: 'Caterpillar-like',
           treatment: '',
           sci_name: 'Melanitis leda ismene Cramer',
           eng_name: 'Green Horned Caterpillar (larva), Common Evening Brown (adult)',
@@ -310,6 +319,7 @@ Meteor.startup(() => {
         
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: 'Pagkaputol ng mga dahon ng pakanang dahilig na parang ginupit ng gunting. Pagkakaroon ng mga binilot na dahon na nagsisilbing proteksyon ng uod. Ang dahon ay nagmumukhang manipis na papel at hindi pantay-pantay na pagkaputol ng dahon. Sa ibang kaso, nagiging bansot ang mga dahon dahil mas gusto ng caseworn umatake sa murang yugto ng pagtubo ng palay.',
           fil_part_destroyed: 'Dahon, mga batang seedlings',
@@ -328,7 +338,7 @@ Meteor.startup(() => {
           description: 'Eggs: Pale, yellowish green, circular, somewhat flattened with a smooth surface, laid on the under surfaces of leaves drooping into the water; Larva: Young larva is pale cream, about 1.2 mm long and 0.2 mm across the head, and the head is light yellow. Full grown larva is about 14 mm long and 1.6 mm in diameter, and pale green with a semitransparent skin and light brown prothoracic shield and head; Pupa: 5.5 mm long and 1.5 mm wide, and is cream colored when freshly formed but turns silvery white toward moth emergence; Adult: 6mm long with a wing span of 15mm, white wings are marked with a few light brown to black specks and two or three submarginal fulvous bands.',
           plant_affected: 'Rice',
           order: 'Lepidoptera: Pyralidae',
-          classification: '',
+          classification: 'Moth-like',
           treatment: 'Use of correct fertilizer application, plant early and use wider spacing (30 × 20 mm), drain the field, transplant older seedlings (sparse planting can also reduce the damage), grow a ratoon, encourage biological control agents (snails, hydrophilid and dytiscid water beetles, spiders, dragonflies, and birds), use foliar treatments of carbamate insecticides.',
           sci_name: 'Nymphula depunctalis (Guenée)',
           eng_name: 'Rice Caseworm',
@@ -341,6 +351,7 @@ Meteor.startup(() => {
         
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -359,7 +370,7 @@ Meteor.startup(() => {
           description: 'Eggs: Yellow and develop purple to violet markings as they mature, laid in small clusters on leaf blades; Larva: Moves like inchworms, arching their backs as they go; Adult: Yellow orange with two diagonal, dark red bands on each front wing.',
           plant_affected: 'Rice',
           order: 'Lepidoptera: Noctuidae',
-          classification: '',
+          classification: 'Moth-like',
           treatment: '',
           sci_name: 'Naranga aenescens (Moore)',
           eng_name: 'Green Semilooper',
@@ -372,12 +383,13 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           stage_threatening: 'Adult, larva',
           symptoms: '',
           description: 'Eggs: Yellow and develop purple to violet markings as they mature, laid in small clusters on leaf blades; Larva: Moves like inchworms, arching their backs as they go; Adult: Yellow orange with two diagonal, dark red bands on each front wing.',
           plant_affected: 'Rice',
           order: 'Lepidoptera: Noctuidae',
-          classification: '',
+          classification: 'Caterpillar-like',
           treatment: '',
           sci_name: 'Naranga aenescens (Moore)',
           fil_name: '',
@@ -391,6 +403,7 @@ Meteor.startup(() => {
         
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect:'Nakarolyo ang dahon. Pagkasira ng dahon at pag-iiba ng kulay nito. Mukhang nasunog at mahina ang dahon.',
           fil_part_destroyed:'Dahon',
@@ -409,7 +422,7 @@ Meteor.startup(() => {
           description: 'Eggs: Translucent, yellowish white, oval, 0.90 mm long and 0.39 mm wide, and almost flat with a slightly convex surface; Larva: Young larvae are translucent but turn yellowish green as they mature, head capsules and thoraxes are brown, have one pair of dark spots on the abdomen near the head; Pupa: Light brown, but turns reddish brown toward moth emergence; Adult: 10-12mm long and has wing span of 13-15mm; light brown with shiny, brownish yellow wings adorned with dark, broad margins, and two to three dark vertical stripes; appears triangular when at rest.',
           plant_affected: 'Rice',
           order: 'Lepidoptera: Pyralidae',
-          classification: '',
+          classification: 'Moth-like',
           treatment: 'Careful use of nitrogenous fertilizer in split applications is recommended. Removal of grassy weeds from rice fields and surrounding borders prevents the buildup of rice leaffolders on alternate hosts. However, chemical control is the only practical method to control increasing leaffolder infestation during crop growth. Numerous insecticides that have been identified for control are most effective as foliar sprays. But foliar sprays have to be repeated because they are often washed off by frequent rains. Granular insecticides broadcast into water are ineffective. Since leaffolders can attack the crop during any growth stage, fields should be monitored weekly.',
           sci_name: 'Cnaphalocrocis medinalis (Guenée)',
           eng_name: 'Rice Leaffolder',
@@ -422,6 +435,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect:'Nakarolyo ang dahon. Pagkasira ng dahon at pag-iiba ng kulay nito. Mukhang nasunog at mahina ang dahon.',
           fil_part_destroyed:'Dahon',
@@ -440,7 +454,7 @@ Meteor.startup(() => {
           description: 'Eggs: Translucent, yellowish white, oval, 0.90 mm long and 0.39 mm wide, and almost flat with a slightly convex surface; Larva: Young larvae are translucent but turn yellowish green as they mature, head capsules and thoraxes are brown, have one pair of dark spots on the abdomen near the head; Pupa: Light brown, but turns reddish brown toward moth emergence; Adult: 10-12mm long and has wing span of 13-15mm; light brown with shiny, brownish yellow wings adorned with dark, broad margins, and two to three dark vertical stripes; appears triangular when at rest.',
           plant_affected: 'Rice',
           order: 'Lepidoptera: Pyralidae',
-          classification: '',
+          classification: 'Caterpillar-like',
           treatment: 'Careful use of nitrogenous fertilizer in split applications is recommended. Removal of grassy weeds from rice fields and surrounding borders prevents the buildup of rice leaffolders on alternate hosts. However, chemical control is the only practical method to control increasing leaffolder infestation during crop growth. Numerous insecticides that have been identified for control are most effective as foliar sprays. But foliar sprays have to be repeated because they are often washed off by frequent rains. Granular insecticides broadcast into water are ineffective. Since leaffolders can attack the crop during any growth stage, fields should be monitored weekly.',
           sci_name: 'Cnaphalocrocis medinalis (Guenée)',
           eng_name: 'Rice Leaffolder',
@@ -453,6 +467,7 @@ Meteor.startup(() => {
         
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -471,7 +486,7 @@ Meteor.startup(() => {
           description: 'Eggs: Pearl-like, laid singly on leaf blades; Larva: Heads are flat and slanted backward, have reddish vertical bands at each side of the head; Adult: White spots on brown wings, adults rest with their wings upright.',
           plant_affected: 'Rice',
           order: 'Lepidoptera: Hesperiidae',
-          classification: '',
+          classification: 'Fly-like',
           treatment: '',
           sci_name: 'Pelopidas mathias (Fabricius)',
           fil_name: '',
@@ -485,6 +500,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -503,7 +519,7 @@ Meteor.startup(() => {
           description: 'Eggs: Pearl-like, laid singly on leaf blades; Larva: Heads are flat and slanted backward, have reddish vertical bands at each side of the head; Adult: White spots on brown wings, adults rest with their wings upright.',
           plant_affected: 'Rice',
           order: 'Lepidoptera: Hesperiidae',
-          classification: '',
+          classification: 'Caterpillar-like',
           treatment: '',
           sci_name: 'Pelopidas mathias (Fabricius)',
           fil_name: '',
@@ -517,6 +533,7 @@ Meteor.startup(() => {
         
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected:'Aksip',
           fil_effect:'Sa vegetative stage, nagdudulot ng dead tillers or deadhearts ang stem borer. Pagkakaroon ng uban sa reproductive stage. Pagkakaroon ng butas sa mga suwi at puno. Namamatay ang puno ng palay kung saan ang pinaka-ubod nito ay natutuyo. Kapansin-pansin din na ito ay madaling bunutin.',
           fil_part_destroyed:'katawan, suwi at uhay',
@@ -535,7 +552,7 @@ Meteor.startup(() => {
           description: 'Eggs: Laid near the tip of the leaf blade. Egg masses are disc-shaped and are covered by a light brown mat of hair from the females’ abdomen; Larva: Unmarked and range from light yellow to white; Adult: Bright white with no markings and has a distinctive tuft of long hairs on the thorax. Both sexes have similar coloration, but the male is smaller. Nocturnal, positively phototropic, and strong fliers.',
           plant_affected: 'Rice',
           order: 'Lepidoptera: Pyralidae',
-          classification: '',
+          classification: 'Moth-like',
           treatment: 'Clipping the seedlings before transplanting greatly reduces the carryover of eggs from the seedbed to the transplanted fields. However, stem borers are difficult to control with insecticides. After hatching, the larvae are exposed only for a few hours before they penetrate a tiller or enter the plant. Successful control involves repeated foliar applications with spray volumes more than 400 liters/ha.',
           sci_name: 'Scirpophaga innotata (Walker)',
           eng_name: 'White Stemborer',
@@ -548,6 +565,7 @@ Meteor.startup(() => {
         
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected:'Aksip',
           fil_effect:'Sa vegetative stage, nagdudulot ng dead tillers or deadhearts ang stem borer. Pagkakaroon ng uban sa reproductive stage. Pagkakaroon ng butas sa mga suwi at puno. Namamatay ang puno ng palay kung saan ang pinaka-ubod nito ay natutuyo. Kapansin-pansin din na ito ay madaling bunutin.',
           fil_part_destroyed:'katawan, suwi at uhay',
@@ -566,7 +584,7 @@ Meteor.startup(() => {
           description: 'Eggs: Laid near the tip of the leaf blade. Egg masses are disc-shaped and are covered by a light brown mat of hair from the females’ abdomen; Larva: Unmarked and range from light yellow to white; Adult: Female is pale yellow or light brown front wings, each with a characteristic single, black spot; male is smaller, gray or light brown, has two rows of small spots at the tip of each front wing. Nocturnal, positively phototropic, and strong fliers.',
           plant_affected: 'Rice',
           order: 'Lepidoptera: Pyralidae',
-          classification: '',
+          classification: 'Moth-like',
           treatment: 'Clipping the seedlings before transplanting greatly reduces the carryover of eggs from the seedbed to the transplanted fields. However, stem borers are difficult to control with insecticides. After hatching, the larvae are exposed only for a few hours before they penetrate a tiller or enter the plant. Successful control involves repeated foliar applications with spray volumes more than 400 liters/ha.',
           sci_name: 'Scirpophaga incertulas (Walker)',
           eng_name: 'Yellow Stemborer',
@@ -579,6 +597,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected:'Aksip',
           fil_effect:'Sa vegetative stage, nagdudulot ng dead tillers or deadhearts ang stem borer. Pagkakaroon ng uban sa reproductive stage. Pagkakaroon ng butas sa mga suwi at puno. Namamatay ang puno ng palay kung saan ang pinaka-ubod nito ay natutuyo. Kapansin-pansin din na ito ay madaling bunutin.',
           fil_part_destroyed:'katawan, suwi at uhay',
@@ -597,7 +616,7 @@ Meteor.startup(() => {
           description: 'Eggs: Laid near the tip of the leaf blade. Egg masses are disc-shaped and are covered by a light brown mat of hair from the females’ abdomen; Larva: Unmarked and range from light yellow to white; Adult: Female is pale yellow or light brown front wings, each with a characteristic single, black spot; male is smaller, gray or light brown, has two rows of small spots at the tip of each front wing. Nocturnal, positively phototropic, and strong fliers.',
           plant_affected: 'Rice',
           order: 'Lepidoptera: Pyralidae',
-          classification: '',
+          classification: 'Caterpillar-like',
           treatment: 'Clipping the seedlings before transplanting greatly reduces the carryover of eggs from the seedbed to the transplanted fields. However, stem borers are difficult to control with insecticides. After hatching, the larvae are exposed only for a few hours before they penetrate a tiller or enter the plant. Successful control involves repeated foliar applications with spray volumes more than 400 liters/ha.',
           sci_name: 'Scirpophaga incertulas (Walker)',
           eng_name: 'Yellow Stemborer',
@@ -610,6 +629,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -628,7 +648,7 @@ Meteor.startup(() => {
           description: 'Egg: White to pale green and shiny, dome-shaped with 28-32 vertical ribs from the micropyle to the base; Larva: About 40 mm wingspan and 15-18 mm long, forewing gold to bronze in ground color and has two silver oval spots that are similar in size; Pupa About 20 mm long, pale green ventrally with a dark brown dorsal stripe, or body entirely brown; Adult: About 40 mm wingspan and 15-18 mm long; forewing gold to bronze in ground color and has two silver oval spots that are similar in size.',
           plant_affected: 'Corn',
           order: 'Lepidoptera: Noctuidae',
-          classification: '',
+          classification: 'Fly-like',
           treatment: '',
           sci_name: 'Chrysodeixis chalcites Esper',
           eng_name: 'Corn Semilooper, Tomato Looper, Green Gardern Looper (larva); Golden Twin Spot (adult)',
@@ -641,6 +661,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -659,7 +680,7 @@ Meteor.startup(() => {
           description: 'Egg: White to pale green and shiny, dome-shaped with 28-32 vertical ribs from the micropyle to the base; Larva: About 40 mm wingspan and 15-18 mm long, forewing gold to bronze in ground color and has two silver oval spots that are similar in size; Pupa About 20 mm long, pale green ventrally with a dark brown dorsal stripe, or body entirely brown; Adult: About 40 mm wingspan and 15-18 mm long; forewing gold to bronze in ground color and has two silver oval spots that are similar in size.',
           plant_affected: 'Corn',
           order: 'Lepidoptera: Noctuidae',
-          classification: '',
+          classification: 'Caterpillar-like',
           treatment: '',
           sci_name: 'Chrysodeixis chalcites Esper',
           eng_name: 'Corn Semilooper, Tomato Looper, Green Gardern Looper (larva); Golden Twin Spot (adult)',
@@ -672,6 +693,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -690,7 +712,7 @@ Meteor.startup(() => {
           description: '',
           plant_affected: 'Corn',
           order: 'Lepidoptera: Crambidae',
-          classification: '',
+          classification: 'Moth-like',
           treatment: '',
           sci_name: 'Ostrinia furnacalis Guenee',
           eng_name: 'Asian/Oriental Cornborer',
@@ -703,6 +725,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -721,7 +744,7 @@ Meteor.startup(() => {
           description: 'Egg: pale green when first deposited, becoming yellowish and then gray with time; shape varies from slightly dome-shaped to a flattened sphere, and measures about 0.5-0.6 mm in diameter and 0.5 mm in height; Larva: Full-grown larvae are about 30-40 mm long; the head is brown and mottled; the prothoracic and supra-anal plates and legs are pale-brown, only claws and spiracles remaining black; the final body segment is elongated; Pupa: mahogany-brown in color, and measures 17 to 22 mm in length and 5.5 mm in width; Adult:  has wingspan of 32-45mm; forewings are usually yellowish brown in color, and often bear a small dark spot centrally; forewing also may bear a broad dark transverse band distally, but the margin of the wing is not darkened; hind wings are creamy white basally and blackish distally, and usually bear a small dark spot centrally.',
           plant_affected: 'Corn',
           order: 'Lepidoptera: Noctuidae',
-          classification: '',
+          classification: 'Moth-like',
           treatment: '',
           sci_name: 'Helicoverpa armigera Hubner',
           eng_name: 'Corn Earworm, Cotton Bollwormm, Tobacco Budworm (larva); Scarce Bordered Straw (adult)',
@@ -734,6 +757,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -752,7 +776,7 @@ Meteor.startup(() => {
           description: 'Egg: pale green when first deposited, becoming yellowish and then gray with time; shape varies from slightly dome-shaped to a flattened sphere, and measures about 0.5-0.6 mm in diameter and 0.5 mm in height; Larva: Full-grown larvae are about 30-40 mm long; the head is brown and mottled; the prothoracic and supra-anal plates and legs are pale-brown, only claws and spiracles remaining black; the final body segment is elongated; Pupa: mahogany-brown in color, and measures 17 to 22 mm in length and 5.5 mm in width; Adult:  has wingspan of 32-45mm; forewings are usually yellowish brown in color, and often bear a small dark spot centrally; forewing also may bear a broad dark transverse band distally, but the margin of the wing is not darkened; hind wings are creamy white basally and blackish distally, and usually bear a small dark spot centrally.',
           plant_affected: 'Corn',
           order: 'Lepidoptera: Noctuidae',
-          classification: '',
+          classification: 'Caterpillar-like',
           treatment: '',
           sci_name: 'Helicoverpa armigera Hubner',
           fil_name: '',
@@ -766,6 +790,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -784,7 +809,7 @@ Meteor.startup(() => {
           description: 'Corn flea beetle is a very tiny (1.8 mm), black, shiny beetles with elongated hind legs, which are used for jumping when disturbed.',
           plant_affected: 'Corn',
           order: 'Coleoptera',
-          classification: '',
+          classification: 'Beetle-like',
           treatment: 'Cut off their food supply by delaying transplanting or planting by a couple weeks if possible. Corn flea beetle feeding may be reduced with the use of insecticidal seed treatments and foliar insecticides.',
           sci_name: 'Chaetocnema pulicaria',
           eng_name: 'Corn Flea Beetle, Clover Flea Beetle',
@@ -797,6 +822,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -815,7 +841,7 @@ Meteor.startup(() => {
           description: 'Small, metallic blue beetles with a series of black dots on the elytra. It measures 1/4th to 1/5th of an inch in length and 1/8th inch in width.',
           plant_affected: 'Rice',
           order: 'Coleoptera: Chrysomelidae: Hispinae',
-          classification: '',
+          classification: 'Two or one unit body',
           treatment: 'Deep and thorough ploughing of the field and crop rotation will be a great help. It is also possible to pluck the infected leaves in minor infection and uproot the whole plant in case of major infection.',
           sci_name: 'Leptispa Pygmaea',
           eng_name: 'Rice Blue Beetle',
@@ -828,6 +854,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -846,7 +873,7 @@ Meteor.startup(() => {
           description: 'A small weevil that is usually 1/10 inch (2 to 3 mm) in size and stout in appearance. It is reddish-brown to black in color with four light yellow or reddish spots on the corners of the elytra. The snout is long (1 mm), almost 1/3 of the total length.',
           plant_affected: 'Rice',
           order: 'Coleoptera : Curculionidae',
-          classification: '',
+          classification: 'Beetle-like',
           treatment: 'Control of these insects by seed treatments is reliant on either the adults, in the case of cypermethrin, or larvae, when triflumuron is used, feeding on the treated grain and hence the insecticide. When feeding on treated grain, insecticide is ingested and the insect is killed.',
           sci_name: 'Sitophilus Oryzae',
           eng_name: 'Rice Weevil',
@@ -859,6 +886,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -877,7 +905,7 @@ Meteor.startup(() => {
           description: 'It is a small bluish-black beetle fringed with numerous short spines over the body.',
           plant_affected: 'Rice',
           order: 'Coleoptera: Chrysomeloidea: Chrysomelidae',
-          classification: '',
+          classification: 'Two or one unit body',
           treatment: 'A cultural control method that is recommended for the rice hispa is to avoid over fertilizing the field. Close plant spacing results in greater leaf densities that can tolerate higher hispa numbers. To prevent egg laying of the pests, the shoot tips can be cut. Clipping and burying shoots in the mud can reduce grub populations by 75−92%.',
           sci_name: 'Dicladispa Armigera',
           eng_name: 'Rice Hispa, Spiny Beetle',
@@ -890,6 +918,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -908,7 +937,7 @@ Meteor.startup(() => {
           description: 'White grubs are the larval stage of certain beetles, called scarabs. They are fairly large, creme-colored larvae with 3 distinct pairs of legs and an amber-colored head.',
           plant_affected: 'Rice, Corn',
           order: 'Coleoptera: Scarabaeidae',
-          classification: '',
+          classification: 'Maggot',
           treatment: 'There are a number of natural enemies including predators such as wasps, beetles and ants that control white grubs. Two biological control products that are presently available to the consumer are milky spore disease and parasitic nematodes.',
           sci_name: 'Phyllophaga',
           eng_name: 'White Grub, Scarab Larvae',
@@ -922,6 +951,7 @@ Meteor.startup(() => {
         //JASON
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -940,7 +970,7 @@ Meteor.startup(() => {
           description: 'Can grow up to an inch long, and are black and brown. They have large hind legs and two cerci (spiky things coming out of the back of their abdomens).',
           plant_affected: 'Rice',
           order: 'Orthoptera',
-          classification: '',
+          classification: 'Fly-like',
           treatment: 'There are no known control practices for this insect.',
           sci_name: 'Euscyrtus Concinnus',
           eng_name: 'Cricket, Gryllids',
@@ -953,6 +983,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -971,7 +1002,7 @@ Meteor.startup(() => {
           description: 'They range in size from as small as 5mm to as large as 130mm. They are usually green, sometimes with brown markings. They have a thick body, usually taller than it is wide, and long thing legs. The hind legs are longer than the front or middle legs, and are often used for jumping. On the head they have chewing mouthparts and long thin antennae that reach back at least to the abdomen of the insect.',
           plant_affected: 'Rice, Corn',
           order: 'Orthoptera',
-          classification: '',
+          classification: 'Fly-like',
           treatment: 'Remove long grass around affected plants to eliminate hiding places. Encourage biological control by attracting their predators to the garden – bats, birds and snakes.',
           sci_name: 'Tettigoniidae sp.',
           eng_name: 'Katydid, Bush Cricket, Long-horned Grasshopper',
@@ -984,6 +1015,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -1002,7 +1034,7 @@ Meteor.startup(() => {
           description: 'The adults are medium sized insects, uniformly greenish and practically without any spot. They measures about 5 cms in length.',
           plant_affected: 'Rice',
           order: 'Orthoptera',
-          classification: '',
+          classification: 'Two or one unit body',
           treatment: 'Dusting the crop with to 10% BHC or 5% Aldrin is very much effective. Poison baiting is useful both against nymphs and adults. The egg masses are destroyed by ploughing the field and exposing them to birds.',
           sci_name: 'Oxya hyla intricata ',
           eng_name: 'Rice Grasshopper, Short-horned Grasshopper',
@@ -1015,6 +1047,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -1033,7 +1066,7 @@ Meteor.startup(() => {
           description: 'Large size and absence of prosternal tubercule. Other distinctive characteristics concern the wings: smoky at the apex (radial sector) and black veins in the anal sector.',
           plant_affected: 'Rice',
           order: 'Orthoptera: AcrididaeLarge',
-          classification: '',
+          classification: 'Two or one unit body',
           treatment: 'Flood the stubbles, shave bunds, sweep along the bunds and pick adults directly from the foliage at night when they are sluggish. Use poison baits from salt water and rice bran. Use foliar sprays to control grashoppers in rice fields. Granules are not effective.',
           sci_name: 'Locusta migratoria manilensis',
           eng_name: 'Oriental Migratory Locust, Asiatic Migratory Locust',
@@ -1046,6 +1079,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -1064,7 +1098,7 @@ Meteor.startup(() => {
           description: 'Mole crickets are cylindrical-bodied insects about 3–5 centimetres (1.2–2.0 in) long, with small eyes and shovel-like forelimbs highly developed for burrowing.',
           plant_affected: 'Rice',
           order: 'Orthoptera',
-          classification: '',
+          classification: 'Two or one unit body',
           treatment: 'Maintain standing water. Encourage biological control agents: sphecid wasp, carabid beetle, nematodes, and fungus; mole crickets eat each other when they are together because of their cannibalistic behavior.',
           sci_name: 'Gryllotalpa orientalis',
           eng_name: 'Short-winged Mole Cricket, Southern Mole Cricket, Tawny Mole Cricket',
@@ -1078,6 +1112,7 @@ Meteor.startup(() => {
         //JV
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect:'Sinisipsip ng plant hopper ang katas ng palay kaya nagiging chlorotic (maputla o naninilaw) ang mga dahon nito. Nagsisimula ito sa tip ng dahon patungo sa gitnang bahagi ng dahon hanggang sa tuluyan itong mamatay, ang kondisyong ito ang tinatawag na hopperburn. Sa umpisa, mukha lang may patse-patse sa palayan, ngunit mabilis itong dumami sa pamamagitan ng paglipat-lipat nito mula sa isang palay patungo sa kabila. Ang brown plant hopper ay maaaring mayroon dalang rice ragged stunt at grassy stunt virus.',
           fil_part_destroyed:'Katawan',
@@ -1096,7 +1131,7 @@ Meteor.startup(() => {
           description: 'Adults occur in macropterous (long-winged) and brachypterous (short-winged) forms. The macropterous form is about 3.5 – 4.5 mm in length. The body is brown, and the wings are transparent, with very conspicuous veins. Young nymphs are white, but they gradually become darker in older instars.',
           plant_affected: 'Rice',
           order: 'Hemiptera',
-          classification: '',
+          classification: 'Fly-like',
           treatment: ' Flood the seedbed, for a day, so that only the tips of seedlings are exposed will control BHP. Sweep small seedbeds with a net to remove some BPH (but not eggs), particularly from dry seed beds. At high BPH densities, sweeping will not remove sufficient numbers of BPH from the base of the plant.',
           sci_name: 'Nilaparvata lugens',
           eng_name: 'Brown Planthopper, Planthopper',
@@ -1109,6 +1144,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect:'Kapag hindi masyadong marami ang green leaf hopper sa inyong palayan, hindi masyado pansin ang epekto nito. Madaling lumawak ang epekto ng green leaf hopper dahil kaya nitong lumipat patungo sa iba pang palay. Pinapasok ng leaf hopper ang malakarayom na nguso nito sa leaf tissue, sa paraang ito maaring masalin ng leaf hopper ang virus na dala nito. Ang mga palayan na may green leaf hopper ay maaaring mayroon ding tungro o yellow-dwarf disease. Ito ay may kakaunting suwi at naninilaw hanggang sa matuyo ang apektadong palay (dahil sa tungro).',
           fil_part_destroyed:'Dahon',
@@ -1127,7 +1163,7 @@ Meteor.startup(() => {
           description: 'The thickened part of the antennae is very short and ends with a bristle (arista). Two ocelli (simple eyes) are present on the top or front of the head. The tarsi are made of three segments. The femora are at front with, at most, weak spines. The hind tibiae have one or more distinct keels, with a row of movable spines on each, sometimes on enlarged bases.',
           plant_affected: 'Rice',
           order: 'Hemiptera',
-          classification: '',
+          classification: 'Fly-like',
           treatment: 'Reduce the number of rice crops to two per year and synchronized crop establishment across farms reduces leafhoppers and other insect vectors. Transplant older seedlings (>3 weeks) to reduce viral disease susceptibility transmitted by leafhoppers. Plant early within a given planting period, particularly in the dry season to reduce the risk of insect-vector disease.',
           sci_name: 'Nephotettix malayanus, Nephotettix virescens, Nephotettix nigropictus Stal',
           eng_name: 'Green Leafhopper, Leafhopper, Hopper',
@@ -1140,6 +1176,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -1158,7 +1195,7 @@ Meteor.startup(() => {
           description: 'Zigzag Leafhopper are plant-sucking pest that are usually, brown to white. They are easily recognized by the striped markings on its wings.',
           plant_affected: 'Rice',
           order: 'Hemiptera',
-          classification: '',
+          classification: 'Two or one unit body',
           treatment: 'There are parasites and predators that help regulate the population of this insect. Mymarid wasps and the mirid bugs prey on the eggs. Dryinid wasps and pipunculid flies parasitize both the adults and the nymphs and spiders eat the adults.',
           sci_name: 'Recilia dorsalis',
           eng_name: 'Zigzag Leafhopper',
@@ -1171,6 +1208,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -1189,7 +1227,7 @@ Meteor.startup(() => {
           description: 'It is white and tinged with green and pink and turns shiny brownish black to shiny black as it matures. It is 8-9 mm long. The nymphs are brown or yellow in color. Black spots are visible on their bodies. Different nymphal instars vary in sizes. Six nymphal instars are completed in 29-35 days.',
           plant_affected: 'Rice, Corn',
           order: 'Hemiptera',
-          classification: '',
+          classification: 'Two or one unit body',
           treatment: 'Maintain a clean field by removing the weeds and drying the rice field during plowing. Plant rice varieties of the same maturity date to break the insect’s cycle. Use of mercury bulbs as light traps for egg-laying adults, light trapping of insects should start 5 days before and after the full moon.',
           sci_name: 'Scotinophara coarctata',
           eng_name: 'Black Bug, Common Black Bug',
@@ -1202,6 +1240,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -1220,7 +1259,7 @@ Meteor.startup(() => {
           description: 'Rice Gall Midge are very fragile small insects usually only 2–3 mm in length; many are less than 1 mm long. They are characterised by hairy wings, unusual in the order Diptera, and have long antennae.',
           plant_affected: 'Rice',
           order: 'Hemiptera',
-          classification: '',
+          classification: 'Two or one unit body',
           treatment: 'Plow ratoon of the previous crop and remove all off-season plant hosts. Encourage biological control agents: platygasterid, eupelmid, and pteromalid wasps (parasitize the larvae), phytoseiid mites (feed on eggs), spiders (feed on adults).',
           sci_name: 'Orseolia oryzae',
           eng_name: 'Gall Midge, Rice Gall Midge, Asian Gall Midge',
@@ -1233,6 +1272,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -1251,7 +1291,7 @@ Meteor.startup(() => {
           description: 'Small sap-sucking insect that is observed most frequently for its ovoid, sluggish mature female, about 1 cm (0.4 inch) long.',
           plant_affected: 'Rice',
           order: 'Hemiptera',
-          classification: '',
+          classification: 'Two or one unit body',
           treatment: 'Encourage biological control agents: small encyrtid wasps, spiders, chloropid fly, drosophilid, and lady beetles.',
           sci_name: 'Brevennia rehi',
           eng_name: 'Rice Mealy Bug, Mealy Bug',
@@ -1264,6 +1304,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect:'Sa soft dough stage, sinisipsip ng rice bugs ang mga butil kaya ito nagkakaroon ng sira o kaya pagkawala ng laman ng mga butil',
           fil_part_destroyed: '',
@@ -1282,7 +1323,7 @@ Meteor.startup(() => {
           description: 'Leptocorisa acuta adults are long (14-17 mm) and slender (3-4 mm wide). They are a light yellow-green to yellow-brown color. The head is broad, often similar in length and width to the pronotum (upper surface of the first plate on the thorax) and the scutellum (triangular shaped plate on the thorax, posterior to the pronotum).',
           plant_affected: 'Rice',
           order: 'Hemiptera',
-          classification: '',
+          classification: 'Two or one unit body',
           treatment: 'Capturing rice bugs, in the early morning or late afternoon, by net can be effective at low rice bug densities, though labor intensive. Encourage biological control agents: Some wasps, grasshoppers and spiders attack rice bugs or rice bug eggs. Indiscriminate insecticide use disrupts biological control, resulting in pest resurgence.',
           sci_name: 'Leptocorisa Varicornis, Leptocorisa oratorius Fab., Leptocorisa acuta Thunberg',
           eng_name: 'Rice Paddy Bug, Rice Bug, Paddy Bug',
@@ -1295,6 +1336,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: '',
           fil_effect: '',
           fil_part_destroyed: '',
@@ -1313,7 +1355,7 @@ Meteor.startup(() => {
           description: 'Fully grown aphids are 1.2 - 2.2 mm long and dark green to grey-brown in colour. Nymphs are lighter in colour with a reddish area at the tip of the abdomen.',
           plant_affected: 'Rice',
           order: 'Hemiptera',
-          classification: '',
+          classification: 'Two or one unit body',
           treatment: 'Encourage biological control agents or natural enemies that can manage the population of rice root aphids. Both the nymphs and adults are parasitized by a small braconid wasp and a mermithid nematode and are preyed upon by lady beetles.',
           sci_name: 'Tetraneura nigriabdominalis',
           eng_name: 'Rice Root Aphid, Aphid',
@@ -1326,6 +1368,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected: 'Mula transplanting hanggang sa vegetative na stage.',
           fil_effect:'Kinakain ng rice whorl maggot ang mga umuusbong pa lang na mga dahon. Ito ang nagiging dahilan ng pagkakaroon ng mga sugat sa mga dahon. Nababansot at naninilaw ang mga dahon at nagkakaroon ng mga butas-butas. Madaling nasisira ang mga dahon sa hampas ng hangin.',
           fil_part_destroyed: 'Dahon',
@@ -1344,7 +1387,7 @@ Meteor.startup(() => {
           description: '',
           plant_affected: 'Rice',
           order: '',
-          classification: '',
+          classification: 'Maggot',
           treatment: '',
           sci_name: 'Hydrellia philippina (Ferino)',
           eng_name: '',
@@ -1357,6 +1400,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected:'Aksip',
           fil_effect:'Sa vegetative stage, nagdudulot ng dead tillers or deadhearts ang stem borer. Pagkakaroon ng uban sa reproductive stage. Pagkakaroon ng butas sa mga suwi at puno. Namamatay ang puno ng palay kung saan ang pinaka-ubod nito ay natutuyo. Kapansin-pansin din na ito ay madaling bunutin.',
           fil_part_destroyed:'katawan, suwi at uhay',
@@ -1375,7 +1419,7 @@ Meteor.startup(() => {
           description: '',
           plant_affected: 'Rice',
           order: '',
-          classification: '',
+          classification: 'Moth-like',
           treatment: '',
           sci_name: 'Chilo suppressalis Walker',
           eng_name: '',
@@ -1388,6 +1432,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected:'Aksip',
           fil_effect:'Sa vegetative stage, nagdudulot ng dead tillers or deadhearts ang stem borer. Pagkakaroon ng uban sa reproductive stage. Pagkakaroon ng butas sa mga suwi at puno. Namamatay ang puno ng palay kung saan ang pinaka-ubod nito ay natutuyo. Kapansin-pansin din na ito ay madaling bunutin.',
           fil_part_destroyed:'katawan, suwi at uhay',
@@ -1406,7 +1451,7 @@ Meteor.startup(() => {
           description: '',
           plant_affected: 'Rice',
           order: '',
-          classification: '',
+          classification: 'Moth-like',
           treatment: '',
           sci_name: 'Sesamia inferens Walker',
           eng_name: '',
@@ -1416,7 +1461,7 @@ Meteor.startup(() => {
             '/img/pests/PinkStemborer.jpg',
           ]
        },
-       
+
         {
           type: 'Pest',
           fil_stage_plant_affected:'Namumulaklak',
@@ -1437,7 +1482,7 @@ Meteor.startup(() => {
           description: 'Female macropterous; body colour brown, legs yellowish, antennal segment III yellow; fore wing brown with base paler. Antennae 7-segmented (rarely with 8 segments), III & IV slightly constricted at apex with short forked sensorium; segment VII short. Head wider than long, with 2 pairs of ocellar setae; pair III stout and arising just outside anterior margins of ocellar triangle; postocular setae pairs I & III shorter than ocellar setae pair III, pair II very small. Pronotum with 2 pairs of long posteroangular setae, posterior margin with 3 pairs of setae. Mesonotum with no lines of sculpture around anterior campaniform sensilla. Metanotum with lines of sculpture longitudinal medially, but transverse at anterior; median setae arising at anterior margin, campaniform sensilla present. Fore wing first vein with 3 setae on distal half, second vein with about 14 closely set setae; clavus with 5 marginal setae, the subapical seta longer than the apical seta. Tergite II with 4 lateral marginal setae; tergites V–VIII with ctenidia present laterally, on VIII posteromesad to spiracles; posterior margin of VIII with comb complete medially but microtrichia small and irregular and sometimes arising in groups; pleurotergites without discal setae. Sternite II with 2 pairs of marginal setae, III–VII with 3 pairs, median pair on VII arising in front of margin; sternite II with 1 to 4 discal setae, III–VII with discal setae varying in number from 6 to 14 in a regular transverse row. Male similar to female in structure, but smaller and paler; tergite VIII with no marginal comb; tergite IX with median S1 setae longer than S2 and arising closer to S2 than to each other; sternites III–VII with transverse pore plate anterior to row of about 8 discal setae.',
           plant_affected: 'Banana',
           order: 'Thysanoptera',
-          classification: 'Thripidae',
+          classification: 'Two or one unit body',
           treatment: 'Due to their small sizes and high rates of reproduction, thrips are difficult to control using classical biological control. All predators must be small and slender enough to penetrate the crevices where thrips hide while feeding, and then prey extensively on eggs and larvae. Only two families of parasitoid Hymenoptera are known to parasitize eggs and larvae, the Eulophidae and the Trichogrammatidae. Other biocontrol agents of adults and larvae include aphid wasps, anthocorid bugs of genus Orius, and phytoseiid mites. For this reason, many growers are occasionally forced to make limited use of pesticides to control thrips populations in the field and in greenhouses. Another effective strategy for pest thrips are biological insecticides, including Beauveria bassiana or Verticillium lecanii. These demonstrate a clear effect on eggs, larvae and adults of thrips. Insecticidal soap spray is effective against thrips. It is commercially available or can be made of certain types of household soap. Scientists in Japan report that significant reductions in larva and adult melon thripes occur when plants are illuminated with red light.',
           sci_name: 'Chaetanaphothrips signipennis Thrips florum',
           eng_name: 'Flower Thrips',
@@ -1473,7 +1518,7 @@ Meteor.startup(() => {
           description: 'Adult: The adult root borer is dark brown to grey black, shining, about 11 mm long. It is similar in general appearance to the billbugs (Sphenophorus), but lacks the depressions on the pronotum. All tibiae are armed with hook-like extensions which enable the beetle to hold tightly to plant tissue. Larva: The larva is typical of the root borer subfamily Calendrinae, the body white and the head capsule dark reddish brown. The last two abdominal segments are modified into a plate-like structure giving a "chopped off" appearance in lateral view. The eighth abdominal segment bears a large elongate spiracle, but all other abdominal spiracles are minute and indistinct. Pupa: The pupa is also typical of the subfamily Calendrinae, the beak being very irregularly margined with numerous transverse depressions.',
           plant_affected: 'Banana',
           order: 'Coleoptera',
-          classification: 'Curculionidae',
+          classification: 'Beetle-like',
           treatment: 'Adults are attracted to freshly cut pseudostems (trunks) and corms, and population estimates can easily be made using traps consisting of these plant parts. Two trapping methods are used in Central and South America banana populations. The split-log trap uses fresh banana pseudostems cut into 1- to 1 1/2-foot lengths. The pseudostem logs are then split lengthwise through the center, and the halves are placed with the split surfaces on the soil at a number of locations in the field. The stump trap uses recently harvested plants. Trunks are cut about a foot from ground level. A piece of the remaining trunk is removed by making a second cut at a 30- to 45-degree angle about 6 inches from the ground. The resulting piece of trunk is placed back on the stump. Adult weevils are attracted to the surface between the piece and the stump. A minimum of three survey counts should be made at 2- to 3-day intervals to obtain reliable estimates. Adults should be removed each time. An average of 5 adults per trap is the action threshold for the split-log trap; an average of 15 to 20 adults is the threshold used with the stump trap. Insecticidal treatments are recommended when counts exceed the action threshold.',
           sci_name: 'Cosmopolites sordidus',
           eng_name: 'Banana Root Borer Adult',
@@ -1483,7 +1528,7 @@ Meteor.startup(() => {
             '/img/pests/BananaRootBorerAdult.jpg',
             '/img/pests/BananaRootBorerAdult2.jpg',
             '/img/pests/BananaRootBorerAdult3.jpg',
-	    '/img/pests/BananaRootBorerAdult4.jpg',
+            '/img/pests/BananaRootBorerAdult4.jpg',
           ]
        },
        
@@ -1507,7 +1552,7 @@ Meteor.startup(() => {
           description: 'Adult: The adult root borer is dark brown to grey black, shining, about 11 mm long. It is similar in general appearance to the billbugs (Sphenophorus), but lacks the depressions on the pronotum. All tibiae are armed with hook-like extensions which enable the beetle to hold tightly to plant tissue. Larva: The larva is typical of the root borer subfamily Calendrinae, the body white and the head capsule dark reddish brown. The last two abdominal segments are modified into a plate-like structure giving a "chopped off" appearance in lateral view. The eighth abdominal segment bears a large elongate spiracle, but all other abdominal spiracles are minute and indistinct. Pupa: The pupa is also typical of the subfamily Calendrinae, the beak being very irregularly margined with numerous transverse depressions.',
           plant_affected: 'Banana',
           order: 'Coleoptera',
-          classification: 'Curculionidae',
+          classification: 'Maggot',
           treatment: 'Adults are attracted to freshly cut pseudostems (trunks) and corms, and population estimates can easily be made using traps consisting of these plant parts. Two trapping methods are used in Central and South America banana populations. The split-log trap uses fresh banana pseudostems cut into 1- to 1 1/2-foot lengths. The pseudostem logs are then split lengthwise through the center, and the halves are placed with the split surfaces on the soil at a number of locations in the field. The stump trap uses recently harvested plants. Trunks are cut about a foot from ground level. A piece of the remaining trunk is removed by making a second cut at a 30- to 45-degree angle about 6 inches from the ground. The resulting piece of trunk is placed back on the stump. Adult weevils are attracted to the surface between the piece and the stump. A minimum of three survey counts should be made at 2- to 3-day intervals to obtain reliable estimates. Adults should be removed each time. An average of 5 adults per trap is the action threshold for the split-log trap; an average of 15 to 20 adults is the threshold used with the stump trap. Insecticidal treatments are recommended when counts exceed the action threshold.',
           sci_name: 'Cosmopolites sordidus',
           eng_name: 'Banana Root Borer Larva',
@@ -1540,7 +1585,7 @@ Meteor.startup(() => {
           description: 'Adult pseudostem borers are about 10-12mm long, hard shelled and have the pronounced snout typical of weevils. The newly emerged pseudostem borer is reddish brown but soon becomes uniformly dull black. The pseudostem borers are nocturnal and hide during the day in or around corms or in moist areas near the plant and in the trash. Unusually sluggish in their movements, they feign death when disturbed and seldom fly. Natural spread is very slow. Dispersal is primarily by the introduction of infested suckers and bits for planting. Eggs are laid singly in a shallow pit at the base of the pseudostem. They are elongate, oval, about 2 mm long and pearly white. The eggs are very hard to find because the oviposition site becomes covered by congealed sap. The soft, creamy-white, stout (up to 10 mm in length), legless larvae have a distinctly curved body, are swollen in the middle and have a hard brown head. Pupae are about the same size as the larvae. Inside the white pupal skin the structure of the future adult with its snout, wing buds, legs and antennae is visible.',
           plant_affected: 'Banana',
           order: 'Coleoptera',
-          classification: 'Curculionidae',
+          classification: 'Beetle-like',
           treatment: 'Cultural Control-The most practical method of combating O. longicollis consists of prevention by means of clean culture, accompanied by trapping the adults. Clean culture should include the removal of trash which provides hiding places and, more especially, the removal of broken and decaying plants which serve as breeding places. The practice of cutting off the stems at a height varying from 2 to 7 feet and allowing these to remain until they disintegrate provides ideal breeding conditions for the beetles. One of these cut stems may have dozens of insects in all stages of their development (Hoffmann, 1933). In Assam, northern India, Isahaque (1978) found that dead banana plants remained succulent for a long time and therefore permitted the survival of larvae and pupae during the winter. He recommended the removal and burning of dry leaves and leaf sheaths, and dead or cut pseudostems, in the winter to help reduce weevil populations. Trapping can be done by placing cut pieces of stem in the field for the purpose of attracting beetles for oviposition. These traps are best destroyed at regular intervals, of short enough duration to prevent maturity of any larvae which might hatch. The traps should be visited frequently and the adults destroyed. Either the weevils are crushed or the traps burnt to kill the weevils. If very thin slices of stem are used as traps, they will be insufficient to allow the complete development to take place; Biological Control-The technique of release of sterile males may have potential in control of this weevil (Chiang, 1965). One-day-old male pupae were irradiated with X-rays and gamma-rays. The maximum practical dose for use in studies on control by the release of sterile males was 2000 R. Inundative releases of sterile males into banana plantations were made to compete with fertile males so that the number of viable offspring would be reduced. Apparently this approach to weevil control was not followed up; Host-plant Resistance-In India, Isahaque (1978) showed that the banana variety Bhimkal was completely free of infestation by O. longicollis. In addition Kaskal was highly resistant and Jahajee was resistant. Resistance in these three varieties appeared to be connected with their broad, thick and compact leaf-sheaths and pseudostems, although chemical antibiosis may also have been a contributing factor; Chemical Control-In India infested pseudostems have been fumigated after the initiation of flowering, otherwise there was a phytotoxic effect. Three aluminium phosphide tablets per plant were inserted 15 cm above ground level, at a depth of a quarter of the pseudostem diameter. After insertion, the entry hole was sealed (Anon., 1977); Integrated Pest Management-Wijesekara and Menike (1991) stated that it is possible to manage O. longicollis and Cosmopolites by a combination of cultural and chemical control. All infested plants are removed, the pseudostems split open and allowed to dry in the field (if convenient all pseudostems are remoned from field and destroyed by feeding to cows or pigs). The pseudostems of harvested banana plants are cut at ground level and carbofuran [a hazardous pesticide that is now banned] granules applied onto the cut surface, which is covered with another piece of pseudostem to make a trap. Twenty five such pseudostem traps per acre are randomly placed at the base of clumps once a month. Uninfested planting material should always be used for establishing a new plantation.',
           sci_name: 'Odoiporus longicollis',
           eng_name: 'Pseudostem Borer',
@@ -1552,7 +1597,6 @@ Meteor.startup(() => {
             '/img/pests/PseudostemBorer3.jpg',
             '/img/pests/PseudostemBorer4.jpg',
             '/img/pests/PseudostemBorer5.jpg',
-            '/img/pests/PseudostemBorer6.png',
           ]
        },
        
@@ -1576,7 +1620,7 @@ Meteor.startup(() => {
           description: 'The egg is pale lemon-yellow in colour, becoming brownish as the embryo approaches maturity, and broadly oval in shape with one end slightly more acute than the other ; length, 1·2 mm. The larva is whitish, with the head somewhat amber-coloured, the body being slender and hairy ; length, 1–1·5 mm. The pupa is dirty yellow, becoming darker as the adult becomes ready to emerge.',
           plant_affected: 'Banana',
           order: 'Coleoptera',
-          classification: 'Curculionidae',
+          classification: 'Beetle-like',
           treatment: 'Removal of grass weeds from plantations where the population of this pest is high can often reduce the population levels enough to avoid the use of insecticides. Unless the beetles are causing serious economic losses the use of insecticides should be avoided. In case of severe infestation spraying with Endosulphan (0.04%) or Carbaryl WP (0.1 %) controls the pest population.',
           sci_name: 'Philicoptus demissus Philicoptus iliganus',
           eng_name: 'Fruit Scarring Beetle',
@@ -1613,7 +1657,7 @@ Meteor.startup(() => {
           description: 'Nymphs: Like most other aphid species, the banana aphid has four nymphal stages. Newborn nymphs are oval at first and become slightly elongated. They are reddish brown, with four segmented antennae, and measure 1/250 inch in length. The second stage nymphs are similar in appearance and measure approximately 7/250 inch long. The third nymphal stage individuals are light brown, measuring about 9/250 inch in length; the compound eyes are more noticeable beginning with this stage, and the nymphs have five-segmented antennae. The fourth stage nymphs have six-segmented antennae, are light brown in color, and are 1/25 inch long. The first, second, third, and fourth nymphal stages last 2 to 4, 3 to 4, 2 to 4, and 2 to 4 days, respectively. Adults: Adult banana aphids are small to medium sized aphids (1/25 to 1/12 inch), shiny, reddish to dark brown or almost black. They have six-segmented antennae that are as long as the body. Alates have prominent, dark (brown or black) wing veins. Adults start producing young one day after reaching maturity. They can give birth to 4 aphids per day with an average production of 14 offspring per female.',
           plant_affected: 'Banana',
           order: 'Hemiptera',
-          classification: 'Aphididae',
+          classification: 'Two or one unit body',
           treatment: 'Aphids can be killed by their natural enemies, or with sprays of registered insecticides, or with insecticidal soaps or liquid dish washing detergents and vegetable oils. Ants protect the aphids from their enemies, and ants feed upon the sweet honeydew that aphids produce. Control tips: (1) Inspect alternate hosts for aphids - eliminate populations of banana aphids that are living on non-banana hosts within the vicinity of your bananas; (2) Inspect banana plants for aphids - scout banana plants at least twice per month for aphid colonies; (3) Control ants - control ants if possible and lawful, ants aggressively protect aphids from natural enemies; (4) Invite beneficial animals and insects - strive to foster a conducive environment for beneficial, aphid-feeding or -parasitizing insects such as lady beetles; (5) Destroy wild bananas in the area - eliminate wild of unattended patches of bananas, large populations of banana aphids can grow on them and the wild patches when infected can serve as a serious and constant source of disease for farms and residential neighborhoods; (6) Control weeds around bananas - maintain good weed control around the banana patch; (7) Diversify the banana farm - grow a range of different plants or crops; (8) Prune the mats - keep banana mats pruned of all unwanted suckers; (9) Spray for aphid control.',
           sci_name: 'Pentalonia nigronervosa',
           eng_name: 'Banana Aphids',
@@ -1648,7 +1692,7 @@ Meteor.startup(() => {
           description: 'D. neobrevipes is ovoviviparous, with each female giving birth to approximately 350 live young in a lifetime, although it can be as many as 1000 young. Females go through 3 larval instars which last for 11 to 23 days, 6 to 20 days and 7 to 28 days, respectively. The total larval period is 35 days on average but can range from 26 to 52 days. Males go through 4 larval instars before becoming winged adults. These instars last for 11 to 19 days, 7 to 19 days, 2 to 7 days and 2 to 8 days, respectively. The total larval period ranges from 22 to 53 days. Adults are oval, grey, and are coated with white mealy wax which forms small tufts. They are 1.5 mm long and 1.0 mm wide. Female adults can live for 48 to 72 days, whereas the winged males live for 2 to 7 days.',
           plant_affected: 'Banana',
           order: 'Hemiptera',
-          classification: 'Pseudococcidae',
+          classification: 'Two or one unit body',
           treatment: 'Prevention - controlling mutualistic ants will prevent the build-up of mealybug populations, by reducing the protection the mealybugs benefit from and by allowing natural enemies to prey on any mealybugs present. Physical barriers such as ant fences have shown partial effectiveness, but the most effective ant control involves the use of insecticidal baits. A commonly used chemical for these baits is hydramethylnon; Control - although it is thought that the control of ants is an effective way to prevent the build-up of D. neobrevipes, the mealybugs themselves may also need controlling. Even if mealybugs have already established and symptoms of pineapple wilt have been observed, control should still be implemented as recovery can be rapid if the appropriate control measures are put in to place; Movement Control - controlling ants will prevent them from transporting mealybugs further in an area. The use of wind barriers around the edge of the field can reduce the number of mealybug crawlers (first instars) that are spread by the wind to uninfested areas; Biological Control - D. neobrevipes has a range of natural enemies that, in the absence of caretaker ants, can effectively control populations of the mealybug. New predators can be introduced to an area in order to control the mealybugs, but without first controlling ant populations, these introductions will not be effective; Chemical Control - chemicals can be effective at controlling D. neobrevipes, but if the mealybugs are feeding deep in the plant, they will be hidden from the application of insecticides. The waxy coating on the mealybugs may prevent penetration of chemical sprays, reducing their effectiveness. Insecticides that have been used in the control of mealybugs include the organophosphates malathion and diazinon.',
           sci_name: 'Dysmicoccus neobrevipes',
           eng_name: 'False Pineapple Mealybug',
@@ -1682,7 +1726,7 @@ Meteor.startup(() => {
           description: 'Adult pineapple mealybugs are very small, about 1 mm wide, but are visible to the naked eye. They appear fuzzy with white wax, with a pink or pink-orange hue underneath the wax. They are oval and appear humped. The ventral surface of the adult mealybug has 17 pairs of wax filaments along the edge. The pair at the posterior end of the insect is the longest. If the pineapple mealybug species is not confirmed by an expert, it could be confused with the gray pineapple mealybug, Dysmicoccus neobrevipes. ',
           plant_affected: 'Banana',
           order: 'Hemiptera',
-          classification: 'Pseudococcidae',
+          classification: 'Two or one unit body',
           treatment: 'Biological Control: The pineapple mealybug has many natural enemies, both parasites and predators. These include parasitoids in the family Encyrtidae, Anagyrus ananatis, Euryrhopalus propinquus, and Hambeltonia pseudococcina, and predators in the family Coccinellidae, Nephus bilucenarius and Scymnus uncinatus. Biological control efforts were mostly stopped post-World War II with the development of broad-application insecticides. There are many more natural enemies of the pineapple mealybug for other crops where they are generally considered a minor pest. Biological control is much less effective when ants tend to the pest because the ants will actively defend the pineapple mealybug from harm. There are, so far, no good biological controls for ants tending pineapple mealybug, as the major predators of these ants are other ant species that drive the former out of the field. Mechanical/Physical/Cultural Control: Heat treating the pineapple crowns in a water bath at 50°C for 30 minutes rendered them free of Pineapple mealybug wilt-associated virus and made the crowns less desirable for pineapple mealybug colonization. The most successful control of the pineapple mealybug thus far has been through control of the ant populations that tend to the pest. Without the care of ants, the pineapple mealybug becomes much more susceptible to predators and parasitoids, and the effectiveness of biological control increases. Ant bait traps and other ground traps have also been effective.',
           sci_name: 'Dysmicoccus brevipes',
           eng_name: 'Pineapple Mealybug',
@@ -1717,7 +1761,7 @@ Meteor.startup(() => {
           description: 'In life, adult female N. nipae are 3.5 mm long, flattish and oval. They are salmon-pink to dark-red in colour, with distinctive dorsal and marginal white or yellow wax cones which create a satellite appearance. In most species of mealybug, the males, if present, are less conspicuous that the females, but male N. nipae are more numerous than females. Male N. nipae produce small (about 2 mm long) waxy filamentous cocoons or tests on the foliage, which are often present in large numbers. The male tests of N. nipae are more common and more conspicuous than those of many other mealybug species.',
           plant_affected: 'Banana',
           order: 'Hemiptera',
-          classification: 'Pseudococcidae',
+          classification: 'Two or one unit body',
           treatment: 'Management of scale and mealybug insects begins with detection and identification of the pest. Mealybugs can be very small or resemble disease organisms or even plant structures, making detection difficult. Regular monitoring will allow detection of these pests before damage is obvious and will also allow improved control. All plant parts need to be searched, including the undersides of leaves and stems. Inspection of plants prior to introducing them into the landscape, nursery or collection is very important in reducing new infestations of scales. Management can be difficult because of the waxy material mealybugs produce which provides protection from many insecticides. Pruning or washing infested plant parts can be helpful in reducing populations, particularly in cases of small infestations. A brisk wash spray of water can also be helpful in removing mealybugs from plants and reducing the population. Mealybugs are commonly attacked by predators, parasites and diseases which can help manage populations, particularly for long term control. It is important to recognize the presence of beneficial insects and to take steps to conserve them in the environment so they are available to control the pest insects. It is often necessary to manage mealybugs with insecticides so it is important to select appropriate insecticides, timing and application methods to reduce negative impact on the natural enemies but still get maximum control. Contact insecticides commonly provide quick knockdown of the pest but require good coverage and generally repeat applications. The stage most susceptible to contact insecticides is the crawler stage. Horticultural oil and insecticidal soaps also can provide good control, but must be treated like contact insecticides, which require thorough coverage and repeat applications. Systemic insecticides can provide excellent options for scale control and can provide some flexibility in application timing and methods. These insecticides move through the plant and provide an excellent way to expose scale insects to the insecticide when they feed on the plant. It is important not to overuse or misuse insecticides which can lead to numerous problems including insecticide resistance. To avoid insecticide resistance it is critical to rotate among insecticide groups.',
           sci_name: 'Nipaecoccus nipae',
           eng_name: 'Coconut Buff Mealybug',
@@ -1753,7 +1797,7 @@ Meteor.startup(() => {
           description: 'Scale insects vary dramatically in appearance; from very small organisms (1–2 mm) that grow beneath wax covers (some shaped like oyster shells, others like mussel shells), to shiny pearl-like objects (about 5 mm), to creatures covered with mealy wax. Adult female scales are almost always immobile (aside from mealybugs) and permanently attached to the plant they have parasitized. They secrete a waxycoating for defense; this coating causes them to resemble reptilian scales or fish scales, hence their common name.',
           plant_affected: 'Banana',
           order: 'Hemiptera',
-          classification: 'Diaspididae',
+          classification: 'Two or one unit body',
           treatment: 'To get rid of scale insects prune and dispose of infested branches, twigs and leaves. When scale numbers are low they may be rubbed or picked off of plants by hand. Dabbing individual pests with an alcohol-soaked cotton swab or neem-based leaf shine will also work when infestations are light. Commercially available beneficial insects, such as ladybugs and lacewing, are natural predators of the young larval or “crawler” stage. Organic pesticides, like insecticidal soap and d-Limonene can also be used to kill the larvae. However, these products have very little persistence in the environment, so several applications during egg-hatching will be required for effective control. Azamax contains azadirachtin, the key insecticidal ingredient found in neem oil. This concentrated spray is approved for organic use and offers multiple modes of action, making it virtually impossible for pest resistance to develop. Best of all, it’s non-toxic to honey bees and many other beneficial insects. Horticultural oils and other safe, oil-based insecticides work by smothering insects and will control all pest stages, including adults which are protected from most other insecticides by their armor coverings. Fast-acting botanical insecticides should be used as a last resort. Derived from plants which have insecticidal properties, these natural pesticides have fewer harmful side effects than synthetic chemicals and break down more quickly in the environment.',
           sci_name: 'Chrysomphalus aonidium Hemiberlesia lataneae',
           eng_name: 'Scale Insects',
@@ -1790,7 +1834,7 @@ Meteor.startup(() => {
           description: 'Eggs: The eggs are conspicuously yellow. They are laid singly on the undersides of leaves, but a number of eggs may be deposited on the same leaf. Larva: The larva has not been described in detail. It is pale green and clothed with short, silky hairs. The head is black, and heart-shaped in frontal view. As in all hesperiid larvae, there is a conspicuous "neck": the thorax directly behind the head is much narrower than the head. The larva soon becomes covered with a white, waxy powder, a waste product of its metabolism. The full-grown larva reaches a length of about 6 cm. Pupa: The slender pupa is yellow-brown and covered with the same waxy powder as the larva. It reaches a length of 4-6 cm, and has a long proboscis that reaches to the tip of the abdomen and is free from where it leaves the wing sheaths. Adults: Adults are brown on the upper and under side. The wingspan is 5-5.5 cm in the male, 6-6.5 cm in the female. The apex of the forewing is acute and the outer margin straight (slightly convex in the female). The forewing has three conspicuous, pale-yellow, semi-hyaline spots, in space 2, space 3 and cell. The scales of these spots are perpendicular to the wing surface. The rectangular spot in space 2 is the largest. It is partly overlapped by the cell spot, which is also rectangular, but outwardly excavate (rounded in the Moluccas). The spot in space 3 is more or less triangular and isolated.',
           plant_affected: 'Banana',
           order: 'Lepidoptera',
-          classification: 'Hesperiidae',
+          classification: 'Caterpillar-like',
           treatment: 'Natural enemies generally keep populations of E. thrax under control, even in areas where it does not occur naturally. In case of an outbreak, hand-removal of the easily found leaf rolls is the best option for control; however, if this is not possible, chemical treatment directed at the newly-hatched larvae may be effective, but is seldom required.',
           sci_name: 'Erionota thrax',
           eng_name: 'Banana Leaf Roller',
@@ -1828,7 +1872,7 @@ Meteor.startup(() => {
           description: 'Adult lace bugs have beautifully sculptured wings that resemble an intricate, lacy network. There are also lacy extensions at each side on the front part of the body and an expanded, lacy hood that extends over the head. Some species are almost entirely white while others are marked with black or brown. They range in size from 1/8 to 3/16 inch. Nymphs do not have wings but usually have spines on the back.',
           plant_affected: 'Banana',
           order: 'Hemiptera',
-          classification: 'Tingidae',
+          classification: 'Fly-like',
           treatment: 'To manage lace bugs, remove leaflets harboring the insects and destroy them. For chemical method, spraying one these can help: Malathion  50 EC @ 2 ml/lt, Dimethoate  30 EC @1 ml/lt, Methyl demeton 25 EC @1 ml/lt, Phosphamidon 40 SL @1.25 ml/lt, Monocrotophos 36 WSC @1 ml/lt, Methomyl 25 EC @2 ml/lit, 3% Neem oil.',
           sci_name: 'Stephanitis typicus',
           eng_name: 'Lace Bug',
@@ -1845,6 +1889,7 @@ Meteor.startup(() => {
             '/img/pests/LaceBug8.jpg',
             '/img/pests/LaceBug9.jpg',
           ]
+
        },
     //---------------------------DISEASES--------------------------
         {
@@ -2572,9 +2617,12 @@ Meteor.startup(() => {
           eng_name: 'Banana rust, banana leaf rust',
           name: 'Banana Rust',
           image: '/img/diseases/BananaRust.jpg'
+
        }
+       
+            
     ];
 
-    data.forEach(pests => Pests.insert(pests));
+    data.forEach(plant_problem => Plant_Problem.insert(plant_problem));
   }
 });
