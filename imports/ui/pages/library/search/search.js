@@ -4,8 +4,10 @@ import './search.html';
 
 var Entries = new ReactiveVar([]);
 
+var filter = "corn";
+
 function getEntries(searchText) {
-  Meteor.call('getPests', searchText, function(err, searchText) {
+  Meteor.call('getPests', searchText, filter, function(err, searchText, filter) {
     if(err) {
       throw err;
     } else {
@@ -36,7 +38,7 @@ Template.search.events({
 
 Template.search.helpers({
   entries: function() {
-    console.log(Entries.get());
+    // console.log(Entries.get());
     return Entries.get();
   },
 

@@ -13,44 +13,12 @@
 					<div>
 						<h3> Search the library for pests </h3>
 					</div>
-
 					<div class="col-sm-12">
 						{{> advanced_search type="pests"}}
 						<br/><br/>
-						<!-- {{> EasySearch.Input index=pestsIndex attributes=searchAttributes }} -->
 					</div>
 					{{> search}}
 				</center>
-
-				<!-- <br/><br/>
-				{{#EasySearch.IfInputEmpty index=pestsIndex }}
-				<center>
-					<div><h4>For example "Rice"</h4></div>
-				</center>
-				{{else}}
-				<center>
-					<div><h4>Search Results</h4></div>
-				</center>
-				<div class="wrapper">
-					{{#EasySearch.IfSearching index=pestsIndex}}
-					  {{>spinner}}
-					{{/EasySearch.IfSearching}}
-
-			    	<div class="container">
-						{{#EasySearch.Each index=pestsIndex}}		
-							{{#if equals type "Pest"}}
-								{{> individualPest }}
-					    	{{/if}}
-						{{/EasySearch.Each}}
-					</div>
-
-					<div class="container">
-						{{#EasySearch.IfNoResults index=pestsIndex}}
-						  <center><div>No results found!</div></center>
-						{{/EasySearch.IfNoResults}}
-					</div>
-				</div>
-				{{/EasySearch.IfInputEmpty}} -->
 				
 				<div>
 					{{#each getCMS.viewPestType}}
@@ -162,7 +130,7 @@
 					<img src="{{image}}" class="img-thumbnail fixed-image" alt="{{name}}" width="200" height="200"/>
 				</div>
 				<div>
-					<span>{{name}}</span>
+					<div class="truncate">{{name}}</div>
 			  	</div>
 		  	</div>
 		  

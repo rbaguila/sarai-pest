@@ -13,30 +13,35 @@ new Meteor.Pagination(Plant_Problem);
 var ES = new ElasticSearch();
 
 Meteor.methods({
-  getPests: function(searchText) {
+  getPests: function(searchText, filter) {
     var query = {
-			"bool": {
-				"must": [
-					{
-					"bool": {
-						"should": [
-							{"match": {"eng_name": {"query": searchText}}},
-							{"match": {"fil_name": {"query": searchText}}},
-							{"match": {"sci_name": {"query": searchText}}},
-							{"match": {"keywords": {"query": searchText}}},
-						]
-						}
+		"bool": {
+			"must": [
+				{
+				"bool": {
+					"should": [
+						{"match": {"name": {"query": searchText, minimum_should_match: 75}}},
+						{"match": {"eng_name": {"query": searchText, minimum_should_match: 75}}},
+						{"match": {"fil_name": {"query": searchText, minimum_should_match: 75}}},
+						{"match": {"sci_name": {"query": searchText, minimum_should_match: 75}}},
+						{"match": {"keywords": {"query": searchText, minimum_should_match: 75}}},
+						{"match": {"symptoms": {"query": searchText, minimum_should_match: 75}}},
+						{"match": {"description": {"query": searchText, minimum_should_match: 75}}}
+					]
 					}
-				],
-				// "should": [
-				// 	{"match_phrase_prefix": {"eng_name": {"query": searchText}}},
-				// 	{"match_phrase_prefix": {"fil_name": {"query": searchText}}},
-				// 	{"match_phrase_prefix": {"sci_name": {"query": searchText}}},
-				// 	{"match_phrase_prefix": {"symptoms": {"query": searchText}}},
-				// 	{"match_phrase_prefix": {"keywords": {"query": searchText}}},
-				// ]
-			}
-		};  
+				}
+			],
+			"must_not": [
+				{
+				"bool": {
+					"should": [
+						{"match": {"plant_affected": {"query": filter}}}
+					]
+					}
+				}
+			]
+		}
+	}; 
 
     var result = ES.EsClient.search({
       index: "easysearch",
