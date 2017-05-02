@@ -1632,7 +1632,7 @@ Meteor.startup(() => {
             '/img/pests/FruitScarringBeetle3.jpg',
             '/img/pests/FruitScarringBeetle4.jpg',
             '/img/pests/FruitScarringBeetle5.jpg',
-            '/img/pests/FruitScarringBeetle6.png',
+            '/img/pests/FruitScarringBeetle6.jpg',
             '/img/pests/FruitScarringBeetle7.jpg',
           ]
        },
