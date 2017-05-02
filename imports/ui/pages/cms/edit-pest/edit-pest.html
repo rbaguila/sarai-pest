@@ -16,41 +16,62 @@
 	    	<div class="text-center">
 				<button id="addBTN" class="btn btn-success">Add Pest</button>
 			</div>
+			<br/>
     		<ul class="nav nav-tabs nav-justified">
     			{{#each getPestsType}}
-					<li><a data-toggle="tab" href="#{{rewritePestType}}"> {{this}} Pest</a></li>
+    				{{#if equals @index 0}}
+						<li class="active"><a data-toggle="tab" href="#{{rewritePestType}}"> {{this}} Pest</a></li>
+					{{else}}
+						<li><a data-toggle="tab" href="#{{rewritePestType}}"> {{this}} Pest</a></li>
+					{{/if}}
 				{{/each}}
 			</ul>
 
 			<div class="tab-content">
 				{{#each getPestsType}}
-				  	<div id="{{rewritePestType}}" class="tab-pane fade in active">
-					<ul class="list-group">
-					{{#each listPests this}}
-						<li class="list-group-item">
-			    			<div class="media">
-			    				<div class="media-left">
-			    					<img src="{{image}}" class="media-object" style="width:60px">
-			    				</div>
-								<div class="media-body">
-									<h4>{{name}}</h4>
-								</div>
-								<div class="media-right">
-									<div class="btn-group-xs">
-									  {{> button text="edit" color="primary" id=_id}}
-									  {{> button text="remove" color="danger" id=_id }}
+					{{#if equals @index 0}} 
+						<div id="{{rewritePestType}}" class="tab-pane fade in active">
+							<ul class="list-group">
+							{{#each listPests this}}
+								<li class="list-group-item">
+					    			<div class="media">
+					    				<div class="media-left"> <img src="{{image}}" class="media-object" style="width:60px"> </div>
+										<div class="media-body"> <h4>{{name}}</h4> </div>
+										<div class="media-right">
+											<div class="btn-group-xs">
+											  {{> button text="edit" color="primary" id=_id}}
+											  {{> button text="remove" color="danger" id=_id }}
+											</div>
+										</div>
 									</div>
-								</div>
-							</div>
-			    		</li>
-					{{/each}}
-					</ul>
-				</div>
+					    		</li>
+							{{/each}}
+							</ul>
+						</div>
+					{{else}}
+						<div id="{{rewritePestType}}" class="tab-pane fade">
+							<ul class="list-group">
+							{{#each listPests this}}
+								<li class="list-group-item">
+					    			<div class="media">
+					    				<div class="media-left"> <img src="{{image}}" class="media-object" style="width:60px"> </div>
+										<div class="media-body"> <h4>{{name}}</h4> </div>
+										<div class="media-right">
+											<div class="btn-group-xs">
+											  {{> button text="edit" color="primary" id=_id}}
+											  {{> button text="remove" color="danger" id=_id }}
+											</div>
+										</div>
+									</div>
+					    		</li>
+							{{/each}}
+							</ul>
+						</div>
+					{{/if}}
 				{{/each}}
 			</div>
 	    </div>
 	</div>
-	
 </template>
 
 <template name="button">

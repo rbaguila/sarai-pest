@@ -1,14 +1,4 @@
 <template name="pestsLib">
-	<style>
-		.nav-tabs > li {
-		    float:none;
-		    display:inline-block;
-		    zoom:1;
-		}
-		.nav-tabs {
-		    text-align:center;
-		}
-	</style>
 	<div>
 
 		<ul class="nav nav-tabs">
@@ -25,15 +15,14 @@
 					</div>
 
 					<div class="col-sm-12">
-						{{> advanced_search}}
+						{{> advanced_search type="pests"}}
 						<br/><br/>
-						<div class="searchbar">
-							{{> EasySearch.Input index=pestsIndex attributes=searchAttributes }}
-						</div>
+						<!-- {{> EasySearch.Input index=pestsIndex attributes=searchAttributes }} -->
 					</div>
+					{{> search}}
 				</center>
 
-				<br/><br/>
+				<!-- <br/><br/>
 				{{#EasySearch.IfInputEmpty index=pestsIndex }}
 				<center>
 					<div><h4>For example "Rice"</h4></div>
@@ -50,7 +39,7 @@
 			    	<div class="container">
 						{{#EasySearch.Each index=pestsIndex}}		
 							{{#if equals type "Pest"}}
-							    {{> individualPest}}
+								{{> individualPest }}
 					    	{{/if}}
 						{{/EasySearch.Each}}
 					</div>
@@ -61,7 +50,7 @@
 						{{/EasySearch.IfNoResults}}
 					</div>
 				</div>
-				{{/EasySearch.IfInputEmpty}}
+				{{/EasySearch.IfInputEmpty}} -->
 				
 				<div>
 					{{#each getCMS.viewPestType}}
@@ -82,8 +71,8 @@
 					</div>
 
 					<div class="col-sm-12">
-						{{> advanced_search}}
-						<br/><br/>
+						<!-- {{> advanced_search type="diseases"}}
+						<br/><br/> -->
 						<div class="searchbar">
 							{{> EasySearch.Input index=diseasesIndex attributes=searchAttributes }}
 						</div>
@@ -119,8 +108,6 @@
 					</div>
 				</div>
 				{{/EasySearch.IfInputEmpty}}
-				
-				<br/><br/>
 
 				<div>
 					{{#each getCMS.viewPestType}}
@@ -135,7 +122,6 @@
 		</div>
 
     </div>
-
 </template>
 
 <template name="pestPaginate">
@@ -185,22 +171,6 @@
 					View Page
 		 		</a>
 		  	</div>
-		</div>
-	</div>
-</template>
-
-<template name="advanced_search">
-	<button class="btn btn-success" data-toggle="collapse" data-target="#search"> Advanced Search </button>
-
-	<div id="search" class="collapse">
-		<div class="container well">
-		<form>
-		{{#each getCMS.viewPestType}}
-			<label class="checkbox-inline">
-				<input type="checkbox" value="{{this}}">{{this}}
-			</label>
-		{{/each}}
-		</form>
 		</div>
 	</div>
 </template>

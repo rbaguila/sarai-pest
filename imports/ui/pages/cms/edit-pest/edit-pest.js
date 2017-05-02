@@ -28,10 +28,8 @@ Template.editPestCMS.helpers({
 		return this.replace(/[\s,]+/g, '');
 	},
 
-	firstType(){
-		count++;
-		if(count>1) return false;
-		else return true;
+	equals: function(v1, v2) {
+		return (v1 === v2);
 	},
 });
 

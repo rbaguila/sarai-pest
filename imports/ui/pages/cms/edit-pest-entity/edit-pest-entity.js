@@ -9,12 +9,17 @@ Template.entityPage.onCreated(function () {
 
 Template.pestEntity.onRendered(function () {
 	 $('[data-toggle="tooltip"]').tooltip(); 
+	 Session.set('keywords', Plant_Problem.findOne({_id: FlowRouter.current().params._id}).keywords);
+	 console.log(Session.get('keywords'));
 });
 
 Template.pestEntity.helpers({
 	pest(){
 		return Plant_Problem.findOne({_id: FlowRouter.current().params._id});
 	},
+	returnKeywords(){
+		return Session.get('keywords');
+	}
 });
 
 Template.pestEntity.events({
@@ -36,11 +41,12 @@ Template.pestEntity.events({
 			engName : $("#engName").val(),
 			sciName : $("#sciName").val(),
 			image : imageURL,
+			keywords : Session.get('keywords'),
 			// for ENGLISH
 			treatment : $("#treatment").val(),
 			classification : $("#classification").val(),
 			order : $("#order").val(),
-			plantAffected : $("#plantAffected").val(),
+			plantAffected : $("#plantAffected").val()==""? "Uncategorized" : $("#plantAffected").val(),
 			description : $("#description").val(),
 			symptoms : $("#symptoms").val(),
 			stageThreatening : $("#stageThreatening").val(),
@@ -78,46 +84,41 @@ Template.pestEntity.events({
 
 	'click #generateKeyword': function(event) {
 		var str = $("#description").val() + $("#symptoms").val();
-		var keywords = extractKeyword(str);
-		var id = FlowRouter.current().params._id;
+		var newKeywords = extractKeyword(str);
+		var keywords = Session.get('keywords');
 
-		// UPDATES THE DATABASE
-		Meteor.call('pests.editKeyword', id, keywords, (error) => {
-	      if (error) {
-	        alert(error.error);
-	      } else {
-			FlowRouter.go('/edit-pest/' + id);
-	      }
-	    });
+		for(var i=0; i<newKeywords.length; i++){
+			if( !keywords.includes(newKeywords[i]) ) 
+				keywords.push(newKeywords[i]);
+		}
+		Session.set('keywords', keywords);
 	},	
+
+	'click .addKeyword': function(event) {
+		var str = $("#newKeyword").val();
+		var keywords = Session.get('keywords');
+		var found = false;
+
+		if(keywords.includes(str)) found = true;
+		if(!found) keywords.push(str);
+
+		Session.set('keywords', keywords);
+		$('#newKeyword').val('');
+	},
 });
 
-var name = "";
 Template.keywordButton.events({
 	'click .remove': function(event, template) {
-		$('#deleteKeyword').modal('show');
-		name = this.id;
-	},
-
-	'click .confirmDelete' : function(event) {
-		$('#deleteKeyword').modal('hide');
 		var count = 0;
-		var keyword = Plant_Problem.findOne({_id: FlowRouter.current().params._id}).keywords;
+		var keyword = Session.get('keywords');
 		var newKeywords = [];
+
 		for(var i=0; i<keyword.length; i++){
-			if( !(keyword[i] == name) ) newKeywords[count++] = keyword[i]
+			if( !(keyword[i] == this.name) ) newKeywords[count++] = keyword[i];
 		}
 
-		var id = FlowRouter.current().params._id;
-
-		// UPDATES THE DATABASE
-		Meteor.call('pests.editKeyword', id, newKeywords, (error) => {
-	      if (error) {
-	        alert(error.error);
-	      } else {
-			FlowRouter.go('/edit-pest/' + id);
-	      }
-	    });
+		Session.set('keywords', newKeywords);
+		console.log(Session.get('keywords'));
 	},
 });
 
@@ -205,7 +206,7 @@ function removeStopwords(words){
  	// var lines = data.split('\n'); //split on new lines
  	// console.log(lines);
 
- 	var stopwords = "a about above after again against all am an and any are aren't as at be because been before being below between both but by can't cannot could couldn't did didn't do does doesn't doing don't down during each few for from further had hadn't has hasn't have haven't having he he'd he'll he's her here here's hers herself him himself his how how's i i'd i'll i'm i've if in into is isn't it it's its itself let's mm cm me more most mustn't my myself no nor not of off on once only or other ought our ours ourselves out over own same shan't she she'd she'll she's should shouldn't so some such than that that's the their theirs them themselves then there there's these they they'd they'll they're they've this those through to too under until up very was wasn't we we'd we'll we're we've were weren't what what's when when's where where's which while who who's whom why why's with won't would wouldn't you you'd you'll you're you've your yours yourself yourselves";
+ 	var stopwords = "a about above after again against all am an and any are aren't as at be because been before being below between both but by can't cannot could couldn't did didn't do does doesn't doing don't down during each few for from further had hadn't has hasn't have haven't having he he'd he'll he's her here here's hers herself him himself his how how's i i'd i'll i'm i've if in into is isn't it it's its itself let's mm cm me more most mustn't my myself no nor not of off on once only or other ought our ours ourselves out over own same shan't she she'd she'll she's should shouldn't so some such than that that's the their theirs them themselves then there there's these they they'd they'll they're they've this those through to too under until up very was wasn't we we'd we'll we're we've were weren't what what's when when's where where's which while who who's whom why why's with won't would wouldn't you you'd you'll you're you've your yours yourself yourselves a b c d e f g h j k l m n o p q r s t u v w x y z";
  	stopwords = stopwords.split(" ");
 
  	var wordsIncluded = [];

@@ -1,4 +1,4 @@
-import { Plant_Problem, PestsIndex, DiseasesIndex } from '/imports/api/plant_problem/plant_problem.js';
+import { Plant_Problem, PestsIndex, DiseasesIndex} from '/imports/api/plant_problem/plant_problem.js';
 import { CMS } from '/imports/api/cms/cms.js';
 import { Meteor } from 'meteor/meteor';
 import './pest-library.html';
@@ -13,7 +13,6 @@ Template.pestsLib.onRendered(function() {
 });
 
 Template.pestsLib.helpers({
-
 	pestsIndex(){
 		return PestsIndex
 	},
@@ -33,12 +32,6 @@ Template.pestsLib.helpers({
 		return (v1 === v2);
 	},
 
-	getCMS(){
-		return CMS.findOne({info:'finalLib'});
-	},
-});
-
-Template.advanced_search.helpers({
 	getCMS(){
 		return CMS.findOne({info:'finalLib'});
 	},

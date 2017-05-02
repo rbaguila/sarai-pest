@@ -1,0 +1,29 @@
+<template name="search">
+  <div class='searchbar'>
+    <input type='text' placeholder="Search" id="search-box"/>
+  </div>
+  {{#each entries}}
+      {{#if equals type "Pest"}}
+        <h6>{{_id}}</h6>
+        {{> individualPest}}
+      {{/if}}
+    {{else}}
+    <center><h4>For example "Rice"</h4></center>
+  {{/each}}
+</template>
+
+<template name="advanced_search">
+  <button class="btn btn-success" data-toggle="collapse" data-target="#search{{type}}"> Advanced Search </button>
+
+  <div id="search{{type}}" class="collapse">
+    <div class="container well">
+    <form>
+    {{#each getCMS.viewPestType}}
+      <label class="checkbox-inline">
+        <input class="filter" type="checkbox" value="{{this}}">{{this}}
+      </label>
+    {{/each}}
+    </form>
+    </div>
+  </div>
+</template>
