@@ -1632,7 +1632,7 @@ Meteor.startup(() => {
             '/img/pests/FruitScarringBeetle3.jpg',
             '/img/pests/FruitScarringBeetle4.jpg',
             '/img/pests/FruitScarringBeetle5.jpg',
-            '/img/pests/FruitScarringBeetle6.png',
+            '/img/pests/FruitScarringBeetle6.jpg',
             '/img/pests/FruitScarringBeetle7.jpg',
           ]
        },
@@ -1917,7 +1917,10 @@ Meteor.startup(() => {
           sci_name: 'Xanthomonas oryzae pv. oryzae',
           eng_name: 'Bacterial Leaf Blight',
           name: 'Bacterial Leaf Blight',
-          image: '/img/diseases/BacterialLeafBlight.jpg'
+          image: '/img/diseases/BacterialLeafBlight.jpg',
+          image_gallery: [
+            '/img/diseases/BacterialLeafBlight.jpg',
+          ]
        },
 
         {
@@ -1945,7 +1948,10 @@ Meteor.startup(() => {
           sci_name: 'Xanthomonas oryzae pv. oryzicola',
           eng_name: 'Bacterial Leaf Streak',
           name: 'Bacterial Leaf Streak',
-          image: '/img/diseases/BacterialLeafStreak.jpg'
+          image: '/img/diseases/BacterialLeafStreak.jpg',
+          image_gallery: [
+            '/img/diseases/BacterialLeafStreak.jpg',
+          ]
        },
 
         {
@@ -1974,7 +1980,10 @@ Meteor.startup(() => {
           sci_name: 'Cercospora oryzae',
           eng_name: 'Narrow Brown Spot, Narrow Leaf Spot, Cercospora Leaf Spot',
           name: 'Narrow Leaf Spot',
-          image: '/img/diseases/NarrowLeafSpot.jpg'
+          image: '/img/diseases/NarrowLeafSpot.jpg',
+          image_gallery: [
+            '/img/diseases/NarrowLeafSpot.jpg',
+          ]
        },
 
         {
@@ -2002,7 +2011,10 @@ Meteor.startup(() => {
           sci_name: 'Magnaporthe oryzae',
           eng_name: 'Rice Blast',
           name: 'Rice Blast',
-          image: '/img/diseases/RiceBlast.jpg'
+          image: '/img/diseases/RiceBlast.jpg',
+          image_gallery: [
+            '/img/diseases/RiceBlast.jpg',
+          ]
        },
 
         {
@@ -2030,7 +2042,10 @@ Meteor.startup(() => {
           sci_name: 'Rice tungro bacilliform virus',
           eng_name: 'Tungro',
           name: 'Tungro',
-          image: '/img/diseases/Tungro.jpg'
+          image: '/img/diseases/Tungro.jpg',
+          image_gallery: [
+            '/img/diseases/Tungro.jpg',
+          ]
        },
 
         {
@@ -2058,7 +2073,10 @@ Meteor.startup(() => {
           sci_name: 'Fusarium moniliforme/Gibberella fujikuroi',
           eng_name: 'Bakanae',
           name: 'Bakanae',
-          image: '/img/diseases/Bakanae.jpg'
+          image: '/img/diseases/Bakanae.jpg',
+          image_gallery: [
+            '/img/diseases/Bakanae.jpg',
+          ]
        },
 
         {
@@ -2086,7 +2104,10 @@ Meteor.startup(() => {
           sci_name: 'Rhizoctonia solani',
           eng_name: 'Rice Sheath Blight',
           name: 'Sheath Blight',
-          image: '/img/diseases/SheathBlight.jpg'
+          image: '/img/diseases/SheathBlight.jpg',
+          image_gallery: [
+            '/img/diseases/SheathBlight.jpg',
+          ]
        },
 
         {
@@ -2114,7 +2135,10 @@ Meteor.startup(() => {
           sci_name: 'Helminthosporium oryzae/Cochliobolus miyabeanus',
           eng_name: 'Helminthosporium Leaf Spot',
           name: 'Brown Spot',
-          image: '/img/diseases/BrownSpot.jpg'
+          image: '/img/diseases/BrownSpot.jpg',
+          image_gallery: [
+            '/img/diseases/BrownSpot.jpg',
+          ]
        },
 
         {
@@ -2142,7 +2166,10 @@ Meteor.startup(() => {
           sci_name: 'Sarocladium oryzae',
           eng_name: 'Sheath Rot',
           name: 'Sheath Rot',
-          image: '/img/diseases/SheathRot.jpg'
+          image: '/img/diseases/SheathRot.jpg',
+          image_gallery: [
+            '/img/diseases/SheathRot.jpg',
+          ]
        },
 
         {
@@ -2170,7 +2197,10 @@ Meteor.startup(() => {
           sci_name: 'Rhizoctonia solani',
           eng_name: 'Banded Leaf and Sheath Blight',
           name: 'Banded Leaf and Sheath Blight',
-          image: '/img/diseases/BandedLeaf.jpg'
+          image: '/img/diseases/BandedLeaf.jpg',
+          image_gallery: [
+            '/img/diseases/BandedLeaf.jpg',
+          ]
        },
 
         {
@@ -2198,7 +2228,10 @@ Meteor.startup(() => {
           sci_name: 'Puccinia polysora',
           eng_name: 'Corn Rust',
           name: 'Corn Rust',
-          image: '/img/diseases/CornRust.jpg'
+          image: '/img/diseases/CornRust.jpg',
+          image_gallery: [
+            '/img/diseases/CornRust.jpg',
+          ]
        },
 
         {
@@ -2226,7 +2259,10 @@ Meteor.startup(() => {
           sci_name: 'Peronosclerospora philippinensis',
           eng_name: 'Downy Mildew',
           name: 'Downy Mildew',
-          image: '/img/diseases/DownyMildew.jpg'
+          image: '/img/diseases/DownyMildew.jpg',
+          image_gallery: [
+            '/img/diseases/DownyMildew.jpg',
+          ]
        },
 
         {
@@ -2254,7 +2290,10 @@ Meteor.startup(() => {
           sci_name: 'Helminthosporium maydis',
           eng_name: 'Maydis Leaf Blight',
           name: 'Maydis Leaf Blight',
-          image: '/img/diseases/MaydisLeafBlight.jpg'
+          image: '/img/diseases/MaydisLeafBlight.jpg',
+          image_gallery: [
+            '/img/diseases/MaydisLeafBlight.jpg',
+          ]
        },
 
         {
@@ -2282,7 +2321,10 @@ Meteor.startup(() => {
           sci_name: 'Cercospora zeae-maydis',
           eng_name: 'Grey Leaf Spot',
           name: 'Grey Leaf Spot',
-          image: '/img/diseases/GreyLeafSpot.jpg'
+          image: '/img/diseases/GreyLeafSpot.jpg',
+          image_gallery: [
+            '/img/diseases/GreyLeafSpot.jpg',
+          ]
        },
 
         {
@@ -2310,7 +2352,10 @@ Meteor.startup(() => {
           sci_name: 'Ustilago maydis',
           eng_name: 'Corn Smut',
           name: 'Corn Smut',
-          image: '/img/diseases/CornSmut.jpg'
+          image: '/img/diseases/CornSmut.jpg',
+          image_gallery: [
+            '/img/diseases/CornSmut.jpg',
+          ]
        },
 
         {
@@ -2338,7 +2383,10 @@ Meteor.startup(() => {
           sci_name: 'Stenocarpella macrospora',
           eng_name: 'Stalk Rot',
           name: 'Stalk Rot',
-          image: '/img/diseases/StalkRot.jpg'
+          image: '/img/diseases/StalkRot.jpg',
+          image_gallery: [
+            '/img/diseases/StalkRot.jpg',
+          ]
        },
 
         {
@@ -2365,7 +2413,15 @@ Meteor.startup(() => {
           sci_name: 'Phyllosticta maculata/Phyllosticta cavendishii/Phyllosticta musarum',
           eng_name: 'Banana Freckle',
           name: 'Banana Freckle',
-          image: '/img/diseases/BananaFreckle.jpg'
+          image: '/img/diseases/BananaFreckle.jpg',
+          image_gallery: [
+            '/img/diseases/BananaFreckle.jpg',
+            '/img/diseases/BananaFreckle2.jpg',
+            '/img/diseases/BananaFreckle3.jpg',
+            '/img/diseases/BananaFreckle4.jpg',
+            '/img/diseases/BananaFreckle5.jpg',
+            '/img/diseases/BananaFreckle6.jpg',
+          ]
        },
 
         {
@@ -2393,7 +2449,12 @@ Meteor.startup(() => {
           sci_name: 'Phyllachora musicola',
           eng_name: 'Banana black cross, back cross disease, tar spot',
           name: 'Banana Black Cross',
-          image: '/img/diseases/BananaBlackCross.jpg'
+          image: '/img/diseases/BananaBlackCross.jpg',
+          image_gallery: [
+            '/img/diseases/BananaBlackCross.jpg',
+            '/img/diseases/BananaBlackCross2.jpg',
+            '/img/diseases/BananaBlackCross3.jpg',
+          ]
        },
 
         {
@@ -2421,7 +2482,19 @@ Meteor.startup(() => {
           sci_name: 'Mycosphaerella fijiensis/Paracercospora fijiensis',
           eng_name: 'Black Sigatoka, black leaf streak',
           name: 'Black Sigatoka',
-          image: '/img/diseases/BlackSigatoka.jpg'
+          image: '/img/diseases/BlackSigatoka.jpg',
+          image_gallery: [
+            '/img/diseases/BlackSigatoka.jpg',
+            '/img/diseases/BlackSigatoka2.jpg',
+            '/img/diseases/BlackSigatoka3.jpg',
+            '/img/diseases/BlackSigatoka4.jpg',
+            '/img/diseases/BlackSigatoka5.jpg',
+            '/img/diseases/BlackSigatoka6.jpg',
+            '/img/diseases/BlackSigatoka7.jpg',
+            '/img/diseases/BlackSigatoka8.jpg',
+            '/img/diseases/BlackSigatoka9.jpg',
+            '/img/diseases/BlackSigatoka10.jpg',
+          ]
        },
 
         {
@@ -2449,7 +2522,21 @@ Meteor.startup(() => {
           sci_name: 'Cucumber mosaic cucumovirus',
           eng_name: 'Banana mosaic, cucumber mosaic, infectious chlorosis',
           name: 'Bract Mosaic',
-          image: '/img/diseases/BractMosaic.jpg'
+          image: '/img/diseases/BractMosaic.jpg',
+          image_gallery: [
+            '/img/diseases/BractMosaic.jpg',
+            '/img/diseases/BractMosaic2.jpg',
+            '/img/diseases/BractMosaic3.jpg',
+            '/img/diseases/BractMosaic4.jpg',
+            '/img/diseases/BractMosaic5.jpg',
+            '/img/diseases/BractMosaic6.jpg',
+            '/img/diseases/BractMosaic7.jpg',
+            '/img/diseases/BractMosaic8.jpg',
+            '/img/diseases/BractMosaic9.jpg',
+            '/img/diseases/BractMosaic10.jpg',
+            '/img/diseases/BractMosaic11.jpg',
+            '/img/diseases/BractMosaic12.jpg',
+          ]
        },
 
         {
@@ -2477,7 +2564,19 @@ Meteor.startup(() => {
           sci_name: 'Banana bunchy top nanavirus',
           eng_name: 'Banana bunchy top',
           name: 'Bunchy Top',
-          image: '/img/diseases/BunchyTop.jpg'
+          image: '/img/diseases/BunchyTop.jpg',
+          image_gallery: [
+            '/img/diseases/BunchyTop.jpg',
+            '/img/diseases/BunchyTop2.jpg',
+            '/img/diseases/BunchyTop3.jpg',
+            '/img/diseases/BunchyTop4.jpg',
+            '/img/diseases/BunchyTop5.jpg',
+            '/img/diseases/BunchyTop6.jpg',
+            '/img/diseases/BunchyTop7.jpg',
+            '/img/diseases/BunchyTop8.jpg',
+            '/img/diseases/BunchyTop9.jpg',
+            '/img/diseases/BunchyTop10.jpg',
+          ]
        },
 
         {
@@ -2505,7 +2604,21 @@ Meteor.startup(() => {
           sci_name: 'Cordana musae',
           eng_name: 'Banana (Cordana) leaf spot, banana diamond leaf spot',
           name: 'Cordana Leaf Spot',
-          image: '/img/diseases/CordanaLeafSpot.jpg'
+          image: '/img/diseases/CordanaLeafSpot.jpg',
+          image_gallery: [
+            '/img/diseases/CordanaLeafSpot.jpg',
+            '/img/diseases/CordanaLeafSpot2.jpg',
+            '/img/diseases/CordanaLeafSpot3.jpg',
+            '/img/diseases/CordanaLeafSpot4.jpg',
+            '/img/diseases/CordanaLeafSpot5.jpg',
+            '/img/diseases/CordanaLeafSpot6.jpg',
+            '/img/diseases/CordanaLeafSpot7.jpg',
+            '/img/diseases/CordanaLeafSpot8.jpg',
+            '/img/diseases/CordanaLeafSpot9.jpg',
+            '/img/diseases/CordanaLeafSpot10.jpg',
+            '/img/diseases/CordanaLeafSpot11.jpg',
+            '/img/diseases/CordanaLeafSpot12.jpg',
+          ]
        },
 
         {
@@ -2533,7 +2646,21 @@ Meteor.startup(() => {
           sci_name: 'Fusarium oxysporum f.sp. cubense',
           eng_name: 'Panama disease of banana, Fusarium wilt of banana',
           name: 'Fusarium Wilt',
-          image: '/img/diseases/FusariumWilt.jpg'
+          image: '/img/diseases/FusariumWilt.jpg',
+          image_gallery: [
+            '/img/diseases/FusariumWilt.jpg',
+            '/img/diseases/FusariumWilt2.jpg',
+            '/img/diseases/FusariumWilt3.jpg',
+            '/img/diseases/FusariumWilt4.jpg',
+            '/img/diseases/FusariumWilt5.jpg',
+            '/img/diseases/FusariumWilt6.jpg',
+            '/img/diseases/FusariumWilt7.jpg',
+            '/img/diseases/FusariumWilt8.jpg',
+            '/img/diseases/FusariumWilt9.jpg',
+            '/img/diseases/FusariumWilt10.jpg',
+            '/img/diseases/FusariumWilt11.jpg',
+            '/img/diseases/FusariumWilt12.jpg',
+          ]
         },
         {
           type: 'Disease',
@@ -2560,7 +2687,15 @@ Meteor.startup(() => {
           sci_name: 'Banana streak badnavirus',
           eng_name: 'Banana streak, banana streak disease',
           name: 'Banana Streak',
-          image: '/img/diseases/BananaStreak.jpg'
+          image: '/img/diseases/BananaStreak.jpg',
+          image_gallery: [
+            '/img/diseases/BananaStreak.jpg',
+            '/img/diseases/BananaStreak2.jpg',
+            '/img/diseases/BananaStreak3.jpg',
+            '/img/diseases/BananaStreak4.jpg',
+            '/img/diseases/BananaStreak5.jpg',
+            '/img/diseases/BananaStreak6.jpg',
+          ]
        },
 
         {
@@ -2588,7 +2723,15 @@ Meteor.startup(() => {
           sci_name: 'Mycosphaerella musicola',
           eng_name: 'Sigatoka leaf spot, Yellow Sigatoka',
           name: 'Yellow Sigatoka',
-          image: '/img/diseases/YellowSigatoka.jpg'
+          image: '/img/diseases/YellowSigatoka.jpg',
+          image_gallery: [
+            '/img/diseases/YellowSigatoka.jpg',
+            '/img/diseases/YellowSigatoka2.jpg',
+            '/img/diseases/YellowSigatoka3.jpg',
+            '/img/diseases/YellowSigatoka4.jpg',
+            '/img/diseases/YellowSigatoka5.jpg',
+            '/img/diseases/YellowSigatoka6.jpg',
+          ]
        },
 
         {
@@ -2616,8 +2759,15 @@ Meteor.startup(() => {
           sci_name: 'Uredo musae',
           eng_name: 'Banana rust, banana leaf rust',
           name: 'Banana Rust',
-          image: '/img/diseases/BananaRust.jpg'
-
+          image: '/img/diseases/BananaRust.jpg',
+          image_gallery: [
+            '/img/diseases/BananaRust.jpg',
+            '/img/diseases/BananaRust2.jpg',
+            '/img/diseases/BananaRust3.jpg',
+            '/img/diseases/BananaRust4.jpg',
+            '/img/diseases/BananaRust5.jpg',
+            '/img/diseases/BananaRust6.jpg',
+          ]
        }
        
             

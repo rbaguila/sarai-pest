@@ -19,6 +19,7 @@
 	<script>
 		function choosePest() {
 			document.getElementById('diseaseDiv').style.display = 'none';
+			$('[name="classType"]').attr('checked', false);
 			var x = document.getElementById('pestDiv');
 			if (x.style.display === 'none') {
 				x.style.display = 'block';
@@ -29,6 +30,7 @@
 
 		function chooseDisease() {
 			document.getElementById('pestDiv').style.display = 'none';
+			$('[name="classType"]').attr('checked', false);
 			var x = document.getElementById('diseaseDiv');
 			if (x.style.display === 'none') {
 				x.style.display = 'block';
@@ -43,7 +45,7 @@
 		<div class="tab-content">
 			
 			<div id="image" class="tab-pane fade in active">
-				<br/><br/><br/><br/><br/>
+				<br/><!-- <br/><br/><br/><br/> -->
 				<!-- Ontology-based -->
 				<center>
 					<div class="table-responsive">
@@ -53,9 +55,9 @@
 									<td><h4>Plant Problem</h4></td>
 								</tr>
 								<tr>
-									<td><input type="radio" name="radiopd" id="radioPest" onchange="choosePest()">Pest</td>
+									<td><input type="radio" name="radiopd" class= "probType" id="Pest" onchange="choosePest()">Pest</td>
 									<td></td>
-									<td><input type="radio" name="radiopd" id="radioDisease" onchange="chooseDisease()">Disease</td>
+									<td><input type="radio" name="radiopd" class= "probType" id="Disease" onchange="chooseDisease()">Disease</td>
 								</tr>
 								<tr>
 									<td><br/></td>
@@ -64,10 +66,10 @@
 									<td><h4>Type of Crop Affected</h4></td>
 								</tr>
 								<tr>
-									<td><input type="checkbox" value="" id="checkRice">Rice</td>
-									<td><input type="checkbox" value="" id="checkCorn">Corn</td>
+									<td><input type="checkbox" name="cropAffected" value="" id="Rice">Rice</td>
+									<td><input type="checkbox" name="cropAffected" value="" id="Corn">Corn</td>
 									<td></td>
-									<td><input type="checkbox" value="" id="checkBanana">Banana</td>
+									<td><input type="checkbox" name="cropAffected" value="" id="Banana">Banana</td>
 								</tr>
 							</tbody>
 						</table>
@@ -84,14 +86,14 @@
 									<td></td>
 								</tr>
 								<tr>
-									<td><input type="checkbox" value="" id="checkFly">Fly-like</td>
-									<td><input type="checkbox" value="" id="checkCaterpillar">Caterpillar-like</td>
-									<td><input type="checkbox" value="" id="checkMaggot">Maggot</td>
+									<td><input type="radio" name="classType" value="" id="Fly-like">Fly-like</td>
+									<td><input type="radio" name="classType" value="" id="Caterpillar-like">Caterpillar-like</td>
+									<td><input type="radio" name="classType" value="" id="Maggot">Maggot</td>
 								</tr>
 								<tr>
-									<td><input type="checkbox" value="" id="checkBeetle">Beetle-like</td>
-									<td><input type="checkbox" value="" id="checkMoth">Moth-like</td>
-									<td><input type="checkbox" value="" id="checkUnitBody">Two or one unit body</td>
+									<td><input type="radio" name="classType" value="" id="Beetle-like">Beetle-like</td>
+									<td><input type="radio" name="classType" value="" id="Moth-like">Moth-like</td>
+									<td><input type="radio" name="classType" value="" id="Two or one unit body">Two or one unit body</td>
 								</tr>
 							</tbody>
 						</table>
@@ -108,17 +110,16 @@
 									<td></td>
 								</tr>
 								<tr>
-									<td><input type="checkbox" value="" id="checkFungal">Fungal</td>
-									<td><input type="checkbox" value="" id="checkBacterial">Bacterial</td>
-									<td><input type="checkbox" value="" id="checkViral">Viral</td>
+									<td><input type="radio" name="classType" value="" id="Fungal">Fungal</td>
+									<td><input type="radio" name="classType" value="" id="Bacterial">Bacterial</td>
+									<td><input type="radio" name="classType" value="" id="Viral">Viral</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</center>
 
-				
-				<br/>
+				<!-- <br/> -->
 				<br/>
 				<!-- Image Processing -->
 				<!-- Upload Image Here -->
@@ -145,6 +146,14 @@
 			</div>
 			
 		</div>
+
+		{{#if showResult}}
+			<div class="container">
+				{{#each displayInitial}}
+			    	{{> individualPest}}
+			    {{/each}}
+		    </div>
+		{{/if}}
 
 		<div>
 			{{#each getCMS.viewType}}

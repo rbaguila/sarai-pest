@@ -32,6 +32,7 @@ session
 easy:search
 sacha:spin
 horka:swipebox
+reactive-dict
 tomi:upload-server
 tomi:upload-jquery
 kurounin:pagination
