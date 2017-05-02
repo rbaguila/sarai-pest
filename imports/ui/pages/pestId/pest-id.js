@@ -89,7 +89,7 @@ Template.pestId.helpers({
 		/*currentType = Session.get("currentType");
 		cropAffected = Session.get("cropAffected");
 		classType = Session.get("classType");*/
-		return Pests.find({'type': Template.instance().templateDict.get("currentType"), 'plant_affected': Template.instance().templateDict.get("cropAffected"), 'classification': Template.instance().templateDict.get("classType")}, {sort: {name: 1}});
+		return Plant_Problem.find({'type': Template.instance().templateDict.get("currentType"), 'plant_affected': Template.instance().templateDict.get("cropAffected"), 'classification': Template.instance().templateDict.get("classType")}, {sort: {name: 1}});
 	},
 
 	showResult() {
@@ -109,19 +109,19 @@ Template.pestId.events({
 		template.templateDict.set("currentType", currentType);
 		cropAffected = template.templateDict.get("cropAffected");
 		if(currentType == "Pest"){
-			template.templateDict.set("classType", "");
+			template.templateDict.set("classType", "Fly-like");
 			classType = template.templateDict.get("classType");
 		}
 		else{	
 			template.templateDict.set("classType", "Fungal");
 			classType = template.templateDict.get("classType");
 		}
-		if(currentType == "Pest" && (cropAffected == "" || (classType == "Fungal" || classType == "Bacterial" || classType == "Viral"))){
+		if(currentType == "Pest" && cropAffected == ""){ //|| (classType == "Fungal" || classType == "Bacterial" || classType == "Viral"))){
 			//Session.set("currentType", "Pest");
 			template.templateDict.set("cropAffected", "Rice");
 			console.log("pes");
 		}
-		else if(currentType == "Disease" && classType == "" && cropAffected == ""){
+		else if(currentType == "Disease" && cropAffected == ""){
 			//Session.set("currentType", "Disease");
 			template.templateDict.set("cropAffected", "Rice");
 			console.log("dis");
@@ -191,7 +191,7 @@ Template.pestId.events({
 		template.templateDict.set("currentType", currentType);
 		template.templateDict.set("cropAffected", cropAffected);
 		if(currentType == "Pest"){
-			template.templateDict.set("classType", "");
+			template.templateDict.set("classType", classType);
 		}
 		else{
 			template.templateDict.set("classType", classType);
