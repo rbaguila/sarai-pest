@@ -89,7 +89,7 @@ Template.pestId.helpers({
 		/*currentType = Session.get("currentType");
 		cropAffected = Session.get("cropAffected");
 		classType = Session.get("classType");*/
-		return Pests.find({'type': Template.instance().templateDict.get("currentType"), 'plant_affected': Template.instance().templateDict.get("cropAffected"), 'classification': Template.instance().templateDict.get("classType")}, {sort: {name: 1}});
+		return Plant_Problem.find({'type': Template.instance().templateDict.get("currentType"), 'plant_affected': Template.instance().templateDict.get("cropAffected"), 'classification': Template.instance().templateDict.get("classType")}, {sort: {name: 1}});
 	},
 
 	showResult() {
@@ -109,7 +109,7 @@ Template.pestId.events({
 		template.templateDict.set("currentType", currentType);
 		cropAffected = template.templateDict.get("cropAffected");
 		if(currentType == "Pest"){
-			template.templateDict.set("classType", "");
+			template.templateDict.set("classType", "Fly-like");
 			classType = template.templateDict.get("classType");
 		}
 		else{	
@@ -190,12 +190,9 @@ Template.pestId.events({
 		//console.log(Session.get("classType"));
 		template.templateDict.set("currentType", currentType);
 		template.templateDict.set("cropAffected", cropAffected);
-		if(currentType == "Pest"){
-			template.templateDict.set("classType", "");
-		}
-		else{
-			template.templateDict.set("classType", classType);
-		}
+		
+		template.templateDict.set("classType", classType);
+	
 		template.templateDict.set("showResult", true);
 		
 		console.log(template.templateDict.get("currentType"));
