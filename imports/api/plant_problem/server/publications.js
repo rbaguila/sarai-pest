@@ -10,6 +10,7 @@ Meteor.publish('plant_problem.all', function () {
 // for PAGINATION
 new Meteor.Pagination(Plant_Problem);
 
+// for ELASTICSEARCH
 var ES = new ElasticSearch();
 
 Meteor.methods({

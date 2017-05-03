@@ -8,31 +8,6 @@ export const PestsIndex = new Index({
   collection: Plant_Problem,
   fields: ['eng_name','fil_name','sci_name','symptoms'],
   engine: new ElasticSearchEngine({
-  	/*query: (searchString) => {
-		query = {
-			"bool": {
-				"must": [
-					{
-					"bool": {
-						"should": [
-							{"match": {"eng_name": {"query": searchString}}},
-							{"match": {"fil_name": {"query": searchString}}},
-							{"match": {"sci_name": {"query": searchString}}},
-							{"match": {"symptoms": {"query": searchString}}}
-						]
-						}
-					}
-				],
-				"should": [
-					{"match_phrase_prefix": {"eng_name": {"query": searchString}}},
-					{"match_phrase_prefix": {"fil_name": {"query": searchString}}},
-					{"match_phrase_prefix": {"sci_name": {"query": searchString}}},
-					{"match_phrase_prefix": {"symptoms": {"query": searchString}}},
-				]
-			}
-		};          	
-		return query;                                                                                                            
-	},*/
 	body: () => { }
   }),
 });

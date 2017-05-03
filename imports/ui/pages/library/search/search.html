@@ -4,7 +4,6 @@
   </div>
   {{#each entries}}
       {{#if equals type "Pest"}}
-        <h6>{{_id}}</h6>
         {{> individualPest}}
       {{/if}}
     {{else}}
@@ -20,7 +19,7 @@
     <form>
     {{#each getCMS.viewPestType}}
       <label class="checkbox-inline">
-        <input class="filter" type="checkbox" value="{{this}}">{{this}}
+        <input type="checkbox" name="checkbox" value="{{this}}">{{this}}
       </label>
     {{/each}}
     </form>
