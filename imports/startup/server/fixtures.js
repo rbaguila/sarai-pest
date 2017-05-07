@@ -6,6 +6,7 @@ import { Plant_Problem } from '../../api/plant_problem/plant_problem.js';
 import { CMS } from '../../api/cms/cms.js';
 
 Meteor.startup(() => {
+
   // if the Links collection is empty
   if (Links.find().count() === 0) {
     const data = [
