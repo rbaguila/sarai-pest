@@ -213,7 +213,7 @@ Template.pestId.helpers({
 						success: function(result){
 							Session.set("spinner", false);
 							Session.set("data",result.data);
-							Session.set("showOBS", false);
+							//Session.set("showOBS", false);      //Disable showing of ontology-based search/identification
 							console.log(result.data);		
 						},
 						error: function(error){
