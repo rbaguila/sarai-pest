@@ -12,20 +12,22 @@ var classType = "";
 Template.pestId.onCreated(function () {
 	Meteor.subscribe('plant_problem.all');
 	Meteor.subscribe('cms.all');
-	this.templateDict = new ReactiveDict();
+	/*this.templateDict = new ReactiveDict();
 	this.templateDict.set('currentType', currentType);
 	this.templateDict.set('cropAffected', cropAffected);
 	this.templateDict.set('classType', classType);
-	this.templateDict.set('showResult', false);
-	/*Session.set("currentType", currentType);
+	this.templateDict.set('showOBS', false);*/
+	Session.set("showIPS", false);
+	Session.set("currentType", currentType);
 	Session.set("cropAffected", cropAffected);
 	Session.set("classType", classType);
-	Session.set("showResult", false);*/
+	Session.set("showOBS", false);
 
 });
 
 Template.pestId.onRendered(function() {
 	Session.set("currentPage", "finalId"); // set the current page to change banner
+	$('.jqDropZone').html("<img src='/img/drop-here.png' width='100%' height='295px'/>");
 });
 
 Template.pestId.helpers({
@@ -92,7 +94,7 @@ Template.pestId.helpers({
 
 	displayInitial(type){
 		var limitPerPage = 4;
-		currentType = Template.instance().templateDict.get("currentType");
+		/*currentType = Template.instance().templateDict.get("currentType");
 		cropAffected = Template.instance().templateDict.get("cropAffected");
 		classType = Template.instance().templateDict.get("classType");
 		if(currentType == "Pest" && (classType == "Fungal" || classType == "Bacterial" || classType == "Viral")){
@@ -116,9 +118,9 @@ Template.pestId.helpers({
 		}
 		else{
 			return Plant_Problem.find({'type': currentType, 'plant_affected': cropAffected, 'classification': classType}, {sort: {name: 1}});
-		}
+		}*/
 
-		/*currentType = Session.get("currentType");
+		currentType = Session.get("currentType");
 		cropAffected = Session.get("cropAffected");
 		classType = Session.get("classType");
 		if(currentType == "Pest" && (classType == "Fungal" || classType == "Bacterial" || classType == "Viral")){
@@ -127,7 +129,6 @@ Template.pestId.helpers({
 		else if(currentType == "Disease" && (classType == "Fly-like" || classType == "Caterpillar-like" || classType == "Maggot" || classType == "Beetle-like" || classType == "Moth-like" || classType == "Two or one unit body")){
 			classType = Session.set("classType", "");
 		}
-
 		if(currentType != "" && cropAffected == "" && classType == ""){
 			return Plant_Problem.find({'type': currentType}, {sort: {name: 1}});
 		}
@@ -142,32 +143,130 @@ Template.pestId.helpers({
 		}
 		else{
 			return Plant_Problem.find({'type': currentType, 'plant_affected': cropAffected, 'classification': classType}, {sort: {name: 1}});
-		}*/
+		}
 	},
 
-	showResult() {
-		return Template.instance().templateDict.get("showResult");
+	showIPS() {
+		/*return Template.instance().templateDict.get("showIPS");*/
 
-		/*return Session.get("showResult");*/
+		return Session.get("showIPS");
+	},
+
+	showOBS() {
+		/*return Template.instance().templateDict.get("showOBS");*/
+
+		return Session.get("showOBS");
+	},
+
+	myCallbacks: function() {
+	    return {
+			 finished: function(index, fileInfo, context) {
+			 	Session.set("showIPS", true);
+			 	Session.set("spinner", true);
+			 	Session.set('data',undefined);
+			 	// filename = "../server/uploads/"+fileInfo.name;
+			 	filename = "http://localhost:3000/upload/"+fileInfo.name;
+			 	//H4Dhw4yPhumNK3PKu.jpg
+			 	Session.set("filename",filename);
+			 	var type = Session.get("currentType");
+			 	var crop = Session.get("cropAffected");
+			 	var clas = Session.get("classType");
+			 	if(type == "Disease"){
+				 	$('.jqDropZone').html("<img src=/upload/"+fileInfo.name+" width='100%' height='295px'/>");
+				 	$.ajax({	
+						type:"POST",
+						// url: "http://localhost:5000/diseaseImageSearch",
+						url:"http://localhost:5000/diseaseImageSearch",
+						dataType:"json",
+						data: 
+							{
+								'filename': filename,
+								'type': type,
+								'crop': crop,
+								'class': clas,
+							},
+						success: function(result){
+							Session.set("spinner", false);
+							Session.set('data',result.data);
+							console.log(result.data);		
+						},
+						error: function(error){
+							Session.set("spinner", false);
+							console.log(error.data);
+						}
+					});
+			 	}
+			 	else{
+			 		
+					$('.jqDropZone').html("<img src=/upload/"+fileInfo.name+" width='100%' height='295px'/>");
+				 	$.ajax({	
+						type:"POST",
+						// url: "http://localhost:5000/pestImageSearch",
+						url:"http://localhost:5000/pestImageSearch",
+						dataType:"json",
+						data: 
+							{
+								'filename': filename,
+								'type': type,
+								'crop': crop,
+								'class': clas,
+							},
+						success: function(result){
+							Session.set("spinner", false);
+							Session.set("data",result.data);
+							//Session.set("showOBS", false);      //Disable showing of ontology-based search/identification
+							console.log(result.data);		
+						},
+						error: function(error){
+							Session.set("spinner", false);
+							console.log(error.data);
+						}
+					});
+			 	}
+			}
+	    }
+	},
+
+	data: function(){
+		values=[];
+		if(Session.get('data')){
+			for(var i = 0;i<Session.get('data').length;i++){
+				values.push(Plant_Problem.findOne({'type': Session.get("currentType"),'name':Session.get('data')[i].name}));
+			}
+		}
+		return values;
+	},
+
+	numberized: function(index){
+		return (index+1) + ". ";
+	},
+
+	imageProcessingResultsHeader: function(){
+		if(Session.get('data'))
+			return "Image Processing's Top Results";
+	},
+
+	enableSpinner: function(){
+		return Session.get("spinner");
 	}
 });
 
 Template.pestId.events({
 	'change [name="radiopd"]'(event, template) {
 		currentType = $(event.target).attr("id");
-		cropAffected = template.templateDict.get("cropAffected");
+		/*cropAffected = template.templateDict.get("cropAffected");
 		classType = template.templateDict.get("classType");
 		template.templateDict.set("currentType", currentType);
 		template.templateDict.set("cropAffected", cropAffected);
 		template.templateDict.set("classType", classType);
-		template.templateDict.set("showResult", true);
+		template.templateDict.set("showOBS", true);*/
 
-		/*cropAffected = Session.get("cropAffected");
+		cropAffected = Session.get("cropAffected");
 		classType = Session.get("classType");
 		Session.set("currentType", currentType);
 		Session.set("cropAffected", cropAffected);
 		Session.set("classType", classType);
-		Session.set("showResult", true);*/
+		Session.set("showOBS", true);
 
 		/*cropAffected = template.templateDict.get("cropAffected");
 		if(currentType == "Pest"){
@@ -194,23 +293,23 @@ Template.pestId.events({
 			template.templateDict.set("classType", classType);
 		}*/
 
-		console.log(template.templateDict.get("currentType"));
+		/*console.log(template.templateDict.get("currentType"));
 		console.log(template.templateDict.get("cropAffected"));
-		console.log(template.templateDict.get("classType"));
+		console.log(template.templateDict.get("classType"));*/
 
-		/*console.log(Session.get("currentType"));
+		console.log(Session.get("currentType"));
 		console.log(Session.get("cropAffected"));
-		console.log(Session.get("classType"));*/
+		console.log(Session.get("classType"));
 	},
 
 	'change [name="cropAffected"]' (event, template) {
 		cropAffected = "";
 		var count = 0;
-		currentType = template.templateDict.get("currentType");
-		classType = template.templateDict.get("classType");
+		/*currentType = template.templateDict.get("currentType");
+		classType = template.templateDict.get("classType");*/
 
-		/*currentType = Session.get("currentType");
-		classType = Session.get("classType");*/
+		currentType = Session.get("currentType");
+		classType = Session.get("classType");
 
 		event.preventDefault();
 		$.each($('[name="cropAffected"]:checked'), function(index, item){
@@ -224,48 +323,45 @@ Template.pestId.events({
 			count++;
 		});
 
-		template.templateDict.set("currentType", currentType);
+		/*template.templateDict.set("currentType", currentType);
 		template.templateDict.set("cropAffected", cropAffected);
 		template.templateDict.set("classType", classType);
-		template.templateDict.set("showResult", true);
+		template.templateDict.set("showOBS", true);
 		
 		console.log(template.templateDict.get("currentType"));
 		console.log(template.templateDict.get("cropAffected"));
-		console.log(template.templateDict.get("classType"));
+		console.log(template.templateDict.get("classType"));*/
 
-		/*Session.set("currentType", currentType);
+		Session.set("currentType", currentType);
 		Session.set("cropAffected", cropAffected);
 		Session.set("classType", classType);
-		Session.set("showResult", true);
-
+		Session.set("showOBS", true);
 		console.log(Session.get("currentType"));
 		console.log(Session.get("cropAffected"));
-		console.log(Session.get("classType"));*/
+		console.log(Session.get("classType"));
 	},
 
 	'change [name="classType"]' (event, template) {
 		classType = $(event.target).attr("id");
-		currentType = template.templateDict.get("currentType");
+		/*currentType = template.templateDict.get("currentType");
 		cropAffected = template.templateDict.get("cropAffected");
 		template.templateDict.set("currentType", currentType);
 		template.templateDict.set("cropAffected", cropAffected);
 		template.templateDict.set("classType", classType);
-		template.templateDict.set("showResult", true);
-
+		template.templateDict.set("showOBS", true);
+		
 		console.log(template.templateDict.get("currentType"));
 		console.log(template.templateDict.get("cropAffected"));
-		console.log(template.templateDict.get("classType"));
+		console.log(template.templateDict.get("classType"));*/
 
-		/*currentType = Session.get("currentType");
+		currentType = Session.get("currentType");
 		cropAffected = Session.get("cropAffected");
 		Session.set("currentType", currentType);
 		Session.set("cropAffected", cropAffected);
 		Session.set("classType", classType);
-		Session.set("showResult", true);
-
+		Session.set("showOBS", true);
 		console.log(Session.get("currentType"));
 		console.log(Session.get("cropAffected"));
-		console.log(Session.get("classType"));*/
+		console.log(Session.get("classType"));
 	},
 });
-

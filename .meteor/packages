@@ -33,9 +33,9 @@ easy:search
 sacha:spin
 horka:swipebox
 reactive-dict
-tomi:upload-server
 tomi:upload-jquery
 kurounin:pagination
 kurounin:pagination-blaze
 easysearch:elasticsearch
 alanning:elasticsearch
+tomi:upload-server
