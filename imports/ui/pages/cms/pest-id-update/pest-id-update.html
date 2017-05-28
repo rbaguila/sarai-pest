@@ -1,0 +1,43 @@
+<template name="pestIdUpdate">
+
+  {{> cms_navbar}}
+
+  <div class="container-fluid">
+    <div class="row">
+      {{> sideNav}}
+    
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="main-body">
+
+        <h3 class="col-sm-12 col-md-12 col-lg-12 text-center"> Edit Pest Identification</h3>
+
+        <label for="clinicImage"> Banner Image </label>
+        {{> upload_bootstrap }}
+
+        <label for="bannerPosition"> Banner Content Position </label>
+        <div class="form-group">
+          <select class="form-control" id="bannerPosition">
+            <option value="top" selected="{{isSelected 'top'}}">Top</option>
+            <option value="middle" selected="{{isSelected 'middle'}}">Middle</option>
+            <option value="bottom" selected="{{isSelected 'bottom'}}">Bottom</option>
+          </select>
+        </div>
+
+        <label for="bannerText"> Banner Header Text </label>
+        <input type="text" class="form-control" id="bannerText" value="{{getCMS.bannerHeadText}}">
+
+        <label for="bannerSubText"> Banner Subheader Text </label>
+        <input type="text" class="form-control" id="bannerSubText" value="{{getCMS.bannerSubText}}">
+
+        <div class="text-center">
+          <button id="saveBTN" class="btn btn-success cms-button">Save</button>
+          <button id="cancelBTN" class="btn btn-danger cms-button">Cancel</button>
+          <button id="viewChangesBTN" class="btn btn-info cms-button">View Changes</button>
+        </div>
+  
+      </div>
+    
+    </div>
+  </div>
+
+</template>
+
