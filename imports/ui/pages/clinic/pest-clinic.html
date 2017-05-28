@@ -1,0 +1,107 @@
+<template name="App_clinic">
+  {{> top_nav}}
+  {{> banner}}
+  	{{> pestClinic}}
+  {{> footer}}
+</template>
+
+<template name="pestClinic">
+	<div class="container">
+		<div class="col-sm-12 row">
+			{{> about}}
+		</div>
+		<div class="col-sm-12 row">
+			{{> about2}}
+		</div>
+		<div class="col-sm-12 row">
+			{{> experts}}
+		</div>
+	</div>
+</template>
+
+<template name="about">
+	<div class="col-sm-8 blue">
+		<div class="row">
+			<div class="col-sm-6">
+				<h1 class="text-muted">{{getCMS.row1HeadText}}</h1>
+			</div>
+			<div class="col-sm-6">
+				<img width='100%' height='100%' src="{{getCMS.row1Image}}">
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-4 red">
+		{{> servicesOffered}}
+	</div>
+</template>
+
+<template name="about2">
+	<div class="row">
+		<div class="col-sm-4">
+			<img width='100%' height='100%' src="{{getCMS.row2Image}}">
+		</div>
+		<div class="col-sm-8">
+			<h1 class="text-muted col-sm-12">{{getCMS.row2HeadText}}</h1>
+			<h4 class="text-muted col-sm-12">{{getCMS.row2SubText}}</h4>
+
+		</div>
+	</div>
+</template>
+
+<template name="servicesOffered">
+	<h3 class="green-text text-center"> OUR SERVICES OFFERED </h3>
+	<ul class="list-group">
+	  <li class="list-group-item row">
+	  <a href="/pests-id">
+	  	<span class="col-sm-10">
+  			<h4 class="green-text"> Identify Pest </h4>
+  			<h5> Upload a photo of the pest</h5>
+	  	</span>
+	  	<span class="glyphicon glyphicon-chevron-right col-sm-2"></span>
+	  </a>
+	  </li>
+	  <li class="list-group-item row">
+	  <a href="">
+	  	<span class="col-sm-10">
+	  		<h4 class="green-text"> Request Assistance </h4>
+	  		<h5> Fill up a form after logging in to your account</h5>
+	  	</span>
+	  	<span class="glyphicon glyphicon-chevron-right col-sm-2"></span>
+	  </a>
+	  </li>
+	  <li class="list-group-item row">
+	  <a href="">
+	  	<span class="col-sm-10">
+	  		<h4 class="green-text"> Report Pest Occurence </h4>
+	  		<h5> </h5>
+	  	</span>
+	  	<span class="glyphicon glyphicon-chevron-right col-sm-2"></span>
+	  </a>
+	  </li>
+	  <li class="list-group-item row">
+	  <a href="">
+	  	<span class="col-sm-10">
+	  		<h4 class="green-text"> Submit Specimen </h4>
+	  		<h5> Send a specimen to the specialists for further research</h5>
+	  	</span>
+	  	<span class="glyphicon glyphicon-chevron-right col-sm-2"></span>
+	  </a>
+	  </li>
+	</ul>
+</template>
+
+<template name="experts">
+	<div class="text-center">
+		<h1 class="col-sm-12 text-muted text-center"> OUR EXPERTS </h1>
+		<div class="col-sm-12">
+			{{#each getExperts}}
+				<div class="col-sm-3">
+					<img src='{{profile}}' class="col-sm-12" width="100%" height="260px">
+					<h5 class='col-sm-12'><b>{{name}}</b></h5>
+					<h5 class='col-sm-12'>{{position}}</h5>
+					<h5 class='col-sm-12'>{{company}}</h5>
+				</div>
+			{{/each}}	
+		</div>
+	</div>
+</template>

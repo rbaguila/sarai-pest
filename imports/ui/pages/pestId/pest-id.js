@@ -24,6 +24,10 @@ Template.pestId.onCreated(function () {
 
 });
 
+Template.pestId.onRendered(function() {
+	Session.set("currentPage", "finalId"); // set the current page to change banner
+});
+
 Template.pestId.helpers({
 
 	pestsIndex(){

@@ -7,7 +7,6 @@ var Entries = new ReactiveVar([]);
 
 function getEntries(searchText) {
   var filter = Session.get('filters').length<=0? "":Session.get('filters');
-  console.log(Session.get('filters'));
 
   Meteor.call('getPests', searchText, filter, function(err, searchText, filter) {
     if(err) {
@@ -91,7 +90,6 @@ Template.advanced_search.events({
     } else {
       Session.set('filters', "");  
     }
-    //console.log(Session.get('filters'));
   },
 
 });

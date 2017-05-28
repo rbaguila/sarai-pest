@@ -25,9 +25,7 @@ Meteor.methods({
 						{"match": {"eng_name": {"query": searchText, minimum_should_match: 75}}},
 						{"match": {"fil_name": {"query": searchText, minimum_should_match: 75}}},
 						{"match": {"sci_name": {"query": searchText, minimum_should_match: 75}}},
-						{"match": {"keywords": {"query": searchText, minimum_should_match: 75}}},
-						{"match": {"symptoms": {"query": searchText, minimum_should_match: 75}}},
-						{"match": {"description": {"query": searchText, minimum_should_match: 75}}}
+						{"match": {"keywords": {"query": searchText, minimum_should_match: 75}}}
 					]
 					}
 				}

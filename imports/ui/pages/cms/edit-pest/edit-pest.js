@@ -2,18 +2,18 @@ import { Plant_Problem } from '/imports/api/plant_problem/plant_problem.js';
 import { Meteor } from 'meteor/meteor';
 import './edit-pest.html';
 import '../components/cms-navbar.html';
-import '../components/sidenav.html';
+import '../components/cms-sidenav.html';
 
 Template.editPest.onCreated(function () {
 	Meteor.subscribe('plant_problem.all');
 });
 
-Template.editPestCMS.onRendered(function () {
+Template.editPest.onRendered(function () {
 	$('[data-toggle="tooltip"]').tooltip(); 
 });
 
 var count = 0;
-Template.editPestCMS.helpers({
+Template.editPest.helpers({
 	getPestsType(){
 		var pests = Plant_Problem.find().fetch();
 		var pestsType = _.uniq(pests, false, function(d) {return d.plant_affected});
@@ -33,7 +33,7 @@ Template.editPestCMS.helpers({
 	},
 });
 
-Template.editPestCMS.events({
+Template.editPest.events({
 	'click #addBTN': function(event){
 		FlowRouter.go('/insert-pest');
 	},

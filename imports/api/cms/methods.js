@@ -3,6 +3,7 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { CMS } from './cms.js';
+import { Experts } from './cms.js';
 
 Meteor.methods({
   'cms.updatePestLib'( newCMS ) {

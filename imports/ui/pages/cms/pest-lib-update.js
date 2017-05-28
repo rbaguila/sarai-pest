@@ -3,6 +3,7 @@ import { CMS } from '/imports/api/cms/cms.js';
 import { Meteor } from 'meteor/meteor';
 import './pest-lib-update.html';
 import './components/cms-navbar.html';
+import './components/cms-sidenav.html';
 
 Template.pestLibUpdate.onCreated(function () {
 	Meteor.subscribe('plant_problem.all');
@@ -13,7 +14,7 @@ Template.pestLibUpdate.onRendered(function() {
 	$('#viewChangesBTN').hide();
 });
 
-Template.pestLibCMS.helpers({
+Template.pestLibUpdate.helpers({
 
 	getCMS(){
 		return CMS.findOne({info: "finalLib"});
@@ -35,7 +36,7 @@ Template.pestLibCMS.helpers({
 	}
 });
 
-Template.pestLibCMS.events({
+Template.pestLibUpdate.events({
 	'click #saveBTN': function(event){
 		event.preventDefault();
 
@@ -59,11 +60,10 @@ Template.pestLibCMS.events({
 	      if (error) {
 	        alert(error.error);
 	      } else {
-	        console.log("updated!!!!");
+	       	$('#cancelBTN').hide(); 
+	       	$('#viewChangesBTN').show(); 
 	      }
 	    });
-		
-		$('#viewChangesBTN').show();
 	},
 
 	'click #cancelBTN': function(event){

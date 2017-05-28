@@ -6,8 +6,10 @@ import '../../ui/layouts/body/body.js';
 import '../../ui/pages/home/home.js';
 import '../../ui/pages/not-found/not-found.js';
 import '../../ui/pages/library/library.js';
+import '../../ui/pages/pestId/pest-id.js';
+import '../../ui/pages/clinic/pest-clinic.js';
+import '../../ui/pages/monitoring/pest-monitoring.js';
 import '../../ui/pages/cms/pest-lib-update.js';
-import '../../ui/pages/pestId/pest-id.js'
 import '../../ui/pages/cms/insert-pest/insert-pest.js';
 import '../../ui/pages/cms/edit-pest/edit-pest.js';
 import '../../ui/pages/cms/edit-pest-entity/edit-pest-entity.js';
@@ -32,6 +34,20 @@ FlowRouter.route('/pests-id', {
   name: 'App.pests-id',
   action(){
     BlazeLayout.render('App_body', { main: "pestId" });
+  }
+});
+
+FlowRouter.route('/pests-clinic', {
+  name: 'App.pests-clinic',
+  action(){
+    BlazeLayout.render('App_body', { main: "App_clinic" });
+  }
+});
+
+FlowRouter.route('/pests-monitor', {
+  name: 'App.pests-monitor',
+  action(){
+    BlazeLayout.render('App_body', { main: "App_monitor" });
   }
 });
 

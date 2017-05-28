@@ -1,59 +1,58 @@
 <template name="pestLibUpdate">
-	{{> top_nav}}
-		{{> pestLibCMS}}
-	{{> footer}}
-</template>
-
-<template name="pestLibCMS">
 
   {{> cms_navbar}}
 
-  <div class="container">
-    <br/>
-    <div class="col-md-3"> <h4> insert side-nav here </h4> </div>
+  <div class="container-fluid">
+    <div class="row">
+      {{> sideNav}}
+    
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="main-body">
 
-    <div class="panel panel-default col-md-9">
+        <h3 class="col-sm-12 col-md-12 col-lg-12 text-center"> Edit Pest Library</h3>
 
-      <h1 class="text-center"> BANNER PHOTO</h1>
+        <label for="pestImage"> Banner Image </label>
+        {{> upload_bootstrap }}
 
-      <label for="bannerPosition"> Banner Content Position </label>
-      <div class="form-group">
-        <select class="form-control" id="bannerPosition">
-          <option value="top" selected="{{isSelected 'top'}}">Top</option>
-          <option value="middle" selected="{{isSelected 'middle'}}">Middle</option>
-          <option value="bottom" selected="{{isSelected 'bottom'}}">Bottom</option>
-        </select>
-      </div>
-
-      <label for="bannerText"> Banner Header Text </label>
-      <input type="text" class="form-control" id="bannerText" value="{{getCMS.bannerHeadText}}">
-
-      <label for="bannerSubText"> Banner Subheader Text </label>
-      <input type="text" class="form-control" id="bannerSubText" value="{{getCMS.bannerSubText}}">
-
-      <label for="searchlabel"> Search Label Text </label>
-      <input type="text" class="form-control" id="searchlabel" value="{{getCMS.searchLabelText}}">
-
-
-      <label> Choose Pest Type To View </label>
-      {{#each pestType}}
-        <div class="checkbox">
-          <label><input type="checkbox" id="{{this}}" value="{{this}}" checked="{{isChecked this}}">{{this}}</label>
+        <label for="bannerPosition"> Banner Content Position </label>
+        <div class="form-group">
+          <select class="form-control" id="bannerPosition">
+            <option value="top" selected="{{isSelected 'top'}}">Top</option>
+            <option value="middle" selected="{{isSelected 'middle'}}">Middle</option>
+            <option value="bottom" selected="{{isSelected 'bottom'}}">Bottom</option>
+          </select>
         </div>
-      {{/each}}
-      
-      <label for="pestsperpage"> Number of Pests Per Page </label>
-      <input type="number" min="1" max="999999" pattern="[0-9]{1,2}" id="pestsperpage" value="{{getCMS.pestsPerPage}}" class="form-control" >
 
-      <label for="diseasesperpage"> Number of Diseases Per Page </label>
-      <input type="number" min="1" max="999999" pattern="[0-9]{1,2}" id="diseasesperpage" value="{{getCMS.diseasesPerPage}}" class="form-control" >
+        <label for="bannerText"> Banner Header Text </label>
+        <input type="text" class="form-control" id="bannerText" value="{{getCMS.bannerHeadText}}">
 
-      <div class="text-center">
-        <button id="saveBTN" class="btn btn-success">Save</button>
-        <button id="cancelBTN" class="btn btn-danger">Cancel</button>
-        <button id="viewChangesBTN" class="btn btn-info">View Changes</button>
-      </div>
+        <label for="bannerSubText"> Banner Subheader Text </label>
+        <input type="text" class="form-control" id="bannerSubText" value="{{getCMS.bannerSubText}}">
+
+        <label for="searchlabel"> Search Label Text </label>
+        <input type="text" class="form-control" id="searchlabel" value="{{getCMS.searchLabelText}}">
+
+
+        <label> Choose Pest Type To View </label>
+        {{#each pestType}}
+          <div class="checkbox">
+            <label><input type="checkbox" id="{{this}}" value="{{this}}" checked="{{isChecked this}}">{{this}}</label>
+          </div>
+        {{/each}}
+        
+        <label for="pestsperpage"> Number of Pests Per Page </label>
+        <input type="number" min="1" max="999999" pattern="[0-9]{1,2}" id="pestsperpage" value="{{getCMS.pestsPerPage}}" class="form-control" >
+
+        <label for="diseasesperpage"> Number of Diseases Per Page </label>
+        <input type="number" min="1" max="999999" pattern="[0-9]{1,2}" id="diseasesperpage" value="{{getCMS.diseasesPerPage}}" class="form-control" >
+
+        <div class="text-center">
+          <button id="saveBTN" class="btn btn-success cms-button">Save</button>
+          <button id="cancelBTN" class="btn btn-danger cms-button">Cancel</button>
+          <button id="viewChangesBTN" class="btn btn-info cms-button">View Changes</button>
+        </div>
   
+      </div>
+    
     </div>
   </div>
 

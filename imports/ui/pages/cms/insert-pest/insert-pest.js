@@ -2,25 +2,26 @@ import { Plant_Problem } from '/imports/api/plant_problem/plant_problem.js';
 import { Meteor } from 'meteor/meteor';
 import './insert-pest.html';
 import '../components/cms-navbar.html';
+import '../components/cms-sidenav.html';
 
 var imageURL = "";
 
-Template.insertPestCMS.onCreated(function () {
+Template.insertPest.onCreated(function () {
 	Meteor.subscribe('plant_problem.all');
 });
 
-Template.insertPestCMS.onRendered(function () {
+Template.insertPest.onRendered(function () {
 	 $('[data-toggle="tooltip"]').tooltip(); 
 });
 
 
-Template.insertPestCMS.events({
+Template.insertPest.events({
 	
 	'click #saveBTN': function(event){
 		
 		var str = $("#description").val() + $("#symptoms").val();
 
-		var keywords = extractKeyword(str);
+		if( !(str.length <=0) ) var keywords = extractKeyword(str);
 
 		// GET THE VALUES
 		var newPest = {
@@ -53,8 +54,6 @@ Template.insertPestCMS.events({
 			filStageAffected : $("#filStageAffected").val(),
 		}
 		
-		console.log(newPest.keywords);
-		
 		// INSERT THE PEST TO THE DATABASE
 		Meteor.call('pests.addPest', newPest, (error) => {
 	      if (error) {
@@ -80,7 +79,6 @@ function extractKeyword(words){
 	var str = words.toLowerCase(); // converting all words to lowercase (CASE-FOLDING)
 	str = str.replace(/[0-9]/g, ''); // remove the numbers
 	var words = str.match(/\b(\w+)\b/g);
-	console.log("WORDS LENGTH: " + words.length);
 
 	words = removeStopwords(words);
 	words = removeRedundancy(words);
@@ -89,12 +87,11 @@ function extractKeyword(words){
 	for(var i=0; i<words.length; i++){
  		words[i] = stemmer(words[i]);
  	}
- 	console.log("\tPERFORMED STEMMING!");
 
+ 	words = removeStopwords(words);
+ 	words = removeRedundancy(words);
 
  	/********************* TF-IDF *********************/
- 	// count the occurences of words in the array
- 	// apply stopwords and stemming in idf !!!!!!!!!!!!!!!
  	var wordCount = [];
 	for (var i=0; i<words.length; i++) {
 	   wordCount[words[i]] = (wordCount[words[i]] || 0) + 1;
@@ -104,7 +101,6 @@ function extractKeyword(words){
 	for(var i=0; i<words.length; i++){
 		tf[i] = wordCount[words[i]] / words.length;
 	}
-	console.log("TF LENGTH: " + tf.length);
 
 	var idf = [];
 	var listOfPests = Plant_Problem.find({ 'type': 'Pest' }).fetch();
@@ -114,16 +110,10 @@ function extractKeyword(words){
 		for(var j=0; j<listOfPests.length; j++){
 			var str = listOfPests[j].symptoms + listOfPests[j].description;
 			str = str.toLowerCase();
-			//str = removeStopwords(str);
-			// for(var k=0; k<str.length; k++){
-			// 	str[k] = stemmer(str[k]);
-			// }
 			if(str.includes(words[i])) count++;
 		}
 		idf[i] = Math.log(listOfPests.length / count);
 	}
-	console.log("IDF LENGTH: " + idf.length);
-	//console.log(idf);
 
 	// TF-IDF
 	var rank = [{}];
@@ -136,12 +126,10 @@ function extractKeyword(words){
 	rank.sort(function(a, b) {
 	    return parseFloat(a.rank) - parseFloat(b.rank);
 	});
-	console.log("RANK LENGTH: " + rank.length);
 	console.log(rank);
 
 	var keywords = [];
-	var numOfKeywords = 6;
-	for(var i=0; i<numOfKeywords; i++){
+	for(var i=0; i<rank.length; i++){
 		keywords[i] = rank[i].word;
 	}
 
@@ -170,8 +158,7 @@ function removeStopwords(words){
  			wordsIncluded[count++] = words[i];
  		}
  	}
- 	console.log("WORDS LENGTH: " + wordsIncluded.length);
- 	console.log("\tREMOVED STOP WORDS!");
+
  	return wordsIncluded;
 }
 
@@ -186,7 +173,5 @@ function removeRedundancy(words){
 		}
 	}
 
-	console.log("WORDS LENGTH: " + wordsIncluded.length);
- 	console.log("\tREMOVED REDUNDANCY!");
 	return wordsIncluded;
 }
