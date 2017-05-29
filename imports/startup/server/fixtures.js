@@ -2,8 +2,9 @@
 
 import { Meteor } from 'meteor/meteor';
 import { Links } from '../../api/links/links.js';
-import { Plant_Problem } from '../../api/plant_problem/plant_problem.js';
+import { Plant_Problem, Students } from '../../api/plant_problem/plant_problem.js';
 import { CMS } from '../../api/cms/cms.js';
+import { Experts } from '../../api/cms/cms.js';
 
 Meteor.startup(() => {
 
@@ -35,6 +36,36 @@ Meteor.startup(() => {
     data.forEach(link => Links.insert(link));
   }
 
+  if (Experts.find().count() === 0) {
+    const data = [
+      {
+        profile: '/img/experts/Ebuenga.jpg',
+        name: 'Melvin D. Ebuenga',
+        position: 'University Researcher',
+        company: 'NCPC, UPLB'
+      },
+      {
+        profile: '/img/experts/Cayabyab.jpg',
+        name: 'Bonifacio F. Cayabyab',
+        position: 'University Researcher',
+        company: 'NCPC, UPLB'
+      },
+      {
+        profile: '/img/experts/Pangga.jpg',
+        name: 'Ireneo B. Pangga',
+        position: 'Assistant Professor',
+        company: 'CPC, CA, UPLB'
+      },
+      {
+        profile: '/img/experts/Burgonio.jpg',
+        name: 'Gideon Aries S. Burgonio',
+        position: 'University Research Assistant',
+        company: 'NCPC, UPLB'
+      }
+    ];
+    data.forEach(expert => Experts.insert(expert));
+  }
+
   // if the CMS collection is empty
   if (CMS.find().count() === 0) {
     const data = [
@@ -50,13 +81,42 @@ Meteor.startup(() => {
           viewPestType: ['Rice', 'Corn', 'Banana'],
           pestsPerPage: 8,
           diseasesPerPage: 8
+        },
+        {
+          info: 'finalId',
+          bannerContentPosition: 'middle',
+          bannerImage: '/img/banners/pest_id_banner.jpg',
+          bannerImageID: '',
+          bannerHeadText: 'Pest Identification',
+          bannerSubText: 'Identify pest by uploading a pest picture below by selecting the image processing tab or by answering questions from the ontology-based tab',
+        },
+        {
+          info: 'finalMonitor',
+          bannerContentPosition: 'middle',
+          bannerImage: '/img/banners/pest_monitor_banner.jpg',
+          bannerImageID: '',
+          bannerHeadText: 'Pest Monitor',
+          bannerSubText: 'Charts and maps for pest-related activities',
+        },
+        {
+          info: 'finalClinic',
+          bannerContentPosition: 'middle',
+          bannerImage: '/img/banners/pest_clinic_banner.png',
+          bannerImageID: '',
+          bannerHeadText: 'Pest Clinic',
+          bannerSubText: 'Ask for experts assistance on rice and corn pests',
+          row1HeadText: 'Concerned in Increase Protection and Pest Management Services to its Clients',
+          row1Image: '/img/clinic/sarai_3.jpg',
+          row2HeadText: 'Serving since 70s',
+          row2SubText: 'Started in the late 70s, the Plant Pest Clinic is an extension program of the Crop Protection Cluster which offers pest management services such as accurate diagnostic and control recommendation to farmers. Through it, experts share their knowledge on pest identification and management, consultations, and offers other related services such as fungal, bacterial, and nematode analyses.',
+          row2Image: '/img/clinic/sarai_2.jpg'
         }
     ];
 
     data.forEach(cms => CMS.insert(cms));
   }
 
-  // if the Pests collection is empty
+  // if the Plant_Problem collection is empty
   if (Plant_Problem.find().count() === 0) {
     const data = [
 
@@ -1465,6 +1525,7 @@ Meteor.startup(() => {
 
         {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected:'Namumulaklak',
           fil_effect:'Dahil ang apektado ng pesteng ito ay ang mismong prutas, bumababa ang produksyon sa mga lugar na mayroong Thrips. Nababawasan ang mga prutas na maaaring ibenta.',
           fil_part_destroyed:'Dahon, Bunga',
@@ -1501,6 +1562,7 @@ Meteor.startup(() => {
        
        {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected:'Pagpuputol',
           fil_effect:'Isa sa mga pangunahing peste ng saging ang banana root borer. Lubos na nasisira nito ang kahit anong uri ng saging. Maaaring maubos ang mga pananim kung hindi mapatay ang mga banana root borer. Mas pinupuntahan nito ang mga naputol nang mga tangkay ng saging o kaya naman ang mga pinagputulan ng mga tangkay.',
           fil_part_destroyed:'Ugat, Tangkay',
@@ -1535,6 +1597,7 @@ Meteor.startup(() => {
        
        {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected:'Pagpuputol',
           fil_effect:'Isa sa mga pangunahing peste ng saging ang banana root borer. Lubos na nasisira nito ang kahit anong uri ng saging. Maaaring maubos ang mga pananim kung hindi mapatay ang mga banana root borer. Mas pinupuntahan nito ang mga naputol nang mga tangkay ng saging o kaya naman ang mga pinagputulan ng mga tangkay.',
           fil_part_destroyed:'Ugat, Tangkay',
@@ -1568,6 +1631,7 @@ Meteor.startup(() => {
        
        {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected:'Pagtubo',
           fil_effect:'Kapag ang taniman ay hindi gaanong naaalagaan, mabilis dumami ang mga pseudostem borer. Mas maraming tanim, mas mabilis na kumakalat ang peste dahil pinagdidikit dikit nila ang mga dahon na kanilang ginagawang tunnel. Nahihirapang dumaloy ang sustansya sa loob ng halaman kaya naman ito ay namamatay.',
           fil_part_destroyed:'Dahon, Tangkay',
@@ -1603,6 +1667,7 @@ Meteor.startup(() => {
        
        {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected:'Namumulaklak',
           fil_effect:'Ang adult nito ang kumakain ng mga dahon kasama ng tangkay ng puno ng saging. Kinakain din nito ang balat ng mga bagong bunga na sumisira sa mismong prutas kaya naman hindi na mabebenta ang ito at nagiging sanhi rin ito ng pagpasok ng mga mikrobyo.',
           fil_part_destroyed:'Ugat, Dahon, Bunga',
@@ -1640,6 +1705,7 @@ Meteor.startup(() => {
        
        {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected:'Namumulaklak',
           fil_effect:'Hindi gaanong nakamamatay ng halaman ang pagkain ng peste rito, mas nakamamatay ang posibleng virus na madala ng peste sa puno ng saging galing sa isa pang puno ng saging o sa ibang halaman na pinanggalingan nito.',
           fil_part_destroyed:'Dahon',
@@ -1675,6 +1741,7 @@ Meteor.startup(() => {
        
        {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected:'Namumulaklak',
           fil_effect:'Ang mga apektadong puno ay maaaring magkaroon ng mas maliliit na bunga o kaya naman ay hindi na mamunga. Isang sakit naman ang maaaring madala ng pineapple wilt na magiging sanhi ng pagkabuwal ng puno dahil sa paghina ng ugat nito.',
           fil_part_destroyed:'Buong puno',
@@ -1709,6 +1776,7 @@ Meteor.startup(() => {
        
        {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected:'Namumulaklak, Anihan',
           fil_effect:'Maaaring magdala ng sakit na pineapple wilt ang pineapple mealybug na posibleng maging sanhi ng pagkaubos ng mga panananim sa isang lugar. Ang mga punong maaapektuhan ay magkakaroon ng maliliit na bunga o kaya naman ay hindi na mamunga at tuluyan na lamang mamatay.',
           fil_part_destroyed:'Buong puno',
@@ -1744,6 +1812,7 @@ Meteor.startup(() => {
        
        {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected:'Pagpuputol',
           fil_effect:'Ang mga pesteng ito ay namumuhay sa katas ng halaman. Habang sila ay naglalabas ng honeydew, nagkakaroon ng mga amag na humaharang sa sinag ng araw kaya nagkakaproblema sa proseso ng pagtubo ng halaman, nalalagas din ang mga dahon, at maaaring mamatay ang halaman kung ito ay bata pa. Kinakain naman ng mga langgam ang inilalabas ng mga coconut buff mealybug na honeydew kaya naman pinoprotektahan nila ang mga pesteng ito. Kaya hindi madaling maubos ang mga peste sa halaman kahit na gumamit ng mga bagay upang mapigil ang kanilang pagdami.',
           fil_part_destroyed:'Buong puno',
@@ -1780,6 +1849,7 @@ Meteor.startup(() => {
        
        {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected:'Namumulaklak',
           fil_effect:'Nababawasan ang kalidad ng mga prutas na inaani dahil sa mga scale insects. Ang mga sanga, dahon, at bunga ay nakakaroon ng malalaking sira at ang mga bunga ay hindi na maaaring maibenta.',
           fil_part_destroyed:'Dahon, Tangkay',
@@ -1817,6 +1887,7 @@ Meteor.startup(() => {
        
        {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected:'Namumulaklak',
           fil_effect:'Maaaring masira ng uod ang anim na pung porsiyento ng dahon. Ang pagkasira ng mga dahon ay sanhi ng pagka-antala ng paglaki ng bunga nito.',
           fil_part_destroyed:'Dahon',
@@ -1855,6 +1926,7 @@ Meteor.startup(() => {
        
        {
           type: 'Pest',
+          keywords: [],
           fil_stage_plant_affected:'Namumulaklak, Seedling',
           fil_effect:'Hinihigop ng mga lace bugs ang katas mula sa puno ng saging kaya ang sustansya ay hindi dumadaloy nang mabuti sa buong puno.',
           fil_part_destroyed:'Dahon',
@@ -3427,7 +3499,7 @@ Meteor.startup(() => {
           fil_treatment: '',
           fil_name: 'Coffee Rust',
           stage_plant_affected: '',
-          effect: 'The damage caused by coffee rust is the result of reduced photosynthetic capacity of infected leaves and premature defoliation or leaf drop associated with high infection levels. Vegetative growth and berry growth and size are reduced and is generally related to the amount of rust in the current year. The impact of rust, however, can have a longer term impact. Leaf rust associated defoliation and the strong carbohydrate sink of the berries cause shoots and roots to starve and consequently to dieback, thereby reducing the number of nodes on which coffee will be produced next year. Since next year's production of coffee occurs on wood produced this season, the tip and shoot dieback caused by the rust can seriously reduce the following season's crop. Researchers have estimated losses caused by rust between 30 and 80%. On average, however, losses are believed to be about 15% annually.',
+          effect: "The damage caused by coffee rust is the result of reduced photosynthetic capacity of infected leaves and premature defoliation or leaf drop associated with high infection levels. Vegetative growth and berry growth and size are reduced and is generally related to the amount of rust in the current year. The impact of rust, however, can have a longer term impact. Leaf rust associated defoliation and the strong carbohydrate sink of the berries cause shoots and roots to starve and consequently to dieback, thereby reducing the number of nodes on which coffee will be produced next year. Since next year's production of coffee occurs on wood produced this season, the tip and shoot dieback caused by the rust can seriously reduce the following season's crop. Researchers have estimated losses caused by rust between 30 and 80%. On average, however, losses are believed to be about 15% annually.",
           part_destroyed: 'Leaf',
           stage_threatening: '',
           symptoms: 'Infections occur on the coffee leaves.The first observable symptoms are small, pale yellow spots on the upper surfaces of the leaves. As these spots gradually increase in diameter, masses of orange urediniospores (= uredospores) appear on the undersurfaces. The fungus sporulates through the stomata rather than breaking through the epidermis as most rusts do, so it does not form the pustules typical of many rusts. The powdery lesions on the undersides of the leaves can be orange-yellow to red-orange in color, and there is considerable variation from one region to another. While the lesions can develop anywhere on the leaf, they tend to be concentrated around the margins, where dew and rain droplets collect. The centers of the spots eventually dry and turn brown, while the margins of the lesions continue to expand and produce urediniospores. Early in the season, the first lesions usually appear on the lowermost leaves, and the infection slowly progresses upward in the tree. The infected leaves drop prematurely, leaving long expanses of twigs devoid of leaves.',

@@ -1,0 +1,119 @@
+<template name="editPest">
+
+	{{> cms_navbar}}
+
+	<div class="container-fluid">
+	    <div class="row">
+		    {{> sideNav}}
+		    
+		     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="main-body">
+		    	<br/>
+		    	<div class="text-center">
+					<button id="addBTN" class="btn btn-success cms-button">Add Pest</button>
+				</div>
+				<br/>
+	    		<ul class="nav nav-tabs nav-justified">
+	    			{{#each getPestsType}}
+	    				{{#if equals @index 0}}
+							<li class="active"><a data-toggle="tab" href="#{{rewritePestType}}"> {{this}} Pest</a></li>
+						{{else}}
+							<li><a data-toggle="tab" href="#{{rewritePestType}}"> {{this}} Pest</a></li>
+						{{/if}}
+					{{/each}}
+				</ul>
+
+				<div class="tab-content">
+					{{#each getPestsType}}
+						{{#if equals @index 0}} 
+							<div id="{{rewritePestType}}" class="tab-pane fade in active">
+								<ul class="list-group">
+								{{#each listPests this}}
+									<li class="list-group-item">
+						    			<div class="media">
+						    				<div class="media-left"> <img src="{{image}}" class="media-object" style="width:60px"> </div>
+											<div class="media-body"> <h4>{{name}}</h4> </div>
+											<div class="media-right">
+												<div class="btn-group-xs">
+												  {{> button text="edit" color="primary" id=_id}}
+												  {{> button text="remove" color="danger" id=_id }}
+												</div>
+											</div>
+										</div>
+						    		</li>
+								{{/each}}
+								</ul>
+							</div>
+						{{else}}
+							<div id="{{rewritePestType}}" class="tab-pane fade">
+								<ul class="list-group">
+								{{#each listPests this}}
+									<li class="list-group-item">
+						    			<div class="media">
+						    				<div class="media-left"> <img src="{{image}}" class="media-object" style="width:60px"> </div>
+											<div class="media-body"> <h4>{{name}}</h4> </div>
+											<div class="media-right">
+												<div class="btn-group-xs">
+												  {{> button text="edit" color="primary" id=_id}}
+												  {{> button text="remove" color="danger" id=_id }}
+												</div>
+											</div>
+										</div>
+						    		</li>
+								{{/each}}
+								</ul>
+							</div>
+						{{/if}}
+					{{/each}}
+				</div>
+		    </div>
+		</div>
+	</div>
+</template>
+
+<template name="button">
+	<button type="button" class="{{text}} btn btn-{{color}}" data-toggle="tooltip" title="{{text}} pest" data-placement="right">
+		<span class="glyphicon glyphicon-{{text}}"></span>
+	</button>
+
+	<div class="modal fade" id="deletePest">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>Are you sure you want to delete this pest?</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary confirmDelete">Yes</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="pestDeleted">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>Pest successfully removed!</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</template>
+
+

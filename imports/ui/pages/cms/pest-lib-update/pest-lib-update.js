@@ -2,7 +2,8 @@ import { Plant_Problem } from '/imports/api/plant_problem/plant_problem.js';
 import { CMS } from '/imports/api/cms/cms.js';
 import { Meteor } from 'meteor/meteor';
 import './pest-lib-update.html';
-import './components/cms-navbar.html';
+import '../components/cms-navbar.html';
+import '../components/cms-sidenav.html';
 
 Template.pestLibUpdate.onCreated(function () {
 	Meteor.subscribe('plant_problem.all');
@@ -13,7 +14,7 @@ Template.pestLibUpdate.onRendered(function() {
 	$('#viewChangesBTN').hide();
 });
 
-Template.pestLibCMS.helpers({
+Template.pestLibUpdate.helpers({
 
 	getCMS(){
 		return CMS.findOne({info: "finalLib"});
@@ -29,13 +30,12 @@ Template.pestLibCMS.helpers({
 		return CMS.find({info: "finalLib", viewPestType: pestType}).count() > 0? true : false;
 	},
 
-	isSelected(position){
-		var banner = CMS.findOne({info:'finalLib'});
-		return position == banner.bannerContentPosition; // may error daw sa bannerContentPosition!!!!!???
+	isSelected(value, position){
+		return value == position;
 	}
 });
 
-Template.pestLibCMS.events({
+Template.pestLibUpdate.events({
 	'click #saveBTN': function(event){
 		event.preventDefault();
 
@@ -46,6 +46,7 @@ Template.pestLibCMS.events({
 		
 		// GET THE VALUES
 		var newCMS = {
+			bannerPosition: $("#bannerPosition option:selected").val(),
 			bannerText : $("#bannerText").val(),
 			bannerSubText : $("#bannerSubText").val(),
 			searchlabel : $("#searchlabel").val(),
@@ -59,11 +60,10 @@ Template.pestLibCMS.events({
 	      if (error) {
 	        alert(error.error);
 	      } else {
-	        console.log("updated!!!!");
+	       	$('#cancelBTN').hide(); 
+	       	$('#viewChangesBTN').show(); 
 	      }
 	    });
-		
-		$('#viewChangesBTN').show();
 	},
 
 	'click #cancelBTN': function(event){

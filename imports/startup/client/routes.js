@@ -6,11 +6,16 @@ import '../../ui/layouts/body/body.js';
 import '../../ui/pages/home/home.js';
 import '../../ui/pages/not-found/not-found.js';
 import '../../ui/pages/library/library.js';
-import '../../ui/pages/cms/pest-lib-update.js';
-import '../../ui/pages/pestId/pest-id.js'
-import '../../ui/pages/cms/insert-pest/insert-pest.js';
-import '../../ui/pages/cms/edit-pest/edit-pest.js';
-import '../../ui/pages/cms/edit-pest-entity/edit-pest-entity.js';
+import '../../ui/pages/pestId/pest-id.js';
+import '../../ui/pages/clinic/pest-clinic.js';
+import '../../ui/pages/monitoring/pest-monitoring.js';
+import '../../ui/pages/cms/pest-lib-update/pest-lib-update.js';
+import '../../ui/pages/cms/pest-lib-update/insert-pest/insert-pest.js';
+import '../../ui/pages/cms/pest-lib-update/edit-pest/edit-pest.js';
+import '../../ui/pages/cms/pest-lib-update/edit-pest-entity/edit-pest-entity.js';
+import '../../ui/pages/cms/pest-clinic-update/pest-clinic-update.js';
+import '../../ui/pages/cms/pest-id-update/pest-id-update.js';
+import '../../ui/pages/cms/pest-monitor-update/pest-monitor-update.js';
 
 // Set up all routes in the app
 FlowRouter.route('/', {
@@ -32,6 +37,20 @@ FlowRouter.route('/pests-id', {
   name: 'App.pests-id',
   action(){
     BlazeLayout.render('App_body', { main: "pestId" });
+  }
+});
+
+FlowRouter.route('/pests-clinic', {
+  name: 'App.pests-clinic',
+  action(){
+    BlazeLayout.render('App_body', { main: "App_clinic" });
+  }
+});
+
+FlowRouter.route('/pests-monitor', {
+  name: 'App.pests-monitor',
+  action(){
+    BlazeLayout.render('App_body', { main: "App_monitor" });
   }
 });
 
@@ -90,6 +109,51 @@ FlowRouter.route("/edit-pest/:_id", {
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "editPestEntity"})
+          }
+      });
+    }
+});
+
+FlowRouter.route('/pests-clinic-update', {
+  name: 'App.pests-clinic-update',
+  action: function(params) {
+      Tracker.autorun(function() {
+          if (!Meteor.userId()) {
+            BlazeLayout.render("App_body", {main: "App_home"})
+            alert("User is not allowed to access the page.")
+            FlowRouter.redirect('/');
+          } else {
+            BlazeLayout.render("App_body", {main: "pestClinicUpdate"})
+          }
+      });
+    }
+});
+
+FlowRouter.route('/pests-id-update', {
+  name: 'App.pests-id-update',
+  action: function(params) {
+      Tracker.autorun(function() {
+          if (!Meteor.userId()) {
+            BlazeLayout.render("App_body", {main: "App_home"})
+            alert("User is not allowed to access the page.")
+            FlowRouter.redirect('/');
+          } else {
+            BlazeLayout.render("App_body", {main: "pestIdUpdate"})
+          }
+      });
+    }
+});
+
+FlowRouter.route('/pests-monitor-update', {
+  name: 'App.pests-monitor-update',
+  action: function(params) {
+      Tracker.autorun(function() {
+          if (!Meteor.userId()) {
+            BlazeLayout.render("App_body", {main: "App_home"})
+            alert("User is not allowed to access the page.")
+            FlowRouter.redirect('/');
+          } else {
+            BlazeLayout.render("App_body", {main: "pestMonitorUpdate"})
           }
       });
     }

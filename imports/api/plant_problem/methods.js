@@ -35,32 +35,32 @@ Meteor.methods({
 
     Plant_Problem.insert(
   		{ 
-        type: 'Pest',
-        keywords: newPest.keywords,
-        fil_stage_plant_affected: newPest.filStageAffected,
-        fil_effect: newPest.filEffect,
-        fil_part_destroyed: newPest.filPartDestroyed,
-        fil_stage_threatening: newPest.filStageThreatening,
-        fil_symptoms: newPest.filSymptoms,
-        fil_description: newPest.filDescription,
-        fil_plant_affected: newPest.filPlantAffected,
-        fil_classification: newPest.filClassification,
-        fil_treatment: newPest.filTreatment,
-        fil_name: newPest.filName,
-        stage_plant_affected: newPest.stageAffected,
-        effect: newPest.effect,
-        part_destroyed: newPest.partDestroyed,
-        stage_threatening: newPest.stageThreatening,
-        symptoms: newPest.symptoms,
-        description: newPest.description,
-        plant_affected: newPest.plantAffected,
-        order: newPest.order,
-        classification: newPest.classification,
-        treatment: newPest.treatment,
-        sci_name: newPest.sciName,
-        eng_name: newPest.engName,
-        name: newPest.pestName,
-        image: newPest.image
+            type: 'Pest',
+            keywords: newPest.keywords,
+            fil_stage_plant_affected: newPest.filStageAffected,
+            fil_effect: newPest.filEffect,
+            fil_part_destroyed: newPest.filPartDestroyed,
+            fil_stage_threatening: newPest.filStageThreatening,
+            fil_symptoms: newPest.filSymptoms,
+            fil_description: newPest.filDescription,
+            fil_plant_affected: newPest.filPlantAffected,
+            fil_classification: newPest.filClassification,
+            fil_treatment: newPest.filTreatment,
+            fil_name: newPest.filName,
+            stage_plant_affected: newPest.stageAffected,
+            effect: newPest.effect,
+            part_destroyed: newPest.partDestroyed,
+            stage_threatening: newPest.stageThreatening,
+            symptoms: newPest.symptoms,
+            description: newPest.description,
+            plant_affected: newPest.plantAffected,
+            order: newPest.order,
+            classification: newPest.classification,
+            treatment: newPest.treatment,
+            sci_name: newPest.sciName,
+            eng_name: newPest.engName,
+            name: newPest.pestName,
+            image: newPest.image
 	    } 
 	);
   },
@@ -98,6 +98,7 @@ Meteor.methods({
         {
             $set:
             { 
+                keywords: editPest.keywords,
                 fil_stage_plant_affected: editPest.filStageAffected,
                 fil_effect: editPest.filEffect,
                 fil_part_destroyed: editPest.filPartDestroyed,
@@ -124,12 +125,6 @@ Meteor.methods({
                 image: editPest.image
             } 
         }
-    );
-  },
-
-  'pests.editKeyword'(id, keywords){
-    Plant_Problem.update( {_id: id},
-        { $set: { keywords: keywords } }
     );
   },
 

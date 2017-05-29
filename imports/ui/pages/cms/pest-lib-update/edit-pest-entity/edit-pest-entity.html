@@ -1,0 +1,183 @@
+<template name="editPestEntity">
+
+	{{> cms_navbar}}
+	
+	<div class="container-fluid">
+	    <div class="row">
+			{{> sideNav}}
+
+		    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="main-body">
+		    	<div class="col-sm-12 col-md-12 col-lg-12 text-center">
+			    	<a class="col-sm-1 col-md-1 col-lg-1 back">
+		  				<img class="back-button" src="/img/back.png" alt="back" data-toggle="tooltip" title="Back" data-placement="right">
+		  			</a>
+			    	<h3 class="col-sm-11 col-md-11 col-lg-11 pest-name"> Edit Pest </h3>
+			    </div>
+
+		    	<label for="pestName"> Pest Name </label>
+	      		<input type="text" class="form-control" id="pestName" value="{{pest.name}}">
+
+	      		<label for="engName"> English Name/s </label>
+	      		<input type="text" class="form-control" id="engName" value="{{pest.eng_name}}">
+
+	      		<label for="sciName"> Scientific Name/s </label>
+	      		<input type="text" class="form-control" id="sciName" value="{{pest.sci_name}}">
+
+	      		<label for="pestImage"> Pest Image </label>
+	      		<!-- <input type="file" name="pestImage" id="pestImage" accept="image/*"> -->
+	      		{{> upload_bootstrap }}
+
+	      		<hr/>
+		      	<label for="keywords"> Keywords </label>
+				<div class="input-group">
+					<input type="text" class="form-control" id="newKeyword" placeholder="Insert Keyword">
+					<span class="input-group-btn">
+						<button class="btn btn-default addKeyword" type="button">Add</button>
+					</span>
+				</div>
+		      	<ul class="list-group">
+		      		{{> keywordsPaginate}}
+		     		<!-- {{#each returnKeywords}}
+		     			<li class="list-group-item">
+							<div class="media">
+								<div class="media-body">
+									<h5 class="media-heading"> <i>{{this}}</i> </h5>
+								</div>
+								<div class="media-right"> {{> keywordButton text="remove" color="danger" name=this }} </div>
+							</div>
+						</li>
+					{{/each}} -->
+				</ul>
+				<br/>
+				<div class="col-sm-12 col-md-12 col-lg-12 text-center">
+					<button type="button" class="success btn btn-success" data-toggle="tooltip" title="Add more keywords" data-placement="right" id="generateKeyword"> Automatically Generate Keywords </button>
+				</div>
+				<hr/><br/>
+	      		
+	  			<ul class="nav nav-tabs nav-justified">
+				  <li class="active"><a data-toggle="tab" href="#english"> English </a></li>
+				  <li><a data-toggle="tab" href="#filipino"> Filipino </a></li>
+				</ul>
+
+				<div class="tab-content">
+					<!-- ENGLISH INPUTS -->
+					<div id="english" class="tab-pane fade in active">
+						<label for="treatment"> Treatment </label>
+			      		<textarea class="form-control" id="treatment" rows="5" value="{{pest.treatment}}"></textarea>
+
+						<label for="classification"> Classification </label>
+			      		<input type="text" class="form-control" id="classification" value="{{pest.classification}}">
+
+			      		<label for="order"> Order </label>
+			      		<input type="text" class="form-control" id="order" value="{{pest.order}}">
+
+			      		<label for="plantAffected"> Plant Affected </label>
+			      		<input type="text" class="form-control" id="plantAffected" value="{{pest.plant_affected}}">
+
+			      		<label for="description"> Description </label>
+			      		<textarea class="form-control" id="description" rows="5" value="{{pest.description}}"></textarea>
+
+			      		<label for="symptoms"> Symptoms </label>
+			      		<textarea class="form-control" id="symptoms" rows="5" value="{{pest.symptoms}}"></textarea>
+
+			      		<label for="stageThreatening"> Stage Threatening </label>
+			      		<input type="text" class="form-control" id="stageThreatening" value="{{pest.stage_threatening}}">
+
+			      		<label for="partDestroyed"> Part Destroyed </label>
+			      		<input type="text" class="form-control" id="partDestroyed" value="{{pest.part_destroyed}}">
+
+			      		<label for="effect"> Effect </label>
+			      		<textarea class="form-control" id="effect" rows="5" value="{{pest.effect}}"></textarea>
+
+			      		<label for="stageAffected"> Stage of Plant Affected </label>
+			      		<input type="text" class="form-control" id="stageAffected" value="{{pest.stage_plant_affected}}">
+					</div>
+
+					<!-- FILIPINO INPUTS -->
+					<div id="filipino" class="tab-pane fade">
+						<label for="filName"> Pangalan ng Peste </label>
+			      		<input type="text" class="form-control" id="filName" value="{{pest.fil_name}}">
+
+			      		<label for="filTreatment"> Lunas </label>
+			      		<textarea class="form-control" id="filTreatment" rows="5" value="{{pest.fil_treatment}}"></textarea>
+
+						<label for="filClassification"> Klasipikasiyon </label>
+			      		<input type="text" class="form-control" id="filClassification" value="{{pest.fil_classification}}">
+
+			      		<label for="filPlantAffected"> Apektadong Halaman </label>
+			      		<input type="text" class="form-control" id="filPlantAffected" value="{{pest.fil_plant_affected}}">
+
+			      		<label for="filDescription"> Deskripsyon </label>
+			      		<textarea class="form-control" id="filDescription" rows="5" value="{{pest.fil_description}}"></textarea>
+
+			      		<label for="filSymptoms"> Sintomas </label>
+			      		<textarea class="form-control" id="filSymptoms" rows="5" value="{{pest.fil_symptoms}}"></textarea>
+
+			      		<label for="filStageThreatening"> Stage Threatening ?</label>
+			      		<input type="text" class="form-control" id="filStageThreatening" value="{{pest.fil_stage_threatening}}">
+
+			      		<label for="filPartDestroyed"> Part Destroyed ?</label>
+			      		<input type="text" class="form-control" id="filPartDestroyed" value="{{pest.fil_part_destroyed}}">
+
+			      		<label for="filEffect"> Epekto </label>
+			      		<textarea class="form-control" id="filEffect" rows="5" value="{{pest.fil_effect}}"></textarea>
+
+			      		<label for="filStageAffected"> Stage of Plant Affected ?</label>
+			      		<input type="text" class="form-control" id="filStageAffected" value="{{pest.fil_stage_plant_affected}}">
+					</div>
+				</div>
+
+				<div class="text-center buttons">
+					<button id="saveBTN" class="btn btn-success cms-button">Save</button>
+					<button id="cancelBTN" class="btn btn-danger cms-button">Cancel</button>
+				</div>
+
+				<div class="modal fade editSuccess">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<center><p>Pest successfully edited!</p></center>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+		    </div>
+		</div>
+	</div>
+	
+</template>
+
+<template name="keywordsPaginate">
+	{{#if isReady}}
+			{{#each documents}}
+				<!-- {{#each this.keywords}} -->
+				<li class="list-group-item">
+					<div class="media">
+						<div class="media-body">
+							<h5 class="media-heading"> <i>{{this}}</i> </h5>
+						</div>
+						<div class="media-right"> {{> keywordButton text="remove" color="danger" name=this }} </div>
+					</div>
+				</li>
+				<!-- {{/each}} -->
+			{{/each}}
+		{{> defaultBootstrapPaginator pagination=templatePagination limit=10 containerClass="text-center" onClick=clickEvent}}
+	{{else}}
+		{{> spinner}}
+	{{/if}}
+</template>
+
+<template name="keywordButton">
+	<button type="button" class="{{text}} btn btn-{{color}} btn-sm" data-toggle="tooltip" title="{{text}} keyword" data-placement="right">
+		<span class="glyphicon glyphicon-{{text}}"></span>
+	</button>
+</template>

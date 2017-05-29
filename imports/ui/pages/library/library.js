@@ -4,3 +4,6 @@ import './entity-page/pest-entity-page.html';
 
 import './pest-library/pest-library.js';
 import './entity-page/pest-entity-page.js';
+
+import './search/search.html';
+import './search/search.js';

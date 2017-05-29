@@ -26,8 +26,9 @@ Template.pestId.onCreated(function () {
 });
 
 Template.pestId.onRendered(function() {
+	Session.set("currentPage", "finalId"); // set the current page to change banner
 	$('.jqDropZone').html("<img src='/img/drop-here.png' width='100%' height='295px'/>");
-})
+});
 
 Template.pestId.helpers({
 
