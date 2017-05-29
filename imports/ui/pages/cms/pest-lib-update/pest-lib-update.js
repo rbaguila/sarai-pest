@@ -47,6 +47,7 @@ Template.pestLibUpdate.events({
 		
 		// GET THE VALUES
 		var newCMS = {
+			bannerPosition: $("#bannerPosition option:selected").val(),
 			bannerText : $("#bannerText").val(),
 			bannerSubText : $("#bannerSubText").val(),
 			searchlabel : $("#searchlabel").val(),
