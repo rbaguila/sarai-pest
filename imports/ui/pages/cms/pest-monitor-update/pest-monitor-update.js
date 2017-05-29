@@ -17,9 +17,8 @@ Template.pestMonitorUpdate.helpers({
 		return CMS.findOne({info: "finalMonitor"});
 	},
 	
-	isSelected(position){
-		var banner = CMS.findOne({info:'finalMonitor'});
-		return position == banner.bannerContentPosition; // may error daw sa bannerContentPosition!!!!!???
+	isSelected(value, position){
+		return value == position;
 	}
 });
 

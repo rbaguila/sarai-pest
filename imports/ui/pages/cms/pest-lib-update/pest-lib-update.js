@@ -30,9 +30,8 @@ Template.pestLibUpdate.helpers({
 		return CMS.find({info: "finalLib", viewPestType: pestType}).count() > 0? true : false;
 	},
 
-	isSelected(position){
-		var banner = CMS.findOne({info:'finalLib'});
-		return position == banner.bannerContentPosition; // may error daw sa bannerContentPosition!!!!!???
+	isSelected(value, position){
+		return value == position;
 	}
 });
 

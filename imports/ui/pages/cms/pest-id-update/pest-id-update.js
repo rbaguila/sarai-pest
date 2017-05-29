@@ -17,9 +17,8 @@ Template.pestIdUpdate.helpers({
 		return CMS.findOne({info: "finalId"});
 	},
 	
-	isSelected(position){
-		var banner = CMS.findOne({info:'finalId'});
-		return position == banner.bannerContentPosition; // may error daw sa bannerContentPosition!!!!!???
+	isSelected(value, position){
+		return value == position;
 	}
 });
 
