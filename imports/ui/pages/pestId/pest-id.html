@@ -53,8 +53,14 @@
 								<tr>
 									<td><input type="checkbox" name="cropAffected" value="" id="Rice">Rice</td>
 									<td><input type="checkbox" name="cropAffected" value="" id="Corn">Corn</td>
-									<td></td>
+									<td> </td>
 									<td><input type="checkbox" name="cropAffected" value="" id="Banana">Banana</td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" name="cropAffected" value="" id="Cacao">Cacao</td>
+									<td><input type="checkbox" name="cropAffected" value="" id="Coffee">Coffee</td>
+									<td> </td>
+									<td><input type="checkbox" name="cropAffected" value="" id="Coconut">Coconut</td>
 								</tr>
 							</tbody>
 						</table>
@@ -109,7 +115,7 @@
 				<!-- Image Processing -->
 				<!-- Upload Image Here -->
 				<div>
-					<div class="col-sm-6 col-md-6 col-lg-6 col-md-offset-3">
+					<div class="col-sm-6 col-md-6 col-lg-6 col-md-offset-3 image-processing">
 						{{> dropzone fileTypes='.jpg,.png,.jpeg.,.JPG,.PNG' contentType='images' multiple=false formData=specificFormData callbacks=myCallbacks}}
 					</div>
 				</div>

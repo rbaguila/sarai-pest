@@ -21,6 +21,7 @@ Template.pestId.onCreated(function () {
 	Session.set("currentType", currentType);
 	Session.set("cropAffected", cropAffected);
 	Session.set("classType", classType);
+	Session.set("uploaded", false);
 	Session.set("showOBS", false);
 
 });
@@ -160,6 +161,10 @@ Template.pestId.helpers({
 	myCallbacks: function() {
 	    return {
 			 finished: function(index, fileInfo, context) {
+			 	if (!$("input[name='radiopd']:checked").val()) {
+				   alert('Choose either Pest or Disease first.');
+				   return false;
+				}
 			 	Session.set("showIPS", true);
 			 	Session.set("spinner", true);
 			 	Session.set('data',undefined);
@@ -174,7 +179,6 @@ Template.pestId.helpers({
 				 	$('.jqDropZone').html("<img src=/upload/"+fileInfo.name+" width='100%' height='295px'/>");
 				 	$.ajax({	
 						type:"POST",
-						// url: "http://localhost:5000/diseaseImageSearch",
 						url:"http://localhost:5000/diseaseImageSearch",
 						dataType:"json",
 						data: 
@@ -186,11 +190,13 @@ Template.pestId.helpers({
 							},
 						success: function(result){
 							Session.set("spinner", false);
+							Session.set("uploaded", true);
 							Session.set('data',result.data);
 							console.log(result.data);		
 						},
 						error: function(error){
 							Session.set("spinner", false);
+							Session.set("uploaded", false);
 							console.log(error.data);
 						}
 					});
@@ -200,7 +206,6 @@ Template.pestId.helpers({
 					$('.jqDropZone').html("<img src=/upload/"+fileInfo.name+" width='100%' height='295px'/>");
 				 	$.ajax({	
 						type:"POST",
-						// url: "http://localhost:5000/pestImageSearch",
 						url:"http://localhost:5000/pestImageSearch",
 						dataType:"json",
 						data: 
@@ -212,12 +217,14 @@ Template.pestId.helpers({
 							},
 						success: function(result){
 							Session.set("spinner", false);
+							Session.set("uploaded", true);
 							Session.set("data",result.data);
 							//Session.set("showOBS", false);      //Disable showing of ontology-based search/identification
 							console.log(result.data);		
 						},
 						error: function(error){
 							Session.set("spinner", false);
+							Session.set("uploaded", false);
 							console.log(error.data);
 						}
 					});
@@ -302,6 +309,13 @@ Template.pestId.events({
 	},
 
 	'change [name="cropAffected"]' (event, template) {
+		if (!$("input[name='radiopd']:checked").val()) {
+		   alert('Choose either Pest or Disease first.');
+		   $.each($('[name="cropAffected"]:checked'), function(index, item){
+				$('[name="cropAffected"]:checked').removeAttr('checked');
+			});
+		}
+
 		cropAffected = "";
 		var count = 0;
 		/*currentType = template.templateDict.get("currentType");
@@ -338,6 +352,42 @@ Template.pestId.events({
 		console.log(Session.get("currentType"));
 		console.log(Session.get("cropAffected"));
 		console.log(Session.get("classType"));
+
+		if(Session.get("uploaded")){
+			Session.set("spinner", true);
+			Template.pestId.__helpers.get('enableSpinner').call();
+			if(currentType == "Pest"){
+				var currentURL = "http://localhost:5000/pestImageSearch";
+			}
+			else{
+				var currentURL = "http://localhost:5000/diseaseImageSearch";
+			}
+			//console.log("May image touhl");
+			$.ajax({	
+				type:"POST",
+				url:currentURL,
+				dataType:"json",
+				data: 
+					{
+						'filename': Session.get("filename"),
+						'type': currentType,
+						'crop': cropAffected,
+						'class': classType,
+					},
+				success: function(result){
+					Session.set("spinner", false);
+					Session.set("uploaded", true);
+					Session.set("data",result.data);
+					//Session.set("showOBS", false);      //Disable showing of ontology-based search/identification
+					console.log(result.data);		
+				},
+				error: function(error){
+					Session.set("spinner", false);
+					Session.set("uploaded", false);
+					console.log(error.data);
+				}
+			});
+		}
 	},
 
 	'change [name="classType"]' (event, template) {
@@ -362,5 +412,6 @@ Template.pestId.events({
 		console.log(Session.get("currentType"));
 		console.log(Session.get("cropAffected"));
 		console.log(Session.get("classType"));
+
 	},
 });
