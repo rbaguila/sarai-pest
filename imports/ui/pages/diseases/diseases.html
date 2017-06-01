@@ -1,0 +1,96 @@
+<template name="App_diseases">
+  {{> top_nav}}
+  {{> banner}}
+  	{{> plantDiseases}}
+  {{> footer}}
+</template>
+
+<template name="plantDiseases">
+
+	<center>
+		<div>
+			<h3> {{ getCMS.searchLabelText }} </h3>
+		</div>
+
+		<div class="col-sm-12">
+			<div class="searchbar">
+				{{> EasySearch.Input index=diseasesIndex attributes=searchAttributes }}
+			</div>
+		</div>
+	</center>
+
+	<br/><br/>
+	{{#EasySearch.IfInputEmpty index=diseasesIndex }}
+	<center>
+		<div><h4>For example "Rice"</h4></div>
+	</center>
+	{{else}}
+	<center>
+		<div><h4>Search Results</h4></div>
+	</center>
+	<div class="wrapper">
+		{{#EasySearch.IfSearching index=diseasesIndex}}
+		  {{>spinner}}
+		{{/EasySearch.IfSearching}}
+
+    	<div class="container">
+			{{#EasySearch.Each index=diseasesIndex}}		
+				{{#if equals type "Disease"}}
+				    {{> individualDisease}}
+		    	{{/if}}
+			{{/EasySearch.Each}}
+		</div>
+
+		<div class="container">
+			{{#EasySearch.IfNoResults index=diseasesIndex}}
+			  <center><div>No results found!</div></center>
+			{{/EasySearch.IfNoResults}}
+		</div>
+	</div>
+	{{/EasySearch.IfInputEmpty}}
+
+	<div>
+		{{#each getCMS.viewDiseaseType}}
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<h3 class="pest-category-label"> {{this}} Diseases </h3>
+			</div>
+			{{> diseasePaginate}}
+		{{/each}}
+    </div>
+</template>
+
+<template name="diseasePaginate">
+	<div>
+	{{#if isReady}}
+		<div class="container">
+			{{#each documents this}}
+				{{> individualDisease}}
+			{{/each}}
+		</div>
+		{{> defaultBootstrapPaginator pagination=templatePagination limit=10 containerClass="text-center" onClick=clickEvent}}
+	{{else}}
+		{{> spinner}}
+	{{/if}}
+	</div>
+</template>
+
+<template name="individualDisease">
+	<div class="pest-data-body col-xs-6 col-sm-4 col-md-3 col-lg-3">
+		<div class="panel panel-default">
+			<div class="fixed-panel panel-body">
+				<div>
+					<img src="{{image}}" class="img-thumbnail fixed-image" alt="{{name}}" width="200" height="200"/>
+				</div>
+				<div>
+					<div class="truncate">{{name}}</div>
+			  	</div>
+		  	</div>
+		  
+		  	<div class="panel-footer">
+				<a class="view-page" href="/disease-entity/{{_id}}">
+					View Page
+		 		</a>
+		  	</div>
+		</div>
+	</div>
+</template>

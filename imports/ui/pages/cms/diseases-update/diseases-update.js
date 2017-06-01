@@ -1,33 +1,33 @@
 import { Plant_Problem } from '/imports/api/plant_problem/plant_problem.js';
 import { CMS } from '/imports/api/cms/cms.js';
 import { Meteor } from 'meteor/meteor';
-import './pest-lib-update.html';
+import './diseases-update.html';
 import '../components/cms-navbar.html';
 import '../components/cms-sidenav.html';
 
-Template.pestLibUpdate.onCreated(function () {
+Template.diseasesUpdate.onCreated(function () {
 	Meteor.subscribe('plant_problem.all');
 	Meteor.subscribe('cms.all');
 });
 
-Template.pestLibUpdate.onRendered(function() {
+Template.diseasesUpdate.onRendered(function() {
 	$('#viewChangesBTN').hide();
 });
 
-Template.pestLibUpdate.helpers({
+Template.diseasesUpdate.helpers({
 
 	getCMS(){
-		return CMS.findOne({info: "finalLib"});
+		return CMS.findOne({info: "finalDiseases"});
 	},
 
-	pestType(){
+	diseaseType(){
 		var data = Plant_Problem.find().fetch();
 		var distinctData = _.uniq(data, false, function(d) {return d.plant_affected});
 		return _.pluck(distinctData, "plant_affected");
 	},
 
-	isChecked(pestType) {
-		return CMS.find({info: "finalLib", viewPestType: pestType}).count() > 0? true : false;
+	isChecked(diseaseType) {
+		return CMS.find({info: "finalDiseases", viewDiseaseType: diseaseType}).count() > 0? true : false;
 	},
 
 	isSelected(value, position){
@@ -43,28 +43,28 @@ Template.pestLibUpdate.helpers({
 	},
 });
 
-Template.pestLibUpdate.events({
+Template.diseasesUpdate.events({
 	'click #saveBTN': function(event){
 		event.preventDefault();
 
-		var pestType = [];
+		var diseaseType = [];
 		$( "input[type=checkbox]:checked" ).map(function() {
-		    pestType.push($( this ).val());
+		    diseaseType.push($( this ).val());
 		});
 		
 		// GET THE VALUES
 		var newCMS = {
-			bannerImage: (Session.get('bannerImage') == undefined) ? CMS.findOne({info: "finalLib"}).bannerImage : Session.get('bannerImage'),
+			bannerImage: (Session.get('bannerImage') == undefined) ? CMS.findOne({info: "finalDiseases"}).bannerImage : Session.get('bannerImage'),
 			bannerPosition: $("#bannerPosition option:selected").val(),
 			bannerText : $("#bannerText").val(),
 			bannerSubText : $("#bannerSubText").val(),
 			searchlabel : $("#searchlabel").val(),
-			pestNumbers : parseInt( $("#pestsperpage").val() ),
-			pestType : pestType
+			diseaseNumbers : parseInt( $("#diseasesperpage").val() ),
+			diseaseType : diseaseType
 		}
 		
 		// UPDATES THE DATABASE
-		Meteor.call('cms.updatePestLib', newCMS, (error) => {
+		Meteor.call('cms.updateDiseases', newCMS, (error) => {
 	      if (error) {
 	        alert(error.error);
 	      } else {
@@ -80,6 +80,6 @@ Template.pestLibUpdate.events({
 
 	'click #viewChangesBTN': function(event){
 		event.preventDefault();
-		FlowRouter.go("/library");
+		FlowRouter.go("/diseases");
 	}
 });

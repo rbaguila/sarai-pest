@@ -76,10 +76,19 @@ Meteor.startup(() => {
           bannerImageID: '',
           bannerHeadText: 'Pest Library',
           bannerSubText: 'An online library for Rice and Corn Pests',
-          searchLabelText: ['Search the library for pests', 'Search the library for diseases'],
-          viewType: ['Pest', 'Disease'],
+          searchLabelText: 'Search the library for pests',
           viewPestType: ['Rice', 'Corn', 'Banana'],
-          pestsPerPage: 8,
+          pestsPerPage: 8
+        },
+        {
+          info: 'finalDiseases',
+          bannerContentPosition: 'middle',
+          bannerImage: '/img/banners/diseases_banner.jpg',
+          bannerImageID: '',
+          bannerHeadText: 'Diseases Library',
+          bannerSubText: 'An online library for Rice, Corn, and Banana Diseases',
+          searchLabelText: 'Search the library for diseases',
+          viewDiseaseType: ['Rice', 'Corn', 'Banana'],
           diseasesPerPage: 8
         },
         {
@@ -89,14 +98,6 @@ Meteor.startup(() => {
           bannerImageID: '',
           bannerHeadText: 'Pest Identification',
           bannerSubText: 'Identify pest by uploading a pest picture below by selecting the image processing tab or by answering questions from the ontology-based tab',
-        },
-        {
-          info: 'finalMonitor',
-          bannerContentPosition: 'middle',
-          bannerImage: '/img/banners/pest_monitor_banner.jpg',
-          bannerImageID: '',
-          bannerHeadText: 'Pest Monitor',
-          bannerSubText: 'Charts and maps for pest-related activities',
         },
         {
           info: 'finalClinic',

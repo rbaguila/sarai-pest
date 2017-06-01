@@ -12,7 +12,6 @@ Meteor.methods({
     check(newCMS.bannerSubText, String);
     check(newCMS.searchlabel, String);
     check(newCMS.pestNumbers, Number);
-    check(newCMS.diseaseNumbers, Number);
 
     CMS.update( {info: "finalLib"}, 
     	{ $set: 
@@ -24,25 +23,29 @@ Meteor.methods({
     			searchLabelText: newCMS.searchlabel,
 		    	viewPestType: newCMS.pestType,
 		    	pestsPerPage: newCMS.pestNumbers,
-          diseasesPerPage: newCMS.diseaseNumbers 
 		    } 
 	    }
 	  );
   },
 
-  'cms.updatePestMonitor'( newCMS ) {
+  'cms.updateDiseases'( newCMS ) {
     check(newCMS.bannerImage, String);
     check(newCMS.bannerPosition, String);
     check(newCMS.bannerText, String);
     check(newCMS.bannerSubText, String);
+    check(newCMS.searchlabel, String);
+    check(newCMS.diseaseNumbers, Number);
 
-    CMS.update( {info: "finalMonitor"}, 
+    CMS.update( {info: "finalDiseases"}, 
       { $set: 
         { 
           bannerImage: newCMS.bannerImage,
           bannerContentPosition: newCMS.bannerPosition,
           bannerHeadText : newCMS.bannerText,
-          bannerSubText : newCMS.bannerSubText
+          bannerSubText : newCMS.bannerSubText,
+          searchLabelText: newCMS.searchlabel,
+          viewDiseaseType: newCMS.diseaseType,
+          diseasesPerPage: newCMS.diseaseNumbers,
         } 
       }
     );

@@ -1,111 +1,26 @@
 <template name="pestsLib">
-	<div>
-
-		<ul class="nav nav-tabs">
-		  <li class="active"><a data-toggle="pill" href="#pests">PESTS</a></li>
-		  <li><a data-toggle="pill" href="#diseases">DISEASES</a></li>
-		</ul>
-		
-		<div class="tab-content">
-			<!-- PESTS -->
-			<div id="pests" class="tab-pane fade in active">
-				<center>
-					<div>
-						<h3> Search the library for pests </h3>
-					</div>
-					<div class="col-sm-12">
-						{{> advanced_search type="pests"}}
-						<br/><br/>
-					</div>
-					{{> search}}
-				</center>
-				
-				<div>
-					{{#each getCMS.viewPestType}}
-						<div class="col-sm-12 col-md-12 col-lg-12">
-							<h3 class="pest-category-label"> {{this}} Pests </h3>
-						</div>
-						{{> pestPaginate}}
-					{{/each}}
-			    </div>
+		<center>
+			<div>
+				<h3>{{ getCMS.searchLabelText }}</h3>
 			</div>
-			<!-- END PESTS -->
-
-			<!-- DISEASES -->
-			<div id="diseases" class="tab-pane fade">
-				<center>
-					<div>
-						<h3> Search the library for diseases </h3>
-					</div>
-
-					<div class="col-sm-12">
-						<div class="searchbar">
-							{{> EasySearch.Input index=diseasesIndex attributes=searchAttributes }}
-						</div>
-					</div>
-				</center>
-
+			<div class="col-sm-12">
+				{{> advanced_search type="pests"}}
 				<br/><br/>
-				{{#EasySearch.IfInputEmpty index=diseasesIndex }}
-				<center>
-					<div><h4>For example "Rice"</h4></div>
-				</center>
-				{{else}}
-				<center>
-					<div><h4>Search Results</h4></div>
-				</center>
-				<div class="wrapper">
-					{{#EasySearch.IfSearching index=diseasesIndex}}
-					  {{>spinner}}
-					{{/EasySearch.IfSearching}}
-
-			    	<div class="container">
-						{{#EasySearch.Each index=diseasesIndex}}		
-							{{#if equals type "Disease"}}
-							    {{> individualPest}}
-					    	{{/if}}
-						{{/EasySearch.Each}}
-					</div>
-
-					<div class="container">
-						{{#EasySearch.IfNoResults index=diseasesIndex}}
-						  <center><div>No results found!</div></center>
-						{{/EasySearch.IfNoResults}}
-					</div>
+			</div>
+			{{> search}}
+		</center>
+		
+		<div>
+			{{#each getCMS.viewPestType}}
+				<div class="col-sm-12 col-md-12 col-lg-12">
+					<h3 class="pest-category-label"> {{this}} Pests </h3>
 				</div>
-				{{/EasySearch.IfInputEmpty}}
-
-				<div>
-					{{#each getCMS.viewPestType}}
-						<div class="col-sm-12 col-md-12 col-lg-12">
-							<h3 class="pest-category-label"> {{this}} Diseases </h3>
-						</div>
-						{{> diseasePaginate}}
-					{{/each}}
-			    </div>
-		    </div>
-		    <!-- END DISEASES -->
-		</div>
-
-    </div>
+				{{> pestPaginate}}
+			{{/each}}
+	    </div>
 </template>
 
 <template name="pestPaginate">
-	<div>
-	{{#if isReady}}
-		<div class="container">
-			{{#each documents this}}
-				{{> individualPest}}
-			{{/each}}
-		</div>
-		{{> defaultBootstrapPaginator pagination=templatePagination limit=10 containerClass="text-center" onClick=clickEvent}}
-	{{else}}
-		{{> spinner}}
-	{{/if}}
-	</div>
-</template>
-
-<template name="diseasePaginate">
 	<div>
 	{{#if isReady}}
 		<div class="container">
@@ -133,7 +48,7 @@
 		  	</div>
 		  
 		  	<div class="panel-footer">
-				<a class="view-page" href="/entity/{{_id}}">
+				<a class="view-page" href="/pest-entity/{{_id}}">
 					View Page
 		 		</a>
 		  	</div>
