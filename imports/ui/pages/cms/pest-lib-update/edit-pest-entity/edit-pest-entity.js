@@ -9,9 +9,8 @@ Template.editPestEntity.onCreated(function () {
 });
 
 Template.editPestEntity.onRendered(function () {
-	 $('[data-toggle="tooltip"]').tooltip(); 
-	 Session.set('keywords', Plant_Problem.findOne({_id: FlowRouter.current().params._id}).keywords);
-	 // console.log(Session.get('keywords'));
+	$('[data-toggle="tooltip"]').tooltip(); 
+	Session.set('keywords', Plant_Problem.findOne({_id: FlowRouter.current().params._id}).keywords);
 });
 
 Template.editPestEntity.helpers({
@@ -19,19 +18,11 @@ Template.editPestEntity.helpers({
 		return Plant_Problem.findOne({_id: FlowRouter.current().params._id});
 	},
 
-	// returnKeywords(){
-	// 	var keywords = []
-	// 	var storedKeywords = Session.get('keywords');
-	// 	for(var i=0; i<10; i++){
-	// 		keywords[i] = storedKeywords[i];
-	// 	}
-	// 	return keywords;
-	// },
-
 	pestImageFile(){
 		return {
 			finished: function(index, fileInfo, context) {
-				Session.set('pestImage', '/img/.uploads/' + fileInfo.name);
+				console.log( fileInfo.url );
+				Session.set('pestImage', '/upload/' + fileInfo.name);
 			}
 		}
 	},

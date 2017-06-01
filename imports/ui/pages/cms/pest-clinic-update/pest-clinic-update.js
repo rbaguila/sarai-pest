@@ -24,7 +24,7 @@ Template.pestClinicUpdate.helpers({
 	bannerImageFile(){
 		return {
 			finished: function(index, fileInfo, context) {
-				Session.set('bannerImage', '/img/.uploads/' + fileInfo.name);
+				Session.set('bannerImage', '/upload/' + fileInfo.name);
 			}
 		}
 	},
@@ -32,7 +32,7 @@ Template.pestClinicUpdate.helpers({
 	row1ImageFile(){
 		return {
 			finished: function(index, fileInfo, context) {
-				Session.set('row1Image', '/img/.uploads/' + fileInfo.name);
+				Session.set('row1Image', '/upload/' + fileInfo.name);
 			}
 		}
 	},
@@ -40,7 +40,7 @@ Template.pestClinicUpdate.helpers({
 	row2ImageFile(){
 		return {
 			finished: function(index, fileInfo, context) {
-				Session.set('row2Image', '/img/.uploads/' + fileInfo.name);
+				Session.set('row2Image', '/upload/' + fileInfo.name);
 			}
 		}
 	},

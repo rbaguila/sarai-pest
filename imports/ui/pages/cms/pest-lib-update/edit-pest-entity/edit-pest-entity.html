@@ -146,23 +146,6 @@
 </template>
 
 <template name="keywordsPaginate">
-	<!-- {{#if isReady}}
-			{{#each documents}}
-				{{#each this.keywords}}
-				<li class="list-group-item">
-					<div class="media">
-						<div class="media-body">
-							<h5 class="media-heading"> <i>{{this}}</i> </h5>
-						</div>
-						<div class="media-right"> {{> keywordButton text="remove" color="danger" name=this }} </div>
-					</div>
-				</li>
-				{{/each}}
-			{{/each}}
-		{{> defaultBootstrapPaginator pagination=templatePagination limit=10 containerClass="text-center" onClick=clickEvent}}
-	{{else}}
-		{{> spinner}}
-	{{/if}} -->
 	{{#navybitsPagination data=dataToPaginate}}
 	    <li class="list-group-item">
 			<div class="media">

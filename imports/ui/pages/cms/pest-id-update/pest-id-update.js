@@ -24,7 +24,7 @@ Template.pestIdUpdate.helpers({
 	bannerImageFile(){
 		return {
 			finished: function(index, fileInfo, context) {
-				Session.set('bannerImage', '/img/.uploads/' + fileInfo.name);
+				Session.set('bannerImage', '/upload/' + fileInfo.name);
 			}
 		}
 	},

@@ -1,6 +1,5 @@
 import { Plant_Problem } from '/imports/api/plant_problem/plant_problem.js';
 import { Meteor } from 'meteor/meteor';
-import Highcharts from 'highcharts';
 import './pest-monitoring.html';
 
 Template.pestMonitoring.onCreated(function () {

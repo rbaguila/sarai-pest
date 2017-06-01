@@ -18,7 +18,7 @@ Template.insertPest.helpers({
 	pestImageFile(){
 		return {
 			finished: function(index, fileInfo, context) {
-				Session.set('pestImageFile', '/img/.uploads/' + fileInfo.name);
+				Session.set('pestImageFile', '/upload/' + fileInfo.name);
 			}
 		}
 	}
