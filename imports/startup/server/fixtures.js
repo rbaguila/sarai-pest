@@ -71,7 +71,6 @@ Meteor.startup(() => {
     const data = [
         {
           info: 'finalLib',
-          bannerContentPosition: 'middle',
           bannerImage: '/img/banners/pest_lib_banner.jpg',
           bannerImageID: '',
           bannerHeadText: 'Pest Library',
@@ -82,7 +81,6 @@ Meteor.startup(() => {
         },
         {
           info: 'finalDiseases',
-          bannerContentPosition: 'middle',
           bannerImage: '/img/banners/diseases_banner.jpg',
           bannerImageID: '',
           bannerHeadText: 'Diseases Library',
@@ -93,7 +91,6 @@ Meteor.startup(() => {
         },
         {
           info: 'finalId',
-          bannerContentPosition: 'middle',
           bannerImage: '/img/banners/pest_id_banner.jpg',
           bannerImageID: '',
           bannerHeadText: 'Pest Identification',
@@ -101,7 +98,6 @@ Meteor.startup(() => {
         },
         {
           info: 'finalClinic',
-          bannerContentPosition: 'middle',
           bannerImage: '/img/banners/pest_clinic_banner.png',
           bannerImageID: '',
           bannerHeadText: 'Pest Clinic',
@@ -114,7 +110,6 @@ Meteor.startup(() => {
         },
         {
           info: 'finalHome',
-          bannerContentPosition: 'middle',
           bannerImage: '/img/banners/pest_banner.jpg',
           bannerImageID: '',
           bannerHeadText: 'Smarter Pest Identification',

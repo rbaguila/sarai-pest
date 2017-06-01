@@ -13,15 +13,6 @@
         <label for="pestImage"> Banner Image </label>
         {{> upload_bootstrap multiple=false callbacks=bannerImageFile }}
 
-        <label for="bannerPosition"> Banner Content Position </label>
-        <div class="form-group">
-          <select class="form-control" id="bannerPosition">
-            <option value="top" selected="{{isSelected 'top' getCMS.bannerContentPosition}}">Top</option>
-            <option value="middle" selected="{{isSelected 'middle' getCMS.bannerContentPosition}}">Middle</option>
-            <option value="bottom" selected="{{isSelected 'bottom' getCMS.bannerContentPosition}}">Bottom</option>
-          </select>
-        </div>
-
         <label for="bannerText"> Banner Header Text </label>
         <input type="text" class="form-control" id="bannerText" value="{{getCMS.bannerHeadText}}">
 

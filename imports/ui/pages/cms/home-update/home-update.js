@@ -37,7 +37,6 @@ Template.homeUpdate.events({
 		// GET THE VALUES
 		var newCMS = {
 			bannerImage: (Session.get('bannerImage') == undefined) ? CMS.findOne({info: "finalHome"}).bannerImage : Session.get('bannerImage'),
-			bannerPosition: $("#bannerPosition option:selected").val(),
 			bannerText : $("#bannerText").val(),
 			bannerSubText : $("#bannerSubText").val()
 		}

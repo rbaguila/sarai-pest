@@ -55,7 +55,6 @@ Template.diseasesUpdate.events({
 		// GET THE VALUES
 		var newCMS = {
 			bannerImage: (Session.get('bannerImage') == undefined) ? CMS.findOne({info: "finalDiseases"}).bannerImage : Session.get('bannerImage'),
-			bannerPosition: $("#bannerPosition option:selected").val(),
 			bannerText : $("#bannerText").val(),
 			bannerSubText : $("#bannerSubText").val(),
 			searchlabel : $("#searchlabel").val(),
