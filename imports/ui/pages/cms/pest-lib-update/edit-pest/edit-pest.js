@@ -10,6 +10,7 @@ Template.editPest.onCreated(function () {
 
 Template.editPest.onRendered(function () {
 	$('[data-toggle="tooltip"]').tooltip(); 
+	//$('.modal').modal();
 });
 
 var count = 0;
@@ -39,8 +40,6 @@ Template.editPest.events({
 	},
 });
 
-var id = "";
-
 Template.button.events({
 	'click .edit': function(event, template) {
 		console.log("EDIT: " + this.id);
@@ -49,13 +48,13 @@ Template.button.events({
 
 	'click .remove': function(event, template) {
 		console.log("DELETE: " + this.id);
-		id = this.id;
+		Session.set('id', this.id);
 		$('#deletePest').modal('show');
 	},
 
 	'click .confirmDelete' : function(event) {
 		$('#deletePest').modal('hide');
-		Meteor.call('pests.removePest', id, (error) => {
+		Meteor.call('pests.removePest', Session.get('id'), (error) => {
 	      if (error) {
 	        alert(error.error);
 	      } else {

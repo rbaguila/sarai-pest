@@ -24,8 +24,7 @@
 	      		<input type="text" class="form-control" id="sciName" value="{{pest.sci_name}}">
 
 	      		<label for="pestImage"> Pest Image </label>
-	      		<!-- <input type="file" name="pestImage" id="pestImage" accept="image/*"> -->
-	      		{{> upload_bootstrap }}
+	      		{{> upload_bootstrap multiple=false callbacks=pestImageFile }}
 
 	      		<hr/>
 		      	<label for="keywords"> Keywords </label>
@@ -37,16 +36,6 @@
 				</div>
 		      	<ul class="list-group">
 		      		{{> keywordsPaginate}}
-		     		<!-- {{#each returnKeywords}}
-		     			<li class="list-group-item">
-							<div class="media">
-								<div class="media-body">
-									<h5 class="media-heading"> <i>{{this}}</i> </h5>
-								</div>
-								<div class="media-right"> {{> keywordButton text="remove" color="danger" name=this }} </div>
-							</div>
-						</li>
-					{{/each}} -->
 				</ul>
 				<br/>
 				<div class="col-sm-12 col-md-12 col-lg-12 text-center">
@@ -95,34 +84,34 @@
 
 					<!-- FILIPINO INPUTS -->
 					<div id="filipino" class="tab-pane fade">
-						<label for="filName"> Pangalan ng Peste </label>
+						<label for="filName"> Name (Filipino) </label>
 			      		<input type="text" class="form-control" id="filName" value="{{pest.fil_name}}">
 
-			      		<label for="filTreatment"> Lunas </label>
+			      		<label for="filTreatment"> Treatment (Filipino) </label>
 			      		<textarea class="form-control" id="filTreatment" rows="5" value="{{pest.fil_treatment}}"></textarea>
 
-						<label for="filClassification"> Klasipikasiyon </label>
+						<label for="filClassification"> Classification (Filipino) </label>
 			      		<input type="text" class="form-control" id="filClassification" value="{{pest.fil_classification}}">
 
-			      		<label for="filPlantAffected"> Apektadong Halaman </label>
+			      		<label for="filPlantAffected"> Plant Affected (Filipino) </label>
 			      		<input type="text" class="form-control" id="filPlantAffected" value="{{pest.fil_plant_affected}}">
 
-			      		<label for="filDescription"> Deskripsyon </label>
+			      		<label for="filDescription"> Description (Filipino) </label>
 			      		<textarea class="form-control" id="filDescription" rows="5" value="{{pest.fil_description}}"></textarea>
 
-			      		<label for="filSymptoms"> Sintomas </label>
+			      		<label for="filSymptoms"> Symptoms (Filipino) </label>
 			      		<textarea class="form-control" id="filSymptoms" rows="5" value="{{pest.fil_symptoms}}"></textarea>
 
-			      		<label for="filStageThreatening"> Stage Threatening ?</label>
+			      		<label for="filStageThreatening"> Stage Threatening (Filipino) </label>
 			      		<input type="text" class="form-control" id="filStageThreatening" value="{{pest.fil_stage_threatening}}">
 
-			      		<label for="filPartDestroyed"> Part Destroyed ?</label>
+			      		<label for="filPartDestroyed"> Part Destroyed (Filipino) </label>
 			      		<input type="text" class="form-control" id="filPartDestroyed" value="{{pest.fil_part_destroyed}}">
 
-			      		<label for="filEffect"> Epekto </label>
+			      		<label for="filEffect"> Effect (Filipino) </label>
 			      		<textarea class="form-control" id="filEffect" rows="5" value="{{pest.fil_effect}}"></textarea>
 
-			      		<label for="filStageAffected"> Stage of Plant Affected ?</label>
+			      		<label for="filStageAffected"> Stage of Plant Affected (Filipino)</label>
 			      		<input type="text" class="form-control" id="filStageAffected" value="{{pest.fil_stage_plant_affected}}">
 					</div>
 				</div>
@@ -157,23 +146,16 @@
 </template>
 
 <template name="keywordsPaginate">
-	{{#if isReady}}
-			{{#each documents}}
-				<!-- {{#each this.keywords}} -->
-				<li class="list-group-item">
-					<div class="media">
-						<div class="media-body">
-							<h5 class="media-heading"> <i>{{this}}</i> </h5>
-						</div>
-						<div class="media-right"> {{> keywordButton text="remove" color="danger" name=this }} </div>
-					</div>
-				</li>
-				<!-- {{/each}} -->
-			{{/each}}
-		{{> defaultBootstrapPaginator pagination=templatePagination limit=10 containerClass="text-center" onClick=clickEvent}}
-	{{else}}
-		{{> spinner}}
-	{{/if}}
+	{{#navybitsPagination data=dataToPaginate}}
+	    <li class="list-group-item">
+			<div class="media">
+				<div class="media-body">
+					<h5 class="media-heading"> <i>{{this}}</i> </h5>
+				</div>
+				<div class="media-right"> {{> keywordButton text="remove" color="danger" name=this }} </div>
+			</div>
+		</li>
+	{{/navybitsPagination}}
 </template>
 
 <template name="keywordButton">

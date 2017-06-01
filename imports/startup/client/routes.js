@@ -16,6 +16,7 @@ import '../../ui/pages/cms/pest-lib-update/edit-pest-entity/edit-pest-entity.js'
 import '../../ui/pages/cms/pest-clinic-update/pest-clinic-update.js';
 import '../../ui/pages/cms/pest-id-update/pest-id-update.js';
 import '../../ui/pages/cms/pest-monitor-update/pest-monitor-update.js';
+import '../../ui/pages/cms/home-update/home-update.js';
 
 // Set up all routes in the app
 FlowRouter.route('/', {
@@ -154,6 +155,21 @@ FlowRouter.route('/pests-monitor-update', {
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "pestMonitorUpdate"})
+          }
+      });
+    }
+});
+
+FlowRouter.route('/home-update', {
+  name: 'App.home-update',
+  action: function(params) {
+      Tracker.autorun(function() {
+          if (!Meteor.userId()) {
+            BlazeLayout.render("App_body", {main: "App_home"})
+            alert("User is not allowed to access the page.")
+            FlowRouter.redirect('/');
+          } else {
+            BlazeLayout.render("App_body", {main: "homeUpdate"})
           }
       });
     }

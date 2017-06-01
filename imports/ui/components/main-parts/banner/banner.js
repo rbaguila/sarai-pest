@@ -11,10 +11,6 @@ Template.banner.helpers({
 	getCMS(){
 		return CMS.findOne({info: Session.get("currentPage")});
 	}, 
-	
-	getCurrentPage(page){
-		return Session.equals("currentPage", page);
-	},
   
 });
 

@@ -32,7 +32,15 @@ Template.pestLibUpdate.helpers({
 
 	isSelected(value, position){
 		return value == position;
-	}
+	},
+
+	bannerImageFile(){
+		return {
+			finished: function(index, fileInfo, context) {
+				Session.set('bannerImage', '/upload/' + fileInfo.name);
+			}
+		}
+	},
 });
 
 Template.pestLibUpdate.events({
@@ -46,6 +54,7 @@ Template.pestLibUpdate.events({
 		
 		// GET THE VALUES
 		var newCMS = {
+			bannerImage: (Session.get('bannerImage') == undefined) ? CMS.findOne({info: "finalLib"}).bannerImage : Session.get('bannerImage'),
 			bannerPosition: $("#bannerPosition option:selected").val(),
 			bannerText : $("#bannerText").val(),
 			bannerSubText : $("#bannerSubText").val(),

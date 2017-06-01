@@ -10,5 +10,6 @@
     "elasticsearch": "^13.0.0",
     "fibers": "^1.0.15",
     "meteor-node-stubs": "^0.2.6"
-  }
+  },
+  "devDependencies": {}
 }

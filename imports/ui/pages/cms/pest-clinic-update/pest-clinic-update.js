@@ -19,21 +19,48 @@ Template.pestClinicUpdate.helpers({
 	
 	isSelected(value, position){
 		return value == position;
-	}
+	},
+
+	bannerImageFile(){
+		return {
+			finished: function(index, fileInfo, context) {
+				Session.set('bannerImage', '/upload/' + fileInfo.name);
+			}
+		}
+	},
+
+	row1ImageFile(){
+		return {
+			finished: function(index, fileInfo, context) {
+				Session.set('row1Image', '/upload/' + fileInfo.name);
+			}
+		}
+	},
+
+	row2ImageFile(){
+		return {
+			finished: function(index, fileInfo, context) {
+				Session.set('row2Image', '/upload/' + fileInfo.name);
+			}
+		}
+	},
 });
 
 Template.pestClinicUpdate.events({
 	'click #saveBTN': function(event){
 		event.preventDefault();
-		
+
 		// GET THE VALUES
 		var newCMS = {
+			bannerImage: (Session.get('bannerImage') == undefined) ? CMS.findOne({info: "finalClinic"}).bannerImage : Session.get('bannerImage'),
 			bannerPosition: $("#bannerPosition option:selected").val(),
 			bannerText : $("#bannerText").val(),
 			bannerSubText : $("#bannerSubText").val(),
 			row1HeadText: $("#row1HeadText").val(),
+			row1Image: (Session.get('row1Image') == undefined) ? CMS.findOne({info: "finalClinic"}).row1Image : Session.get('row1Image'),
 			row2HeadText: $("#row2HeadText").val(),
-			row2SubText: $("#row2SubText").val()
+			row2SubText: $("#row2SubText").val(),
+			row2Image: (Session.get('row2Image') == undefined) ? CMS.findOne({info: "finalClinic"}).row2Image : Session.get('row2Image'),
 		}
 		
 		// UPDATES THE DATABASE

@@ -14,6 +14,15 @@ Template.insertPest.onRendered(function () {
 	 $('[data-toggle="tooltip"]').tooltip(); 
 });
 
+Template.insertPest.helpers({
+	pestImageFile(){
+		return {
+			finished: function(index, fileInfo, context) {
+				Session.set('pestImageFile', '/upload/' + fileInfo.name);
+			}
+		}
+	}
+});
 
 Template.insertPest.events({
 	
@@ -22,13 +31,14 @@ Template.insertPest.events({
 		var str = $("#description").val() + $("#symptoms").val();
 
 		if( !(str.length <=0) ) var keywords = extractKeyword(str);
+		else var keywords = [];
 
 		// GET THE VALUES
 		var newPest = {
 			pestName : $("#pestName").val(),
 			engName : $("#engName").val(),
 			sciName : $("#sciName").val(),
-			image : imageURL,
+			image: (Session.get('pestImageFile') == undefined) ? "/img/no-image-available.jpg" : Session.get('pestImageFile'),
 			keywords : keywords,
 			// for ENGLISH
 			treatment : $("#treatment").val(),

@@ -8,5 +8,5 @@ import './intro_vid/intro_vid.js';
 import '../../components/main-parts/footer/footer.js';
 
 Template.App_home.onRendered(function() {
-	Session.set("currentPage", "home"); // set the current page to change banner
+	Session.set("currentPage", "finalHome"); // set the current page to change banner
 });

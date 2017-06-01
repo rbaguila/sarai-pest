@@ -110,6 +110,14 @@ Meteor.startup(() => {
           row2HeadText: 'Serving since 70s',
           row2SubText: 'Started in the late 70s, the Plant Pest Clinic is an extension program of the Crop Protection Cluster which offers pest management services such as accurate diagnostic and control recommendation to farmers. Through it, experts share their knowledge on pest identification and management, consultations, and offers other related services such as fungal, bacterial, and nematode analyses.',
           row2Image: '/img/clinic/sarai_2.jpg'
+        },
+        {
+          info: 'finalHome',
+          bannerContentPosition: 'middle',
+          bannerImage: '/img/banners/pest_banner.jpg',
+          bannerImageID: '',
+          bannerHeadText: 'Smarter Pest Identification',
+          bannerSubText: 'An online platform that combines different strategies and practices for identification and management of pests',
         }
     ];
 
