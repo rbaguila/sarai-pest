@@ -2,7 +2,6 @@ import { Plant_Problem } from '/imports/api/plant_problem/plant_problem.js';
 import { CMS } from '/imports/api/cms/cms.js';
 import { Meteor } from 'meteor/meteor';
 import './diseases-update.html';
-import '../components/cms-navbar.html';
 import '../components/cms-sidenav.html';
 
 Template.diseasesUpdate.onCreated(function () {
