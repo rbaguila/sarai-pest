@@ -47,7 +47,7 @@ Meteor.startup(() => {
           bannerSubText: 'An online library for Rice and Corn Pests',
           searchLabelText: ['Search the library for pests', 'Search the library for diseases'],
           viewType: ['Pest', 'Disease'],
-          viewPestType: ['Rice', 'Corn', 'Banana'],
+          viewPestType: ['Rice', 'Corn', 'Banana', 'Cacao', 'Coffee', 'Coconut'],
           pestsPerPage: 8,
           diseasesPerPage: 8
         }
@@ -1952,13 +1952,13 @@ Meteor.startup(() => {
           treatment: 'Non-Chemical Control: Several natural enemies of the black citrus aphid keep this pest under control. Sometimes to the extent that insecticides are usually unnecessary; Chemical Control: If chemical control becomes necessary either insecticidal oil, or a synthetic aphidicide(insecticide) may be used. Chemical control should only be applied at the first signs of damage during periods of flush growth. Flush growth (young red leaves) on coffee should be completely moistened after application of chemicals.',
           sci_name: 'Toxoptera aurantii',
           eng_name: 'Camellia Aphid, Citrus Aphid, Black Citrus Aphid',
-          name:'Cameillia Aphids',
-          image: '/img/pests/CameilliaAphids.jpg',
+          name:'Camellia Aphids',
+          image: '/img/pests/CamelliaAphids.jpg',
           image_gallery: [
-            '/img/pests/CameilliaAphids.jpg',
-            '/img/pests/CameilliaAphids2.jpg',
-            '/img/pests/CameilliaAphids3.jpg',
-            '/img/pests/CameilliaAphids4.jpg',
+            '/img/pests/CamelliaAphids.jpg',
+            '/img/pests/CamelliaAphids2.jpg',
+            '/img/pests/CamelliaAphids3.jpg',
+            '/img/pests/CamelliaAphids4.jpg',
           ]
 
        },
@@ -3369,13 +3369,13 @@ Meteor.startup(() => {
           sci_name: 'Oncobasidium theobromae',
           eng_name: 'Vascular Streak Dieback',
           name: 'Vascular Streak Dieback',
-          image: '/img/diseases/VascularStreakDisease.jpg',
+          image: '/img/diseases/VascularStreakDieback.jpg',
           image_gallery: [
-            '/img/diseases/VascularStreakDisease.jpg',
-            '/img/diseases/VascularStreakDisease2.jpg',
-            '/img/diseases/VascularStreakDisease3.jpg',
-            '/img/diseases/VascularStreakDisease4.jpg',
-            '/img/diseases/VascularStreakDisease5.jpg',
+            '/img/diseases/VascularStreakDieback.jpg',
+            '/img/diseases/VascularStreakDieback2.jpg',
+            '/img/diseases/VascularStreakDieback3.jpg',
+            '/img/diseases/VascularStreakDieback4.jpg',
+            '/img/diseases/VascularStreakDieback5.jpg',
           ]
        },
 
@@ -3427,7 +3427,7 @@ Meteor.startup(() => {
           fil_treatment: '',
           fil_name: 'Coffee Rust',
           stage_plant_affected: '',
-          effect: 'The damage caused by coffee rust is the result of reduced photosynthetic capacity of infected leaves and premature defoliation or leaf drop associated with high infection levels. Vegetative growth and berry growth and size are reduced and is generally related to the amount of rust in the current year. The impact of rust, however, can have a longer term impact. Leaf rust associated defoliation and the strong carbohydrate sink of the berries cause shoots and roots to starve and consequently to dieback, thereby reducing the number of nodes on which coffee will be produced next year. Since next year's production of coffee occurs on wood produced this season, the tip and shoot dieback caused by the rust can seriously reduce the following season's crop. Researchers have estimated losses caused by rust between 30 and 80%. On average, however, losses are believed to be about 15% annually.',
+          effect: 'The damage caused by coffee rust is the result of reduced photosynthetic capacity of infected leaves and premature defoliation or leaf drop associated with high infection levels. Vegetative growth and berry growth and size are reduced and is generally related to the amount of rust in the current year. The impact of rust, however, can have a longer term impact. Leaf rust associated defoliation and the strong carbohydrate sink of the berries cause shoots and roots to starve and consequently to dieback, thereby reducing the number of nodes on which coffee will be produced next year. Since the production of coffee for the next year occurs on wood produced this season, the tip and shoot dieback caused by the rust can seriously reduce the following crop season. Researchers have estimated losses caused by rust between 30 and 80%. On average, however, losses are believed to be about 15% annually.',
           part_destroyed: 'Leaf',
           stage_threatening: '',
           symptoms: 'Infections occur on the coffee leaves.The first observable symptoms are small, pale yellow spots on the upper surfaces of the leaves. As these spots gradually increase in diameter, masses of orange urediniospores (= uredospores) appear on the undersurfaces. The fungus sporulates through the stomata rather than breaking through the epidermis as most rusts do, so it does not form the pustules typical of many rusts. The powdery lesions on the undersides of the leaves can be orange-yellow to red-orange in color, and there is considerable variation from one region to another. While the lesions can develop anywhere on the leaf, they tend to be concentrated around the margins, where dew and rain droplets collect. The centers of the spots eventually dry and turn brown, while the margins of the lesions continue to expand and produce urediniospores. Early in the season, the first lesions usually appear on the lowermost leaves, and the infection slowly progresses upward in the tree. The infected leaves drop prematurely, leaving long expanses of twigs devoid of leaves.',
@@ -3674,15 +3674,15 @@ Meteor.startup(() => {
           classification: 'Fungal',
           treatment: 'A tree demonstrating phytophthora symptoms can sometimes be saved by removing the soil from around the base of the tree all the way down to the top of the main roots, cutting away any bark that’s oozy or dark and leaving the root system exposed. This allows the root system to dry completely, slowing the spread of phytophthora. In most other cases, phytophthora management is limited to prevention. Trees and shrubs, like azaleas, should be planted in well-draining areas, so their roots remain dry for most of the day. Phytophthora only needs four hours of standing water to germinate, making it difficult to combat in areas with poor drainage. Some gardeners get around this by planting their landscaping on mounds 8 to 10 inches tall and being extra careful to plant crowns at the same depth they were at the nursery (often indicated by a dark line on the trunk). Well-established trees are less frequently affected than younger trees because they have widely spread roots that provide lots of avenues for water and nutrition. If a few sections are damaged, they are prepared to compensate. In smaller plants, such as shrubs or vegetables, all bets are off — they can be lost to phytophthora before you even realize the disease has taken hold.',
           sci_name: 'Phytophthora',
-          eng_name: 'Coconut Bud and Fruit Rod',
-          name: 'Coconut Bud and Fruit Rod',
-          image: '/img/diseases/CoconutBudAndFruitRod.jpg',
+          eng_name: 'Coconut Bud and Fruit Rot',
+          name: 'Coconut Bud and Fruit Rot',
+          image: '/img/diseases/CoconutBudAndFruitRot.jpg',
           image_gallery: [
-            '/img/diseases/CoconutBudAndFruitRod.jpg',
-            '/img/diseases/CoconutBudAndFruitRod2.jpg',
-            '/img/diseases/CoconutBudAndFruitRod3.jpg',
-            '/img/diseases/CoconutBudAndFruitRod4.jpg',
-            '/img/diseases/CoconutBudAndFruitRod5.jpg',
+            '/img/diseases/CoconutBudAndFruitRot.jpg',
+            '/img/diseases/CoconutBudAndFruitRot2.jpg',
+            '/img/diseases/CoconutBudAndFruitRot3.jpg',
+            '/img/diseases/CoconutBudAndFruitRot4.jpg',
+            '/img/diseases/CoconutBudAndFruitRot5.jpg',
           ]
        }
             
