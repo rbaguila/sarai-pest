@@ -11,21 +11,30 @@ Template.editPestEntity.onCreated(function () {
 Template.editPestEntity.onRendered(function () {
 	 $('[data-toggle="tooltip"]').tooltip(); 
 	 Session.set('keywords', Plant_Problem.findOne({_id: FlowRouter.current().params._id}).keywords);
-	 console.log(Session.get('keywords'));
+	 // console.log(Session.get('keywords'));
 });
 
 Template.editPestEntity.helpers({
 	pest(){
 		return Plant_Problem.findOne({_id: FlowRouter.current().params._id});
 	},
-	returnKeywords(){
-		var keywords = []
-		var storedKeywords = Session.get('keywords');
-		for(var i=0; i<10; i++){
-			keywords[i] = storedKeywords[i];
+
+	// returnKeywords(){
+	// 	var keywords = []
+	// 	var storedKeywords = Session.get('keywords');
+	// 	for(var i=0; i<10; i++){
+	// 		keywords[i] = storedKeywords[i];
+	// 	}
+	// 	return keywords;
+	// },
+
+	pestImageFile(){
+		return {
+			finished: function(index, fileInfo, context) {
+				Session.set('pestImage', '/img/.uploads/' + fileInfo.name);
+			}
 		}
-		return keywords;
-	}
+	},
 });
 
 Template.editPestEntity.events({
@@ -34,19 +43,13 @@ Template.editPestEntity.events({
 
 		var id = FlowRouter.current().params._id;
 
-		if($("#pestImage").val() == undefined){
-			var imageURL = Plant_Problem.findOne({ _id: id }).image;
-		} else{
-			var imageURL = $("#pestImage").val();	
-		} 
-
 		// GET THE VALUES
 		var editPest = {
 			id : id,
 			pestName : $("#pestName").val(),
 			engName : $("#engName").val(),
 			sciName : $("#sciName").val(),
-			image : imageURL,
+			image: (Session.get('pestImage') == undefined) ? Plant_Problem.findOne({ _id: id }).image : Session.get('pestImage'),
 			keywords : Session.get('keywords'),
 			// for ENGLISH
 			treatment : $("#treatment").val(),
@@ -81,6 +84,11 @@ Template.editPestEntity.events({
 	      }
 	    });
 	},
+
+	'click #cancelBTN': function(event){
+		event.preventDefault();
+		FlowRouter.go('/edit-pest');
+	},
 });
 
 Template.editPestEntity.events({
@@ -113,33 +121,47 @@ Template.editPestEntity.events({
 	},
 });
 
-// KEYWORDS PAGINATION
-Template.keywordsPaginate.onCreated(function () {
-	var keywordsPerPage = 10;
-    this.pagination = new Meteor.Pagination(Plant_Problem, {
-    	perPage: keywordsPerPage,
-    	filters: {'_id': FlowRouter.current().params._id}
-    });
+Template.keywordsPaginate.helpers({
+	dataToPaginate(){
+		var keywords = [];
+		var storedKeywords = Session.get('keywords');
+		for(var i=0; i<10; i++){
+			keywords[i] = storedKeywords[i];
+		}
+		return keywords;
+	}
 });
 
-Template.keywordsPaginate.helpers({
-    isReady: function () {
-        return Template.instance().pagination.ready();
-    },
-    templatePagination: function () {
-        return Template.instance().pagination;
-    },
-    documents: function () {
-    	//Template.instance().pagination.fields('keywords');
-        return Template.instance().pagination.getPage();
-    },
-    // optional helper used to return a callback that should be executed before changing the page
-    clickEvent: function() {
-        return function(event, templateInstance, clickedPage) {
-            event.preventDefault();
-        };
-    }
-});
+// // KEYWORDS PAGINATION
+// Template.keywordsPaginate.onCreated(function () {
+// 	var keywordsPerPage = 10;
+//     this.pagination = new Meteor.Pagination(Plant_Problem, {
+//     	perPage: keywordsPerPage,
+//     	filters: {'_id': FlowRouter.current().params._id}
+//     });
+// });
+
+// Template.keywordsPaginate.helpers({
+//     isReady: function () {
+//         return Template.instance().pagination.ready();
+//     },
+//     templatePagination: function () {
+//         return Template.instance().pagination;
+//     },
+//     documents: function () {
+//     	//Template.instance().pagination.fields('keywords');
+//     	console.log(Template.instance().pagination.getPage());
+//     	var keywords = Template.instance().pagination.getPage();
+//     	console.log(keywords.keywords);
+//         return Template.instance().pagination.getPage();
+//     },
+//     // optional helper used to return a callback that should be executed before changing the page
+//     clickEvent: function() {
+//         return function(event, templateInstance, clickedPage) {
+//             event.preventDefault();
+//         };
+//     }
+// });
 
 Template.keywordButton.events({
 	'click .remove': function(event, template) {
@@ -152,6 +174,7 @@ Template.keywordButton.events({
 		}
 
 		Session.set('keywords', newKeywords);
+		location.reload();
 	},
 });
 
@@ -160,7 +183,6 @@ function extractKeyword(words){
 	var str = words.toLowerCase(); // converting all words to lowercase (CASE-FOLDING)
 	str = str.replace(/[0-9]/g, ''); // remove the numbers
 	var words = str.match(/\b(\w+)\b/g);
-	console.log("DESCRIPTION + SYMPTOMS: " + words.length);
 
 	words = removeStopwords(words);
 	words = removeRedundancy(words);

@@ -6,6 +6,7 @@ import { CMS } from './cms.js';
 
 Meteor.methods({
   'cms.updatePestLib'( newCMS ) {
+    check(newCMS.bannerImage, String);
     check(newCMS.bannerPosition, String);
     check(newCMS.bannerText, String);
     check(newCMS.bannerSubText, String);
@@ -16,6 +17,7 @@ Meteor.methods({
     CMS.update( {info: "finalLib"}, 
     	{ $set: 
     		{ 
+          bannerImage: newCMS.bannerImage,
           bannerContentPosition: newCMS.bannerPosition,
           bannerHeadText : newCMS.bannerText,
           bannerSubText : newCMS.bannerSubText,
@@ -29,6 +31,7 @@ Meteor.methods({
   },
 
   'cms.updatePestMonitor'( newCMS ) {
+    check(newCMS.bannerImage, String);
     check(newCMS.bannerPosition, String);
     check(newCMS.bannerText, String);
     check(newCMS.bannerSubText, String);
@@ -36,15 +39,17 @@ Meteor.methods({
     CMS.update( {info: "finalMonitor"}, 
       { $set: 
         { 
+          bannerImage: newCMS.bannerImage,
           bannerContentPosition: newCMS.bannerPosition,
           bannerHeadText : newCMS.bannerText,
           bannerSubText : newCMS.bannerSubText
         } 
       }
-  );
+    );
   },
 
   'cms.updatePestId'( newCMS ) {
+    check(newCMS.bannerImage, String);
     check(newCMS.bannerPosition, String);
     check(newCMS.bannerText, String);
     check(newCMS.bannerSubText, String);
@@ -52,6 +57,7 @@ Meteor.methods({
     CMS.update( {info: "finalId"}, 
       { $set: 
         { 
+          bannerImage: newCMS.bannerImage,
           bannerContentPosition: newCMS.bannerPosition,
           bannerHeadText : newCMS.bannerText,
           bannerSubText : newCMS.bannerSubText
@@ -61,23 +67,46 @@ Meteor.methods({
   },
 
   'cms.updatePestClinic'( newCMS ) {
+    check(newCMS.bannerImage, String);
     check(newCMS.bannerPosition, String);
     check(newCMS.bannerText, String);
     check(newCMS.bannerSubText, String);
     check(newCMS.row1HeadText, String);
+    check(newCMS.row1Image, String);
     check(newCMS.row2HeadText, String);
     check(newCMS.row2SubText, String);
-
+    check(newCMS.row2Image, String);
 
     CMS.update( {info: "finalClinic"}, 
       { $set: 
         { 
+          bannerImage: newCMS.bannerImage,
+          bannerContentPosition: newCMS.bannerPosition,
+          bannerHeadText: newCMS.bannerText,
+          bannerSubText: newCMS.bannerSubText,
+          row1HeadText: newCMS.row1HeadText,
+          row1Image: newCMS.row1Image,
+          row2HeadText: newCMS.row2HeadText,
+          row2SubText:  newCMS.row2SubText,
+          row2Image: newCMS.row2Image
+        } 
+      }
+    );
+  },
+
+  'cms.updateHome'( newCMS ) {
+    check(newCMS.bannerImage, String);
+    check(newCMS.bannerPosition, String);
+    check(newCMS.bannerText, String);
+    check(newCMS.bannerSubText, String);
+
+    CMS.update( {info: "finalHome"}, 
+      { $set: 
+        { 
+          bannerImage: newCMS.bannerImage,
           bannerContentPosition: newCMS.bannerPosition,
           bannerHeadText : newCMS.bannerText,
-          bannerSubText : newCMS.bannerSubText,
-          row1HeadText: newCMS.row1HeadText,
-          row2HeadText: newCMS.row2HeadText,
-          row2SubText:  newCMS.row2SubText
+          bannerSubText : newCMS.bannerSubText
         } 
       }
     );

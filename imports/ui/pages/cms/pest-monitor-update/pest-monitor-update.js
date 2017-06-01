@@ -19,7 +19,15 @@ Template.pestMonitorUpdate.helpers({
 	
 	isSelected(value, position){
 		return value == position;
-	}
+	},
+
+	bannerImageFile(){
+		return {
+			finished: function(index, fileInfo, context) {
+				Session.set('bannerImage', '/img/.uploads/' + fileInfo.name);
+			}
+		}
+	},
 });
 
 Template.pestMonitorUpdate.events({
@@ -28,6 +36,7 @@ Template.pestMonitorUpdate.events({
 		
 		// GET THE VALUES
 		var newCMS = {
+			bannerImage: (Session.get('bannerImage') == undefined) ? CMS.findOne({info: "finalMonitor"}).bannerImage : Session.get('bannerImage'),
 			bannerPosition: $("#bannerPosition option:selected").val(),
 			bannerText : $("#bannerText").val(),
 			bannerSubText : $("#bannerSubText").val()

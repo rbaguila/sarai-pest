@@ -24,8 +24,7 @@
 	      		<input type="text" class="form-control" id="sciName" value="">
 
 	      		<label for="pestImage"> Pest Image </label>
-	      		<!-- <input type="file" name="pestImage" id="pestImage" accept="image/*"> -->
-	      		{{> upload_bootstrap }}
+	      		{{> upload_bootstrap multiple=false callbacks=pestImageFile }}
 
 	      		<br/>
 	  			<ul class="nav nav-tabs">
@@ -69,34 +68,34 @@
 
 					<!-- FILIPINO INPUTS -->
 					<div id="filipino" class="tab-pane fade">
-						<label for="filName"> Pangalan ng Peste </label>
+						<label for="filName"> Name (Filipino) </label>
 			      		<input type="text" class="form-control" id="filName" value="">
 
-			      		<label for="filTreatment"> Lunas </label>
+			      		<label for="filTreatment"> Treatment (Filipino) </label>
 			      		<textarea class="form-control" id="filTreatment" rows="5" value=""></textarea>
 
-						<label for="filClassification"> Klasipikasiyon </label>
+						<label for="filClassification"> Classification (Filipino) </label>
 			      		<input type="text" class="form-control" id="filClassification" value="">
 
-			      		<label for="filPlantAffected"> Apektadong Halaman </label>
+			      		<label for="filPlantAffected"> Plant Affected (Filipino) </label>
 			      		<input type="text" class="form-control" id="filPlantAffected" value="">
 
-			      		<label for="filDescription"> Deskripsyon </label>
+			      		<label for="filDescription"> Description (Filipino) </label>
 			      		<textarea class="form-control" id="filDescription" rows="5" value=""></textarea>
 
-			      		<label for="filSymptoms"> Sintomas </label>
+			      		<label for="filSymptoms"> Symptoms (Filipino) </label>
 			      		<textarea class="form-control" id="filSymptoms" rows="5" value=""></textarea>
 
-			      		<label for="filStageThreatening"> Stage Threatening ?</label>
+			      		<label for="filStageThreatening"> Stage Threatening (Filipino) </label>
 			      		<input type="text" class="form-control" id="filStageThreatening" value="">
 
-			      		<label for="filPartDestroyed"> Part Destroyed ?</label>
+			      		<label for="filPartDestroyed"> Part Destroyed (Filipino) </label>
 			      		<input type="text" class="form-control" id="filPartDestroyed" value="">
 
-			      		<label for="filEffect"> Epekto </label>
+			      		<label for="filEffect"> Effect (Filipino) </label>
 			      		<textarea class="form-control" id="filEffect" rows="5" value=""></textarea>
 
-			      		<label for="filStageAffected"> Stage of Plant Affected ?</label>
+			      		<label for="filStageAffected"> Stage of Plant Affected (Filipino) </label>
 			      		<input type="text" class="form-control" id="filStageAffected" value="">
 					</div>
 				</div>

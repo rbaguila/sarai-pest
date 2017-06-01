@@ -1,23 +1,14 @@
 <template name="banner">
 
 <div id="banner">
-    {{#if getCurrentPage "home"}}
-      <img class="banner-image-sarai" src="/img/banners/pest_banner.jpg">
-    {{else}}
-      <img class="banner-image-sarai" src="{{getCMS.bannerImage}}">
-    {{/if}}
+    <img class="banner-image-sarai" src="{{getCMS.bannerImage}}">
     
     <div class="banner-content-top-sarai">
       <div class="row">
       
-      <div class="col-md-5 col-sm-12 banner-text" id="bannerText-sarai">
-          {{#if getCurrentPage "home"}}
-            <h1 class="title">Smarter Pest Identification</h1>
-            <h3 class="title-desc hidden-sm">An online platform that combines different strategies and practices for identification and management of pests</h3>
-          {{else}}
+      <div class="col-md-5 col-sm-12 banner-text" id="bannerText-sarai" style="top:50%;">
             <h1 class="title">{{getCMS.bannerHeadText}}</h1>
             <h3 class="title-desc hidden-sm">{{getCMS.bannerSubText}}</h3>
-          {{/if}}
       </div>
 
       <div class="col-md-7 col-sm-12 hidden-xs hidden-sm services-icons"> 

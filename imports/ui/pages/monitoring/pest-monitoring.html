@@ -6,5 +6,46 @@
 </template>
 
 <template name="pestMonitoring">
-	<h1>PEST MONITORING</h1>
+	<div class="container">
+		<div class="row text-center">
+			<h4 class="col-sm-12"> Choose Pest </h4>
+			<div class="form-group col-sm-4 col-sm-offset-4">
+				<select class="form-control">
+					<option value="BlackArmywormadult"> Black Arymworm adult </option>
+					<option value="BlackArmywormlarva"> Black Arymworm larva </option>
+					<option value="Katydid"> Katydid </option>
+					<option value="RiceMealyBug"> Rice Mealy Bug </option>
+					<option value="Others"> Others </option>
+				</select>
+	        </div>
+
+	        <div class="col-sm-12 row">
+	        	{{> highmapsHelper chartId="map" chartObject=armywormRiskMap chartHeight="650px" chartWidth="600px"}}
+	        	{{> pestDescription}}
+	        </div>
+	        <div class="col-sm-12 row">
+	        	{{> highmapsHelper chartId="history" chartObject=armywormHistory chartHeight="650px" chartWidth="600px"}}
+				{{> highmapsHelper chartId="drought-assessment" chartObject=armywormDroughtAssessment chartHeight="650px" chartWidth="600px"}}
+	        </div>
+			
+		</div>
+	</div>
+</template>
+
+<template name="highmapsHelper">
+	<div class="col-sm-6">
+		<!-- <div id="{{chartId}}" style="height:{{chartHeight}}; width:{{chartWidth}}"></div> -->
+	</div>
+</template>
+
+<template name="pestDescription">
+	<div class="col-sm-6 text-left">
+		<img src="{{getPest.image}}" width="70%" height="70%">
+		<h4><b> {{getPest.name}} </b> </h4>
+		<h5><b>English Name</b>: {{getPest.eng_name}} </h5>
+		<h5><b>Filipino Name</b>: {{getPest.fil_name}} </h5>
+		<h5><b>Scientific Name</b>: <i>{{getPest.sci_name}}</i> </h5>
+		<h5><b>Plant Affected</b>: {{getPest.plant_affected}} </h5>
+		<a class="btn btn-default" href="/entity/{{getPest._id}}" role="button">View Page</a>
+	</div>
 </template>

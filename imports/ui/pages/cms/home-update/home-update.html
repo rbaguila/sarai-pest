@@ -1,4 +1,4 @@
-<template name="pestClinicUpdate">
+<template name="homeUpdate">
 
   {{> cms_navbar}}
 
@@ -8,7 +8,7 @@
     
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="main-body">
 
-        <h3 class="col-sm-12 col-md-12 col-lg-12 text-center"> Edit Pest Clinic</h3>
+        <h3 class="col-sm-12 col-md-12 col-lg-12 text-center"> Edit Home</h3>
 
         <label for="clinicImage"> Banner Image </label>
         {{> upload_bootstrap multiple=false callbacks=bannerImageFile }}
@@ -28,21 +28,6 @@
         <label for="bannerSubText"> Banner Subheader Text </label>
         <input type="text" class="form-control" id="bannerSubText" value="{{getCMS.bannerSubText}}">
 
-        <label for="row1HeadText"> Row 1 Header Text </label>
-        <input type="text" class="form-control" id="row1HeadText" value="{{getCMS.row1HeadText}}">
-
-        <label for="row1Image"> Row 1 Image </label>
-        {{> upload_bootstrap multiple=false callbacks=row1ImageFile }}
-
-        <label for="row2HeadText"> Row 2 Header Text </label>
-        <input type="text" class="form-control" id="row2HeadText" value="{{getCMS.row2HeadText}}">
-
-        <label for="row2SubText"> Row 2 Subheader Text </label>
-        <textarea class="form-control" id="row2SubText" rows="3" value="{{getCMS.row2SubText}}"></textarea>
-
-        <label for="row2Image"> Row 2 Image </label>
-        {{> upload_bootstrap multiple=false callbacks=row2ImageFile }}
-
         <div class="text-center">
           <button id="saveBTN" class="btn btn-success cms-button">Save</button>
           <button id="cancelBTN" class="btn btn-danger cms-button">Cancel</button>
@@ -55,3 +40,4 @@
   </div>
 
 </template>
+

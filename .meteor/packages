@@ -40,3 +40,6 @@ easysearch:elasticsearch
 alanning:elasticsearch
 tomi:upload-server
 random
+
+
+navybits:pagination
