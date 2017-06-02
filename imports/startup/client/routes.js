@@ -8,14 +8,15 @@ import '../../ui/pages/not-found/not-found.js';
 import '../../ui/pages/library/library.js';
 import '../../ui/pages/pestId/pest-id.js';
 import '../../ui/pages/clinic/pest-clinic.js';
-import '../../ui/pages/monitoring/pest-monitoring.js';
+import '../../ui/pages/diseases/diseases.js';
+import '../../ui/pages/diseases/entity-page/disease-entity-page.js';
 import '../../ui/pages/cms/pest-lib-update/pest-lib-update.js';
 import '../../ui/pages/cms/pest-lib-update/insert-pest/insert-pest.js';
 import '../../ui/pages/cms/pest-lib-update/edit-pest/edit-pest.js';
 import '../../ui/pages/cms/pest-lib-update/edit-pest-entity/edit-pest-entity.js';
 import '../../ui/pages/cms/pest-clinic-update/pest-clinic-update.js';
 import '../../ui/pages/cms/pest-id-update/pest-id-update.js';
-import '../../ui/pages/cms/pest-monitor-update/pest-monitor-update.js';
+import '../../ui/pages/cms/diseases-update/diseases-update.js';
 import '../../ui/pages/cms/home-update/home-update.js';
 
 // Set up all routes in the app
@@ -48,10 +49,10 @@ FlowRouter.route('/pests-clinic', {
   }
 });
 
-FlowRouter.route('/pests-monitor', {
-  name: 'App.pests-monitor',
+FlowRouter.route('/diseases', {
+  name: 'App.diseases',
   action(){
-    BlazeLayout.render('App_body', { main: "App_monitor" });
+    BlazeLayout.render('App_body', { main: "App_diseases" });
   }
 });
 
@@ -145,8 +146,8 @@ FlowRouter.route('/pests-id-update', {
     }
 });
 
-FlowRouter.route('/pests-monitor-update', {
-  name: 'App.pests-monitor-update',
+FlowRouter.route('/diseases-update', {
+  name: 'App.diseases-update',
   action: function(params) {
       Tracker.autorun(function() {
           if (!Meteor.userId()) {
@@ -154,7 +155,7 @@ FlowRouter.route('/pests-monitor-update', {
             alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
           } else {
-            BlazeLayout.render("App_body", {main: "pestMonitorUpdate"})
+            BlazeLayout.render("App_body", {main: "diseasesUpdate"})
           }
       });
     }
@@ -175,10 +176,17 @@ FlowRouter.route('/home-update', {
     }
 });
 
-FlowRouter.route("/entity/:_id", {
+FlowRouter.route("/pest-entity/:_id", {
   name: 'App.library',
   action() {
     BlazeLayout.render("App_body", {main: "entityPage"})
+  }
+});
+
+FlowRouter.route("/disease-entity/:_id", {
+  name: 'App.diseases',
+  action() {
+    BlazeLayout.render("App_body", {main: "diseaseEntityPage"})
   }
 });
 

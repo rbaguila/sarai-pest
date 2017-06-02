@@ -53,7 +53,6 @@ Template.pestClinicUpdate.events({
 		// GET THE VALUES
 		var newCMS = {
 			bannerImage: (Session.get('bannerImage') == undefined) ? CMS.findOne({info: "finalClinic"}).bannerImage : Session.get('bannerImage'),
-			bannerPosition: $("#bannerPosition option:selected").val(),
 			bannerText : $("#bannerText").val(),
 			bannerSubText : $("#bannerSubText").val(),
 			row1HeadText: $("#row1HeadText").val(),
