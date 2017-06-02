@@ -11,3 +11,6 @@ import '../../api/cms/server/publications.js';
 
 import '../../api/experts/methods.js';
 import '../../api/experts/server/publications.js';
+
+import '../../api/assistance/methods.js';
+import '../../api/assistance/server/publications.js';

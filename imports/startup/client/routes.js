@@ -20,6 +20,7 @@ import '../../ui/pages/cms/pest-lib-update/edit-pest/edit-pest.js';
 import '../../ui/pages/cms/pest-lib-update/edit-pest-entity/edit-pest-entity.js';
 import '../../ui/pages/cms/pest-clinic-update/pest-clinic-update.js';
 import '../../ui/pages/cms/pest-clinic-update/experts/experts-cms.js';
+import '../../ui/pages/cms/pest-clinic-update/assistance/assistance-cms.js';
 
 
 // Set up all routes in the app
@@ -189,6 +190,21 @@ FlowRouter.route('/edit-expert', {
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "expertUpdate"})
+          }
+      });
+    }
+});
+
+FlowRouter.route('/edit-assistance', {
+  name: 'App.edit-assistance',
+  action: function(params) {
+      Tracker.autorun(function() {
+          if (!Meteor.userId()) {
+            BlazeLayout.render("App_body", {main: "App_home"})
+            alert("User is not allowed to access the page.")
+            FlowRouter.redirect('/');
+          } else {
+            BlazeLayout.render("App_body", {main: "assistanceUpdate"})
           }
       });
     }

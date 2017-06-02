@@ -1,4 +1,4 @@
-// Methods related to CMS
+// Methods related to Experts
 
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
