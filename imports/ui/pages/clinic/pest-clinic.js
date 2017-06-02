@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { CMS } from '/imports/api/cms/cms.js';
-import { Experts } from '/imports/api/cms/cms.js';
+import { Experts } from '/imports/api/experts/experts.js';
 import './pest-clinic.html';
 
 Template.App_clinic.onRendered(function() {
@@ -26,6 +26,6 @@ Template.about2.helpers({
 
 Template.experts.helpers({
 	getExperts: function(){
-		return Experts.find();
+		return Experts.find().fetch();
 	},
 });

@@ -10,14 +10,17 @@ import '../../ui/pages/pestId/pest-id.js';
 import '../../ui/pages/clinic/pest-clinic.js';
 import '../../ui/pages/diseases/diseases.js';
 import '../../ui/pages/diseases/entity-page/disease-entity-page.js';
+
+import '../../ui/pages/cms/pest-id-update/pest-id-update.js';
+import '../../ui/pages/cms/diseases-update/diseases-update.js';
+import '../../ui/pages/cms/home-update/home-update.js';
 import '../../ui/pages/cms/pest-lib-update/pest-lib-update.js';
 import '../../ui/pages/cms/pest-lib-update/insert-pest/insert-pest.js';
 import '../../ui/pages/cms/pest-lib-update/edit-pest/edit-pest.js';
 import '../../ui/pages/cms/pest-lib-update/edit-pest-entity/edit-pest-entity.js';
 import '../../ui/pages/cms/pest-clinic-update/pest-clinic-update.js';
-import '../../ui/pages/cms/pest-id-update/pest-id-update.js';
-import '../../ui/pages/cms/diseases-update/diseases-update.js';
-import '../../ui/pages/cms/home-update/home-update.js';
+import '../../ui/pages/cms/pest-clinic-update/experts/experts-cms.js';
+
 
 // Set up all routes in the app
 FlowRouter.route('/', {
@@ -54,6 +57,51 @@ FlowRouter.route('/diseases', {
   action(){
     BlazeLayout.render('App_body', { main: "App_diseases" });
   }
+});
+
+FlowRouter.route('/pests-id-update', {
+  name: 'App.pests-id-update',
+  action: function(params) {
+      Tracker.autorun(function() {
+          if (!Meteor.userId()) {
+            BlazeLayout.render("App_body", {main: "App_home"})
+            alert("User is not allowed to access the page.")
+            FlowRouter.redirect('/');
+          } else {
+            BlazeLayout.render("App_body", {main: "pestIdUpdate"})
+          }
+      });
+    }
+});
+
+FlowRouter.route('/diseases-update', {
+  name: 'App.diseases-update',
+  action: function(params) {
+      Tracker.autorun(function() {
+          if (!Meteor.userId()) {
+            BlazeLayout.render("App_body", {main: "App_home"})
+            alert("User is not allowed to access the page.")
+            FlowRouter.redirect('/');
+          } else {
+            BlazeLayout.render("App_body", {main: "diseasesUpdate"})
+          }
+      });
+    }
+});
+
+FlowRouter.route('/home-update', {
+  name: 'App.home-update',
+  action: function(params) {
+      Tracker.autorun(function() {
+          if (!Meteor.userId()) {
+            BlazeLayout.render("App_body", {main: "App_home"})
+            alert("User is not allowed to access the page.")
+            FlowRouter.redirect('/');
+          } else {
+            BlazeLayout.render("App_body", {main: "homeUpdate"})
+          }
+      });
+    }
 });
 
 FlowRouter.route('/pests-lib-update', {
@@ -131,8 +179,8 @@ FlowRouter.route('/pests-clinic-update', {
     }
 });
 
-FlowRouter.route('/pests-id-update', {
-  name: 'App.pests-id-update',
+FlowRouter.route('/edit-expert', {
+  name: 'App.edit-expert',
   action: function(params) {
       Tracker.autorun(function() {
           if (!Meteor.userId()) {
@@ -140,37 +188,7 @@ FlowRouter.route('/pests-id-update', {
             alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
           } else {
-            BlazeLayout.render("App_body", {main: "pestIdUpdate"})
-          }
-      });
-    }
-});
-
-FlowRouter.route('/diseases-update', {
-  name: 'App.diseases-update',
-  action: function(params) {
-      Tracker.autorun(function() {
-          if (!Meteor.userId()) {
-            BlazeLayout.render("App_body", {main: "App_home"})
-            alert("User is not allowed to access the page.")
-            FlowRouter.redirect('/');
-          } else {
-            BlazeLayout.render("App_body", {main: "diseasesUpdate"})
-          }
-      });
-    }
-});
-
-FlowRouter.route('/home-update', {
-  name: 'App.home-update',
-  action: function(params) {
-      Tracker.autorun(function() {
-          if (!Meteor.userId()) {
-            BlazeLayout.render("App_body", {main: "App_home"})
-            alert("User is not allowed to access the page.")
-            FlowRouter.redirect('/');
-          } else {
-            BlazeLayout.render("App_body", {main: "homeUpdate"})
+            BlazeLayout.render("App_body", {main: "expertUpdate"})
           }
       });
     }

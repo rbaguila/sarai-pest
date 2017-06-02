@@ -4,7 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { Links } from '../../api/links/links.js';
 import { Plant_Problem, Students } from '../../api/plant_problem/plant_problem.js';
 import { CMS } from '../../api/cms/cms.js';
-import { Experts } from '../../api/cms/cms.js';
+import { Experts } from '../../api/experts/experts.js';
 
 Meteor.startup(() => {
 

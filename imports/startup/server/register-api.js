@@ -8,3 +8,6 @@ import '../../api/plant_problem/server/publications.js';
 
 import '../../api/cms/methods.js';
 import '../../api/cms/server/publications.js';
+
+import '../../api/experts/methods.js';
+import '../../api/experts/server/publications.js';
