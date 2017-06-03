@@ -12,6 +12,12 @@ Template.pestClinic.onCreated(function() {
 	Meteor.subscribe('experts.all');
 });
 
+Template.pestClinic.events({
+	'click .request-assistance': function(){
+		FlowRouter.go("/request-assistance");
+	}
+});
+
 Template.about.helpers({
 	getCMS: function(){
 		return CMS.findOne({info:'finalClinic'});

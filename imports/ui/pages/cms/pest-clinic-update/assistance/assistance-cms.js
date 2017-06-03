@@ -23,7 +23,7 @@ Template.assistanceUpdate.events({
 		$("#answerFields").show();
 	},
 
-	'click #confirmDelete' : function(event) {
+	'click #confirmDelete': function(event) {
 		$('#deleteEntry').modal('hide');
 		Meteor.call('assistance.removeAssistance', Session.get('id'), (error) => {
 	      if (error) {
@@ -38,10 +38,19 @@ Template.assistanceUpdate.events({
 	      }
 		});
 	},
+
+	'click #submitBTN': function(event){
+
+		var reply = {
+			subject: $('#subjectField').val(), 
+			message: $('#msgField').val()
+		}
+	},
 });
 
 Template.assistanceButton.events({
 	'click .view': function(event, template){
+		$("#answerFields").hide();
 
 		if( !(this.id == undefined) || !(this.id == null) ){
 			var entry = Assistance.findOne({'_id': this.id});

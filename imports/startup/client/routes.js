@@ -8,6 +8,7 @@ import '../../ui/pages/not-found/not-found.js';
 import '../../ui/pages/library/library.js';
 import '../../ui/pages/pestId/pest-id.js';
 import '../../ui/pages/clinic/pest-clinic.js';
+import '../../ui/pages/clinic/request-assistance/request-assistance.js';
 import '../../ui/pages/diseases/diseases.js';
 import '../../ui/pages/diseases/entity-page/disease-entity-page.js';
 
@@ -50,6 +51,13 @@ FlowRouter.route('/pests-clinic', {
   name: 'App.pests-clinic',
   action(){
     BlazeLayout.render('App_body', { main: "App_clinic" });
+  }
+});
+
+FlowRouter.route('/request-assistance', {
+  name: 'App.request-assistance',
+  action(){
+    BlazeLayout.render('App_body', { main: "Request_Assistance" });
   }
 });
 

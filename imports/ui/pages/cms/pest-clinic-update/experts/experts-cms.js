@@ -25,8 +25,8 @@ Template.expertUpdate.helpers({
 Template.expertUpdate.events({
 	'click .profile': function(event){
 		Session.set('newProfile', Experts.findOne({_id: this._id}));
-		// $('.imageUpload').remove();
-		// $('.imagePanel').append('<div class="imageUpload"> {{> upload_bootstrap multiple=false callbacks=profileImageFile }} </div>');
+		// $('#imageUploadPanel').html('');
+		// $('#imageUploadPanel').html('{{> upload_bootstrap multiple=false callbacks=profileImageFile }} <br/>');
 		$('#name').val(this.name);
 		$('#position').val(this.position);
 		$('#company').val(this.company);
