@@ -1,0 +1,130 @@
+<template name="insertPest">
+
+	{{> cms_navbar}}
+	
+	<div class="container-fluid">
+	    <div class="row">
+			{{> sideNav}}
+
+		    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="main-body">
+		    	<div class="col-sm-12 col-md-12 col-lg-12 text-center">
+			    	<a class="col-sm-1 col-md-1 col-lg-1 back">
+		  				<img class="back-button" src="/img/back.png" alt="back" data-toggle="tooltip" title="Back" data-placement="right">
+		  			</a>
+			    	<h3 class="col-sm-11 col-md-11 col-lg-11 pest-name"> Insert Pest </h3>
+			    </div>
+
+		    	<label for="pestName"> Pest Name </label>
+	      		<input type="text" class="form-control" id="pestName" value="">
+
+	      		<label for="engName"> English Name/s </label>
+	      		<input type="text" class="form-control" id="engName" value="">
+
+	      		<label for="sciName"> Scientific Name/s </label>
+	      		<input type="text" class="form-control" id="sciName" value="">
+
+	      		<label for="pestImage"> Pest Image </label>
+	      		{{> upload_bootstrap multiple=false callbacks=pestImageFile }}
+
+	      		<br/>
+	  			<ul class="nav nav-tabs">
+				  <li class="active"><a data-toggle="tab" href="#english"> English </a></li>
+				  <li><a data-toggle="tab" href="#filipino"> Filipino </a></li>
+				</ul>
+
+				<div class="tab-content">
+					<!-- ENGLISH INPUTS -->
+					<div id="english" class="tab-pane fade in active">
+						<label for="treatment"> Treatment </label>
+			      		<textarea class="form-control" id="treatment" rows="5" value=""></textarea>
+
+						<label for="classification"> Classification </label>
+			      		<input type="text" class="form-control" id="classification" value="">
+
+			      		<label for="order"> Order </label>
+			      		<input type="text" class="form-control" id="order" value="">
+
+			      		<label for="plantAffected"> Plant Affected </label>
+			      		<input type="text" class="form-control" id="plantAffected" value="">
+
+			      		<label for="description"> Description </label>
+			      		<textarea class="form-control" id="description" rows="5" value=""></textarea>
+
+			      		<label for="symptoms"> Symptoms </label>
+			      		<textarea class="form-control" id="symptoms" rows="5" value=""></textarea>
+
+			      		<label for="stageThreatening"> Stage Threatening </label>
+			      		<input type="text" class="form-control" id="stageThreatening" value="">
+
+			      		<label for="partDestroyed"> Part Destroyed </label>
+			      		<input type="text" class="form-control" id="partDestroyed" value="">
+
+			      		<label for="effect"> Effect </label>
+			      		<textarea class="form-control" id="effect" rows="5" value=""></textarea>
+
+			      		<label for="stageAffected"> Stage of Plant Affected </label>
+			      		<input type="text" class="form-control" id="stageAffected" value="">
+					</div>
+
+					<!-- FILIPINO INPUTS -->
+					<div id="filipino" class="tab-pane fade">
+						<label for="filName"> Name (Filipino) </label>
+			      		<input type="text" class="form-control" id="filName" value="">
+
+			      		<label for="filTreatment"> Treatment (Filipino) </label>
+			      		<textarea class="form-control" id="filTreatment" rows="5" value=""></textarea>
+
+						<label for="filClassification"> Classification (Filipino) </label>
+			      		<input type="text" class="form-control" id="filClassification" value="">
+
+			      		<label for="filPlantAffected"> Plant Affected (Filipino) </label>
+			      		<input type="text" class="form-control" id="filPlantAffected" value="">
+
+			      		<label for="filDescription"> Description (Filipino) </label>
+			      		<textarea class="form-control" id="filDescription" rows="5" value=""></textarea>
+
+			      		<label for="filSymptoms"> Symptoms (Filipino) </label>
+			      		<textarea class="form-control" id="filSymptoms" rows="5" value=""></textarea>
+
+			      		<label for="filStageThreatening"> Stage Threatening (Filipino) </label>
+			      		<input type="text" class="form-control" id="filStageThreatening" value="">
+
+			      		<label for="filPartDestroyed"> Part Destroyed (Filipino) </label>
+			      		<input type="text" class="form-control" id="filPartDestroyed" value="">
+
+			      		<label for="filEffect"> Effect (Filipino) </label>
+			      		<textarea class="form-control" id="filEffect" rows="5" value=""></textarea>
+
+			      		<label for="filStageAffected"> Stage of Plant Affected (Filipino) </label>
+			      		<input type="text" class="form-control" id="filStageAffected" value="">
+					</div>
+				</div>
+
+				<div class="text-center buttons">
+					<button id="saveBTN" class="btn btn-success cms-button">Save</button>
+					<button id="cancelBTN" class="btn btn-danger cms-button">Cancel</button>
+				</div>
+
+				<div class="modal fade insertSuccess">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<center><p>Pest successfully added!</p></center>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+		    </div>
+		</div>
+	</div>
+	
+</template>
+

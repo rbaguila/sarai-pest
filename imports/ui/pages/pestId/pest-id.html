@@ -1,0 +1,229 @@
+<template name="pestId">
+	{{> top_nav}}
+	{{> banner}}
+	<script>
+		function choosePest() {
+			document.getElementById('diseaseDiv').style.display = 'none';
+			$('[name="classType"]').attr('checked', false);
+			var x = document.getElementById('pestDiv');
+			if (x.style.display === 'none') {
+				x.style.display = 'block';
+			} else {
+				x.style.display = 'none';
+			}
+		}
+
+		function chooseDisease() {
+			document.getElementById('pestDiv').style.display = 'none';
+			$('[name="classType"]').attr('checked', false);
+			var x = document.getElementById('diseaseDiv');
+			if (x.style.display === 'none') {
+				x.style.display = 'block';
+			} else {
+				x.style.display = 'none';
+			}
+		}
+	</script>
+	<div>
+		
+
+		<div class="tab-content">
+			
+			<div id="image" class="tab-pane fade in active">
+				<br/><!-- <br/><br/><br/><br/> -->
+				<!-- Ontology-based -->
+				<center>
+					<div class="table-responsive">
+						<table width="400">
+							<tbody>
+								<tr>
+									<td><h4>Plant Problem</h4></td>
+								</tr>
+								<tr>
+									<td><input type="radio" name="radiopd" class= "probType" id="Pest" onchange="choosePest()">Pest</td>
+									<td></td>
+									<td><input type="radio" name="radiopd" class= "probType" id="Disease" onchange="chooseDisease()">Disease</td>
+								</tr>
+								<tr>
+									<td><br/></td>
+								</tr>
+								<tr>
+									<td><h4>Type of Crop Affected</h4></td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" name="cropAffected" value="" id="Rice">Rice</td>
+									<td><input type="checkbox" name="cropAffected" value="" id="Corn">Corn</td>
+									<td> </td>
+									<td><input type="checkbox" name="cropAffected" value="" id="Banana">Banana</td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" name="cropAffected" value="" id="Cacao">Cacao</td>
+									<td><input type="checkbox" name="cropAffected" value="" id="Coffee">Coffee</td>
+									<td> </td>
+									<td><input type="checkbox" name="cropAffected" value="" id="Coconut">Coconut</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--if radioPest was chosen-->
+					<div id="pestDiv" class="table-responsive" style="display:none;">
+						<table width="500">
+							<tbody>
+								<tr>
+									<td><br/></td>
+								</tr>
+								<tr>
+									<td><h4>The observed pest is</h4></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><input type="radio" name="classType" value="" id="Fly-like">Fly-like</td>
+									<td><input type="radio" name="classType" value="" id="Caterpillar-like">Caterpillar-like</td>
+									<td><input type="radio" name="classType" value="" id="Maggot">Maggot</td>
+								</tr>
+								<tr>
+									<td><input type="radio" name="classType" value="" id="Beetle-like">Beetle-like</td>
+									<td><input type="radio" name="classType" value="" id="Moth-like">Moth-like</td>
+									<td><input type="radio" name="classType" value="" id="Two or one unit body">Two or one unit body</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!--if radioDisease was chosen-->
+					<div id="diseaseDiv" class="table-responsive" style="display:none;">
+						<table width="400">
+							<tbody>
+								<tr>
+									<td><br/></td>
+								</tr>
+								<tr>
+									<td><h4>The disease is</h4></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><input type="radio" name="classType" value="" id="Fungal">Fungal</td>
+									<td><input type="radio" name="classType" value="" id="Bacterial">Bacterial</td>
+									<td><input type="radio" name="classType" value="" id="Viral">Viral</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</center>
+
+				<!-- <br/> -->
+				<br/>
+				<!-- Image Processing -->
+				<!-- Upload Image Here -->
+				<div>
+					<div class="col-sm-6 col-md-6 col-lg-6 col-md-offset-3 image-processing">
+						{{> dropzone fileTypes='.jpg,.png,.jpeg.,.JPG,.PNG' contentType='images' multiple=false formData=specificFormData callbacks=myCallbacks}}
+					</div>
+				</div>
+
+				<div id="id-guidelines" class="container">
+					<div class="row">
+						<div class="col-sm-6 col-md-6 col-lg-6 col-md-offset-3">
+							<br/>
+							<p>Guidelines:</p>
+							<ol>
+								<li>Open the directory of the pest/disease image you want to upload.</li>
+								<li>Drag the pest/disease image into the box above.</li>
+								<li>Pest/Disease image must be an actual pest.</li>
+								<li>For better accuracy, the image must be close up and must have a clean background.</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+				{{#if showIPS}}
+					<div id="id-results">
+						{{#if enableSpinner}}
+							{{> spinner}}
+						{{/if}}
+						<div class="container">
+							<h3 class="pest-category-label">{{imageProcessingResultsHeader}}</h3>
+
+							<div class="mdl-cell mdl-cell--12-col">
+								{{#each data}}
+						       		<div class="mdl-cell mdl-cell--12-col">
+							          <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+							           	<div class = "panel panel-default">
+							            	<table>
+							            		<tbody>
+							            			<tr>
+							            				<td width="10"></td>
+							            				<td width="300">
+							            					<div class = "pest-image-result">
+							            						<img src="{{image}}" height="270" width="270">
+							            					</div>
+							            				</td>
+							            				<td>
+							            					<h2>{{numberized @index}} {{name}}</h2>
+								            				<p class="info-font"><b>Order:</b> {{order}} <br>
+								            				<b>English Name:</b> {{eng_name}} <br>
+								            				<b>Filipino Name:</b> {{fil_name}} <br>
+											    			<b>Scientific Name:</b> {{sci_name}}<br>
+											    			<b>Plant Affected:</b> {{plant_affected}}<br>
+											    			<b>Symptoms:</b> {{symptoms}}<br>
+							    							<b>Description:</b> {{description}}</p>
+								              				<p class="text-center">
+								              					<a href="/entity/{{_id}}" type="button" class="btn btn-default">View Page</a>
+								              				</p>
+							            				</td>
+							            				<td width="10"></td>
+							            			</tr>
+							            		</tbody>
+							            	</table>
+							            </div>							            
+							          </div>
+							        </div>
+						       	{{/each}}
+							</div>
+							
+							<div class="mdl-cell mdl-cell--2-col"></div>
+						</div>
+					</div>	
+				{{/if}}
+			</div>
+			
+		</div>
+
+		{{#if showOBS}}
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<h3 class="pest-category-label">Ontology-based Search Results</h3>
+			</div>
+			<div class="container">
+				{{#each displayInitial}}
+			    	{{> individualPest}}
+			    {{/each}}
+		    </div>
+		{{/if}}
+
+		<div>
+			{{#each getCMS.viewType}}
+				{{setPageSessions this}}
+				<div class="col-sm-12 col-md-12 col-lg-12">
+					<h3 class="pest-category-label"> {{this}}s </h3>
+				</div>
+
+				<div class="container">
+					{{#each displayPest this}}
+				    	{{> individualPest}}
+				    {{/each}}
+			    </div>
+
+			    <div class="text-center">
+			    	<!-- <ul class="pagination">
+						{{#each setPagination this}}
+					  		<li class="{{#if isCurrentPage num}} active {{/if}}">
+					  			<a class="page-number" name="{{getCurrentPestType}}">{{num}}</a>
+					  		</li>
+						{{/each}}
+					</ul> -->
+					<a href="/library" type="button" class="btn btn-default">View More</a>
+			    </div>
+				<br/><br/>	
+			{{/each}}
+		</div>
+	</div>
+	{{> footer}}
+</template>

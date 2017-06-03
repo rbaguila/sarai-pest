@@ -1,0 +1,53 @@
+<template name="banner">
+
+<div id="banner">
+    <img class="banner-image-sarai" src="{{getCMS.bannerImage}}">
+    
+    <div class="banner-content-top-sarai">
+      <div class="row">
+      
+      <div class="col-md-5 col-sm-12 banner-text" id="bannerText-sarai" style="top:50%;">
+            <h1 class="title">{{getCMS.bannerHeadText}}</h1>
+            <h3 class="title-desc hidden-sm">{{getCMS.bannerSubText}}</h3>
+      </div>
+
+      <div class="col-md-7 col-sm-12 hidden-xs hidden-sm services-icons"> 
+        <div class="row">
+          <!-- Pest Lib -->
+          <div class="col-md-3 col-sm-3">
+            <a href="/library">
+              <img class="service-icon-img" src="/img/modules/pest_library.png">
+              
+            </a>
+          </div>
+
+          <!-- Pest ID -->
+          <div class="col-md-3 col-sm-3">
+            <a href="/pests-id">
+              <img class="service-icon-img" src="/img/modules/pest_id.png">
+              
+            </a>
+          </div>
+
+          <!-- Pest Monitoring -->
+          <div class="col-md-3 col-sm-3">
+            <a href="/diseases">
+              <img class="service-icon-img" src="/img/modules/pest_monitoring.png">
+              
+            </a>
+          </div>
+
+          <!-- Pest Clinic -->
+          <div class="col-md-3 col-sm-3">
+            <a href="/pests-clinic">
+              <img class="service-icon-img" src="/img/modules/pest_clinic.png">
+              
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</template>

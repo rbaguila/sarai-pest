@@ -1,4 +1,9 @@
 import './library.html';
+import './pest-library/pest-library.html';
+import './entity-page/pest-entity-page.html';
 
-import '../../components/hello/hello.js';
-import '../../components/info/info.js';
+import './pest-library/pest-library.js';
+import './entity-page/pest-entity-page.js';
+
+import './search/search.html';
+import './search/search.js';
