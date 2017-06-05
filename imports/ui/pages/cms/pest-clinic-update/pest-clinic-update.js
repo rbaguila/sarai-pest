@@ -1,10 +1,10 @@
 import { CMS } from '/imports/api/cms/cms.js';
 import { Meteor } from 'meteor/meteor';
 import './pest-clinic-update.html';
-import '../components/cms-navbar.html';
+import '../components/clinic-cms-navbar.html';
 import '../components/cms-sidenav.html';
 
-Template.pestClinicUpdate.onCreated(function () {
+Template.pestClinicUpdate.onCreated(function() {
 	Meteor.subscribe('cms.all');
 });
 
