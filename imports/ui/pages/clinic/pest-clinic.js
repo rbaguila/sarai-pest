@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { CMS } from '/imports/api/cms/cms.js';
-import { Experts } from '/imports/api/cms/cms.js';
+import { Experts } from '/imports/api/experts/experts.js';
 import './pest-clinic.html';
 
 Template.App_clinic.onRendered(function() {
@@ -10,6 +10,12 @@ Template.App_clinic.onRendered(function() {
 Template.pestClinic.onCreated(function() {
 	Meteor.subscribe('cms.all');
 	Meteor.subscribe('experts.all');
+});
+
+Template.pestClinic.events({
+	'click .request-assistance': function(){
+		FlowRouter.go("/request-assistance");
+	}
 });
 
 Template.about.helpers({
@@ -26,6 +32,6 @@ Template.about2.helpers({
 
 Template.experts.helpers({
 	getExperts: function(){
-		return Experts.find();
+		return Experts.find().fetch();
 	},
 });
