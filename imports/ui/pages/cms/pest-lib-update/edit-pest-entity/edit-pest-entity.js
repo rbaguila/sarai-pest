@@ -78,13 +78,13 @@ Template.editPestEntity.events({
 
 	'click #cancelBTN': function(event){
 		event.preventDefault();
-		FlowRouter.go('/edit-pest');
+		FlowRouter.go('/admin/edit-pest');
 	},
 });
 
 Template.editPestEntity.events({
 	'click .back-button': function(event) {
-		FlowRouter.go('/edit-pest');
+		FlowRouter.go('/admin/edit-pest');
 	},	
 
 	'click #generateKeyword': function(event) {

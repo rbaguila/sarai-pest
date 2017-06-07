@@ -11,3 +11,9 @@ Meteor.publish('cms.all', function () {
 Meteor.publish('experts.all', function () {
   return Experts.find();
 });
+
+Meteor.publish("usersList", function(){
+	var result = [];
+	result = Meteor.users.find();
+	return result;
+});

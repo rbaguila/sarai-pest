@@ -76,11 +76,11 @@ Template.insertPest.events({
 
 	'click #cancelBTN': function(event){
 		event.preventDefault();
-		FlowRouter.go('/edit-pest');
+		FlowRouter.go('/admin/edit-pest');
 	},
 
 	'click .back-button': function(event) {
-		FlowRouter.go('/edit-pest');
+		FlowRouter.go('/admin/edit-pest');
 	},	
 });
 
