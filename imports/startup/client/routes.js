@@ -20,9 +20,6 @@ import '../../ui/pages/cms/pest-lib-update/insert-pest/insert-pest.js';
 import '../../ui/pages/cms/pest-lib-update/edit-pest/edit-pest.js';
 import '../../ui/pages/cms/pest-lib-update/edit-pest-entity/edit-pest-entity.js';
 import '../../ui/pages/cms/pest-clinic-update/pest-clinic-update.js';
-import '../../ui/pages/cms/pest-id-update/pest-id-update.js';
-import '../../ui/pages/cms/diseases-update/diseases-update.js';
-import '../../ui/pages/cms/home-update/home-update.js';
 import '../../ui/pages/cms/users-update/users-update.js';
 import '../../ui/pages/cms/pest-clinic-update/experts/experts-cms.js';
 import '../../ui/pages/cms/pest-clinic-update/assistance/assistance-cms.js';
@@ -71,10 +68,7 @@ FlowRouter.route('/diseases', {
   }
 });
 
-<<<<<<< HEAD
-FlowRouter.route('/admin/pests-lib-update', {
-=======
-FlowRouter.route('/pests-id-update', {
+FlowRouter.route('/admin/pests-id-update', {
   name: 'App.pests-id-update',
   action: function(params) {
       Tracker.autorun(function() {
@@ -89,7 +83,7 @@ FlowRouter.route('/pests-id-update', {
     }
 });
 
-FlowRouter.route('/diseases-update', {
+FlowRouter.route('/admin/diseases-update', {
   name: 'App.diseases-update',
   action: function(params) {
       Tracker.autorun(function() {
@@ -104,7 +98,7 @@ FlowRouter.route('/diseases-update', {
     }
 });
 
-FlowRouter.route('/home-update', {
+FlowRouter.route('/admin/home-update', {
   name: 'App.home-update',
   action: function(params) {
       Tracker.autorun(function() {
@@ -119,8 +113,7 @@ FlowRouter.route('/home-update', {
     }
 });
 
-FlowRouter.route('/pests-lib-update', {
->>>>>>> upstream/develop
+FlowRouter.route('/admin/pests-lib-update', {
   name: 'App.pests-lib-update',
   action: function(params) {
       Tracker.autorun(function() {
@@ -195,13 +188,8 @@ FlowRouter.route('/admin/pests-clinic-update', {
     }
 });
 
-<<<<<<< HEAD
-FlowRouter.route('/admin/pests-id-update', {
-  name: 'App.pests-id-update',
-=======
-FlowRouter.route('/edit-expert', {
+FlowRouter.route('/admin/edit-expert', {
   name: 'App.edit-expert',
->>>>>>> upstream/develop
   action: function(params) {
       Tracker.autorun(function() {
           if (!Meteor.userId()) {
@@ -215,13 +203,8 @@ FlowRouter.route('/edit-expert', {
     }
 });
 
-<<<<<<< HEAD
-FlowRouter.route('/admin/diseases-update', {
-  name: 'App.diseases-update',
-=======
-FlowRouter.route('/edit-assistance', {
+FlowRouter.route('/admin/edit-assistance', {
   name: 'App.edit-assistance',
->>>>>>> upstream/develop
   action: function(params) {
       Tracker.autorun(function() {
           if (!Meteor.userId()) {
@@ -229,8 +212,8 @@ FlowRouter.route('/edit-assistance', {
             alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
           } else {
-<<<<<<< HEAD
-            BlazeLayout.render("App_body", {main: "diseasesUpdate"})
+            BlazeLayout.render("App_body", {main: "assistanceUpdate"})
+
           }
       });
     }
@@ -246,24 +229,6 @@ FlowRouter.route('/admin/users-update', {
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "usersUpdate"})
-          }
-      });
-    }
-});
-
-FlowRouter.route('/admin/home-update', {
-  name: 'App.home-update',
-  action: function(params) {
-      Tracker.autorun(function() {
-          if (!Meteor.userId()) {
-            BlazeLayout.render("App_body", {main: "App_home"})
-            alert("User is not allowed to access the page.")
-            FlowRouter.redirect('/');
-          } else {
-            BlazeLayout.render("App_body", {main: "homeUpdate"})
-=======
-            BlazeLayout.render("App_body", {main: "assistanceUpdate"})
->>>>>>> upstream/develop
           }
       });
     }
