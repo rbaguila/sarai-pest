@@ -1,7 +1,7 @@
 import { Plant_Problem } from '/imports/api/plant_problem/plant_problem.js';
 import { Meteor } from 'meteor/meteor';
 import './edit-pest-entity.html';
-import '../../components/cms-navbar.html';
+import '../../components/library-cms-navbar.html';
 import '../../components/cms-sidenav.html';
 
 Template.editPestEntity.onCreated(function () {
