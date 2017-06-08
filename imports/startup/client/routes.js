@@ -68,7 +68,7 @@ FlowRouter.route('/diseases', {
   }
 });
 
-FlowRouter.route('/admin/pests-id-update', {
+FlowRouter.route('/admin/identification', {
   name: 'App.pests-id-update',
   action: function(params) {
       Tracker.autorun(function() {
@@ -83,7 +83,7 @@ FlowRouter.route('/admin/pests-id-update', {
     }
 });
 
-FlowRouter.route('/admin/diseases-update', {
+FlowRouter.route('/admin/diseases', {
   name: 'App.diseases-update',
   action: function(params) {
       Tracker.autorun(function() {
@@ -98,7 +98,7 @@ FlowRouter.route('/admin/diseases-update', {
     }
 });
 
-FlowRouter.route('/admin/home-update', {
+FlowRouter.route('/admin/home', {
   name: 'App.home-update',
   action: function(params) {
       Tracker.autorun(function() {
@@ -113,7 +113,7 @@ FlowRouter.route('/admin/home-update', {
     }
 });
 
-FlowRouter.route('/admin/pests-lib-update', {
+FlowRouter.route('/admin/library', {
   name: 'App.pests-lib-update',
   action: function(params) {
       Tracker.autorun(function() {
@@ -173,7 +173,7 @@ FlowRouter.route("/admin/edit-pest/:_id", {
     }
 });
 
-FlowRouter.route('/admin/pests-clinic-update', {
+FlowRouter.route('/admin/pests-clinic', {
   name: 'App.pests-clinic-update',
   action: function(params) {
       Tracker.autorun(function() {
@@ -188,7 +188,7 @@ FlowRouter.route('/admin/pests-clinic-update', {
     }
 });
 
-FlowRouter.route('/admin/edit-expert', {
+FlowRouter.route('/admin/experts', {
   name: 'App.edit-expert',
   action: function(params) {
       Tracker.autorun(function() {
@@ -203,7 +203,7 @@ FlowRouter.route('/admin/edit-expert', {
     }
 });
 
-FlowRouter.route('/admin/edit-assistance', {
+FlowRouter.route('/admin/assistance', {
   name: 'App.edit-assistance',
   action: function(params) {
       Tracker.autorun(function() {
@@ -219,7 +219,7 @@ FlowRouter.route('/admin/edit-assistance', {
     }
 });
 
-FlowRouter.route('/admin/users-update', {
+FlowRouter.route('/admin/users', {
   name: 'App.users-update',
   action: function(params) {
       Tracker.autorun(function() {
