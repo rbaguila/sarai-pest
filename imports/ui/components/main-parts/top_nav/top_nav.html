@@ -1,39 +1,5 @@
 <template name="top_nav">
 
-<!-- <nav class="navbar sarai-header">
-  <div class="container">
-    <div class="navbar-header">
-      <a href="/">
-        <img src="/img/SARAI-white.png" height="60px" />
-      </a>
-    </div>
-
-    <div class="pull-right login-buttons">
-      {{> loginButtons align="right"}}
-    </div>
-
-    <div class="pull-right links">
-      <a href="/">
-        HOME
-      </a>
-      <a href="/library">
-        LIBRARY
-      </a>
-      <a href="/spid">
-        SPID
-      </a>
-      <a href="/monitor">
-        MONITOR
-      </a>
-      <a href="/clinic">
-        CLINIC
-      </a>
-    </div>
-
-
-  </div>
-</nav> -->
-
 <!-- Static navbar -->
 <nav class="navbar sarai-header">
   <div class="container-fluid">
@@ -50,33 +16,19 @@
         </a>
       </div>
     </div>
-    
-    
-    <!-- <div id="navbar" class="navbar-collapse collapse">
-      <div class="pull-right login-buttons">
-        {{> loginButtons align="right"}}
-      </div>
-      <ul class="nav navbar-nav navbar-right links">
-        <li><a href="/" class="active">HOME</a></li>
-        <li><a href="/library">LIBRARY</a></li>
-        <li><a href="/pests-id">SPID</a></li>
-        <li><a href="/diseases">DISEASES</a></li>
-        <li><a href="/pests-clinic">CLINIC</a></li>
-      </ul>
-    </div><!/.nav-collapse -->
 
     <div class="collapse navbar-collapse" id="navbar">
         <div class="pull-right login-buttons">
-        {{> loginButtons align="right"}}
-      </div>
+          {{> loginButtons align="right"}}
+        </div>
         <ul class="nav navbar-nav navbar-right links">
           {{#each link in links}}
             {{#if link.links}}
-              <li class="dropdown">
+              <li class="dropdown" id="sub">
                 <a href="{{link.url}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{link.title}}<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   {{#each subLink in link.links}}
-                  <li><a href="{{subLink.url}}" style="color:black;">{{subLink.title}}</a></li>
+                  <li><a href="{{subLink.url}}">{{subLink.title}}</a></li>
                   {{/each}}
                 </ul>
               </li>
@@ -86,6 +38,9 @@
           {{/each}}
         </ul>
       </div><!-- /.navbar-collapse -->
+
+      <img class="dost-pcaarrd-uplb-logo" src="/img/dost-pcaarrd-uplb.png" />
+
   </div><!--/.container-fluid -->
 </nav>
 
