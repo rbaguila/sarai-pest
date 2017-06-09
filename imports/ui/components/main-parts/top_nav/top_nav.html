@@ -16,31 +16,22 @@
         </a>
       </div>
     </div>
+    
+    
+    <div id="navbar" class="navbar-collapse collapse">
+      <div class="pull-right login-buttons">
+        {{> loginButtons align="right"}}
+      </div>
+      <ul class="nav navbar-nav navbar-right links">
+        <li><a href="/" class="active">SARAi</a></li>
+        <li><a href="/library">LIBRARY</a></li>
+        <li><a href="/pests-id">SPID</a></li>
+        <li><a href="/diseases">DISEASES</a></li>
+        <li><a href="/pests-clinic">CLINIC</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
 
-    <div class="collapse navbar-collapse" id="navbar">
-        <div class="pull-right login-buttons">
-          {{> loginButtons align="right"}}
-        </div>
-        <ul class="nav navbar-nav navbar-right links">
-          {{#each link in links}}
-            {{#if link.links}}
-              <li class="dropdown" id="sub">
-                <a href="{{link.url}}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{link.title}}<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  {{#each subLink in link.links}}
-                  <li><a href="{{subLink.url}}">{{subLink.title}}</a></li>
-                  {{/each}}
-                </ul>
-              </li>
-            {{else}}
-              <li><a href="{{link.url}}">{{link.title}}</a></li>
-            {{/if}}
-          {{/each}}
-        </ul>
-      </div><!-- /.navbar-collapse -->
-
-      <img class="dost-pcaarrd-uplb-logo" src="/img/dost-pcaarrd-uplb.png" />
-
+    <img class="dost-pcaarrd-uplb-logo" src="/img/dost-pcaarrd-uplb.png" />
   </div><!--/.container-fluid -->
 </nav>
 
