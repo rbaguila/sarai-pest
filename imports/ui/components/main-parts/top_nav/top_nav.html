@@ -23,11 +23,9 @@
         {{> loginButtons align="right"}}
       </div>
       <ul class="nav navbar-nav navbar-right links">
-        <li><a href="/" class="active">SARAi</a></li>
-        <li><a href="/library">LIBRARY</a></li>
-        <li><a href="/pests-id">SPID</a></li>
-        <li><a href="/diseases">DISEASES</a></li>
-        <li><a href="/pests-clinic">CLINIC</a></li>
+        {{#each link in links}}
+          <li><a href="{{link.url}}">{{link.title}}</a></li>
+        {{/each}}
       </ul>
     </div><!--/.nav-collapse -->
 

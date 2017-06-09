@@ -14,121 +14,27 @@ Meteor.startup(() => {
     const data = [
       {
         title: 'SARAi',
-        url: '/about-us',
-        links: [],
+        url: 'http://sarai.ph/',
         createdAt: new Date(),
       },
       {
-        title: 'Crops',
-        url: '/',
-        links: [
-          {
-            title: 'Rice',
-            url: '/icm-rice',
-            createdAt: new Date(),
-          },
-          {
-            title: 'Corn',
-            url: '/icm-corn',
-            createdAt: new Date(),
-          },
-          {
-            title: 'Banana',
-            url: '/icm-banana',
-            createdAt: new Date(),
-          },
-          {
-            title: 'Coconut',
-            url: '/icm-coconut',
-            createdAt: new Date(),
-          },
-          {
-            title: 'Coffee',
-            url: '/icm-coffee',
-            createdAt: new Date(),
-          },
-          {
-            title: 'Cacao',
-            url: '/icm-cacao',
-            createdAt: new Date(),
-          },
-        ],
+        title: 'Library',
+        url: '/library',
         createdAt: new Date(),
       },
       {
-        title: 'Maps',
-        url: '/',
-        links: [
-          {
-            title: 'Suitability Maps',
-            url: 'http://maps.sarai.ph/suitability-maps',
-            createdAt: new Date(),
-          },
-          {
-            title: 'Crop Production Area',
-            url: 'http://maps.sarai.ph/crop-production-area',
-            createdAt: new Date(),
-          },
-          {
-            title: 'Normalized Difference Vegetation Index (NDVI)',
-            url: 'http://maps.sarai.ph/ndvi',
-            createdAt: new Date(),
-          },
-          {
-            title: 'Rainfall Map',
-            url: 'http://maps.sarai.ph/rainfall-maps',
-            createdAt: new Date(),
-          },
-        ],
+        title: 'SPID',
+        url: '/pests-id',
         createdAt: new Date(),
       },
       {
-        title: 'Services',
-        url: '/',
-        links: [
-          {
-            title: 'Alerts and Advisories',
-            url: 'http://sarai.ph/advisories',
-            createdAt: new Date(),
-          },
-          {
-            title: 'Monitoring',
-            url: 'http://sarai.ph/weather-monitoring',
-            createdAt: new Date(),
-          },
-          {
-            title: 'Planting Guide',
-            url: 'http://sarai.ph/rainfall-distribution',
-            createdAt: new Date(),
-          },
-          {
-            title: 'SPIDTech',
-            url: 'http://pests.sarai.ph/',
-            createdAt: new Date(),
-          },
-          {
-            title: 'Open Data',
-            url: 'http://opendata.sarai.ph/',
-            createdAt: new Date(),
-          },
-          {
-            title: 'SARAi Eskwela',
-            url: 'http://portal.sarai.ph/index.php?option=com_content&view=article&id=38&Itemid=319',
-            createdAt: new Date(),
-          },
-        ],
+        title: 'Diseases',
+        url: '/diseases',
         createdAt: new Date(),
       },
       {
-        title: 'Contact Us',
-        url: '/',
-        links: [
-          {
-            title: 'Subscribe',
-            url: 'https://goo.gl/forms/i4jW7LshCSQpuyZ23',
-            createdAt: new Date(),
-          },
-        ],
+        title: 'Clinic',
+        url: '/pests-clinic',
         createdAt: new Date(),
       },
     ];
