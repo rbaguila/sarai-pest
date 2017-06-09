@@ -23,15 +23,36 @@
 		    {{> sideNav}}
       	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="main-body">
         	<h3 class="col-sm-12 col-md-12 col-lg-12 text-center"> List of Users</h3>
-        	{{#each getUsers}}
-				<div class="users-data-body col-xs-8 col-sm-4 col-md-2 col-lg-2">
-					<div class="panel panel-default">
-						<div class="fixed-panel panel-body">
-        	    			<p class="user-list">{{this.username}}</p>
-        	 			</div>
-        	 		</div>
-        	 	</div>
-        	{{/each}}
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th class="text-center">Username</th>
+                  <th class="text-center">Role</th>
+       <!--            <th class="text-center"></th> -->
+                </tr>
+              </thead>
+            <tbody>
+                {{#each getUsers}}
+                <tr>
+                  <td>{{username}}</td>
+ <!--                  <td>
+                      <select name="userRole" class="form-control">
+                        <option value="admin">Admin</option>
+                        <option value="pests">Pests Admin</option>
+                        <option value="clinic">Clinic Admin</option>
+                        <option value="identification">Identification Admin</option>
+                        <option value="diseases">Diseases Admin</option>  
+                        <option value="normalUser">Registered</option> 
+                      </select>
+                  </td> -->
+                  <td>{{roles}}</td>
+<!--             <td>
+                <a href="/"><i class="fa fa-check-circle" aria-hidden="true"></i></a>
+            </td> -->
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
         </div>
 		</div>
 	</div>

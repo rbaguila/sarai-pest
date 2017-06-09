@@ -72,11 +72,11 @@ FlowRouter.route('/admin/identification', {
   name: 'App.pests-id-update',
   action: function(params) {
       Tracker.autorun(function() {
-          if (!Meteor.userId()) {
+          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Id Admin'])) {
             BlazeLayout.render("App_body", {main: "App_home"})
-            alert("User is not allowed to access the page.")
+//            alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
-          } else {
+          } else if(Roles.userIsInRole(Meteor.user(), ['Admin'])){
             BlazeLayout.render("App_body", {main: "pestIdUpdate"})
           }
       });
@@ -87,9 +87,9 @@ FlowRouter.route('/admin/diseases', {
   name: 'App.diseases-update',
   action: function(params) {
       Tracker.autorun(function() {
-          if (!Meteor.userId()) {
+          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Diseases Admin'])) {
             BlazeLayout.render("App_body", {main: "App_home"})
-            alert("User is not allowed to access the page.")
+            //alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "diseasesUpdate"})
@@ -102,9 +102,9 @@ FlowRouter.route('/admin/home', {
   name: 'App.home-update',
   action: function(params) {
       Tracker.autorun(function() {
-          if (!Meteor.userId()) {
+          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Admin'])) {
             BlazeLayout.render("App_body", {main: "App_home"})
-            alert("User is not allowed to access the page.")
+            //alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "homeUpdate"})
@@ -117,9 +117,9 @@ FlowRouter.route('/admin/library', {
   name: 'App.pests-lib-update',
   action: function(params) {
       Tracker.autorun(function() {
-          if (!Meteor.userId()) {
+          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Pests Admin'])) {
             BlazeLayout.render("App_body", {main: "App_home"})
-            alert("User is not allowed to access the page.")
+            //alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "pestLibUpdate"})
@@ -132,9 +132,9 @@ FlowRouter.route('/admin/insert-pest', {
   name: 'App.insert-pest',
   action: function(params) {
       Tracker.autorun(function() {
-          if (!Meteor.userId()) {
+          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Pests Admin'])) {
             BlazeLayout.render("App_body", {main: "App_home"})
-            alert("User is not allowed to access the page.")
+            //alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "insertPest"})
@@ -147,9 +147,9 @@ FlowRouter.route('/admin/edit-pest', {
   name: 'App.edit-pest',
   action: function(params) {
       Tracker.autorun(function() {
-          if (!Meteor.userId()) {
+          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Pests Admin'])) {
             BlazeLayout.render("App_body", {main: "App_home"})
-            alert("User is not allowed to access the page.")
+            //alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "editPest"})
@@ -162,9 +162,9 @@ FlowRouter.route("/admin/edit-pest/:_id", {
   name: 'App.library',
   action: function(params) {
       Tracker.autorun(function() {
-          if (!Meteor.userId()) {
+          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Pests Admin'])) {
             BlazeLayout.render("App_body", {main: "App_home"})
-            alert("User is not allowed to access the page.")
+            //alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "editPestEntity"})
@@ -177,9 +177,9 @@ FlowRouter.route('/admin/pests-clinic', {
   name: 'App.pests-clinic-update',
   action: function(params) {
       Tracker.autorun(function() {
-          if (!Meteor.userId()) {
+          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Clinic Admin'])) {
             BlazeLayout.render("App_body", {main: "App_home"})
-            alert("User is not allowed to access the page.")
+            //alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "pestClinicUpdate"})
@@ -192,9 +192,9 @@ FlowRouter.route('/admin/experts', {
   name: 'App.edit-expert',
   action: function(params) {
       Tracker.autorun(function() {
-          if (!Meteor.userId()) {
+          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Clinic Admin'])) {
             BlazeLayout.render("App_body", {main: "App_home"})
-            alert("User is not allowed to access the page.")
+            //alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "expertUpdate"})
@@ -207,9 +207,9 @@ FlowRouter.route('/admin/assistance', {
   name: 'App.edit-assistance',
   action: function(params) {
       Tracker.autorun(function() {
-          if (!Meteor.userId()) {
+          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Clinic Admin'])) {
             BlazeLayout.render("App_body", {main: "App_home"})
-            alert("User is not allowed to access the page.")
+            //alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "assistanceUpdate"})
@@ -223,9 +223,9 @@ FlowRouter.route('/admin/users', {
   name: 'App.users-update',
   action: function(params) {
       Tracker.autorun(function() {
-          if (!Meteor.userId()) {
+          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Admin'])) {
             BlazeLayout.render("App_body", {main: "App_home"})
-            alert("User is not allowed to access the page.")
+            //alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "usersUpdate"})

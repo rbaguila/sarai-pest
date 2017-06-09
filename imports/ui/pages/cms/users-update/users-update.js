@@ -11,5 +11,13 @@ Template.usersUpdate.onCreated(function () {
 Template.usersUpdate.helpers({
 	getUsers: function() {
 		return Meteor.users.find();
-	}
+	},
+	// adminSelected: function () {
+	// 	console.log(Meteor.users.roles.find());
+ //      return (Meteor.users.roles.find() === 'Admin') ? 'selected' : '';
+ //    },
+ //    registeredSelected: function () {
+ //      return (someOtherCondition) ? 'selected' : '';
+ //    }
 });
+
