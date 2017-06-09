@@ -1,0 +1,51 @@
+<template name="navSettingsUpdate">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>  
+          </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+              <li><a href="/diseases">Home</a></li>
+              <li><a href="">Disease</a></li>
+          </ul>
+        </div>
+      </div>
+  </nav>
+
+  <div class="container-fluid">
+      <div class="row">
+        {{> sideNav}}
+        
+         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="main-body">
+          <br/>
+          <div class="text-center">
+          <button id="addBTN" class="btn btn-success cms-button">Add Link</button>
+        </div>
+        <br/>
+        <div class="tab-content">
+            <div class="tab-pane fade in active">
+              <ul class="list-group">
+              {{#each link in links}}
+                <li class="list-group-item">
+                    <div class="media-body"> <h4>{{link.title}}</h4> </div>
+                    <div class="media-right">
+                      <div class="btn-group-xs">
+                        {{> button text="edit1" color="primary" id=link._id}}
+                        {{> button text="remove1" color="danger" id=link._id }}
+                      </div>
+                    </div>
+                </li>
+              {{/each}}
+              </ul>
+            </div>
+        </div>
+        </div>
+    </div>
+  </div>
+</template>

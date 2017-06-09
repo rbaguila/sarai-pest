@@ -15,4 +15,25 @@ Meteor.methods({
       createdAt: new Date(),
     });
   },
+
+  'links.editLink'(newLink){
+    check(url, String);
+    check(title, String);
+
+    Links.update({_id: newLink.id},
+        {
+            $set:
+            {
+                title: newLink.title,
+                url: newLink.url 
+            }   
+        }
+    );
+  },
+
+  'links.removeLink'(id){
+    check(id, String);
+
+    Links.remove( { _id: id } );
+  },
 });
