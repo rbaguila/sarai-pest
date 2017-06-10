@@ -79,6 +79,6 @@ Template.pestLibUpdate.events({
 
 	'click #viewChangesBTN': function(event){
 		event.preventDefault();
-		FlowRouter.go("/library");
+		FlowRouter.go("/pests");
 	}
 });
