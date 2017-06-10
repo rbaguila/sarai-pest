@@ -4,6 +4,8 @@ import './assistance-cms.html';
 import '../../components/clinic-cms-navbar.html';
 import '../../components/cms-sidenav.html';
 
+var emailaddress="";
+var name = "";
 Template.assistanceUpdate.onCreated(function() {
 	Meteor.subscribe('assistance.all');
 });
@@ -40,11 +42,26 @@ Template.assistanceUpdate.events({
 	},
 
 	'click #submitBTN': function(event){
-
+		var filename="";
 		var reply = {
 			subject: $('#subjectField').val(), 
 			message: $('#msgField').val()
-		}
+		};
+		var email = {
+            to: name+" <" + emailaddress + ">",
+            from: 'mendozama.angelica@gmail.com',
+            //replyTo: 'abct@failtracker.com',
+            subject: $('#subjectField').val(),
+            text: $('#msgField').val(),
+            attachments:[
+              {
+                filePath: filename
+              }
+            ]
+        };
+        console.log("Sending...");
+        Meteor.call('sendEmail', email);
+        $("#answerFields").hide();
 	},
 });
 
@@ -55,6 +72,8 @@ Template.assistanceButton.events({
 		if( !(this.id == undefined) || !(this.id == null) ){
 			var entry = Assistance.findOne({'_id': this.id});
 
+			emailaddress = entry.email;
+			name=entry.user;
 			$('#subject').html("<h5><b>"+ entry.subject +"</b></h5><hr/>");
 			$('#user').html("<h5><b>"+ entry.user + "</b> <small>" + entry.email + "</small></h5>");
 			$('#date').html("<em>" + entry.date + "</em>");

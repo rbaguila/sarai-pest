@@ -1,0 +1,19 @@
+<template name="App_clinic_email">
+  {{> top_nav}}
+  {{> pestClinicEmail}}
+  {{> footer}}
+</template>
+<template name='pestClinicEmail'>
+	
+	To: <input id="toEA" type="text" name="TOemailadd" placeholder="Name"><br>
+	Subject: <input id="subject" type="text" name="subj" placeholder="Subject"><br>
+	Message: <br><textarea id= "message" rows="4" cols="50" name="comment">
+	</textarea><br>
+	
+		
+			{{> dropzone id="dropzone" fileTypes='.jpg,.png,.jpeg.,.JPG,.PNG' contentType='images' multiple=false formData=specificFormData callbacks=myCallbacks}}
+		
+	
+	<button id='send-email-button'>Send email</button>
+	
+</template>

@@ -23,6 +23,7 @@ import '../../ui/pages/cms/pest-clinic-update/pest-clinic-update.js';
 import '../../ui/pages/cms/pest-clinic-update/experts/experts-cms.js';
 import '../../ui/pages/cms/pest-clinic-update/assistance/assistance-cms.js';
 
+import '../../ui/pages/cms/pest-clinic-email/pest-clinic-email.js';
 
 // Set up all routes in the app
 FlowRouter.route('/', {
@@ -229,6 +230,12 @@ FlowRouter.route("/disease-entity/:_id", {
   name: 'App.diseases',
   action() {
     BlazeLayout.render("App_body", {main: "diseaseEntityPage"})
+  }
+});
+FlowRouter.route('/pests-clinic/email', {
+  name: 'App.pests-clinic-email',
+  action(){
+    BlazeLayout.render('App_body', { main: "App_clinic_email" });
   }
 });
 

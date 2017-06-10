@@ -7,8 +7,8 @@ import { CMS } from '../../api/cms/cms.js';
 import { Experts } from '../../api/experts/experts.js';
 import { Assistance } from '../../api/assistance/assistance.js';
 
-Meteor.startup(() => {
 
+Meteor.startup(() => {
   // if the Links collection is empty
   if (Links.find().count() === 0) {
     const data = [
