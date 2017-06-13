@@ -73,6 +73,28 @@ Meteor.startup(() => {
     data.forEach(expert => Experts.insert(expert));
   }
 
+  if (Meteor.users.find().fetch().length === 0) {
+      Accounts.createUser({username: 'admin123', password: 'admin123'});
+      var id = Meteor.users.findOne({username: "admin123"});
+      Roles.addUsersToRoles(id._id, ['Admin', 'Pests Admin', 'Clinic Admin', 'Id Admin', 'Diseases Admin']);
+
+      Accounts.createUser({username: 'pests123', password: 'pests123'});
+      var id1 = Meteor.users.findOne({username: "pests123"});
+      Roles.addUsersToRoles(id1._id, ['Pests Admin']);
+
+      Accounts.createUser({username: 'clinic123', password: 'clinic123'});
+      var id2 = Meteor.users.findOne({username: "clinic123"});
+      Roles.addUsersToRoles(id2._id, ['Clinic Admin']);
+
+      Accounts.createUser({username: 'id1234', password: 'id1234'});
+      var id3 = Meteor.users.findOne({username: "id1234"});
+      Roles.addUsersToRoles(id3._id, ['Id Admin']);
+
+      Accounts.createUser({username: 'diseases', password: 'diseases'});
+      var id4 = Meteor.users.findOne({username: "diseases"});
+      Roles.addUsersToRoles(id4._id, ['Diseases Admin']);
+  }
+
   // if the Assistance collection is empty
   if (Assistance.find().count() === 0) {
     const data = [

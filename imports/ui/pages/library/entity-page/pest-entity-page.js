@@ -20,7 +20,7 @@ Template.entity.helpers({
 Template.entity.events({
 
 	'click .back': function(event){
-		FlowRouter.go("/library");
+		FlowRouter.go("/pests");
 	},
 
 	'click .facebook': function(event){

@@ -1,6 +1,7 @@
 {
   "name": "sarai-pests",
   "private": true,
+  "roles": {},
   "scripts": {
     "start": "meteor run"
   },

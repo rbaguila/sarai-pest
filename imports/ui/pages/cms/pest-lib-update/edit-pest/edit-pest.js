@@ -36,14 +36,14 @@ Template.editPest.helpers({
 
 Template.editPest.events({
 	'click #addBTN': function(event){
-		FlowRouter.go('/insert-pest');
+		FlowRouter.go('/admin/insert-pest');
 	},
 });
 
 Template.button.events({
 	'click .edit': function(event, template) {
 		console.log("EDIT: " + this.id);
-		FlowRouter.go('/edit-pest/' + this.id);
+		FlowRouter.go('/admin/edit-pest/' + this.id);
 	},	
 
 	'click .remove': function(event, template) {

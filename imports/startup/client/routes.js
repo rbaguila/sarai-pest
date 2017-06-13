@@ -20,14 +20,13 @@ import '../../ui/pages/cms/pest-lib-update/insert-pest/insert-pest.js';
 import '../../ui/pages/cms/pest-lib-update/edit-pest/edit-pest.js';
 import '../../ui/pages/cms/pest-lib-update/edit-pest-entity/edit-pest-entity.js';
 import '../../ui/pages/cms/pest-clinic-update/pest-clinic-update.js';
+import '../../ui/pages/cms/users-update/users-update.js';
 import '../../ui/pages/cms/pest-clinic-update/experts/experts-cms.js';
 import '../../ui/pages/cms/pest-clinic-update/assistance/assistance-cms.js';
 
 import '../../ui/pages/cms/nav-settings-update/nav-settings-update.js';
-
 import '../../ui/pages/cms/nav-settings-update/edit-link-entity/edit-link-entity.js';
 import '../../ui/pages/cms/nav-settings-update/insert-link/insert-link.js';
-
 
 // Set up all routes in the app
 FlowRouter.route('/', {
@@ -38,7 +37,7 @@ FlowRouter.route('/', {
 });
 
 // Set up all routes in the app
-FlowRouter.route('/library', {
+FlowRouter.route('/pests', {
   name: 'App.library',
   action() {
     BlazeLayout.render('App_body', { main: 'App_library' });
@@ -73,28 +72,28 @@ FlowRouter.route('/diseases', {
   }
 });
 
-FlowRouter.route('/pests-id-update', {
+FlowRouter.route('/admin/identification', {
   name: 'App.pests-id-update',
   action: function(params) {
       Tracker.autorun(function() {
-          if (!Meteor.userId()) {
+          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Id Admin'])) {
             BlazeLayout.render("App_body", {main: "App_home"})
-            alert("User is not allowed to access the page.")
+//            alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
-          } else {
+          } else if(Roles.userIsInRole(Meteor.user(), ['Admin'])){
             BlazeLayout.render("App_body", {main: "pestIdUpdate"})
           }
       });
     }
 });
 
-FlowRouter.route('/diseases-update', {
+FlowRouter.route('/admin/diseases', {
   name: 'App.diseases-update',
   action: function(params) {
       Tracker.autorun(function() {
-          if (!Meteor.userId()) {
+          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Diseases Admin'])) {
             BlazeLayout.render("App_body", {main: "App_home"})
-            alert("User is not allowed to access the page.")
+            //alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "diseasesUpdate"})
@@ -103,13 +102,13 @@ FlowRouter.route('/diseases-update', {
     }
 });
 
-FlowRouter.route('/home-update', {
+FlowRouter.route('/admin/home', {
   name: 'App.home-update',
   action: function(params) {
       Tracker.autorun(function() {
-          if (!Meteor.userId()) {
+          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Admin'])) {
             BlazeLayout.render("App_body", {main: "App_home"})
-            alert("User is not allowed to access the page.")
+            //alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "homeUpdate"})
@@ -118,13 +117,13 @@ FlowRouter.route('/home-update', {
     }
 });
 
-FlowRouter.route('/pests-lib-update', {
+FlowRouter.route('/admin/library', {
   name: 'App.pests-lib-update',
   action: function(params) {
       Tracker.autorun(function() {
-          if (!Meteor.userId()) {
+          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Pests Admin'])) {
             BlazeLayout.render("App_body", {main: "App_home"})
-            alert("User is not allowed to access the page.")
+            //alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "pestLibUpdate"})
@@ -133,6 +132,7 @@ FlowRouter.route('/pests-lib-update', {
     }
 });
 
+<<<<<<< HEAD
 FlowRouter.route('/nav-settings-update', {
   name: 'App.nav-settings-update',
   action: function(params) {
@@ -179,12 +179,15 @@ FlowRouter.route("/edit-link/:_id", {
 });
 
 FlowRouter.route('/insert-pest', {
+=======
+FlowRouter.route('/admin/insert-pest', {
+>>>>>>> upstream/develop
   name: 'App.insert-pest',
   action: function(params) {
       Tracker.autorun(function() {
-          if (!Meteor.userId()) {
+          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Pests Admin'])) {
             BlazeLayout.render("App_body", {main: "App_home"})
-            alert("User is not allowed to access the page.")
+            //alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "insertPest"})
@@ -193,13 +196,13 @@ FlowRouter.route('/insert-pest', {
     }
 });
 
-FlowRouter.route('/edit-pest', {
+FlowRouter.route('/admin/edit-pest', {
   name: 'App.edit-pest',
   action: function(params) {
       Tracker.autorun(function() {
-          if (!Meteor.userId()) {
+          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Pests Admin'])) {
             BlazeLayout.render("App_body", {main: "App_home"})
-            alert("User is not allowed to access the page.")
+            //alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "editPest"})
@@ -208,13 +211,13 @@ FlowRouter.route('/edit-pest', {
     }
 });
 
-FlowRouter.route("/edit-pest/:_id", {
+FlowRouter.route("/admin/edit-pest/:_id", {
   name: 'App.library',
   action: function(params) {
       Tracker.autorun(function() {
-          if (!Meteor.userId()) {
+          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Pests Admin'])) {
             BlazeLayout.render("App_body", {main: "App_home"})
-            alert("User is not allowed to access the page.")
+            //alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "editPestEntity"})
@@ -223,13 +226,13 @@ FlowRouter.route("/edit-pest/:_id", {
     }
 });
 
-FlowRouter.route('/pests-clinic-update', {
+FlowRouter.route('/admin/pests-clinic', {
   name: 'App.pests-clinic-update',
   action: function(params) {
       Tracker.autorun(function() {
-          if (!Meteor.userId()) {
+          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Clinic Admin'])) {
             BlazeLayout.render("App_body", {main: "App_home"})
-            alert("User is not allowed to access the page.")
+            //alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "pestClinicUpdate"})
@@ -238,13 +241,13 @@ FlowRouter.route('/pests-clinic-update', {
     }
 });
 
-FlowRouter.route('/edit-expert', {
+FlowRouter.route('/admin/experts', {
   name: 'App.edit-expert',
   action: function(params) {
       Tracker.autorun(function() {
-          if (!Meteor.userId()) {
+          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Clinic Admin'])) {
             BlazeLayout.render("App_body", {main: "App_home"})
-            alert("User is not allowed to access the page.")
+            //alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "expertUpdate"})
@@ -253,16 +256,32 @@ FlowRouter.route('/edit-expert', {
     }
 });
 
-FlowRouter.route('/edit-assistance', {
+FlowRouter.route('/admin/assistance', {
   name: 'App.edit-assistance',
   action: function(params) {
       Tracker.autorun(function() {
-          if (!Meteor.userId()) {
+          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Clinic Admin'])) {
             BlazeLayout.render("App_body", {main: "App_home"})
-            alert("User is not allowed to access the page.")
+            //alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "assistanceUpdate"})
+
+          }
+      });
+    }
+});
+
+FlowRouter.route('/admin/users', {
+  name: 'App.users-update',
+  action: function(params) {
+      Tracker.autorun(function() {
+          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Admin'])) {
+            BlazeLayout.render("App_body", {main: "App_home"})
+            //alert("User is not allowed to access the page.")
+            FlowRouter.redirect('/');
+          } else {
+            BlazeLayout.render("App_body", {main: "usersUpdate"})
           }
       });
     }
