@@ -132,7 +132,6 @@ FlowRouter.route('/admin/library', {
     }
 });
 
-<<<<<<< HEAD
 FlowRouter.route('/nav-settings-update', {
   name: 'App.nav-settings-update',
   action: function(params) {
@@ -178,10 +177,8 @@ FlowRouter.route("/edit-link/:_id", {
     }
 });
 
-FlowRouter.route('/insert-pest', {
-=======
+
 FlowRouter.route('/admin/insert-pest', {
->>>>>>> upstream/develop
   name: 'App.insert-pest',
   action: function(params) {
       Tracker.autorun(function() {
