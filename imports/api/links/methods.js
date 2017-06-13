@@ -17,8 +17,9 @@ Meteor.methods({
   },
 
   'links.editLink'(newLink){
-    check(url, String);
-    check(title, String);
+    check(newLink.id, String);
+    check(newLink.url, String);
+    check(newLink.title, String);
 
     Links.update({_id: newLink.id},
         {

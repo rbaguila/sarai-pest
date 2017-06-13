@@ -34,16 +34,17 @@ Template.navSettingsUpdate.events({
     },
 });
 
-Template.button.events({
-    'click .edit1': function(event, template) {
+Template.button1.events({
+    'click .edit': function(event, template) {
         console.log("EDIT: " + this.id);
         FlowRouter.go('/edit-link/' + this.id);
     },  
 
-    'click .remove1': function(event, template) {
+    'click .remove': function(event, template) {
         console.log("DELETE: " + this.id);
         Session.set('id', this.id);
         $('#deleteLink').modal('show');
+       
     },
 
     'click .confirmDelete' : function(event) {
@@ -52,7 +53,7 @@ Template.button.events({
           if (error) {
             alert(error.error);
           } else {
-            $('#pestDeleted').modal('show');
+            $('#linkDeleted').modal('show');
             event.preventDefault(); 
           }
         });

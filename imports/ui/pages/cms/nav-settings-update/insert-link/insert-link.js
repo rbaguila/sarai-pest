@@ -13,8 +13,14 @@ Template.insertLink.onRendered(function () {
 });
 
 Template.insertLink.events({
+    'click .back-button': function(event) {
+        FlowRouter.go('/nav-settings-update');
+    },  
+});
+
+Template.insertLink.events({
     
-    'click #saveBTN': function(event){
+    'click #saveBTN1': function(event){
         
         // GET THE VALUES
         var newLink = {
@@ -23,24 +29,20 @@ Template.insertLink.events({
         }
         
         // INSERT THE PEST TO THE DATABASE
-        Meteor.call('links.addLink', newPest, (error) => {
+        Meteor.call('links.insert', $("#title").val(),$("#url").val(), (error) => {
           if (error) {
             alert(error.error);
           } else {
             $('.insertSuccess').modal('show');
+            
           }
         });
     },
 
-    'click #cancelBTN': function(event){
+    'click #cancelBTN1': function(event){
         event.preventDefault();
         FlowRouter.go('/nav-settings-update');
     },
 
 });
 
-Template.editLinkEntity.events({
-    'click .back-button': function(event) {
-        FlowRouter.go('/nav-settings-update');
-    },  
-});

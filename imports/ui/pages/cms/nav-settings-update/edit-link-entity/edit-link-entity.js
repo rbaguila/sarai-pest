@@ -9,31 +9,26 @@ Template.editLinkEntity.onCreated(function () {
 });
 
 Template.editLinkEntity.onRendered(function () {
-    $('[data-toggle="tooltip"]').tooltip(); 
-    Session.set('keywords', Link.findOne({_id: FlowRouter.current().params._id}).keywords);
-});
-
-Template.editLinkEntity.helpers({
-    link(){
-        return Link.findOne({_id: FlowRouter.current().params._id});
-    },
+    $('[data-toggle="tooltip"]').tooltip();
 });
 
 Template.editLinkEntity.events({
-    'click #saveBTN': function(event){
+    'click #saveBTN2': function(event){
+
         event.preventDefault();
 
         var id = FlowRouter.current().params._id;
+        console.log("EDIT: " + id + $("#title").val() + $("#url").val())
 
         // GET THE VALUES
-        var editLink = {
+        var editedLink = {
             id : id,
             title : $("#title").val(),
             url : $("#url").val(),
         }
 
         // UPDATES THE DATABASE
-        Meteor.call('links.editLink', editLink, (error) => {
+        Meteor.call('links.editLink', editedLink, (error) => {
           if (error) {
             alert(error.error);
           } else {
@@ -43,7 +38,7 @@ Template.editLinkEntity.events({
         });
     },
 
-    'click #cancelBTN': function(event){
+    'click #cancelBTN2': function(event){
         event.preventDefault();
         FlowRouter.go('/nav-settings-update');
     },

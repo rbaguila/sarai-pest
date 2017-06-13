@@ -36,8 +36,8 @@
                     <div class="media-body"> <h4>{{link.title}}</h4> </div>
                     <div class="media-right">
                       <div class="btn-group-xs">
-                        {{> button text="edit1" color="primary" id=link._id}}
-                        {{> button text="remove1" color="danger" id=link._id }}
+                        {{> button1 text="edit" color="primary" id=link._id}}
+                        {{> button1 text="remove" color="danger" id=link._id }}
                       </div>
                     </div>
                 </li>
@@ -45,7 +45,44 @@
               </ul>
             </div>
         </div>
+
         </div>
     </div>
   </div>
+</template>
+
+<template name="button1">
+  <button type="button" class="{{text}} btn btn-{{color}}" data-toggle="tooltip" title="{{text}} link" data-placement="right">
+    <span class="glyphicon glyphicon-{{text}}"></span>
+  </button>
+
+  <div class="modal fade" id="deleteLink">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p>Are you sure you want to delete this link?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary confirmDelete">Yes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="linkDeleted">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p>Link successfully removed!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 </template>
