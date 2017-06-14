@@ -1,4 +1,6 @@
 import { Plant_Problem } from '../imports/api/plant_problem/plant_problem.js';
+// import { Router } from 'meteor/iron:router';
+// import './noroutes.html';
 
 if(Meteor.isServer) {
 
@@ -48,3 +50,7 @@ Router.route('/pests-type/:plant_affected/:limit',{where: 'server'})
     })
 
   }
+
+// Router.configure({
+//   noRoutesTemplate: 'noRoutesTemplate',
+// });
