@@ -1,5 +1,6 @@
 import { Plant_Problem } from '/imports/api/plant_problem/plant_problem.js';
 import { Meteor } from 'meteor/meteor';
+import { ShareIt } from 'meteor/joshowens:shareit';
 import './pest-entity-page.html';
 
 Template.entityPage.onCreated(function () {
@@ -35,3 +36,15 @@ Template.entity.events({
 		FlowRouter.go("gmail.com");
 	},
 });
+
+Template.entity.currentPath =  function () { 
+    return Router && Router.current() && Router.current().path;
+};
+
+// ShareIt.configure({
+//         sites: {
+//             'facebook': {
+//                 'appId': Meteor.settings.facebook.appId
+//             }
+//         }
+//     });

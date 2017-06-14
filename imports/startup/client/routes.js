@@ -24,6 +24,10 @@ import '../../ui/pages/cms/users-update/users-update.js';
 import '../../ui/pages/cms/pest-clinic-update/experts/experts-cms.js';
 import '../../ui/pages/cms/pest-clinic-update/assistance/assistance-cms.js';
 
+import '../../ui/pages/cms/nav-settings-update/nav-settings-update.js';
+import '../../ui/pages/cms/nav-settings-update/edit-link-entity/edit-link-entity.js';
+import '../../ui/pages/cms/nav-settings-update/insert-link/insert-link.js';
+
 // Set up all routes in the app
 FlowRouter.route('/', {
   name: 'App.home',
@@ -127,6 +131,52 @@ FlowRouter.route('/admin/library', {
       });
     }
 });
+
+FlowRouter.route('/nav-settings-update', {
+  name: 'App.nav-settings-update',
+  action: function(params) {
+      Tracker.autorun(function() {
+          if (!Meteor.userId()) {
+            BlazeLayout.render("App_body", {main: "App_home"})
+            alert("User is not allowed to access the page.")
+            FlowRouter.redirect('/');
+          } else {
+            BlazeLayout.render("App_body", {main: "navSettingsUpdate"})
+          }
+      });
+    }
+});
+
+FlowRouter.route('/insert-link', {
+  name: 'App.insert-link',
+  action: function(params) {
+      Tracker.autorun(function() {
+          if (!Meteor.userId()) {
+            BlazeLayout.render("App_body", {main: "App_home"})
+            alert("User is not allowed to access the page.")
+            FlowRouter.redirect('/');
+          } else {
+            BlazeLayout.render("App_body", {main: "insertLink"})
+          }
+      });
+    }
+});
+
+FlowRouter.route("/edit-link/:_id", {
+  name: 'App.edit-link',
+  action: function(params) {
+      Tracker.autorun(function() {
+          if (!Meteor.userId()) {
+            BlazeLayout.render("App_body", {main: "App_home"})
+            alert("User is not allowed to access the page.")
+            FlowRouter.redirect('/');
+          } else {
+            BlazeLayout.render("App_body", {main: "editLinkEntity"})
+          }
+      });
+    }
+});
+
 
 FlowRouter.route('/admin/insert-pest', {
   name: 'App.insert-pest',

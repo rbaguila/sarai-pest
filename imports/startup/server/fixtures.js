@@ -13,23 +13,28 @@ Meteor.startup(() => {
   if (Links.find().count() === 0) {
     const data = [
       {
-        title: 'Do the Tutorial',
-        url: 'https://www.meteor.com/try',
+        title: 'SARAi',
+        url: 'http://sarai.ph/',
         createdAt: new Date(),
       },
       {
-        title: 'Follow the Guide',
-        url: 'http://guide.meteor.com',
+        title: 'Library',
+        url: '/pests',
         createdAt: new Date(),
       },
       {
-        title: 'Read the Docs',
-        url: 'https://docs.meteor.com',
+        title: 'SPID',
+        url: '/pests-id',
         createdAt: new Date(),
       },
       {
-        title: 'Discussions',
-        url: 'https://forums.meteor.com',
+        title: 'Diseases',
+        url: '/diseases',
+        createdAt: new Date(),
+      },
+      {
+        title: 'Clinic',
+        url: '/pests-clinic',
         createdAt: new Date(),
       },
     ];
