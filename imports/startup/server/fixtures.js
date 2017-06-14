@@ -19,7 +19,7 @@ Meteor.startup(() => {
       },
       {
         title: 'Library',
-        url: '/library',
+        url: '/pests',
         createdAt: new Date(),
       },
       {
