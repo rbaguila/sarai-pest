@@ -105,8 +105,7 @@ Meteor.methods({
     );
   },
 
-  'updateAccountRole': function(role){
-    Meteor.users.update(Meteor.userId(), {$set: {"roles": role}});
+  'updateAccountRole': function(userid, role){
+    Meteor.users.update(userid, {$set: {"roles": role}});
   },
-
 });

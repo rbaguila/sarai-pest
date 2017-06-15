@@ -69,23 +69,23 @@ Meteor.startup(() => {
   }
 
   if (Meteor.users.find().fetch().length === 0) {
-      Accounts.createUser({username: 'admin123', password: 'admin123'});
+      Accounts.createUser({username: 'admin123',email: 'admin@admin.com', password: 'admin123'});
       var id = Meteor.users.findOne({username: "admin123"});
       Roles.addUsersToRoles(id._id, ['Admin', 'Pests Admin', 'Clinic Admin', 'Id Admin', 'Diseases Admin']);
 
-      Accounts.createUser({username: 'pests123', password: 'pests123'});
+      Accounts.createUser({username: 'pests123',email: 'pests@pests.com', password: 'pests123'});
       var id1 = Meteor.users.findOne({username: "pests123"});
       Roles.addUsersToRoles(id1._id, ['Pests Admin']);
 
-      Accounts.createUser({username: 'clinic123', password: 'clinic123'});
+      Accounts.createUser({username: 'clinic123',email: 'clinic@clinic.com', password: 'clinic123'});
       var id2 = Meteor.users.findOne({username: "clinic123"});
       Roles.addUsersToRoles(id2._id, ['Clinic Admin']);
 
-      Accounts.createUser({username: 'id1234', password: 'id1234'});
+      Accounts.createUser({username: 'id1234',email: 'id@id.com', password: 'id1234'});
       var id3 = Meteor.users.findOne({username: "id1234"});
       Roles.addUsersToRoles(id3._id, ['Id Admin']);
 
-      Accounts.createUser({username: 'diseases', password: 'diseases'});
+      Accounts.createUser({username: 'diseases',email: 'diseases@diseases.com', password: 'diseases'});
       var id4 = Meteor.users.findOne({username: "diseases"});
       Roles.addUsersToRoles(id4._id, ['Diseases Admin']);
   }

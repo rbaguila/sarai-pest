@@ -4,20 +4,41 @@ import './users-update.html';
 import '../components/clinic-cms-navbar.html';
 import '../components/cms-sidenav.html';
 
+var category,userid;
 Template.usersUpdate.onCreated(function () {
 	Meteor.subscribe('usersList');
 });
 
 Template.usersUpdate.helpers({
 	getUsers: function() {
+		console.log(Meteor.users.find());
 		return Meteor.users.find();
 	},
-	// adminSelected: function () {
-	// 	console.log(Meteor.users.roles.find());
- //      return (Meteor.users.roles.find() === 'Admin') ? 'selected' : '';
- //    },
- //    registeredSelected: function () {
- //      return (someOtherCondition) ? 'selected' : '';
- //    }
 });
+
+Template.userbutton.events({
+
+	'click .editrole': function(event, template) {
+		userid = this.id;
+		$('#editRole').modal('show');
+	},
+	'change #userRole': function (event, template) {
+        category = $(event.currentTarget).val();
+        console.log(userid + "category : " + category);
+        // additional code to do what you want with the category
+    },
+	'click .confirmEdit' : function(event) {
+		$('#editRole').modal('hide');
+		Meteor.call('updateAccountRole', userid, category, (error) => {
+	      if (error) {
+	        alert(error.error);
+	      } else {
+        	alert("Edit Successful!");
+        	event.preventDefault();	
+	      }
+		});
+	},
+
+});
+
 

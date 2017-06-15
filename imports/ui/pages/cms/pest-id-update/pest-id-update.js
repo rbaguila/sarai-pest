@@ -4,6 +4,7 @@ import './pest-id-update.html';
 import '../components/cms-sidenav.html';
 
 Template.pestIdUpdate.onCreated(function () {
+	Meteor.subscribe('usersList');
 	Meteor.subscribe('cms.all');
 });
 

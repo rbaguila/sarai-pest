@@ -4,8 +4,9 @@ import './routes.js';
 import { Accounts } from 'meteor/accounts-base';
  
 Accounts.ui.config({
-  passwordSignupFields: 'USERNAME_ONLY',
+  passwordSignupFields: 'USERNAME_AND_EMAIL',
 });
+
 
 Meteor.startup(function() {
   Uploader.uploadUrl = Meteor.absoluteUrl("upload"); // Cordova needs absolute URL
