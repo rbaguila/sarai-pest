@@ -1,6 +1,5 @@
 import { Plant_Problem } from '/imports/api/plant_problem/plant_problem.js';
 import { Meteor } from 'meteor/meteor';
-import { ShareIt } from 'meteor/joshowens:shareit';
 import './pest-entity-page.html';
 
 Template.entityPage.onCreated(function () {
@@ -35,16 +34,18 @@ Template.entity.events({
 	'click .google': function(event){
 		FlowRouter.go("gmail.com");
 	},
+	'click #generate-pdf': function (event){
+		console.log("!!!!!!!!");
+    	Blaze.saveAsPDF(Template.entity, {
+	      filename: "test.pdf", // optional, default is "document.pdf"
+	      x: 0, // optional, left starting position on resulting PDF, default is 4 units
+	      y: 0, // optional, top starting position on resulting PDF, default is 4 units
+	      unit: "mm", // optional, unit for coordinates, one of "pt", "mm" (default), "cm", or "in"
+	      format: "letter", // optional, see Page Formats, default is "a4",
+	    });
+	},
 });
 
 Template.entity.currentPath =  function () { 
     return Router && Router.current() && Router.current().path;
 };
-
-// ShareIt.configure({
-//         sites: {
-//             'facebook': {
-//                 'appId': Meteor.settings.facebook.appId
-//             }
-//         }
-//     });

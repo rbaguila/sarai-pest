@@ -50,7 +50,3 @@ Router.route('/pests-type/:plant_affected/:limit',{where: 'server'})
     })
 
   }
-
-// Router.configure({
-//   noRoutesTemplate: 'noRoutesTemplate',
-// });
