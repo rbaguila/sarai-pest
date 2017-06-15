@@ -1,39 +1,5 @@
 <template name="top_nav">
 
-<!-- <nav class="navbar sarai-header">
-  <div class="container">
-    <div class="navbar-header">
-      <a href="/">
-        <img src="/img/SARAI-white.png" height="60px" />
-      </a>
-    </div>
-
-    <div class="pull-right login-buttons">
-      {{> loginButtons align="right"}}
-    </div>
-
-    <div class="pull-right links">
-      <a href="/">
-        HOME
-      </a>
-      <a href="/library">
-        LIBRARY
-      </a>
-      <a href="/spid">
-        SPID
-      </a>
-      <a href="/monitor">
-        MONITOR
-      </a>
-      <a href="/clinic">
-        CLINIC
-      </a>
-    </div>
-
-
-  </div>
-</nav> -->
-
 <!-- Static navbar -->
 <nav class="navbar sarai-header">
   <div class="container-fluid">
@@ -62,13 +28,13 @@
         {{> loginButtons align="right"}}
       </div>
       <ul class="nav navbar-nav navbar-right links">
-        <li><a href="/" class="active">HOME</a></li>
-        <li><a href="/pests">LIBRARY</a></li>
-        <li><a href="/diseases">DISEASES</a></li>
-        <li><a href="/pests-id">SPID</a></li>
-        <li><a href="/pests-clinic">CLINIC</a></li>
+        {{#each link in links}}
+          <li><a href="{{link.url}}">{{link.title}}</a></li>
+        {{/each}}
       </ul>
     </div><!--/.nav-collapse -->
+
+    <img class="dost-pcaarrd-uplb-logo" src="/img/dost-pcaarrd-uplb.png" />
   </div><!--/.container-fluid -->
 </nav>
 

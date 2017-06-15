@@ -20,7 +20,10 @@
 				{{/if}}
 				{{#if isInRole 'Admin'}}
 					<li><a href="/admin/users">Users</a></li>
-				{{/if}}			
+				{{/if}}	
+				{{#if isInRole 'Admin'}}
+					<li><a href="/admin/nav-settings">Settings</a></li>
+				{{/if}}		
 		</ul>
 	</div>
 </template>

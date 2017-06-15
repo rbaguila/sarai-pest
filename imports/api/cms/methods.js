@@ -105,7 +105,22 @@ Meteor.methods({
     );
   },
 
+  'cms.updateNavSettings'( newCMS ) {
+    check(newCMS.linkTitle, String);
+    check(newCMS.linkUrl, String);
+
+    CMS.update( {info: "finalNav"}, 
+      { $set: 
+        { 
+          linkTitle : newCMS.linkTitle,
+          linkUrl : newCMS.linkUrl
+        } 
+      }
+    );
+  },
+
   'updateAccountRole': function(userid, role){
     Meteor.users.update(userid, {$set: {"roles": role}});
   },
+  
 });

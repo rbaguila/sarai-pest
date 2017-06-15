@@ -11,7 +11,6 @@ Template.usersUpdate.onCreated(function () {
 
 Template.usersUpdate.helpers({
 	getUsers: function() {
-		console.log(Meteor.users.find());
 		return Meteor.users.find();
 	},
 });
@@ -25,7 +24,6 @@ Template.userbutton.events({
 	'change #userRole': function (event, template) {
         category = $(event.currentTarget).val();
         console.log(userid + "category : " + category);
-        // additional code to do what you want with the category
     },
 	'click .confirmEdit' : function(event) {
 		$('#editRole').modal('hide');
@@ -33,7 +31,7 @@ Template.userbutton.events({
 	      if (error) {
 	        alert(error.error);
 	      } else {
-        	alert("Edit Successful!");
+            $('#roleUpdated').modal('show');
         	event.preventDefault();	
 	      }
 		});

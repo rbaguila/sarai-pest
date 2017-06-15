@@ -40,13 +40,13 @@
                   <td>{{username}}</td>
                   <td>{{emails.[0].address}}</td>
                   <td>{{roles}}</td>
-                  {{#if '!currentUser'}}
                   <td>
-                    <div class="btn-group-xs">
-                      {{> userbutton text="editrole" color="primary" id=_id}}
+                    <div class="text-center">
+                      <div class="btn-group-xs">
+                        {{> userbutton text="editrole" color="primary" id=_id}}
+                      </div>
                     </div>
                   </td>
-                  {{/if}}
           </tr>
         {{/each}}
       </tbody>
@@ -54,11 +54,10 @@
         </div>
 		</div>
 	</div>
-
 </template>
 
 <template name="userbutton">
-  <button type="button" class="{{text}} btn btn-{{color}}" data-toggle="tooltip" title="{{text}} pest" data-placement="right">
+  <button type="button" class="{{text}} btn btn-{{color}}" data-toggle="tooltip" title="{{text}}" data-placement="right">
     <span class="glyphicon glyphicon-{{text}}"></span>
   </button>
 
@@ -68,6 +67,7 @@
         <div class="modal-body">
           <p>Choose Role</p>
             <select id="userRole" class="form-control">
+              <option value="Admin1"></option>
               <option value="Admin">Admin</option>
               <option value="Pests Admin">Pests Admin</option>
               <option value="Clinic Admin">Clinic Admin</option>
@@ -84,4 +84,18 @@
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="roleUpdated">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p>Role successfully updated!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </template>
