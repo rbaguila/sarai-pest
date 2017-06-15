@@ -3859,3 +3859,67 @@ Meteor.startup(() => {
     data.forEach(plant_problem => Plant_Problem.insert(plant_problem));
   }
 });
+
+Router.route('/pests-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'pests.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({type: "Pest"});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/pests/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.description = "\"" + rec.description + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.description + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/diseases-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'diseases.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({type: "Disease"});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/diseases/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.symptoms = "\"" + rec.symptoms + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.symptoms + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});

@@ -33,6 +33,7 @@ Template.pestsLib.helpers({
 	},
 });
 
+
 // PEST PAGINATION
 Template.pestPaginate.onCreated(function () {
 	var pestsPerPage = parseInt( CMS.findOne({info:'finalLib'}).pestsPerPage );
