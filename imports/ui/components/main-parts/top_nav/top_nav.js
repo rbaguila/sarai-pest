@@ -1,6 +1,8 @@
+import { Links } from '/imports/api/links/links.js';
 import './top_nav.html';
 
 Template.top_nav.onCreated(function topnavOnCreated() {
+    Meteor.subscribe('links.all');
     var instance = this;
     instance.autorun(function(){
          var allUsers = instance.subscribe('allUsers');
@@ -29,6 +31,9 @@ Template.top_nav.helpers({
    			}
     	}
   	},
+    links: function() {
+      return Links.find({});
+    },
 });
 
 
