@@ -50,7 +50,19 @@
 	{{/EasySearch.IfInputEmpty}}
 
 	<div>
-		<a href="/diseases-csv"><button class="btn btn-success" style="margin: auto; display: block;" id="dlcsv">Download CSV</button></a>
+		<div class="dropdown">
+			<button class="dropbtn btn btn-success dropdown-toggle" id="dlcsv" data-toggle="dropdown">Download CSV <span class="caret"></span></button>
+			  <div id="myDropdown" class="dropdown-content">
+			    <a href="/diseases-csv">All</a>
+			    <a href="/diseases-rice-csv">Rice</a>
+			    <a href="/diseases-corn-csv">Corn</a>
+			    <a href="/diseases-ricecorn-csv">Rice, Corn</a>
+			    <a href="/diseases-banana-csv">Banana</a>
+			    <a href="/diseases-cacao-csv">Cacao</a>
+			    <a href="/diseases-coffee-csv">Coffee</a>
+			    <a href="/diseases-coconut-csv">Coconut</a>
+			  </div>
+		</div>
 		{{#each getCMS.viewDiseaseType}}
 			<div class="col-sm-12 col-md-12 col-lg-12">
 				<h3 class="pest-category-label"> {{this}} Diseases </h3>

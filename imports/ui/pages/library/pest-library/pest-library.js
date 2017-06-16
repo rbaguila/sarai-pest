@@ -33,6 +33,23 @@ Template.pestsLib.helpers({
 	},
 });
 
+Template.pestsLib.events({
+    'click #dlcsv'(event) {
+        document.getElementById("myDropdown").classList.toggle("show");
+        if (!event.target.matches('.dropbtn')) {
+
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    },
+});
+
 
 // PEST PAGINATION
 Template.pestPaginate.onCreated(function () {
@@ -63,3 +80,4 @@ Template.pestPaginate.helpers({
         };
     }
 });
+

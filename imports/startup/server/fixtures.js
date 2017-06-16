@@ -3897,6 +3897,230 @@ Router.route('/pests-csv', {
   }
 });
 
+Router.route('/pests-rice-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'pests-rice.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Rice"}, {type: "Pest"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/pests/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.description = "\"" + rec.description + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.description + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/pests-corn-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'pests-corn.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Corn"}, {type: "Pest"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/pests/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.description = "\"" + rec.description + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.description + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/pests-ricecorn-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'pests-ricecorn.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Rice, Corn"}, {type: "Pest"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/pests/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.description = "\"" + rec.description + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.description + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/pests-banana-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'pests-banana.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Banana"}, {type: "Pest"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/pests/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.description = "\"" + rec.description + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.description + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/pests-cacao-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'pests-cacao.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Cacao"}, {type: "Pest"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/pests/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.description = "\"" + rec.description + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.description + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/pests-coffee-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'pests-coffee.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Coffee"}, {type: "Pest"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/pests/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.description = "\"" + rec.description + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.description + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/pests-coconut-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'pests-coconut.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Coconut"}, {type: "Pest"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/pests/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.description = "\"" + rec.description + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.description + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
 Router.route('/diseases-csv', {
   where: 'server',
   action: function () {
@@ -3908,6 +4132,198 @@ Router.route('/diseases-csv', {
       'Content-Disposition': "attachment; filename=" + filename
     };
     var records = Plant_Problem.find({type: "Disease"});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/diseases/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.symptoms = "\"" + rec.symptoms + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.symptoms + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/diseases-rice-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'diseases-rice.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Rice"}, {type: "Disease"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/diseases/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.symptoms = "\"" + rec.symptoms + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.symptoms + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/diseases-corn-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'diseases-corn.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Corn"}, {type: "Disease"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/diseases/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.symptoms = "\"" + rec.symptoms + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.symptoms + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/diseases-banana-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'diseases-banana.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Banana"}, {type: "Disease"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/diseases/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.symptoms = "\"" + rec.symptoms + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.symptoms + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/diseases-cacao-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'diseases-cacao.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Cacao"}, {type: "Disease"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/diseases/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.symptoms = "\"" + rec.symptoms + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.symptoms + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/diseases-coffee-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'diseases-coffee.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Coffee"}, {type: "Disease"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/diseases/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.symptoms = "\"" + rec.symptoms + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.symptoms + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/diseases-coconut-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'diseases-coconut.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Coconut"}, {type: "Disease"}]});
 
     fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
     records.forEach(function(rec) {
