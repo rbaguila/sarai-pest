@@ -23,17 +23,16 @@ Template.entity.events({
 	'click .back': function(event){
 		FlowRouter.go("/pests");
 	},
-
-	'click .facebook': function(event){
-		FlowRouter.go("facebook.com");
-	},
-
-	'click .twitter': function(event){
-		FlowRouter.go("twitter.com");
-	},
-
-	'click .google': function(event){
-		FlowRouter.go("gmail.com");
+	'click .download1': function(e, tmpl) {
+	    e.preventDefault();
+	 
+	    Meteor.call('pest/generate_pdf', FlowRouter.current().params._id,function(err, res) {
+	      if (err) {
+		console.error(err);
+	      } else if (res) {
+		window.open("data:application/pdf;base64, " + res);
+	      }
+   		})
 	},
 });
 
