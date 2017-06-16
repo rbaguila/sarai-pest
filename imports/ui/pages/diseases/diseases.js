@@ -33,6 +33,23 @@ Template.plantDiseases.helpers({
 	},
 });
 
+Template.plantDiseases.events({
+    'click #dlcsv'(event) {
+        document.getElementById("myDropdown").classList.toggle("show");
+        if (!event.target.matches('.dropbtn')) {
+
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    },
+});
+
 // DISEASE PAGINATION
 Template.diseasePaginate.onCreated(function () {
     var diseasesPerPage = parseInt( CMS.findOne({info:'finalDiseases'}).diseasesPerPage );

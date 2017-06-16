@@ -7,10 +7,23 @@
 				{{> advanced_search type="pests"}}
 				<br/><br/>
 			</div>
-			{{> search}}
+			{{> search}} 
 		</center>
 		
 		<div>
+			<div class="dropdown">
+			<button class="dropbtn btn btn-success dropdown-toggle" id="dlcsv" data-toggle="dropdown">Download CSV <span class="caret"></span></button>
+			  <div id="myDropdown" class="dropdown-content">
+			    <a href="/pests-csv">All</a>
+			    <a href="/pests-rice-csv">Rice</a>
+			    <a href="/pests-corn-csv">Corn</a>
+			    <a href="/pests-ricecorn-csv">Rice, Corn</a>
+			    <a href="/pests-banana-csv">Banana</a>
+			    <a href="/pests-cacao-csv">Cacao</a>
+			    <a href="/pests-coffee-csv">Coffee</a>
+			    <a href="/pests-coconut-csv">Coconut</a>
+			  </div>
+			</div>
 			{{#each getCMS.viewPestType}}
 				<div class="col-sm-12 col-md-12 col-lg-12">
 					<h3 class="pest-category-label"> {{this}} Pests </h3>
