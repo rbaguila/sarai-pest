@@ -2,6 +2,13 @@ import { Plant_Problem } from '/imports/api/plant_problem/plant_problem.js';
 import { Meteor } from 'meteor/meteor';
 import './pest-entity-page.html';
 
+var specialElementHandlers = {
+  '#bypassme': function(element, renderer)
+  {
+    return true;
+  }
+};
+
 Template.entityPage.onCreated(function () {
   Meteor.subscribe('plant_problem.all');
 });
@@ -22,28 +29,17 @@ Template.entity.events({
 	'click .back': function(event){
 		FlowRouter.go("/pests");
 	},
-
-	'click .facebook': function(event){
-		FlowRouter.go("facebook.com");
-	},
-
-	'click .twitter': function(event){
-		FlowRouter.go("twitter.com");
-	},
-
-	'click .google': function(event){
-		FlowRouter.go("gmail.com");
-	},
-	'click #generate-pdf': function (event){
-		console.log("!!!!!!!!");
-    	Blaze.saveAsPDF(Template.entity, {
-	      filename: "test.pdf", // optional, default is "document.pdf"
-	      x: 0, // optional, left starting position on resulting PDF, default is 4 units
-	      y: 0, // optional, top starting position on resulting PDF, default is 4 units
-	      unit: "mm", // optional, unit for coordinates, one of "pt", "mm" (default), "cm", or "in"
-	      format: "letter", // optional, see Page Formats, default is "a4",
-	    });
-	},
+	'click .download1': function(e, tmpl) {
+        e.preventDefault();
+     
+        Meteor.call('pest/generate_pdf', FlowRouter.current().params._id,function(err, res) {
+          if (err) {
+        console.error(err);
+          } else if (res) {
+        window.open("data:application/pdf;base64, " + res);
+          }
+        })
+    },
 });
 
 Template.entity.currentPath =  function () { 
