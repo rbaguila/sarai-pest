@@ -14,7 +14,7 @@ Template.insertLink.onRendered(function () {
 
 Template.insertLink.events({
     'click .back-button': function(event) {
-        FlowRouter.go('/nav-settings-update');
+        FlowRouter.go('/admin/nav-settings');
     },  
 });
 
@@ -41,7 +41,7 @@ Template.insertLink.events({
 
     'click #cancelBTN1': function(event){
         event.preventDefault();
-        FlowRouter.go('/nav-settings-update');
+        FlowRouter.go('/admin/nav-settings');
     },
 
 });

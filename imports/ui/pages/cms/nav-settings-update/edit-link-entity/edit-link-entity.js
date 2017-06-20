@@ -40,12 +40,12 @@ Template.editLinkEntity.events({
 
     'click #cancelBTN2': function(event){
         event.preventDefault();
-        FlowRouter.go('/nav-settings-update');
+        FlowRouter.go('/admin/nav-settings');
     },
 });
 
 Template.editLinkEntity.events({
     'click .back-button': function(event) {
-        FlowRouter.go('/nav-settings-update');
+        FlowRouter.go('/admin/nav-settings');
     },  
 });

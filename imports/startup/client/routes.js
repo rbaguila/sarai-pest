@@ -151,7 +151,7 @@ FlowRouter.route('/admin/library', {
     }
 });
 
-FlowRouter.route('/admin/nav-settings-update', {
+FlowRouter.route('/admin/nav-settings', {
   name: 'App.nav-settings-update',
   subscriptions: function(params, queryParams) {
       this.register('getUser', Meteor.subscribe('allUsers', Meteor.userId()));
