@@ -21,57 +21,76 @@ Template.pestClinicUpdate.helpers({
 	isSelected(value, position){
 		return value == position;
 	},
-
-	bannerImageFile(){
-		return {
-			finished: function(index, fileInfo, context) {
-				Session.set('bannerImage', '/upload/' + fileInfo.name);
-			}
-		}
-	},
-
-	row1ImageFile(){
-		return {
-			finished: function(index, fileInfo, context) {
-				Session.set('row1Image', '/upload/' + fileInfo.name);
-			}
-		}
-	},
-
-	row2ImageFile(){
-		return {
-			finished: function(index, fileInfo, context) {
-				Session.set('row2Image', '/upload/' + fileInfo.name);
-			}
-		}
-	},
 });
 
+var file1, file2, file3;
+var files1 = [], files2 = [], files3 = [];
+
 Template.pestClinicUpdate.events({
+	'submit .upload_btn1': function(e, t){
+        e.preventDefault();
+		file1 = $('#userimage1')[0].files[0];
+		files1.push(file1);
+    },
+
+    'submit .upload_btn2': function(e, t){
+        e.preventDefault();
+		file2 = $('#userimage2')[0].files[0];
+		files2.push(file2);
+    },
+
+    'submit .upload_btn3': function(e, t){
+        e.preventDefault();
+		file3 = $('#userimage3')[0].files[0];
+		files3.push(file3);
+    }, 
+
 	'click #saveBTN': function(event){
 		event.preventDefault();
+		var imgURL;
+
+		Cloudinary.upload(file1, function(err, res){
+          console.log("Upload Error: " + err);
+          console.log("Upload Result: " + res);			
+          imgURL = res.public_id;
+          Session.set('bannerImage', 'http://res.cloudinary.com/project-sarai/image/upload/' + imgURL);          
+      	});
+
+		Cloudinary.upload(file2, function(err, res){
+          console.log("Upload Error: " + err);
+          console.log("Upload Result: " + res);			
+          imgURL = res.public_id;
+          Session.set('row1Image', 'http://res.cloudinary.com/project-sarai/image/upload/' + imgURL);          
+      	});
+
+		Cloudinary.upload(file3, function(err, res) {
+          console.log("Upload Error: " + err);
+          console.log("Upload Result: " + res);
+          imgURL = res.public_id;
+          Session.set('row2Image', 'http://res.cloudinary.com/project-sarai/image/upload/' + imgURL);
 
 		// GET THE VALUES
-		var newCMS = {
-			bannerImage: (Session.get('bannerImage') == undefined) ? CMS.findOne({info: "finalClinic"}).bannerImage : Session.get('bannerImage'),
-			bannerText : $("#bannerText").val(),
-			bannerSubText : $("#bannerSubText").val(),
-			row1HeadText: $("#row1HeadText").val(),
-			row1Image: (Session.get('row1Image') == undefined) ? CMS.findOne({info: "finalClinic"}).row1Image : Session.get('row1Image'),
-			row2HeadText: $("#row2HeadText").val(),
-			row2SubText: $("#row2SubText").val(),
-			row2Image: (Session.get('row2Image') == undefined) ? CMS.findOne({info: "finalClinic"}).row2Image : Session.get('row2Image'),
-		}
-		
-		// UPDATES THE DATABASE
-		Meteor.call('cms.updatePestClinic', newCMS, (error) => {
-	      if (error) {
-	        alert(error.error);
-	      } else {
-	       	$('#cancelBTN').hide(); 
-	       	$('#viewChangesBTN').show(); 
-	      }
-	    });
+			var newCMS = {
+				bannerImage: (Session.get('bannerImage') == undefined) ? CMS.findOne({info: "finalClinic"}).bannerImage : Session.get('bannerImage'),
+				bannerText : $("#bannerText").val(),
+				bannerSubText : $("#bannerSubText").val(),
+				row1HeadText: $("#row1HeadText").val(),
+				row1Image: (Session.get('row1Image') == undefined) ? CMS.findOne({info: "finalClinic"}).row1Image : Session.get('row1Image'),
+				row2HeadText: $("#row2HeadText").val(),
+				row2SubText: $("#row2SubText").val(),
+				row2Image: (Session.get('row2Image') == undefined) ? CMS.findOne({info: "finalClinic"}).row2Image : Session.get('row2Image'),
+			}
+			
+			// UPDATES THE DATABASE
+			Meteor.call('cms.updatePestClinic', newCMS, (error) => {
+		      if (error) {
+		        alert(error.error);
+		      } else {
+		       	$('#cancelBTN').hide(); 
+		       	$('#viewChangesBTN').show(); 
+		      }
+		    });
+		});
 	},
 
 	'click #cancelBTN': function(event){

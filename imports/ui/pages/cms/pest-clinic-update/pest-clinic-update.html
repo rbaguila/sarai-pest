@@ -11,7 +11,10 @@
         <h3 class="col-sm-12 col-md-12 col-lg-12 text-center"> Edit Pest Clinic</h3>
 
         <label for="clinicImage"> Banner Image </label>
-        {{> upload_bootstrap multiple=false callbacks=bannerImageFile }}
+        <form class="upload_btn1" >
+          <input type="file" id="userimage1" name="userimage1"/>
+          <button class="btn btn-primary" type="submit">Upload</button>
+        </form>
 
         <label for="bannerText"> Banner Header Text </label>
         <input type="text" class="form-control" id="bannerText" value="{{getCMS.bannerHeadText}}">
@@ -23,7 +26,10 @@
         <input type="text" class="form-control" id="row1HeadText" value="{{getCMS.row1HeadText}}">
 
         <label for="row1Image"> Row 1 Image </label>
-        {{> upload_bootstrap multiple=false callbacks=row1ImageFile }}
+        <form class="upload_btn2" >
+          <input type="file" id="userimage2" name="userimage2"/>
+          <button class="btn btn-primary" type="submit">Upload</button>
+        </form>
 
         <label for="row2HeadText"> Row 2 Header Text </label>
         <input type="text" class="form-control" id="row2HeadText" value="{{getCMS.row2HeadText}}">
@@ -32,7 +38,10 @@
         <textarea class="form-control" id="row2SubText" rows="3" value="{{getCMS.row2SubText}}"></textarea>
 
         <label for="row2Image"> Row 2 Image </label>
-        {{> upload_bootstrap multiple=false callbacks=row2ImageFile }}
+        <form class="upload_btn3" >
+          <input type="file" id="userimage3" name="userimage3"/>
+          <button class="btn btn-primary" type="submit">Upload</button>
+        </form>
 
         <div class="text-center">
           <button id="saveBTN" class="btn btn-success cms-button">Save</button>

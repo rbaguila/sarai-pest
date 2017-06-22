@@ -25,7 +25,12 @@
 			<div class="panel-body">
 				
 				<label for="image"> Profile Image </label>
-				<span id="imageUploadPanel">{{> upload_bootstrap multiple=false callbacks=profileImageFile }}</span>
+				<span id="imageUploadPanel">
+					<form class="upload_btn" >
+	          			<input type="file" id="userimage" name="userimage"/>
+	         			<button class="btn btn-primary" type="submit">Upload</button>
+	        		</form>
+        		</span>
 
         		<label for="name"> Name </label>
         		<input type="text" class="form-control" id="name">

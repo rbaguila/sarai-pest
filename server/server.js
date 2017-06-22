@@ -1,3 +1,4 @@
+
 import { Plant_Problem } from '../imports/api/plant_problem/plant_problem.js';
 
 
@@ -99,6 +100,12 @@ Router.route('/pests-type/:plant_affected/:limit',{where: 'server'})
         this.response.setHeader('Content-Type','application/json');
         this.response.end(JSON.stringify(response));
     })
+
+    Cloudinary.config({
+        cloud_name: 'project-sarai',
+        api_key: '165644439513415',
+        api_secret: '506mxbG9wwkgkVentEPZk724eOU'
+    });
 
 }
 

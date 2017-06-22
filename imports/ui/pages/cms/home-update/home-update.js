@@ -20,36 +20,44 @@ Template.homeUpdate.helpers({
 	isSelected(value, position){
 		return value == position;
 	},
-
-	bannerImageFile(){
-		return {
-			finished: function(index, fileInfo, context) {
-				Session.set('bannerImage', '/upload/' + fileInfo.name);
-			}
-		}
-	},
 });
 
+var file;
+var files = [];
 Template.homeUpdate.events({
+	'submit form': function(e, t){
+        e.preventDefault();
+		file = $('#userimage')[0].files[0];
+		files.push(file);
+    },
+
 	'click #saveBTN': function(event){
 		event.preventDefault();
+		var imgURL;
+
+		Cloudinary.upload(file, function(err, res) {
+          console.log("Upload Error: " + err);
+          console.log("Upload Result: " + res);
+          imgURL = res.public_id;
+          Session.set('bannerImage', 'http://res.cloudinary.com/project-sarai/image/upload/' + imgURL);		
 		
 		// GET THE VALUES
-		var newCMS = {
-			bannerImage: (Session.get('bannerImage') == undefined) ? CMS.findOne({info: "finalHome"}).bannerImage : Session.get('bannerImage'),
-			bannerText : $("#bannerText").val(),
-			bannerSubText : $("#bannerSubText").val()
-		}
-		
-		// UPDATES THE DATABASE
-		Meteor.call('cms.updateHome', newCMS, (error) => {
-	      if (error) {
-	        alert(error.error);
-	      } else {
-	       	$('#cancelBTN').hide(); 
-	       	$('#viewChangesBTN').show(); 
-	      }
-	    });
+			var newCMS = {
+				bannerImage: (Session.get('bannerImage') == undefined) ? CMS.findOne({info: "finalHome"}).bannerImage : Session.get('bannerImage'),
+				bannerText : $("#bannerText").val(),
+				bannerSubText : $("#bannerSubText").val()
+			}
+			
+			// UPDATES THE DATABASE
+			Meteor.call('cms.updateHome', newCMS, (error) => {
+		      if (error) {
+		        alert(error.error);
+		      } else {
+		       	$('#cancelBTN').hide(); 
+		       	$('#viewChangesBTN').show(); 
+		      }
+		    });
+		});
 	},
 
 	'click #cancelBTN': function(event){
