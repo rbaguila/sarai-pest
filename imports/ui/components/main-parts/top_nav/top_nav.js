@@ -17,17 +17,17 @@ Template.top_nav.helpers({
     	}else{
     		console.log(Meteor.users.roles);
    			if(Roles.userIsInRole(Meteor.userId(), ["Admin"])){
-	     		Meteor.call('updateAccountRole', ["Admin", "Pests Admin", "Diseases Admin", "Id Admin", "Clinic Admin"]);
+	     		Meteor.call('updateAccountRole', Meteor.userId(),["Admin", "Pests Admin", "Diseases Admin", "Id Admin", "Clinic Admin"]);
 	     	}else if(Roles.userIsInRole(Meteor.userId(), ["Pests Admin"])){
-	     		Meteor.call('updateAccountRole', ["Pests Admin"]);
+	     		Meteor.call('updateAccountRole', Meteor.userId(),["Pests Admin"]);
 	     	}else if(Roles.userIsInRole(Meteor.userId(), ["Diseases Admin"])){
-	     		Meteor.call('updateAccountRole', ["Diseases Admin"]);
+	     		Meteor.call('updateAccountRole', Meteor.userId(),["Diseases Admin"]);
 	     	}else if(Roles.userIsInRole(Meteor.userId(), ["Id Admin"])){
-	     		Meteor.call('updateAccountRole', ["Id Admin"]);
+	     		Meteor.call('updateAccountRole', Meteor.userId(),["Id Admin"]);
 	     	}else if(Roles.userIsInRole(Meteor.userId(), ["Clinic Admin"])){
-	     		Meteor.call('updateAccountRole', ["Clinic Admin"]);
+	     		Meteor.call('updateAccountRole', Meteor.userId(),["Clinic Admin"]);
    			}else{
-	    		Meteor.call('updateAccountRole', ["Registered"]);
+	    		Meteor.call('updateAccountRole', Meteor.userId(),["Registered"]);
    			}
     	}
   	},

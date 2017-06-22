@@ -12,8 +12,13 @@
     "elasticsearch": "^13.0.0",
     "express": "^4.15.3",
     "fibers": "^1.0.15",
+<<<<<<< HEAD
     "meteor-node-stubs": "^0.2.6",
     "webshot": "0.16.0"
+=======
+    "meteor-node-stubs": "^0.2.6",  
+    "webshot": "0.16.0" 
+>>>>>>> upstream/develop
   },
   "devDependencies": {}
 }

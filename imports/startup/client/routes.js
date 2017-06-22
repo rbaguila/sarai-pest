@@ -1,6 +1,6 @@
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
-
+import { Router } from 'meteor/iron:router';
 // Import needed templates
 import '../../ui/layouts/body/body.js';
 import '../../ui/pages/home/home.js';
@@ -76,7 +76,7 @@ FlowRouter.route('/admin/identification', {
   name: 'App.pests-id-update',
   subscriptions: function(params, queryParams) {
       this.register('getUser', Meteor.subscribe('allUsers', Meteor.userId()));
-  },
+  },  
   action: function(params) {
       Tracker.autorun(function() {
       var ready = FlowRouter.subsReady("getUser");
@@ -131,6 +131,7 @@ FlowRouter.route('/admin/home', {
         });
     }
 });
+
 
 FlowRouter.route('/admin/library', {
   name: 'App.pests-lib-update',

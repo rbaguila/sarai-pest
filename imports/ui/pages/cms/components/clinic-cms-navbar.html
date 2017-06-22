@@ -1,4 +1,5 @@
 <template name="clinic_cms_navbar">
+{{#if currentUser}}
 	<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -19,4 +20,5 @@
         </div>
       </div>
   </nav>
+{{/if}}
 </template>

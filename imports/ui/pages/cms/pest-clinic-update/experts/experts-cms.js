@@ -5,6 +5,7 @@ import '../../components/clinic-cms-navbar.html';
 import '../../components/cms-sidenav.html';
 
 Template.expertUpdate.onCreated(function() {
+	Meteor.subscribe('usersList');
 	Meteor.subscribe('experts.all');
 });
 

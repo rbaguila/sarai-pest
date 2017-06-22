@@ -3,13 +3,27 @@
 		<ul class="nav nav-sidebar">
 			<li><h3 class="text-center"><b>SPId CMS</b></h3></li>
 			<hr>
-			<li><a href="/admin/home">Home</a></li>
-			<li><a href="/admin/library">Pest Library</a></li>
-			<li><a href="/admin/pests-clinic">Pest Clinic</a></li>
-			<li><a href="/admin/identification">Pest Identification</a></li>
-			<li><a href="/admin/diseases">Diseases</a></li>
-			<li><a href="/admin/users">Users</a></li>
-			<li><a href="/admin/nav-settings">Settings</a></li>
+				{{#if isInRole 'Admin'}}
+					<li><a href="/admin/home">Home</a></li>
+				{{/if}}
+				{{#if isInRole 'Pests Admin' 'Admin'}}
+					<li><a href="/admin/library">Pest Library</a></li>
+				{{/if}}
+				{{#if isInRole 'Clinic Admin' 'Admin'}}
+					<li><a href="/admin/pests-clinic">Pest Clinic</a></li>
+				{{/if}}
+				{{#if isInRole 'Id Admin' 'Admin'}}
+					<li><a href="/admin/identification">Pest Identification</a></li>
+				{{/if}}
+				{{#if isInRole 'Diseases Admin' 'Admin'}}
+					<li><a href="/admin/diseases">Diseases</a></li>
+				{{/if}}
+				{{#if isInRole 'Admin'}}
+					<li><a href="/admin/users">Users</a></li>
+				{{/if}}	
+				{{#if isInRole 'Admin'}}
+					<li><a href="/admin/nav-settings">Settings</a></li>
+				{{/if}}		
 		</ul>
 	</div>
 </template>

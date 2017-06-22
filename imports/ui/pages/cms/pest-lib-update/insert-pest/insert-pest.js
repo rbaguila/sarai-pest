@@ -7,6 +7,7 @@ import '../../components/cms-sidenav.html';
 var imageURL = "";
 
 Template.insertPest.onCreated(function () {
+	Meteor.subscribe('usersList');
 	Meteor.subscribe('plant_problem.all');
 });
 
