@@ -34,3 +34,4 @@ Template.diseaseEntity.events({
    		})
 	},
 });
+

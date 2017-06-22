@@ -17,7 +17,7 @@ Template.usersUpdate.helpers({
 
 Template.userbutton.events({
 
-	'click .editrole': function(event, template) {
+	'click .edit': function(event, template) {
 		userid = this.id;
 		$('#editRole').modal('show');
 	},
