@@ -11,13 +11,20 @@
         <h3 class="col-sm-12 col-md-12 col-lg-12 text-center"> Edit Pest Library</h3>
 
         <label for="pestImage"> Banner Image </label>
+        
         <form class="upload_btn" >
           <div class="upload-btn-wrapper" style="">
-            <button class="btn btn-primary" id="caf" >Browse...</button>
+            <button class="btn btn-primary" id="caf" style="width:90%">Browse...</button>
             <input type="file" id="userimage" name="userimage" />
           </div>
-          <button class="btn btn-info" type="submit" style="float:right; top:100px;">▲ Upload</button>
+            <div class="progress skill-bar" style="float:left; width: 79%; height: 33px;">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" >
+                    <span class="skill"><i class="val">100%</i></span>
+                </div>
+            </div>
+          <button class="btn btn-info" type="submit" style="float:right; width:10%;">▲ Upload</button>
         </form>
+        
         <br><br>
 
         <label for="bannerText"> Banner Header Text </label>

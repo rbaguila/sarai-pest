@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import './edit-pest-entity.html';
 import '../../components/library-cms-navbar.html';
 import '../../components/cms-sidenav.html';
+import '../../components/upload.html';
 
 Template.editPestEntity.onCreated(function () {
   Meteor.subscribe('usersList');

@@ -24,14 +24,7 @@
 	      		<input type="text" class="form-control" id="sciName" value="{{pest.sci_name}}">
 
 	      		<label for="pestImage"> Pest Image </label>
-	      		<form class="upload_btn" >
-		          <div class="upload-btn-wrapper" style="">
-		            <button class="btn btn-primary" id="caf" >Browse...</button>
-		            <input type="file" id="userimage" name="userimage" />
-		          </div>
-		          <button class="btn btn-info" type="submit" style="float:right; top:100px;">▲ Upload</button>
-		        </form>
-		        <br><br>
+	      		{{> upload_div}}
 
 	      		<hr/>
 		      	<label for="keywords"> Keywords </label>

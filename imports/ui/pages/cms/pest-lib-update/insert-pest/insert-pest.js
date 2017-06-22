@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import './insert-pest.html';
 import '../../components/library-cms-navbar.html';
 import '../../components/cms-sidenav.html';
+import '../../components/upload.html';
 
 var imageURL = "";
 
