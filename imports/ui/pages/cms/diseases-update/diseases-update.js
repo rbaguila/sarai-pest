@@ -5,6 +5,7 @@ import './diseases-update.html';
 import '../components/cms-sidenav.html';
 
 Template.diseasesUpdate.onCreated(function () {
+	Meteor.subscribe('usersList');
 	Meteor.subscribe('plant_problem.all');
 	Meteor.subscribe('cms.all');
 });
@@ -32,44 +33,51 @@ Template.diseasesUpdate.helpers({
 	isSelected(value, position){
 		return value == position;
 	},
-
-	bannerImageFile(){
-		return {
-			finished: function(index, fileInfo, context) {
-				Session.set('bannerImage', '/upload/' + fileInfo.name);
-			}
-		}
-	},
 });
 
+var file;
+var files = [];
 Template.diseasesUpdate.events({
+	'submit form': function(e, t){
+        e.preventDefault();
+		file = $('#userimage')[0].files[0];
+		files.push(file);
+    },  
+
 	'click #saveBTN': function(event){
 		event.preventDefault();
-
+		var imgURL;
 		var diseaseType = [];
 		$( "input[type=checkbox]:checked" ).map(function() {
 		    diseaseType.push($( this ).val());
 		});
 		
-		// GET THE VALUES
-		var newCMS = {
-			bannerImage: (Session.get('bannerImage') == undefined) ? CMS.findOne({info: "finalDiseases"}).bannerImage : Session.get('bannerImage'),
-			bannerText : $("#bannerText").val(),
-			bannerSubText : $("#bannerSubText").val(),
-			searchlabel : $("#searchlabel").val(),
-			diseaseNumbers : parseInt( $("#diseasesperpage").val() ),
-			diseaseType : diseaseType
-		}
-		
-		// UPDATES THE DATABASE
-		Meteor.call('cms.updateDiseases', newCMS, (error) => {
-	      if (error) {
-	        alert(error.error);
-	      } else {
-	       	$('#cancelBTN').hide(); 
-	       	$('#viewChangesBTN').show(); 
-	      }
-	    });
+		Cloudinary.upload(file, function(err, res) {
+          console.log("Upload Error: " + err);
+          console.log("Upload Result: " + res);
+          imgURL = res.public_id;
+          Session.set('bannerImage', 'http://res.cloudinary.com/project-sarai/image/upload/' + imgURL);
+
+			// GET THE VALUES
+			var newCMS = {
+				bannerImage: (Session.get('bannerImage') == undefined) ? CMS.findOne({info: "finalDiseases"}).bannerImage : Session.get('bannerImage'),
+				bannerText : $("#bannerText").val(),
+				bannerSubText : $("#bannerSubText").val(),
+				searchlabel : $("#searchlabel").val(),
+				diseaseNumbers : parseInt( $("#diseasesperpage").val() ),
+				diseaseType : diseaseType
+			}
+			console.log("mico" + Session.get('bannerImage'));
+			// UPDATES THE DATABASE
+			Meteor.call('cms.updateDiseases', newCMS, (error) => {
+		      if (error) {
+		        alert(error.error);
+		      } else {
+		       	$('#cancelBTN').hide(); 
+		       	$('#viewChangesBTN').show(); 
+		      }
+		    });
+        });
 	},
 
 	'click #cancelBTN': function(event){
@@ -79,5 +87,5 @@ Template.diseasesUpdate.events({
 	'click #viewChangesBTN': function(event){
 		event.preventDefault();
 		FlowRouter.go("/diseases");
-	}
+	}, 
 });
