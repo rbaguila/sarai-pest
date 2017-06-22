@@ -30,10 +30,15 @@
         <label for="pestImage"> Banner Image </label>
 
         <form class="upload_btn" >
-          <input type="file" id="userimage" name="userimage" style=""/>
-          <button class="btn btn-primary" type="submit">Upload</button>
+          <div class="upload-btn-wrapper" style="">
+            <button class="btn btn-primary" id="caf" >Browse...</button>
+            <input type="file" id="userimage" name="userimage" />
+          </div>
+          <!-- <input type="file" id="userimage" name="userimage" style=""/> -->
+          <button class="btn btn-info" type="submit" style="float:right; top:100px;">▲ Upload</button>
         </form>
         
+        <br><br>
         <label for="bannerText"> Banner Header Text </label>
         <input type="text" class="form-control" id="bannerText" value="{{getCMS.bannerHeadText}}">
 
