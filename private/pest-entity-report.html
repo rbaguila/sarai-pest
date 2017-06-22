@@ -1,9 +1,4 @@
-<template name="entityPage">
-	{{> top_nav}}
-		{{> entity}}
-	{{> footer}}
-</template>
-
+{{getDocType}}
 <template name="entity">
 <div class="content">
 	<div class="container">
@@ -11,9 +6,6 @@
 		  <div class="panel-body text-center">
 
 		  	<div class="col-sm-12 col-md-12 col-lg-12">
-		  		<a class="col-sm-1 col-md-1 col-lg-1 back">
-	  				<img class="back-button" src="/img/back.png" alt="back" data-toggle="tooltip" title="Back to Pest Library" data-placement="bottom">
-	  			</a>
 		  		<h2 class="col-sm-11 col-md-11 col-lg-11 pest-name"> {{pest.name}} </h2>
 		  	</div>
 
@@ -21,31 +13,6 @@
 		  		<div class="col-sm-12 col-md-12 col-lg-12 well">
 		  			<img src="{{pest.image}}" class="img-thumbnail" alt="{{pest.name}}" width="400" height="400">
 		  		</div>
-		  		<!-- PEST IMAGE GALLERY -->
-		  		<div class="col-sm-12 col-md-12 col-lg-12">
-		  			{{#each pest.image_gallery}}
-		  			<a href="{{this}}" class="swipebox" title="{{pest.name}}">
-						<img src="{{this}}" class="img-thumbnail" alt="{{pest.name}}" width="100" height="100">
-					</a>
-					{{/each}}
-		  		</div>
-		  		<!-- SOCIAL MEDIA BUTTONS -->
-		  		{{>shareit}}
-		  		<a class="col-sm-1 col-md-1 col-lg-1 download1">
-	  				<button type = "button" class="btn btn-default">Download</button>
-	  			</a>		  		
-		  		<!-- <div class="fb-share-button" data-href=window.location.pathname data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div> -->
-		  		<!-- <div>
-		  			<a class="facebook">
-		  				<img class="social-media-button" src="/img/social-media/facebook.png" alt="facebook">
-		  			</a>
-		  			<a class="twitter">
-		  				<img class="social-media-button" src="/img/social-media/twitter.png" alt="twitter">
-		  			</a>
-		  			<a class="google">
-		  				<img class="social-media-button" src="/img/social-media/google_plus.png" alt="google+">
-		  			</a>
-		  		</div> -->
 		  	</div>
 
 		  	<div class="col-sm-6 col-md-6 col-lg-6">
@@ -71,15 +38,9 @@
 				</ul>
 		  	</div>
 
-		  	<div class="pest-tab col-sm-11 col-md-11 col-lg-11">
-		  		<ul class="nav nav-tabs nav-justified">
-				  <li class="active"><a data-toggle="tab" href="#english"> English </a></li>
-				  <li><a data-toggle="tab" href="#filipino"> Filipino </a></li>
-				</ul>
-		  	</div>
-
 		  	<div class="pest-tab tab-content text-center col-sm-11 col-md-11 col-lg-11">
 		  		<!-- ENGLISH TAB -->
+		  		<p>English</p>
 				<div id="english" class="tab-pane fade in active">
 					<div class="panel panel-success">
 					 	<div class="panel-heading">
@@ -124,6 +85,7 @@
 				<!-- END OF ENGLISH TAB -->
 
 				<!-- FILIPINO TAB -->
+				<p>Filipino</p>
 				<div id="filipino" class="tab-pane fade">
 					<div class="panel panel-success">		
 						<div class="panel-heading">

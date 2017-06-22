@@ -4,6 +4,7 @@ import './home-update.html';
 import '../components/cms-sidenav.html';
 
 Template.homeUpdate.onCreated(function () {
+	Meteor.subscribe('users.all');
 	Meteor.subscribe('cms.all');
 });
 

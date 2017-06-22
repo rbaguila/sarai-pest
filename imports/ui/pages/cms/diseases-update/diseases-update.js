@@ -5,6 +5,7 @@ import './diseases-update.html';
 import '../components/cms-sidenav.html';
 
 Template.diseasesUpdate.onCreated(function () {
+	Meteor.subscribe('usersList');
 	Meteor.subscribe('plant_problem.all');
 	Meteor.subscribe('cms.all');
 });

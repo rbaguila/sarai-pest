@@ -30,14 +30,14 @@ Template.navSettingsUpdate.helpers({
 
 Template.navSettingsUpdate.events({
     'click #addBTN': function(event){
-        FlowRouter.go('/insert-link');
+        FlowRouter.go('/admin/insert-link');
     },
 });
 
 Template.button1.events({
     'click .edit': function(event, template) {
         console.log("EDIT: " + this.id);
-        FlowRouter.go('/edit-link/' + this.id);
+        FlowRouter.go('/admin/edit-link/' + this.id);
     },  
 
     'click .remove': function(event, template) {
