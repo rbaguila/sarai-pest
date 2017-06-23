@@ -31,18 +31,33 @@ Template.pestClinicUpdate.events({
         e.preventDefault();
 		file1 = $('#userimage1')[0].files[0];
 		files1.push(file1);
+		$('#progress1 #progress-bar1').css("width",
+                function() {
+                    return $(this).attr("aria-valuenow") + "%";
+                }
+        )
     },
 
     'submit .upload_btn2': function(e, t){
         e.preventDefault();
 		file2 = $('#userimage2')[0].files[0];
 		files2.push(file2);
+		$('#progress2 #progress-bar2').css("width",
+                function() {
+                    return $(this).attr("aria-valuenow") + "%";
+                }
+        )
     },
 
     'submit .upload_btn3': function(e, t){
         e.preventDefault();
 		file3 = $('#userimage3')[0].files[0];
 		files3.push(file3);
+		$('#progress3 #progress-bar3').css("width",
+                function() {
+                    return $(this).attr("aria-valuenow") + "%";
+                }
+        )
     }, 
 
 	'click #saveBTN': function(event){
@@ -91,6 +106,21 @@ Template.pestClinicUpdate.events({
 		      }
 		    });
 		});
+		$('#progress1 #progress-bar1').css("width",
+                function() {
+                    return "0%";
+                }
+        )
+  		$('#progress2 #progress-bar2').css("width",
+                function() {
+                    return "0%";
+                }
+        )
+        $('#progress3 #progress-bar3').css("width",
+                function() {
+                    return "0%";
+                }
+        )
 	},
 
 	'click #cancelBTN': function(event){

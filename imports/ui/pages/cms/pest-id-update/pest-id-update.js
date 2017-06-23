@@ -37,6 +37,11 @@ Template.pestIdUpdate.events({
         e.preventDefault();
 		file = $('#userimage')[0].files[0];
 		files.push(file);
+		$('.progress .progress-bar').css("width",
+                function() {
+                    return $(this).attr("aria-valuenow") + "%";
+                }
+        )
     },  
 	'click #saveBTN': function(event){
 		event.preventDefault();
@@ -63,7 +68,12 @@ Template.pestIdUpdate.events({
 		       	$('#viewChangesBTN').show(); 
 		      }
 		    });
-        });		    
+        });
+       	$('.progress .progress-bar').css("width",
+                function() {
+                    return "0%";
+                }
+        )		    
 	},
 
 	'click #cancelBTN': function(event){

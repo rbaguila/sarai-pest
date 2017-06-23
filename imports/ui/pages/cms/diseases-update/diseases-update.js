@@ -42,6 +42,11 @@ Template.diseasesUpdate.events({
         e.preventDefault();
 		file = $('#userimage')[0].files[0];
 		files.push(file);
+		$('.progress .progress-bar').css("width",
+                function() {
+                    return $(this).attr("aria-valuenow") + "%";
+                }
+        )
     },  
 
 	'click #saveBTN': function(event){
@@ -67,7 +72,6 @@ Template.diseasesUpdate.events({
 				diseaseNumbers : parseInt( $("#diseasesperpage").val() ),
 				diseaseType : diseaseType
 			}
-			console.log("mico" + Session.get('bannerImage'));
 			// UPDATES THE DATABASE
 			Meteor.call('cms.updateDiseases', newCMS, (error) => {
 		      if (error) {
@@ -78,6 +82,12 @@ Template.diseasesUpdate.events({
 		      }
 		    });
         });
+
+        $('.progress .progress-bar').css("width",
+                function() {
+                    return "0%";
+                }
+        )
 	},
 
 	'click #cancelBTN': function(event){

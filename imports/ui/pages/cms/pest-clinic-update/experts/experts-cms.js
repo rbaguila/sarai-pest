@@ -31,6 +31,11 @@ Template.expertUpdate.events({
         e.preventDefault();
 		file = $('#userimage')[0].files[0];
 		files.push(file);
+		$('.progress .progress-bar').css("width",
+                function() {
+                    return $(this).attr("aria-valuenow") + "%";
+                }
+        )
     }, 
 
 	'click #editBTN': function(event){
@@ -69,6 +74,11 @@ Template.expertUpdate.events({
 				}
 			}
 		});
+		$('.progress .progress-bar').css("width",
+                function() {
+                    return "0%";
+                }
+        )
 	},
 
 	'click #deleteBTN': function(event){

@@ -11,10 +11,21 @@
         <h3 class="col-sm-12 col-md-12 col-lg-12 text-center"> Edit Pest Clinic</h3>
 
         <label for="clinicImage"> Banner Image </label>
+
         <form class="upload_btn1" >
-          <input type="file" id="userimage1" name="userimage1"/>
-          <button class="btn btn-primary" type="submit">Upload</button>
+          <div class="upload-btn-wrapper" style="">
+            <button class="btn btn-primary" id="caf" style="width:90%">Browse...</button>
+            <input type="file" id="userimage1" name="userimage1" />
+          </div>
+            <div id="progress1" class="progress skill-bar" style="float:left; width: 79%; height: 33px;">
+                <div id="progress-bar1" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" >
+                    <span class="skill"><i class="val">100%</i></span>
+                </div>
+            </div>
+          <button class="btn btn-info" type="submit" style="float:right; width:10%;">▲ Upload</button>
         </form>
+        
+        <br><br>
 
         <label for="bannerText"> Banner Header Text </label>
         <input type="text" class="form-control" id="bannerText" value="{{getCMS.bannerHeadText}}">
@@ -26,10 +37,21 @@
         <input type="text" class="form-control" id="row1HeadText" value="{{getCMS.row1HeadText}}">
 
         <label for="row1Image"> Row 1 Image </label>
+        
         <form class="upload_btn2" >
-          <input type="file" id="userimage2" name="userimage2"/>
-          <button class="btn btn-primary" type="submit">Upload</button>
+          <div class="upload-btn-wrapper" style="">
+            <button class="btn btn-primary" id="caf" style="width:90%">Browse...</button>
+            <input type="file" id="userimage2" name="userimage2" />
+          </div>
+            <div id="progress2" class="progress skill-bar" style="float:left; width: 79%; height: 33px;">
+                <div id="progress-bar2" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" >
+                    <span class="skill"><i class="val">100%</i></span>
+                </div>
+            </div>
+          <button class="btn btn-info" type="submit" style="float:right; width:10%;">▲ Upload</button>
         </form>
+        
+        <br><br>
 
         <label for="row2HeadText"> Row 2 Header Text </label>
         <input type="text" class="form-control" id="row2HeadText" value="{{getCMS.row2HeadText}}">
@@ -38,10 +60,21 @@
         <textarea class="form-control" id="row2SubText" rows="3" value="{{getCMS.row2SubText}}"></textarea>
 
         <label for="row2Image"> Row 2 Image </label>
+        
         <form class="upload_btn3" >
-          <input type="file" id="userimage3" name="userimage3"/>
-          <button class="btn btn-primary" type="submit">Upload</button>
+          <div class="upload-btn-wrapper" style="">
+            <button class="btn btn-primary" id="caf" style="width:90%">Browse...</button>
+            <input type="file" id="userimage3" name="userimage3" />
+          </div>
+            <div id="progress3" class="progress skill-bar" style="float:left; width: 79%; height: 33px;">
+                <div id="progress-bar3" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" >
+                    <span class="skill"><i class="val">100%</i></span>
+                </div>
+            </div>
+          <button class="btn btn-info" type="submit" style="float:right; width:10%;">▲ Upload</button>
         </form>
+        
+        <br><br>
 
         <div class="text-center">
           <button id="saveBTN" class="btn btn-success cms-button">Save</button>
