@@ -13,6 +13,12 @@ Template.usersUpdate.helpers({
 	getUsers: function() {
 		return Meteor.users.find();
 	},
+    equals: function(v1, v2) {
+        return (v1 === v2);
+    },
+    currUserId: function(){
+        return Meteor.userId();
+    }
 });
 
 Template.userbutton.events({

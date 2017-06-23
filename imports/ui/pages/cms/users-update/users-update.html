@@ -43,7 +43,9 @@
                   <td>
                     <div class="text-center">
                       <div class="btn-group-xs">
-                        {{> userbutton text="edit" color="primary" id=_id}}
+                        {{#unless equals _id currUserId}}
+                          {{> userbutton text="edit" color="primary" id=_id}}
+                        {{/unless}}
                       </div>
                     </div>
                   </td>
