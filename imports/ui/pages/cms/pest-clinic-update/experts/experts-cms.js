@@ -13,16 +13,10 @@ Template.expertUpdate.helpers({
 	experts(){
 		return Experts.find().fetch();
 	},
-
-	profileImageFile(){
-		return {
-			finished: function(index, fileInfo, context) {
-				Session.set('profileImage', '/upload/' + fileInfo.name);
-			}
-		}
-	},
 });
 
+var file;
+var files = [];
 Template.expertUpdate.events({
 	'click .profile': function(event){
 		Session.set('newProfile', Experts.findOne({_id: this._id}));
@@ -33,33 +27,58 @@ Template.expertUpdate.events({
 		$('#company').val(this.company);
 	},
 
+	'submit form': function(e, t){
+        e.preventDefault();
+		file = $('#userimage')[0].files[0];
+		files.push(file);
+		$('.progress .progress-bar').css("width",
+                function() {
+                    return $(this).attr("aria-valuenow") + "%";
+                }
+        )
+    }, 
+
 	'click #editBTN': function(event){
-		if( Session.get('newProfile') == undefined ){
-			$('#nothingToEdit').modal('show');
-		} else{
-			var expert = Session.get('newProfile');
-			// GET THE VALUES
-			var newProfile = {
-				id: expert._id,
-				image: (Session.get('profileImage') == undefined) ? expert.profile : Session.get('profileImage'),
-				name: $('#name').val(),
-				position: $('#position').val(),
-				company: $('#company').val(),
-			}
-			
-			if(newProfile.name == "" || newProfile.position == "" || newProfile.company == ""){
-				$('#invalidEdit').modal('show');
+		var imgURL;
+
+		Cloudinary.upload(file, function(err, res) {
+          console.log("Upload Error: " + err);
+          console.log("Upload Result: " + res);
+          imgURL = res.public_id;
+          Session.set('profileImage', 'http://res.cloudinary.com/project-sarai/image/upload/' + imgURL);
+
+			if( Session.get('newProfile') == undefined ){
+				$('#nothingToEdit').modal('show');
 			} else{
-				// UPDATES THE DATABASE
-				Meteor.call('experts.updateProfile', newProfile, (error) => {
-			      if (error) {
-			        alert(error.error);
-			      } else {
-			      	$('#expertEdited').modal('show');
-			      }
-			    });
+				var expert = Session.get('newProfile');
+				// GET THE VALUES
+				var newProfile = {
+					id: expert._id,
+					image: (Session.get('profileImage') == undefined) ? expert.profile : Session.get('profileImage'),
+					name: $('#name').val(),
+					position: $('#position').val(),
+					company: $('#company').val(),
+				}
+				
+				if(newProfile.name == "" || newProfile.position == "" || newProfile.company == ""){
+					$('#invalidEdit').modal('show');
+				} else{
+					// UPDATES THE DATABASE
+					Meteor.call('experts.updateProfile', newProfile, (error) => {
+				      if (error) {
+				        alert(error.error);
+				      } else {
+				      	$('#expertEdited').modal('show');
+				      }
+				    });
+				}
 			}
-		}
+		});
+		$('.progress .progress-bar').css("width",
+                function() {
+                    return "0%";
+                }
+        )
 	},
 
 	'click #deleteBTN': function(event){

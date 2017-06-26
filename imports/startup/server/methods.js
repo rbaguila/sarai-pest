@@ -32,16 +32,15 @@ Meteor.methods({
 	      var data = {
 	        disease: disease
 	      }
-	 
+	 	console.log(data);
 	      var html_string = SSR.render('layout', {
 	        css: css,
 	        template: "disease_report",
 	        data: data
 	      });
 	 
-	      console.log(html_string);
-	            var options = {
-          //renderDelay: 2000,
+	   var options = {
+	   	renderDelay: 5000,
           "paperSize": {
               "format": "Letter",
               "orientation": "portrait",
@@ -52,22 +51,20 @@ Meteor.methods({
  
       // Commence Webshot
       console.log("Commencing webshot...");
-      webshot(html_string, fileName, options, function(err) {
-          fs.readFile(fileName, function (err, data) {
-              if (err) {
-                  return console.log(err);
-              }
- 
-              fs.unlinkSync(fileName);
-              fut.return(data);
- 
-          });
-      });
-      
-      let pdfData = fut.wait();
-      let base64String = new Buffer(pdfData).toString('base64');
- 
-      return base64String;
+	      webshot(html_string, fileName, options, function(err) {
+	          fs.readFile(fileName, function (err, data) {
+	              if (err) {
+	                  return console.log(err);
+	              }
+	              fs.unlinkSync(fileName);
+	              fut.return(data);
+	          });
+	      });
+	      
+	      let pdfData = fut.wait();
+	      let base64String = new Buffer(pdfData).toString('base64');
+	 
+	      return base64String;
     	}
  
   	},
@@ -96,7 +93,7 @@ Meteor.methods({
 	 
 	      SSR.compileTemplate('pest_report', Assets.getText('pest-entity-report.html'));
 	 
-	      // PREPARE DATA
+	      // PREPARE DATA 
 
 	      var pest = Plant_Problem.findOne({_id: currid1});
 	      var data = {
