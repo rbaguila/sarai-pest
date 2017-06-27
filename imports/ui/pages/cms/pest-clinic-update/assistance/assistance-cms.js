@@ -7,6 +7,7 @@ import '../../components/cms-sidenav.html';
 var emailaddress="";
 var name = "";
 Template.assistanceUpdate.onCreated(function() {
+	Meteor.subscribe('usersList');
 	Meteor.subscribe('assistance.all');
 });
 

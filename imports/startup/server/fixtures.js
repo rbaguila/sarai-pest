@@ -75,23 +75,23 @@ Meteor.startup(() => {
   }
 
   if (Meteor.users.find().fetch().length === 0) {
-      Accounts.createUser({username: 'admin123', password: 'admin123'});
+      Accounts.createUser({username: 'admin123',email: 'admin@admin.com', password: 'admin123'});
       var id = Meteor.users.findOne({username: "admin123"});
       Roles.addUsersToRoles(id._id, ['Admin', 'Pests Admin', 'Clinic Admin', 'Id Admin', 'Diseases Admin']);
 
-      Accounts.createUser({username: 'pests123', password: 'pests123'});
+      Accounts.createUser({username: 'pests123',email: 'pests@pests.com', password: 'pests123'});
       var id1 = Meteor.users.findOne({username: "pests123"});
       Roles.addUsersToRoles(id1._id, ['Pests Admin']);
 
-      Accounts.createUser({username: 'clinic123', password: 'clinic123'});
+      Accounts.createUser({username: 'clinic123',email: 'clinic@clinic.com', password: 'clinic123'});
       var id2 = Meteor.users.findOne({username: "clinic123"});
       Roles.addUsersToRoles(id2._id, ['Clinic Admin']);
 
-      Accounts.createUser({username: 'id1234', password: 'id1234'});
+      Accounts.createUser({username: 'id1234',email: 'id@id.com', password: 'id1234'});
       var id3 = Meteor.users.findOne({username: "id1234"});
       Roles.addUsersToRoles(id3._id, ['Id Admin']);
 
-      Accounts.createUser({username: 'diseases', password: 'diseases'});
+      Accounts.createUser({username: 'diseases',email: 'diseases@diseases.com', password: 'diseases'});
       var id4 = Meteor.users.findOne({username: "diseases"});
       Roles.addUsersToRoles(id4._id, ['Diseases Admin']);
   }
@@ -250,10 +250,10 @@ Meteor.startup(() => {
           sci_name: 'Spodoptera exempta (Walker)/Mythimna separata Walker/Spodoptera mauritia Boisduval',
           eng_name: 'African Armyworm, Black Armyworm, Nutgrass Armyworm, True Armyworm, Hail Worm, Mystery Armyworm, Rain Worm',
           name: 'Black Armyworm adult',
-          image: '/img/pests/BlackArmywormadult.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/BlackArmywormadult.jpg',
           image_gallery: [
-            '/img/pests/BlackArmywormadult.jpg',
-            '/img/pests/BlackArmywormlarva.jpg'
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BlackArmywormadult.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BlackArmywormlarva.jpg'
           ]
        },
 
@@ -283,9 +283,9 @@ Meteor.startup(() => {
           sci_name: 'Spodoptera exempta (Walker)/Mythimna separata Walker/Spodoptera mauritia Boisduval',
           eng_name: 'African Armyworm, Black Armyworm, Nutgrass Armyworm, True Armyworm, Hail Worm, Mystery Armyworm, Rain Worm',
           name: 'Black Armyworm larva',
-          image: '/img/pests/BlackArmywormlarva.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/BlackArmywormlarva.jpg',
           image_gallery: [
-            '/img/pests/BlackArmywormlarva.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BlackArmywormlarva.jpg',
           ]
        },
 
@@ -315,9 +315,9 @@ Meteor.startup(() => {
           sci_name: 'Spodoptera litura (Fabricius)',
           eng_name: 'Common Cutworm, Grass Cutworm, Vegetable Cutworm, Tobacco Cutworm, Tobacco Caterpillar, Taro Caterpillar',
           name: 'Common Cutworm adult',
-          image: '/img/pests/CommonCutwormadult.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/CommonCutwormadult.jpg',
           image_gallery: [
-            '/img/pests/CommonCutwormadult.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CommonCutwormadult.jpg',
           ]
        },
         
@@ -347,9 +347,9 @@ Meteor.startup(() => {
           sci_name: 'Spodoptera litura (Fabricius)',
           eng_name: 'Common Cutworm, Grass Cutworm, Vegetable Cutworm, Tobacco Cutworm, Tobacco Caterpillar, Taro Caterpillar',
           name: 'Common Cutworm larva',
-          image: '/img/pests/CommonCutwormlarva.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/CommonCutwormlarva.jpg',
           image_gallery: [
-            '/img/pests/CommonCutwormlarva.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CommonCutwormlarva.jpg',
           ]
        },
 
@@ -379,9 +379,9 @@ Meteor.startup(() => {
           sci_name: 'Mythimna separata (Walker)',
           eng_name: 'Ear-cutting caterpillar, Oriental Armyworm, Northern Armyworm',
           name: 'Ear-cutting Caterpillar adult',
-          image: '/img/pests/Ear-cuttingCaterpillaradult.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/Ear-cuttingCaterpillaradult.jpg',
           image_gallery: [
-            '/img/pests/Ear-cuttingCaterpillaradult.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/Ear-cuttingCaterpillaradult.jpg',
           ]
        },
 
@@ -411,9 +411,9 @@ Meteor.startup(() => {
           sci_name: 'Mythimna separata (Walker)',
           eng_name: 'Ear-cutting caterpillar, Oriental Armyworm, Northern Armyworm',
           name: 'Ear-cutting Caterpillar larva',
-          image: '/img/pests/Ear-cuttingCaterpillarlarva.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/Ear-cuttingCaterpillarlarva.jpg',
           image_gallery: [
-            '/img/pests/Ear-cuttingCaterpillarlarva.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/Ear-cuttingCaterpillarlarva.jpg',
           ]
        },
         
@@ -443,9 +443,9 @@ Meteor.startup(() => {
           sci_name: 'Melanitis leda ismene Cramer',
           eng_name: 'Green Horned Caterpillar (larva), Common Evening Brown (adult)',
           name: 'Greenhorned Caterpillar adult',
-          image: '/img/pests/GreenhornedCaterpillaradult.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/GreenhornedCaterpillaradult.jpg',
           image_gallery: [
-            '/img/pests/GreenhornedCaterpillaradult.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/GreenhornedCaterpillaradult.jpg',
           ]
        },
 
@@ -475,9 +475,9 @@ Meteor.startup(() => {
           sci_name: 'Melanitis leda ismene Cramer',
           eng_name: 'Green Horned Caterpillar (larva), Common Evening Brown (adult)',
           name: 'Greenhorned Caterpillar larva',
-          image: '/img/pests/GreenhornedCaterpillarlarva.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/GreenhornedCaterpillarlarva.jpg',
           image_gallery: [
-            '/img/pests/GreenhornedCaterpillarlarva.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/GreenhornedCaterpillarlarva.jpg',
           ]
        },
         
@@ -507,9 +507,9 @@ Meteor.startup(() => {
           sci_name: 'Nymphula depunctalis (Guenée)',
           eng_name: 'Rice Caseworm',
           name: 'Rice Caseworm adult',
-          image: '/img/pests/RiceCasewormadult.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceCasewormadult.jpg',
           image_gallery: [
-            '/img/pests/RiceCasewormadult.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceCasewormadult.jpg',
           ]
        },
         
@@ -539,9 +539,9 @@ Meteor.startup(() => {
           sci_name: 'Naranga aenescens (Moore)',
           eng_name: 'Green Semilooper',
           name: 'Rice Green Semilooper adult',
-          image: '/img/pests/RiceGreenSemilooperadult.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceGreenSemilooperadult.jpg',
           image_gallery: [
-            '/img/pests/RiceGreenSemilooperadult.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceGreenSemilooperadult.jpg',
           ]
        },
 
@@ -559,9 +559,9 @@ Meteor.startup(() => {
           fil_name: '',
           eng_name: 'Green Semilooper',
           name: 'Rice Green Semilooper larva',
-          image: '/img/pests/RiceGreenSemilooperlarva.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceGreenSemilooperlarva.jpg',
           image_gallery: [
-            '/img/pests/RiceGreenSemilooperlarva.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceGreenSemilooperlarva.jpg',
           ]
        },
         
@@ -591,9 +591,9 @@ Meteor.startup(() => {
           sci_name: 'Cnaphalocrocis medinalis (Guenée)',
           eng_name: 'Rice Leaffolder',
           name: 'Rice Leaffolder adult',
-          image: '/img/pests/RiceLeaffolderadult.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceLeaffolderadult.jpg',
           image_gallery: [
-            '/img/pests/RiceLeaffolderadult.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceLeaffolderadult.jpg',
           ]
        },
 
@@ -623,9 +623,9 @@ Meteor.startup(() => {
           sci_name: 'Cnaphalocrocis medinalis (Guenée)',
           eng_name: 'Rice Leaffolder',
           name: 'Rice Leaffolder larva',
-          image: '/img/pests/RiceLeaffolderlarva.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceLeaffolderlarva.jpg',
           image_gallery: [
-            '/img/pests/RiceLeaffolderlarva.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceLeaffolderlarva.jpg',
           ]
        },
         
@@ -656,9 +656,9 @@ Meteor.startup(() => {
           fil_name: '',
           eng_name: 'Rice Skipper, Small Branded Swift, Black Branded Swift, Lesser Millet Skipper',
           name: 'Rice Skipper adult',
-          image: '/img/pests/RiceSkipperadult.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceSkipperadult.jpg',
           image_gallery: [
-            '/img/pests/RiceSkipperadult.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceSkipperadult.jpg',
           ]
        },
 
@@ -689,9 +689,9 @@ Meteor.startup(() => {
           fil_name: '',
           eng_name: 'Rice Skipper, Small Branded Swift, Black Branded Swift, Lesser Millet Skipper',
           name: 'Rice Skipper larva',
-          image: '/img/pests/RiceSkipperlarva.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceSkipperlarva.jpg',
           image_gallery: [
-            '/img/pests/RiceSkipperlarva.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceSkipperlarva.jpg',
           ]
        },
         
@@ -721,9 +721,9 @@ Meteor.startup(() => {
           sci_name: 'Scirpophaga innotata (Walker)',
           eng_name: 'White Stemborer',
           name: 'White Stemborer',
-          image: '/img/pests/WhiteStemborer.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/WhiteStemborer.jpg',
           image_gallery: [
-            '/img/pests/WhiteStemborer.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/WhiteStemborer.jpg',
           ]
        },
         
@@ -753,9 +753,9 @@ Meteor.startup(() => {
           sci_name: 'Scirpophaga incertulas (Walker)',
           eng_name: 'Yellow Stemborer',
           name: 'Yellow Stemborer adult',
-          image: '/img/pests/YellowStemboreradult.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/YellowStemboreradult.jpg',
           image_gallery: [
-            '/img/pests/YellowStemboreradult.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/YellowStemboreradult.jpg',
           ]
        },
 
@@ -785,9 +785,9 @@ Meteor.startup(() => {
           sci_name: 'Scirpophaga incertulas (Walker)',
           eng_name: 'Yellow Stemborer',
           name: 'Yellow Stemborer larva',
-          image: '/img/pests/YellowStemborerlarva.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/YellowStemborerlarva.jpg',
           image_gallery: [    
-            '/img/pests/YellowStemborerlarva.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/YellowStemborerlarva.jpg',
           ]
        },
 
@@ -817,9 +817,9 @@ Meteor.startup(() => {
           sci_name: 'Chrysodeixis chalcites Esper',
           eng_name: 'Corn Semilooper, Tomato Looper, Green Gardern Looper (larva); Golden Twin Spot (adult)',
           name: 'Corn Semilooper adult',
-          image: '/img/pests/CornSemilooperadult.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/CornSemilooperadult.jpg',
           image_gallery: [
-            '/img/pests/CornSemilooperadult.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CornSemilooperadult.jpg',
           ]
        },
 
@@ -849,9 +849,9 @@ Meteor.startup(() => {
           sci_name: 'Chrysodeixis chalcites Esper',
           eng_name: 'Corn Semilooper, Tomato Looper, Green Gardern Looper (larva); Golden Twin Spot (adult)',
           name: 'Corn Semilooper larva',
-          image: '/img/pests/CornSemilooperlarva.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/CornSemilooperlarva.jpg',
           image_gallery: [
-            '/img/pests/CornSemilooperlarva.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CornSemilooperlarva.jpg',
           ]
        },
 
@@ -881,9 +881,9 @@ Meteor.startup(() => {
           sci_name: 'Ostrinia furnacalis Guenee',
           eng_name: 'Asian/Oriental Cornborer',
           name: 'Asian Cornborer adult',
-          image: '/img/pests/AsianCornboreradult.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/AsianCornboreradult.jpg',
           image_gallery: [
-            '/img/pests/AsianCornboreradult.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/AsianCornboreradult.jpg',
           ]
        },
 
@@ -913,9 +913,9 @@ Meteor.startup(() => {
           sci_name: 'Helicoverpa armigera Hubner',
           eng_name: 'Corn Earworm, Cotton Bollwormm, Tobacco Budworm (larva); Scarce Bordered Straw (adult)',
           name: 'Corn Earworm adult',
-          image: '/img/pests/CornEarwormadult.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/CornEarwormadult.jpg',
           image_gallery: [
-            '/img/pests/CornEarwormadult.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CornEarwormadult.jpg',
           ]
        },
 
@@ -946,9 +946,9 @@ Meteor.startup(() => {
           fil_name: '',
           eng_name: 'Corn Earworm, Cotton Bollwormm, Tobacco Budworm (larva); Scarce Bordered Straw (adult)',
           name: 'Corn Earworm larva',
-          image: '/img/pests/CornEarwormlarva.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/CornEarwormlarva.jpg',
           image_gallery: [
-            '/img/pests/CornEarwormlarva.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CornEarwormlarva.jpg',
           ]
        },
 
@@ -978,9 +978,9 @@ Meteor.startup(() => {
           sci_name: 'Chaetocnema pulicaria',
           eng_name: 'Corn Flea Beetle, Clover Flea Beetle',
           name: 'Corn Flea Beetle',
-          image: '/img/pests/CornFleaBeetle.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/CornFleaBeetle.jpg',
           image_gallery: [
-            '/img/pests/CornFleaBeetle.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CornFleaBeetle.jpg',
           ]
        },
 
@@ -1010,9 +1010,9 @@ Meteor.startup(() => {
           sci_name: 'Leptispa Pygmaea',
           eng_name: 'Rice Blue Beetle',
           name: 'Leptispa',
-          image: '/img/pests/Leptispa.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/Leptispa.jpg',
           image_gallery: [
-            '/img/pests/Leptispa.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/Leptispa.jpg',
           ]
        },
 
@@ -1042,9 +1042,9 @@ Meteor.startup(() => {
           sci_name: 'Sitophilus Oryzae',
           eng_name: 'Rice Weevil',
           name: 'Rice Weevil',
-          image: '/img/pests/RiceWeevil.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceWeevil.jpg',
           image_gallery: [
-            '/img/pests/RiceWeevil.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceWeevil.jpg',
           ]
        },
 
@@ -1074,9 +1074,9 @@ Meteor.startup(() => {
           sci_name: 'Dicladispa Armigera',
           eng_name: 'Rice Hispa, Spiny Beetle',
           name: 'Rice Hispa',
-          image: '/img/pests/RiceHispa.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceHispa.jpg',
           image_gallery: [
-            '/img/pests/RiceHispa.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceHispa.jpg',
           ]
        },
 
@@ -1106,9 +1106,9 @@ Meteor.startup(() => {
           sci_name: 'Phyllophaga',
           eng_name: 'White Grub, Scarab Larvae',
           name: 'White Grub Larva',
-          image: '/img/pests/WhiteGrubLarva.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/WhiteGrubLarva.jpg',
           image_gallery: [
-            '/img/pests/WhiteGrubLarva.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/WhiteGrubLarva.jpg',
           ]
        },
 
@@ -1139,9 +1139,9 @@ Meteor.startup(() => {
           sci_name: 'Euscyrtus Concinnus',
           eng_name: 'Cricket, Gryllids',
           name: 'Field Cricket',
-          image: '/img/pests/FieldCricket.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/FieldCricket.jpg',
           image_gallery: [
-            '/img/pests/FieldCricket.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/FieldCricket.jpg',
           ]
        },
 
@@ -1171,9 +1171,9 @@ Meteor.startup(() => {
           sci_name: 'Tettigoniidae sp.',
           eng_name: 'Katydid, Bush Cricket, Long-horned Grasshopper',
           name: 'Katydid',
-          image: '/img/pests/Katydid.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/Katydid.jpg',
           image_gallery: [
-            '/img/pests/Katydid.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/Katydid.jpg',
           ]
        },
 
@@ -1203,9 +1203,9 @@ Meteor.startup(() => {
           sci_name: 'Oxya hyla intricata ',
           eng_name: 'Rice Grasshopper, Short-horned Grasshopper',
           name: 'Short-horned Grasshopper',
-          image: '/img/pests/Short-hornedGrasshopper.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/Short-hornedGrasshopper.jpg',
           image_gallery: [
-            '/img/pests/Short-hornedGrasshopper.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/Short-hornedGrasshopper.jpg',
           ]
        },
 
@@ -1235,9 +1235,9 @@ Meteor.startup(() => {
           sci_name: 'Locusta migratoria manilensis',
           eng_name: 'Oriental Migratory Locust, Asiatic Migratory Locust',
           name: 'Oriental Migratory Locust',
-          image: '/img/pests/OrientalMigratoryLocust.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/OrientalMigratoryLocust.jpg',
           image_gallery: [
-            '/img/pests/OrientalMigratoryLocust.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/OrientalMigratoryLocust.jpg',
           ]
        },
 
@@ -1267,9 +1267,9 @@ Meteor.startup(() => {
           sci_name: 'Gryllotalpa orientalis',
           eng_name: 'Short-winged Mole Cricket, Southern Mole Cricket, Tawny Mole Cricket',
           name: 'Mole Cricket',
-          image: '/img/pests/MoleCricket.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/MoleCricket.jpg',
           image_gallery: [
-            '/img/pests/MoleCricket.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/MoleCricket.jpg',
           ]
        },
 
@@ -1300,9 +1300,9 @@ Meteor.startup(() => {
           sci_name: 'Nilaparvata lugens',
           eng_name: 'Brown Planthopper, Planthopper',
           name: 'Brown Planthopper',
-          image: '/img/pests/BrownPlanthopper.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/BrownPlanthopper.jpg',
           image_gallery: [
-            '/img/pests/BrownPlanthopper.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BrownPlanthopper.jpg',
           ]
        },
 
@@ -1332,9 +1332,9 @@ Meteor.startup(() => {
           sci_name: 'Nephotettix malayanus, Nephotettix virescens, Nephotettix nigropictus Stal',
           eng_name: 'Green Leafhopper, Leafhopper, Hopper',
           name: 'Green Leafhopper',
-          image: '/img/pests/GreenLeafhopper.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/GreenLeafhopper.jpg',
           image_gallery: [
-            '/img/pests/GreenLeafhopper.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/GreenLeafhopper.jpg',
           ]
        }, 
 
@@ -1364,9 +1364,9 @@ Meteor.startup(() => {
           sci_name: 'Recilia dorsalis',
           eng_name: 'Zigzag Leafhopper',
           name: 'Zigzag Leafhopper',
-          image: '/img/pests/ZigzagLeafhopper.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/ZigzagLeafhopper.jpg',
           image_gallery: [
-            '/img/pests/ZigzagLeafhopper.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/ZigzagLeafhopper.jpg',
           ]
        },
 
@@ -1396,9 +1396,9 @@ Meteor.startup(() => {
           sci_name: 'Scotinophara coarctata',
           eng_name: 'Black Bug, Common Black Bug',
           name: 'Black Bug',
-          image: '/img/pests/BlackBug.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/BlackBug.jpg',
           image_gallery: [
-            '/img/pests/BlackBug.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BlackBug.jpg',
           ]
        },
 
@@ -1428,9 +1428,9 @@ Meteor.startup(() => {
           sci_name: 'Orseolia oryzae',
           eng_name: 'Gall Midge, Rice Gall Midge, Asian Gall Midge',
           name: 'Rice Gall Midge',
-          image: '/img/pests/RiceGallMidge.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceGallMidge.jpg',
           image_gallery: [
-            '/img/pests/RiceGallMidge.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceGallMidge.jpg',
           ]
        },
 
@@ -1460,9 +1460,9 @@ Meteor.startup(() => {
           sci_name: 'Brevennia rehi',
           eng_name: 'Rice Mealy Bug, Mealy Bug',
           name: 'Rice Mealy Bug',
-          image: '/img/pests/RiceMealyBug.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceMealyBug.jpg',
           image_gallery: [
-            '/img/pests/RiceMealyBug.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceMealyBug.jpg',
           ]
        },
 
@@ -1492,9 +1492,9 @@ Meteor.startup(() => {
           sci_name: 'Leptocorisa Varicornis, Leptocorisa oratorius Fab., Leptocorisa acuta Thunberg',
           eng_name: 'Rice Paddy Bug, Rice Bug, Paddy Bug',
           name: 'Rice Paddy Bug',
-          image: '/img/pests/RicePaddyBug.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/RicePaddyBug.jpg',
           image_gallery: [
-            '/img/pests/RicePaddyBug.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/RicePaddyBug.jpg',
           ]
        },
 
@@ -1524,9 +1524,9 @@ Meteor.startup(() => {
           sci_name: 'Tetraneura nigriabdominalis',
           eng_name: 'Rice Root Aphid, Aphid',
           name: 'Rice Root Aphid',
-          image: '/img/pests/RiceRootAphid.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceRootAphid.jpg',
           image_gallery: [
-            '/img/pests/RiceRootAphid.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceRootAphid.jpg',
           ]
        },
 
@@ -1556,9 +1556,9 @@ Meteor.startup(() => {
           sci_name: 'Hydrellia philippina (Ferino)',
           eng_name: '',
           name: 'Rice Whorl Maggot',
-          image: '/img/pests/RiceWhorlMaggot.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceWhorlMaggot.jpg',
           image_gallery: [
-            '/img/pests/RiceWhorlMaggot.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/RiceWhorlMaggot.jpg',
           ] 
        },
 
@@ -1588,9 +1588,9 @@ Meteor.startup(() => {
           sci_name: 'Chilo suppressalis Walker',
           eng_name: '',
           name:'Striped Stemborer',
-          image: '/img/pests/StripedStemborer.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/StripedStemborer.jpg',
           image_gallery: [
-            '/img/pests/StripedStemborer.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/StripedStemborer.jpg',
           ]
        },
 
@@ -1620,9 +1620,9 @@ Meteor.startup(() => {
           sci_name: 'Sesamia inferens Walker',
           eng_name: '',
           name:'Pink Stemborer',
-          image: '/img/pests/PinkStemborer.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/PinkStemborer.jpg',
           image_gallery: [
-            '/img/pests/PinkStemborer.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/PinkStemborer.jpg',
           ]
        },
 
@@ -1652,14 +1652,14 @@ Meteor.startup(() => {
           sci_name: 'Chaetanaphothrips signipennis Thrips florum',
           eng_name: 'Flower Thrips',
           name:'Thrips',
-          image: '/img/pests/Thrips.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/Thrips.jpg',
           image_gallery: [
-            '/img/pests/Thrips.jpg',
-            '/img/pests/Thrips2.jpg',
-            '/img/pests/Thrips3.jpg',
-            '/img/pests/Thrips4.jpg',
-            '/img/pests/Thrips5.jpg',
-            '/img/pests/Thrips6.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/Thrips.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/Thrips2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/Thrips3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/Thrips4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/Thrips5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/Thrips6.jpg',
           ]
        },
        
@@ -1689,12 +1689,12 @@ Meteor.startup(() => {
           sci_name: 'Cosmopolites sordidus',
           eng_name: 'Banana Root Borer Adult',
           name:'Banana Root Borer Adult',
-          image: '/img/pests/BananaRootBorerAdult.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/BananaRootBorerAdult.jpg',
           image_gallery: [
-            '/img/pests/BananaRootBorerAdult.jpg',
-            '/img/pests/BananaRootBorerAdult2.jpg',
-            '/img/pests/BananaRootBorerAdult3.jpg',
-            '/img/pests/BananaRootBorerAdult4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BananaRootBorerAdult.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BananaRootBorerAdult2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BananaRootBorerAdult3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BananaRootBorerAdult4.jpg',
           ]
        },
        
@@ -1724,11 +1724,11 @@ Meteor.startup(() => {
           sci_name: 'Cosmopolites sordidus',
           eng_name: 'Banana Root Borer Larva',
           name:'Banana Root Borer Larva',
-          image: '/img/pests/BananaRootBorerLarva.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/BananaRootBorerLarva.jpg',
           image_gallery: [
-            '/img/pests/BananaRootBorerLarva.jpg',
-            '/img/pests/BananaRootBorerLarva2.jpg',
-            '/img/pests/BananaRootBorerLarva3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BananaRootBorerLarva.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BananaRootBorerLarva2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BananaRootBorerLarva3.jpg',
           ]
        },
        
@@ -1758,13 +1758,13 @@ Meteor.startup(() => {
           sci_name: 'Odoiporus longicollis',
           eng_name: 'Pseudostem Borer',
           name:'Pseudostem Borer',
-          image: '/img/pests/PseudostemBorer.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/PseudostemBorer.jpg',
           image_gallery: [
-            '/img/pests/PseudostemBorer.jpg',
-            '/img/pests/PseudostemBorer2.jpg',
-            '/img/pests/PseudostemBorer3.jpg',
-            '/img/pests/PseudostemBorer4.jpg',
-            '/img/pests/PseudostemBorer5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/PseudostemBorer.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/PseudostemBorer2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/PseudostemBorer3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/PseudostemBorer4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/PseudostemBorer5.jpg',
           ]
        },
        
@@ -1794,15 +1794,15 @@ Meteor.startup(() => {
           sci_name: 'Philicoptus demissus Philicoptus iliganus',
           eng_name: 'Fruit Scarring Beetle',
           name:'Fruit Scarring Beetle',
-          image: '/img/pests/FruitScarringBeetle.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/FruitScarringBeetle.jpg',
           image_gallery: [
-            '/img/pests/FruitScarringBeetle.jpg',
-            '/img/pests/FruitScarringBeetle2.jpg',
-            '/img/pests/FruitScarringBeetle3.jpg',
-            '/img/pests/FruitScarringBeetle4.jpg',
-            '/img/pests/FruitScarringBeetle5.jpg',
-            '/img/pests/FruitScarringBeetle6.jpg',
-            '/img/pests/FruitScarringBeetle7.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/FruitScarringBeetle.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/FruitScarringBeetle2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/FruitScarringBeetle3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/FruitScarringBeetle4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/FruitScarringBeetle5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/FruitScarringBeetle6.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/FruitScarringBeetle7.jpg',
           ]
        },
        
@@ -1832,13 +1832,13 @@ Meteor.startup(() => {
           sci_name: 'Pentalonia nigronervosa',
           eng_name: 'Banana Aphids',
           name:'Banana Aphids',
-          image: '/img/pests/BananaAphids.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/BananaAphids.jpg',
           image_gallery: [
-            '/img/pests/BananaAphids.jpg',
-            '/img/pests/BananaAphids2.jpg',
-            '/img/pests/BananaAphids3.jpg',
-            '/img/pests/BananaAphids4.jpg',
-            '/img/pests/BananaAphids5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BananaAphids.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BananaAphids2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BananaAphids3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BananaAphids4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BananaAphids5.jpg',
           ]
        },
        
@@ -1868,12 +1868,12 @@ Meteor.startup(() => {
           sci_name: 'Dysmicoccus neobrevipes',
           eng_name: 'False Pineapple Mealybug',
           name:'False Pineapple Mealybug',
-          image: '/img/pests/FalsePineappleMealybug.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/FalsePineappleMealybug.jpg',
           image_gallery: [
-            '/img/pests/FalsePineappleMealybug.jpg',
-            '/img/pests/FalsePineappleMealybug2.jpg',
-            '/img/pests/FalsePineappleMealybug3.jpg',
-            '/img/pests/FalsePineappleMealybug4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/FalsePineappleMealybug.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/FalsePineappleMealybug2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/FalsePineappleMealybug3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/FalsePineappleMealybug4.jpg',
           ]
        },
        
@@ -1903,13 +1903,13 @@ Meteor.startup(() => {
           sci_name: 'Dysmicoccus brevipes',
           eng_name: 'Pineapple Mealybug',
           name:'Pineapple Mealybug',
-          image: '/img/pests/PineappleMealybug.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/PineappleMealybug.jpg',
           image_gallery: [
-            '/img/pests/PineappleMealybug.jpg',
-            '/img/pests/PineappleMealybug2.jpg',
-            '/img/pests/PineappleMealybug3.jpg',
-            '/img/pests/PineappleMealybug4.jpg',
-            '/img/pests/PineappleMealybug5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/PineappleMealybug.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/PineappleMealybug2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/PineappleMealybug3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/PineappleMealybug4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/PineappleMealybug5.jpg',
           ]
        },
        
@@ -1939,14 +1939,14 @@ Meteor.startup(() => {
           sci_name: 'Nipaecoccus nipae',
           eng_name: 'Coconut Buff Mealybug',
           name:'Coconut Buff Mealybug',
-          image: '/img/pests/CoconutBuffMealybug.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/CoconutBuffMealybug.jpg',
           image_gallery: [
-            '/img/pests/CoconutBuffMealybug.jpg',
-            '/img/pests/CoconutBuffMealybug2.jpg',
-            '/img/pests/CoconutBuffMealybug3.jpg',
-            '/img/pests/CoconutBuffMealybug4.jpg',
-            '/img/pests/CoconutBuffMealybug5.jpg',
-            '/img/pests/CoconutBuffMealybug6.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CoconutBuffMealybug.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CoconutBuffMealybug2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CoconutBuffMealybug3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CoconutBuffMealybug4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CoconutBuffMealybug5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CoconutBuffMealybug6.jpg',
           ]
        },
        
@@ -1976,15 +1976,15 @@ Meteor.startup(() => {
           sci_name: 'Chrysomphalus aonidium Hemiberlesia lataneae',
           eng_name: 'Scale Insects',
           name:'Scale Insects',
-          image: '/img/pests/ScaleInsects.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/ScaleInsects.jpg',
           image_gallery: [
-            '/img/pests/ScaleInsects.jpg',
-            '/img/pests/ScaleInsects2.jpg',
-            '/img/pests/ScaleInsects3.jpg',
-            '/img/pests/ScaleInsects4.jpg',
-            '/img/pests/ScaleInsects5.jpg',
-            '/img/pests/ScaleInsects6.jpg',
-            '/img/pests/ScaleInsects7.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/ScaleInsects.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/ScaleInsects2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/ScaleInsects3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/ScaleInsects4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/ScaleInsects5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/ScaleInsects6.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/ScaleInsects7.jpg',
           ]
        },
        
@@ -2014,16 +2014,16 @@ Meteor.startup(() => {
           sci_name: 'Erionota thrax',
           eng_name: 'Banana Leaf Roller',
           name:'Banana Leaf Roller',
-          image: '/img/pests/BananaLeafRoller.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/BananaLeafRoller.jpg',
           image_gallery: [
-            '/img/pests/BananaLeafRoller.jpg',
-            '/img/pests/BananaLeafRoller2.jpg',
-            '/img/pests/BananaLeafRoller3.jpg',
-            '/img/pests/BananaLeafRoller4.jpg',
-            '/img/pests/BananaLeafRoller5.jpg',
-            '/img/pests/BananaLeafRoller6.jpg',
-            '/img/pests/BananaLeafRoller7.jpg',
-            '/img/pests/BananaLeafRoller8.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BananaLeafRoller.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BananaLeafRoller2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BananaLeafRoller3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BananaLeafRoller4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BananaLeafRoller5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BananaLeafRoller6.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BananaLeafRoller7.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/BananaLeafRoller8.jpg',
           ]
        },
        
@@ -2053,17 +2053,17 @@ Meteor.startup(() => {
           sci_name: 'Stephanitis typicus',
           eng_name: 'Lace Bug',
           name:'Lace Bug',
-          image: '/img/pests/LaceBug.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/LaceBug.jpg',
           image_gallery: [
-            '/img/pests/LaceBug.jpg',
-            '/img/pests/LaceBug2.jpg',
-            '/img/pests/LaceBug3.jpg',
-            '/img/pests/LaceBug4.jpg',
-            '/img/pests/LaceBug5.jpg',
-            '/img/pests/LaceBug6.jpg',
-            '/img/pests/LaceBug7.jpg',
-            '/img/pests/LaceBug8.jpg',
-            '/img/pests/LaceBug9.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/LaceBug.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/LaceBug2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/LaceBug3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/LaceBug4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/LaceBug5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/LaceBug6.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/LaceBug7.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/LaceBug8.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/LaceBug9.jpg',
           ]
 
        },
@@ -2093,12 +2093,12 @@ Meteor.startup(() => {
           sci_name: 'Selenothrips rubrocinctus',
           eng_name: 'Redbanded Thrips',
           name:'Redbanded Thrips',
-          image: '/img/pests/CacaoThrips.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/CacaoThrips.jpg',
           image_gallery: [
-            '/img/pests/CacaoThrips.jpg',
-            '/img/pests/CacaoThrips2.jpg',
-            '/img/pests/CacaoThrips3.jpg',
-            '/img/pests/CacaoThrips4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CacaoThrips.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CacaoThrips2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CacaoThrips3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CacaoThrips4.jpg',
           ]
 
        },
@@ -2128,12 +2128,12 @@ Meteor.startup(() => {
           sci_name: 'Toxoptera aurantii',
           eng_name: 'Camellia Aphid, Citrus Aphid, Black Citrus Aphid',
           name:'Camellia Aphids',
-          image: '/img/pests/CamelliaAphids.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/CamelliaAphids.jpg',
           image_gallery: [
-            '/img/pests/CamelliaAphids.jpg',
-            '/img/pests/CamelliaAphids2.jpg',
-            '/img/pests/CamelliaAphids3.jpg',
-            '/img/pests/CamelliaAphids4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CamelliaAphids.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CamelliaAphids2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CamelliaAphids3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CamelliaAphids4.jpg',
           ]
 
        },
@@ -2164,13 +2164,13 @@ Meteor.startup(() => {
           sci_name: 'Orgyia postica',
           eng_name: 'Cacao Tussock Moth, Cocoa Tussock Moth, Small Tussock Moth',
           name:'Cacao Tussock Moth',
-          image: '/img/pests/CacaoTussockMoth.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/CacaoTussockMoth.jpg',
           image_gallery: [
-            '/img/pests/CacaoTussockMoth.jpg',
-            '/img/pests/CacaoTussockMoth2.jpg',
-            '/img/pests/CacaoTussockMoth3.jpg',
-            '/img/pests/CacaoTussockMoth4.jpg',
-            '/img/pests/CacaoTussockMoth5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CacaoTussockMoth.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CacaoTussockMoth2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CacaoTussockMoth3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CacaoTussockMoth4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CacaoTussockMoth5.jpg',
           ]
 
        },
@@ -2201,13 +2201,13 @@ Meteor.startup(() => {
           sci_name: 'Helopeltis theivora',
           eng_name: 'Mirid Bug, Tea Mosquito, Tea Bug',
           name:'Mirid Bug',
-          image: '/img/pests/MiridBug.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/MiridBug.jpg',
           image_gallery: [
-            '/img/pests/MiridBug.jpg',
-            '/img/pests/MiridBug2.jpg',
-            '/img/pests/MiridBug3.jpg',
-            '/img/pests/MiridBug4.jpg',
-            '/img/pests/MiridBug5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/MiridBug.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/MiridBug2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/MiridBug3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/MiridBug4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/MiridBug5.jpg',
           ]
 
        },
@@ -2238,13 +2238,13 @@ Meteor.startup(() => {
           sci_name: 'Zeuzera coffeae',
           eng_name: 'Carpenter Moth, Carpenter Stemborer, Cocoa Pod and Stemborer, Coffee Leopard Moth',
           name:'Carpenter Moth',
-          image: '/img/pests/CarpenterMoth.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/CarpenterMoth.jpg',
           image_gallery: [
-            '/img/pests/CarpenterMoth.jpg',
-            '/img/pests/CarpenterMoth2.jpg',
-            '/img/pests/CarpenterMoth3.jpg',
-            '/img/pests/CarpenterMoth4.jpg',
-            '/img/pests/CarpenterMoth5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CarpenterMoth.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CarpenterMoth2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CarpenterMoth3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CarpenterMoth4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CarpenterMoth5.jpg',
           ]
 
        },
@@ -2275,12 +2275,12 @@ Meteor.startup(() => {
           sci_name: 'Conopomorpha cramerella',
           eng_name: 'Cacao Pod Borer, Cocoa Pod Borer, Cacao Moth, Javanese Cocoa Moth',
           name:'Cacao Pod Borer',
-          image: '/img/pests/CacaoPodBorer.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/CacaoPodBorer.jpg',
           image_gallery: [
-            '/img/pests/CacaoPodBorer.jpg',
-            '/img/pests/CacaoPodBorer2.jpg',
-            '/img/pests/CacaoPodBorer3.jpg',
-            '/img/pests/CacaoPodBorer4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CacaoPodBorer.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CacaoPodBorer2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CacaoPodBorer3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CacaoPodBorer4.jpg',
           ]
 
        },
@@ -2311,13 +2311,13 @@ Meteor.startup(() => {
           sci_name: 'Planococcus kenyae',
           eng_name: 'Coffee Mealybug, Oriental Cacao Mealybug, Lilac Mealybug',
           name:'Coffee Mealybug',
-          image: '/img/pests/CoffeeMealybug.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/CoffeeMealybug.jpg',
           image_gallery: [
-            '/img/pestsCoffeeMealybug.jpg',
-            '/img/pestsCoffeeMealybug2.jpg',
-            '/img/pestsCoffeeMealybug3.jpg',
-            '/img/pestsCoffeeMealybug4.jpg',
-            '/img/pestsCoffeeMealybug5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/pestsCoffeeMealybug.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/pestsCoffeeMealybug2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/pestsCoffeeMealybug3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/pestsCoffeeMealybug4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/pestsCoffeeMealybug5.jpg',
           ]
 
        },
@@ -2347,13 +2347,13 @@ Meteor.startup(() => {
           sci_name: 'Coccus viridis',
           eng_name: 'Green Scale, Coffee Scale Insect, Soft Green Scale',
           name:'Green Scale',
-          image: '/img/pests/GreenScale.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/GreenScale.jpg',
           image_gallery: [
-            '/img/pests/GreenScale.jpg',
-            '/img/pests/GreenScale2.jpg',
-            '/img/pests/GreenScale3.jpg',
-            '/img/pests/GreenScale4.jpg',
-            '/img/pests/GreenScale5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/GreenScale.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/GreenScale2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/GreenScale3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/GreenScale4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/GreenScale5.jpg',
           ]
 
        },
@@ -2383,13 +2383,13 @@ Meteor.startup(() => {
           sci_name: 'Xylotrechus quadripes',
           eng_name: 'Coffee Stem Borer',
           name:'Coffee Stem Borer',
-          image: '/img/pests/CoffeeStemBorer.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/CoffeeStemBorer.jpg',
           image_gallery: [
-            '/img/pests/CoffeeStemBorer.jpg',
-            '/img/pests/CoffeeStemBorer2.jpg',
-            '/img/pests/CoffeeStemBorer3.jpg',
-            '/img/pests/CoffeeStemBorer4.jpg',
-            '/img/pests/CoffeeStemBorer5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CoffeeStemBorer.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CoffeeStemBorer2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CoffeeStemBorer3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CoffeeStemBorer4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CoffeeStemBorer5.jpg',
           ]
 
        },
@@ -2419,13 +2419,13 @@ Meteor.startup(() => {
           sci_name: 'Hypothenemus hampei',
           eng_name: 'Coffee Berry Borer, Coffee Seed Borer',
           name:'Coffee Berry Borer',
-          image: '/img/pests/CoffeeBerryBorer.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/CoffeeBerryBorer.jpg',
           image_gallery: [
-            '/img/pestsCoffeeBerryBorer.jpg',
-            '/img/pestsCoffeeBerryBorer2.jpg',
-            '/img/pestsCoffeeBerryBorer3.jpg',
-            '/img/pestsCoffeeBerryBorer4.jpg',
-            '/img/pestsCoffeeBerryBorer5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/pestsCoffeeBerryBorer.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/pestsCoffeeBerryBorer2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/pestsCoffeeBerryBorer3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/pestsCoffeeBerryBorer4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/pestsCoffeeBerryBorer5.jpg',
           ]
 
        },
@@ -2455,9 +2455,9 @@ Meteor.startup(() => {
           sci_name: '',
           eng_name: 'Coffee Leaf Folder',
           name:'Coffee Leaf Folder',
-          image: '/img/pests/placeholder.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/placeholder.jpg',
           image_gallery: [
-            '/img/pests/placeholder.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/placeholder.jpg',
           ]
 
        },
@@ -2488,13 +2488,13 @@ Meteor.startup(() => {
           sci_name: 'Aspidiotus destructor, Aspidiotus rigidus',
           eng_name: 'Coconut Scale Insect, Coconut Scale',
           name:'Coconut Scale Insect',
-          image: '/img/pests/CoconutScaleInsect.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/CoconutScaleInsect.jpg',
           image_gallery: [
-            '/img/pests/CoconutScaleInsect.jpg',
-            '/img/pests/CoconutScaleInsect2.jpg',
-            '/img/pests/CoconutScaleInsect3.jpg',
-            '/img/pests/CoconutScaleInsect4.jpg',
-            '/img/pests/CoconutScaleInsect5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CoconutScaleInsect.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CoconutScaleInsect2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CoconutScaleInsect3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CoconutScaleInsect4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CoconutScaleInsect5.jpg',
           ]
 
        },
@@ -2524,13 +2524,13 @@ Meteor.startup(() => {
           sci_name: 'Oryctes rhinoceros',
           eng_name: 'Rhinoceros Beetle, Coconut Rhinoceros Beetle, Asiatic Rhinoceros Beetle, Black Beetle, Coconut Black Beetle, Coconut Palm Rhinoceros Beetle',
           name:'Rhinoceros Beetle',
-          image: '/img/pests/RhinocerosBeetle.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/RhinocerosBeetle.jpg',
           image_gallery: [
-            '/img/pests/RhinocerosBeetle.jpg',
-            '/img/pests/RhinocerosBeetle2.jpg',
-            '/img/pests/RhinocerosBeetle3.jpg',
-            '/img/pests/RhinocerosBeetle4.jpg',
-            '/img/pests/RhinocerosBeetle5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/RhinocerosBeetle.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/RhinocerosBeetle2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/RhinocerosBeetle3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/RhinocerosBeetle4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/RhinocerosBeetle5.jpg',
           ]
 
        },
@@ -2560,13 +2560,13 @@ Meteor.startup(() => {
           sci_name: 'Brontispa longissima',
           eng_name: 'Coconut Leaf Beetle, Coconut Hispine Beetle',
           name:'Coconut Leaf Beetle',
-          image: '/img/pests/CoconutLeafBeetle.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/CoconutLeafBeetle.jpg',
           image_gallery: [
-            '/img/pests/CoconutLeafBeetle.jpg',
-            '/img/pests/CoconutLeafBeetle2.jpg',
-            '/img/pests/CoconutLeafBeetle3.jpg',
-            '/img/pests/CoconutLeafBeetle4.jpg',
-            '/img/pests/CoconutLeafBeetle5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CoconutLeafBeetle.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CoconutLeafBeetle2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CoconutLeafBeetle3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CoconutLeafBeetle4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/CoconutLeafBeetle5.jpg',
           ]
 
        },
@@ -2596,13 +2596,13 @@ Meteor.startup(() => {
           sci_name: 'Penthocrates sp.',
           eng_name: 'Slug Caterpillar',
           name:'Slug Caterpillar',
-          image: '/img/pests/SlugCaterpillar.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/SlugCaterpillar.jpg',
           image_gallery: [
-            '/img/pests/SlugCaterpillar.jpg',
-            '/img/pests/SlugCaterpillar2.jpg',
-            '/img/pests/SlugCaterpillar3.jpg',
-            '/img/pests/SlugCaterpillar4.jpg',
-            '/img/pests/SlugCaterpillar5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/SlugCaterpillar.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/SlugCaterpillar2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/SlugCaterpillar3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/SlugCaterpillar4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/SlugCaterpillar5.jpg',
           ]
 
        },
@@ -2632,10 +2632,10 @@ Meteor.startup(() => {
           sci_name: 'Rarosiella cocosae',
           eng_name: 'False Spider Mite',
           name:'False Spider Mite',
-          image: '/img/pests/FalseSpiderMite.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/pests/FalseSpiderMite.jpg',
           image_gallery: [
-            '/img/pests/FalseSpiderMite.jpg',
-            '/img/pests/FalseSpiderMite2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/FalseSpiderMite.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/pests/FalseSpiderMite2.jpg',
           ]
 
        },
@@ -2666,9 +2666,9 @@ Meteor.startup(() => {
           sci_name: 'Xanthomonas oryzae pv. oryzae',
           eng_name: 'Bacterial Leaf Blight',
           name: 'Bacterial Leaf Blight',
-          image: '/img/diseases/BacterialLeafBlight.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/BacterialLeafBlight.jpg',
           image_gallery: [
-            '/img/diseases/BacterialLeafBlight.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BacterialLeafBlight.jpg',
           ]
        },
 
@@ -2697,9 +2697,9 @@ Meteor.startup(() => {
           sci_name: 'Xanthomonas oryzae pv. oryzicola',
           eng_name: 'Bacterial Leaf Streak',
           name: 'Bacterial Leaf Streak',
-          image: '/img/diseases/BacterialLeafStreak.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/BacterialLeafStreak.jpg',
           image_gallery: [
-            '/img/diseases/BacterialLeafStreak.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BacterialLeafStreak.jpg',
           ]
        },
 
@@ -2729,9 +2729,9 @@ Meteor.startup(() => {
           sci_name: 'Cercospora oryzae',
           eng_name: 'Narrow Brown Spot, Narrow Leaf Spot, Cercospora Leaf Spot',
           name: 'Narrow Leaf Spot',
-          image: '/img/diseases/NarrowLeafSpot.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/NarrowLeafSpot.jpg',
           image_gallery: [
-            '/img/diseases/NarrowLeafSpot.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/NarrowLeafSpot.jpg',
           ]
        },
 
@@ -2760,9 +2760,9 @@ Meteor.startup(() => {
           sci_name: 'Magnaporthe oryzae',
           eng_name: 'Rice Blast',
           name: 'Rice Blast',
-          image: '/img/diseases/RiceBlast.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/RiceBlast.jpg',
           image_gallery: [
-            '/img/diseases/RiceBlast.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/RiceBlast.jpg',
           ]
        },
 
@@ -2791,9 +2791,9 @@ Meteor.startup(() => {
           sci_name: 'Rice tungro bacilliform virus',
           eng_name: 'Tungro',
           name: 'Tungro',
-          image: '/img/diseases/Tungro.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/Tungro.jpg',
           image_gallery: [
-            '/img/diseases/Tungro.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/Tungro.jpg',
           ]
        },
 
@@ -2822,9 +2822,9 @@ Meteor.startup(() => {
           sci_name: 'Fusarium moniliforme/Gibberella fujikuroi',
           eng_name: 'Bakanae',
           name: 'Bakanae',
-          image: '/img/diseases/Bakanae.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/Bakanae.jpg',
           image_gallery: [
-            '/img/diseases/Bakanae.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/Bakanae.jpg',
           ]
        },
 
@@ -2853,9 +2853,9 @@ Meteor.startup(() => {
           sci_name: 'Rhizoctonia solani',
           eng_name: 'Rice Sheath Blight',
           name: 'Sheath Blight',
-          image: '/img/diseases/SheathBlight.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/SheathBlight.jpg',
           image_gallery: [
-            '/img/diseases/SheathBlight.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/SheathBlight.jpg',
           ]
        },
 
@@ -2884,9 +2884,9 @@ Meteor.startup(() => {
           sci_name: 'Helminthosporium oryzae/Cochliobolus miyabeanus',
           eng_name: 'Helminthosporium Leaf Spot',
           name: 'Brown Spot',
-          image: '/img/diseases/BrownSpot.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/BrownSpot.jpg',
           image_gallery: [
-            '/img/diseases/BrownSpot.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BrownSpot.jpg',
           ]
        },
 
@@ -2915,9 +2915,9 @@ Meteor.startup(() => {
           sci_name: 'Sarocladium oryzae',
           eng_name: 'Sheath Rot',
           name: 'Sheath Rot',
-          image: '/img/diseases/SheathRot.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/SheathRot.jpg',
           image_gallery: [
-            '/img/diseases/SheathRot.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/SheathRot.jpg',
           ]
        },
 
@@ -2946,9 +2946,9 @@ Meteor.startup(() => {
           sci_name: 'Rhizoctonia solani',
           eng_name: 'Banded Leaf and Sheath Blight',
           name: 'Banded Leaf and Sheath Blight',
-          image: '/img/diseases/BandedLeaf.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/BandedLeaf.jpg',
           image_gallery: [
-            '/img/diseases/BandedLeaf.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BandedLeaf.jpg',
           ]
        },
 
@@ -2977,9 +2977,9 @@ Meteor.startup(() => {
           sci_name: 'Puccinia polysora',
           eng_name: 'Corn Rust',
           name: 'Corn Rust',
-          image: '/img/diseases/CornRust.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/CornRust.jpg',
           image_gallery: [
-            '/img/diseases/CornRust.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CornRust.jpg',
           ]
        },
 
@@ -3008,9 +3008,9 @@ Meteor.startup(() => {
           sci_name: 'Peronosclerospora philippinensis',
           eng_name: 'Downy Mildew',
           name: 'Downy Mildew',
-          image: '/img/diseases/DownyMildew.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/DownyMildew.jpg',
           image_gallery: [
-            '/img/diseases/DownyMildew.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/DownyMildew.jpg',
           ]
        },
 
@@ -3039,9 +3039,9 @@ Meteor.startup(() => {
           sci_name: 'Helminthosporium maydis',
           eng_name: 'Maydis Leaf Blight',
           name: 'Maydis Leaf Blight',
-          image: '/img/diseases/MaydisLeafBlight.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/MaydisLeafBlight.jpg',
           image_gallery: [
-            '/img/diseases/MaydisLeafBlight.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/MaydisLeafBlight.jpg',
           ]
        },
 
@@ -3070,9 +3070,9 @@ Meteor.startup(() => {
           sci_name: 'Cercospora zeae-maydis',
           eng_name: 'Grey Leaf Spot',
           name: 'Grey Leaf Spot',
-          image: '/img/diseases/GreyLeafSpot.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/GreyLeafSpot.jpg',
           image_gallery: [
-            '/img/diseases/GreyLeafSpot.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/GreyLeafSpot.jpg',
           ]
        },
 
@@ -3101,9 +3101,9 @@ Meteor.startup(() => {
           sci_name: 'Ustilago maydis',
           eng_name: 'Corn Smut',
           name: 'Corn Smut',
-          image: '/img/diseases/CornSmut.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/CornSmut.jpg',
           image_gallery: [
-            '/img/diseases/CornSmut.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CornSmut.jpg',
           ]
        },
 
@@ -3132,9 +3132,9 @@ Meteor.startup(() => {
           sci_name: 'Stenocarpella macrospora',
           eng_name: 'Stalk Rot',
           name: 'Stalk Rot',
-          image: '/img/diseases/StalkRot.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/StalkRot.jpg',
           image_gallery: [
-            '/img/diseases/StalkRot.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/StalkRot.jpg',
           ]
        },
 
@@ -3162,14 +3162,14 @@ Meteor.startup(() => {
           sci_name: 'Phyllosticta maculata/Phyllosticta cavendishii/Phyllosticta musarum',
           eng_name: 'Banana Freckle',
           name: 'Banana Freckle',
-          image: '/img/diseases/BananaFreckle.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaFreckle.jpg',
           image_gallery: [
-            '/img/diseases/BananaFreckle.jpg',
-            '/img/diseases/BananaFreckle2.jpg',
-            '/img/diseases/BananaFreckle3.jpg',
-            '/img/diseases/BananaFreckle4.jpg',
-            '/img/diseases/BananaFreckle5.jpg',
-            '/img/diseases/BananaFreckle6.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaFreckle.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaFreckle2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaFreckle3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaFreckle4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaFreckle5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaFreckle6.jpg',
           ]
        },
 
@@ -3198,11 +3198,11 @@ Meteor.startup(() => {
           sci_name: 'Phyllachora musicola',
           eng_name: 'Banana black cross, back cross disease, tar spot',
           name: 'Banana Black Cross',
-          image: '/img/diseases/BananaBlackCross.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaBlackCross.jpg',
           image_gallery: [
-            '/img/diseases/BananaBlackCross.jpg',
-            '/img/diseases/BananaBlackCross2.jpg',
-            '/img/diseases/BananaBlackCross3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaBlackCross.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaBlackCross2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaBlackCross3.jpg',
           ]
        },
 
@@ -3231,18 +3231,18 @@ Meteor.startup(() => {
           sci_name: 'Mycosphaerella fijiensis/Paracercospora fijiensis',
           eng_name: 'Black Sigatoka, black leaf streak',
           name: 'Black Sigatoka',
-          image: '/img/diseases/BlackSigatoka.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/BlackSigatoka.jpg',
           image_gallery: [
-            '/img/diseases/BlackSigatoka.jpg',
-            '/img/diseases/BlackSigatoka2.jpg',
-            '/img/diseases/BlackSigatoka3.jpg',
-            '/img/diseases/BlackSigatoka4.jpg',
-            '/img/diseases/BlackSigatoka5.jpg',
-            '/img/diseases/BlackSigatoka6.jpg',
-            '/img/diseases/BlackSigatoka7.jpg',
-            '/img/diseases/BlackSigatoka8.jpg',
-            '/img/diseases/BlackSigatoka9.jpg',
-            '/img/diseases/BlackSigatoka10.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BlackSigatoka.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BlackSigatoka2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BlackSigatoka3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BlackSigatoka4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BlackSigatoka5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BlackSigatoka6.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BlackSigatoka7.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BlackSigatoka8.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BlackSigatoka9.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BlackSigatoka10.jpg',
           ]
        },
 
@@ -3271,20 +3271,20 @@ Meteor.startup(() => {
           sci_name: 'Cucumber mosaic cucumovirus',
           eng_name: 'Banana mosaic, cucumber mosaic, infectious chlorosis',
           name: 'Bract Mosaic',
-          image: '/img/diseases/BractMosaic.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/BractMosaic.jpg',
           image_gallery: [
-            '/img/diseases/BractMosaic.jpg',
-            '/img/diseases/BractMosaic2.jpg',
-            '/img/diseases/BractMosaic3.jpg',
-            '/img/diseases/BractMosaic4.jpg',
-            '/img/diseases/BractMosaic5.jpg',
-            '/img/diseases/BractMosaic6.jpg',
-            '/img/diseases/BractMosaic7.jpg',
-            '/img/diseases/BractMosaic8.jpg',
-            '/img/diseases/BractMosaic9.jpg',
-            '/img/diseases/BractMosaic10.jpg',
-            '/img/diseases/BractMosaic11.jpg',
-            '/img/diseases/BractMosaic12.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BractMosaic.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BractMosaic2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BractMosaic3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BractMosaic4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BractMosaic5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BractMosaic6.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BractMosaic7.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BractMosaic8.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BractMosaic9.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BractMosaic10.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BractMosaic11.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BractMosaic12.jpg',
           ]
        },
 
@@ -3313,18 +3313,18 @@ Meteor.startup(() => {
           sci_name: 'Banana bunchy top nanavirus',
           eng_name: 'Banana bunchy top',
           name: 'Bunchy Top',
-          image: '/img/diseases/BunchyTop.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/BunchyTop.jpg',
           image_gallery: [
-            '/img/diseases/BunchyTop.jpg',
-            '/img/diseases/BunchyTop2.jpg',
-            '/img/diseases/BunchyTop3.jpg',
-            '/img/diseases/BunchyTop4.jpg',
-            '/img/diseases/BunchyTop5.jpg',
-            '/img/diseases/BunchyTop6.jpg',
-            '/img/diseases/BunchyTop7.jpg',
-            '/img/diseases/BunchyTop8.jpg',
-            '/img/diseases/BunchyTop9.jpg',
-            '/img/diseases/BunchyTop10.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BunchyTop.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BunchyTop2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BunchyTop3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BunchyTop4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BunchyTop5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BunchyTop6.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BunchyTop7.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BunchyTop8.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BunchyTop9.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BunchyTop10.jpg',
           ]
        },
 
@@ -3353,20 +3353,20 @@ Meteor.startup(() => {
           sci_name: 'Cordana musae',
           eng_name: 'Banana (Cordana) leaf spot, banana diamond leaf spot',
           name: 'Cordana Leaf Spot',
-          image: '/img/diseases/CordanaLeafSpot.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/CordanaLeafSpot.jpg',
           image_gallery: [
-            '/img/diseases/CordanaLeafSpot.jpg',
-            '/img/diseases/CordanaLeafSpot2.jpg',
-            '/img/diseases/CordanaLeafSpot3.jpg',
-            '/img/diseases/CordanaLeafSpot4.jpg',
-            '/img/diseases/CordanaLeafSpot5.jpg',
-            '/img/diseases/CordanaLeafSpot6.jpg',
-            '/img/diseases/CordanaLeafSpot7.jpg',
-            '/img/diseases/CordanaLeafSpot8.jpg',
-            '/img/diseases/CordanaLeafSpot9.jpg',
-            '/img/diseases/CordanaLeafSpot10.jpg',
-            '/img/diseases/CordanaLeafSpot11.jpg',
-            '/img/diseases/CordanaLeafSpot12.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CordanaLeafSpot.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CordanaLeafSpot2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CordanaLeafSpot3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CordanaLeafSpot4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CordanaLeafSpot5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CordanaLeafSpot6.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CordanaLeafSpot7.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CordanaLeafSpot8.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CordanaLeafSpot9.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CordanaLeafSpot10.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CordanaLeafSpot11.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CordanaLeafSpot12.jpg',
           ]
        },
 
@@ -3395,20 +3395,20 @@ Meteor.startup(() => {
           sci_name: 'Fusarium oxysporum f.sp. cubense',
           eng_name: 'Panama disease of banana, Fusarium wilt of banana',
           name: 'Fusarium Wilt',
-          image: '/img/diseases/FusariumWilt.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/FusariumWilt.jpg',
           image_gallery: [
-            '/img/diseases/FusariumWilt.jpg',
-            '/img/diseases/FusariumWilt2.jpg',
-            '/img/diseases/FusariumWilt3.jpg',
-            '/img/diseases/FusariumWilt4.jpg',
-            '/img/diseases/FusariumWilt5.jpg',
-            '/img/diseases/FusariumWilt6.jpg',
-            '/img/diseases/FusariumWilt7.jpg',
-            '/img/diseases/FusariumWilt8.jpg',
-            '/img/diseases/FusariumWilt9.jpg',
-            '/img/diseases/FusariumWilt10.jpg',
-            '/img/diseases/FusariumWilt11.jpg',
-            '/img/diseases/FusariumWilt12.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/FusariumWilt.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/FusariumWilt2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/FusariumWilt3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/FusariumWilt4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/FusariumWilt5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/FusariumWilt6.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/FusariumWilt7.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/FusariumWilt8.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/FusariumWilt9.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/FusariumWilt10.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/FusariumWilt11.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/FusariumWilt12.jpg',
           ]
         },
         {
@@ -3436,14 +3436,14 @@ Meteor.startup(() => {
           sci_name: 'Banana streak badnavirus',
           eng_name: 'Banana streak, banana streak disease',
           name: 'Banana Streak',
-          image: '/img/diseases/BananaStreak.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaStreak.jpg',
           image_gallery: [
-            '/img/diseases/BananaStreak.jpg',
-            '/img/diseases/BananaStreak2.jpg',
-            '/img/diseases/BananaStreak3.jpg',
-            '/img/diseases/BananaStreak4.jpg',
-            '/img/diseases/BananaStreak5.jpg',
-            '/img/diseases/BananaStreak6.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaStreak.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaStreak2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaStreak3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaStreak4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaStreak5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaStreak6.jpg',
           ]
        },
 
@@ -3472,14 +3472,14 @@ Meteor.startup(() => {
           sci_name: 'Mycosphaerella musicola',
           eng_name: 'Sigatoka leaf spot, Yellow Sigatoka',
           name: 'Yellow Sigatoka',
-          image: '/img/diseases/YellowSigatoka.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/YellowSigatoka.jpg',
           image_gallery: [
-            '/img/diseases/YellowSigatoka.jpg',
-            '/img/diseases/YellowSigatoka2.jpg',
-            '/img/diseases/YellowSigatoka3.jpg',
-            '/img/diseases/YellowSigatoka4.jpg',
-            '/img/diseases/YellowSigatoka5.jpg',
-            '/img/diseases/YellowSigatoka6.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/YellowSigatoka.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/YellowSigatoka2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/YellowSigatoka3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/YellowSigatoka4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/YellowSigatoka5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/YellowSigatoka6.jpg',
           ]
        },
 
@@ -3508,14 +3508,14 @@ Meteor.startup(() => {
           sci_name: 'Uredo musae',
           eng_name: 'Banana rust, banana leaf rust',
           name: 'Banana Rust',
-          image: '/img/diseases/BananaRust.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaRust.jpg',
           image_gallery: [
-            '/img/diseases/BananaRust.jpg',
-            '/img/diseases/BananaRust2.jpg',
-            '/img/diseases/BananaRust3.jpg',
-            '/img/diseases/BananaRust4.jpg',
-            '/img/diseases/BananaRust5.jpg',
-            '/img/diseases/BananaRust6.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaRust.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaRust2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaRust3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaRust4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaRust5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BananaRust6.jpg',
           ]
        },
 
@@ -3544,13 +3544,13 @@ Meteor.startup(() => {
           sci_name: 'Oncobasidium theobromae',
           eng_name: 'Vascular Streak Dieback',
           name: 'Vascular Streak Dieback',
-          image: '/img/diseases/VascularStreakDieback.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/VascularStreakDieback.jpg',
           image_gallery: [
-            '/img/diseases/VascularStreakDieback.jpg',
-            '/img/diseases/VascularStreakDieback2.jpg',
-            '/img/diseases/VascularStreakDieback3.jpg',
-            '/img/diseases/VascularStreakDieback4.jpg',
-            '/img/diseases/VascularStreakDieback5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/VascularStreakDieback.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/VascularStreakDieback2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/VascularStreakDieback3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/VascularStreakDieback4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/VascularStreakDieback5.jpg',
           ]
        },
 
@@ -3579,13 +3579,13 @@ Meteor.startup(() => {
           sci_name: 'Phytophthora megakarya',
           eng_name: 'Black Pod Rot, Black Canker',
           name: 'Black Pod Rot',
-          image: '/img/diseases/BlackPodRot.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/BlackPodRot.jpg',
           image_gallery: [
-            '/img/diseases/BlackPodRot.jpg',
-            '/img/diseases/BlackPodRot2.jpg',
-            '/img/diseases/BlackPodRot3.jpg',
-            '/img/diseases/BlackPodRot4.jpg',
-            '/img/diseases/BlackPodRot5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BlackPodRot.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BlackPodRot2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BlackPodRot3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BlackPodRot4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BlackPodRot5.jpg',
           ]
        },
 
@@ -3614,13 +3614,13 @@ Meteor.startup(() => {
           sci_name: 'Hemileia vastatrix',
           eng_name: 'Coffee Rust, Coffee Leaf Rust',
           name: 'Coffee Rust',
-          image: '/img/diseases/CoffeeRust.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/CoffeeRust.jpg',
           image_gallery: [
-            '/img/diseases/CoffeeRust.jpg',
-            '/img/diseases/CoffeeRust2.jpg',
-            '/img/diseases/CoffeeRust3.jpg',
-            '/img/diseases/CoffeeRust4.jpg',
-            '/img/diseases/CoffeeRust5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CoffeeRust.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CoffeeRust2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CoffeeRust3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CoffeeRust4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CoffeeRust5.jpg',
           ]
        },
        
@@ -3650,13 +3650,13 @@ Meteor.startup(() => {
           sci_name: 'Mycosphaerella coffeicola',
           eng_name: 'Brown Eye Spot, Cercospora Spot',
           name: 'Brown Eye Spot',
-          image: '/img/diseases/BrownEyeSpot.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/BrownEyeSpot.jpg',
           image_gallery: [
-            '/img/diseases/BrownEyeSpot.jpg',
-            '/img/diseases/BrownEyeSpot2.jpg',
-            '/img/diseases/BrownEyeSpot3.jpg',
-            '/img/diseases/BrownEyeSpot4.jpg',
-            '/img/diseases/BrownEyeSpot5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BrownEyeSpot.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BrownEyeSpot2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BrownEyeSpot3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BrownEyeSpot4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/BrownEyeSpot5.jpg',
           ]
        },
 
@@ -3685,9 +3685,9 @@ Meteor.startup(() => {
           sci_name: 'Phanerochaete salmonicolor',
           eng_name: 'Pink Disease',
           name: 'Pink Disease',
-          image: '/img/diseases/PinkDisease.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/PinkDisease.jpg',
           image_gallery: [
-            '/img/diseases/PinkDisease.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/PinkDisease.jpg',
           ]
        },
 
@@ -3716,10 +3716,10 @@ Meteor.startup(() => {
           sci_name: 'Ascochyta tarda',
           eng_name: 'Dieback',
           name: 'Dieback',
-          image: '/img/diseases/Dieback.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/Dieback.jpg',
           image_gallery: [
-            '/img/diseases/Dieback.jpg',
-            '/img/diseases/Dieback2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/Dieback.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/Dieback2.jpg',
           ]
        },
 
@@ -3748,11 +3748,11 @@ Meteor.startup(() => {
           sci_name: '',
           eng_name: 'Yellow Mottling Disease',
           name: 'Cadang-cadang',
-          image: '/img/diseases/CadangCadang.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/CadangCadang.jpg',
           image_gallery: [
-            '/img/diseases/CadangCadang.jpg',
-            '/img/diseases/CadangCadang2.jpg',
-            '/img/diseases/CadangCadang3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CadangCadang.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CadangCadang2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CadangCadang3.jpg',
           ]
        },
 
@@ -3781,13 +3781,13 @@ Meteor.startup(() => {
           sci_name: 'Thielaviopsis paradoxa',
           eng_name: 'Stem Bleeding Disease',
           name: 'Stem Bleeding Disease',
-          image: '/img/diseases/StemBleedingDisease.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/StemBleedingDisease.jpg',
           image_gallery: [
-            '/img/diseases/StemBleedingDisease.jpg',
-            '/img/diseases/StemBleedingDisease2.jpg',
-            '/img/diseases/StemBleedingDisease3.jpg',
-            '/img/diseases/StemBleedingDisease4.jpg',
-            '/img/diseases/StemBleedingDisease5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/StemBleedingDisease.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/StemBleedingDisease2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/StemBleedingDisease3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/StemBleedingDisease4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/StemBleedingDisease5.jpg',
           ]
        },
 
@@ -3816,13 +3816,13 @@ Meteor.startup(() => {
           sci_name: 'Pestalozzia palmarum',
           eng_name: 'Leaf Spot',
           name: 'Leaf Spot',
-          image: '/img/diseases/LeafSpot.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/LeafSpot.jpg',
           image_gallery: [
-            '/img/diseases/LeafSpot.jpg',
-            '/img/diseases/LeafSpot2.jpg',
-            '/img/diseases/LeafSpot3.jpg',
-            '/img/diseases/LeafSpot4.jpg',
-            '/img/diseases/LeafSpot5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/LeafSpot.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/LeafSpot2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/LeafSpot3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/LeafSpot4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/LeafSpot5.jpg',
           ]
        },
 
@@ -3851,18 +3851,498 @@ Meteor.startup(() => {
           sci_name: 'Phytophthora',
           eng_name: 'Coconut Bud and Fruit Rot',
           name: 'Coconut Bud and Fruit Rot',
-          image: '/img/diseases/CoconutBudAndFruitRot.jpg',
+          image: 'http://res.cloudinary.com/project-sarai/image/upload/diseases/CoconutBudAndFruitRot.jpg',
           image_gallery: [
-            '/img/diseases/CoconutBudAndFruitRot.jpg',
-            '/img/diseases/CoconutBudAndFruitRot2.jpg',
-            '/img/diseases/CoconutBudAndFruitRot3.jpg',
-            '/img/diseases/CoconutBudAndFruitRot4.jpg',
-            '/img/diseases/CoconutBudAndFruitRot5.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CoconutBudAndFruitRot.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CoconutBudAndFruitRot2.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CoconutBudAndFruitRot3.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CoconutBudAndFruitRot4.jpg',
+            'http://res.cloudinary.com/project-sarai/image/upload/diseases/CoconutBudAndFruitRot5.jpg',
           ]
        }
             
     ];
 
     data.forEach(plant_problem => Plant_Problem.insert(plant_problem));
+  }
+});
+
+Router.route('/pests-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'pests.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({type: "Pest"});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/pests/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.description = "\"" + rec.description + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.description + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/pests-rice-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'pests-rice.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Rice"}, {type: "Pest"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/pests/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.description = "\"" + rec.description + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.description + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/pests-corn-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'pests-corn.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Corn"}, {type: "Pest"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/pests/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.description = "\"" + rec.description + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.description + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/pests-ricecorn-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'pests-ricecorn.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Rice, Corn"}, {type: "Pest"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/pests/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.description = "\"" + rec.description + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.description + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/pests-banana-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'pests-banana.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Banana"}, {type: "Pest"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/pests/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.description = "\"" + rec.description + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.description + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/pests-cacao-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'pests-cacao.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Cacao"}, {type: "Pest"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/pests/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.description = "\"" + rec.description + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.description + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/pests-coffee-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'pests-coffee.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Coffee"}, {type: "Pest"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/pests/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.description = "\"" + rec.description + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.description + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/pests-coconut-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'pests-coconut.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Coconut"}, {type: "Pest"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/pests/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.description = "\"" + rec.description + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.description + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/diseases-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'diseases.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({type: "Disease"});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/diseases/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.symptoms = "\"" + rec.symptoms + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.symptoms + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/diseases-rice-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'diseases-rice.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Rice"}, {type: "Disease"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/diseases/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.symptoms = "\"" + rec.symptoms + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.symptoms + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/diseases-corn-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'diseases-corn.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Corn"}, {type: "Disease"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/diseases/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.symptoms = "\"" + rec.symptoms + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.symptoms + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/diseases-banana-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'diseases-banana.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Banana"}, {type: "Disease"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/diseases/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.symptoms = "\"" + rec.symptoms + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.symptoms + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/diseases-cacao-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'diseases-cacao.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Cacao"}, {type: "Disease"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/diseases/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.symptoms = "\"" + rec.symptoms + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.symptoms + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/diseases-coffee-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'diseases-coffee.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Coffee"}, {type: "Disease"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/diseases/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.symptoms = "\"" + rec.symptoms + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.symptoms + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
+  }
+});
+
+Router.route('/diseases-coconut-csv', {
+  where: 'server',
+  action: function () {
+    var filename = 'diseases-coconut.csv';
+    var fileData = "";
+
+    var headers = {
+      'Content-type': 'text/csv',
+      'Content-Disposition': "attachment; filename=" + filename
+    };
+    var records = Plant_Problem.find({$and: [{plant_affected: "Coconut"}, {type: "Disease"}]});
+
+    fileData += "Plant Affected, Name, Common Names, Filipino Names, Scientific Names, Identification Signs, Management Practices, Image URL" + "\r\n";
+    records.forEach(function(rec) {
+      var imgFilename = rec.name.split(" ").join("");
+      var imgUrl = "http://res.cloudinary.com/project-sarai/image/upload/diseases/" + imgFilename + ".jpg";
+
+      rec.plant_affected = "\"" + rec.plant_affected + "\"";
+      rec.name = "\"" + rec.name + "\"";
+      rec.eng_name = "\"" + rec.eng_name + "\"";
+      rec.fil_name = "\"" + rec.fil_name + "\"";
+      rec.sci_name = "\"" + rec.sci_name + "\"";
+      rec.symptoms = "\"" + rec.symptoms + "\"";
+      rec.treatment = "\"" + rec.treatment + "\"";
+      imgUrl = "\"" + imgUrl + "\"";
+      fileData += rec.plant_affected + "," + rec.name + "," + rec.eng_name +  "," + rec.fil_name + "," + rec.sci_name + "," + rec.symptoms + "," + rec.treatment + "," + imgUrl + "\r\n";
+    }); 
+    this.response.writeHead(200, headers);
+    return this.response.end(fileData);
   }
 });

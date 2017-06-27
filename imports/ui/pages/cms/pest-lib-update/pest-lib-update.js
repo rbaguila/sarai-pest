@@ -6,6 +6,7 @@ import '../components/library-cms-navbar.html';
 import '../components/cms-sidenav.html';
 
 Template.pestLibUpdate.onCreated(function () {
+	Meteor.subscribe('usersList');
 	Meteor.subscribe('plant_problem.all');
 	Meteor.subscribe('cms.all');
 });
@@ -43,34 +44,58 @@ Template.pestLibUpdate.helpers({
 	},
 });
 
+var file;
+var files = [];
 Template.pestLibUpdate.events({
+	'submit form': function(e, t){
+        e.preventDefault();
+		file = $('#userimage')[0].files[0];
+		files.push(file);
+		$('.progress .progress-bar').css("width",
+                function() {
+                    return $(this).attr("aria-valuenow") + "%";
+                }
+        )
+    }, 
+
 	'click #saveBTN': function(event){
 		event.preventDefault();
-
+		var imgURL;
 		var pestType = [];
 		$( "input[type=checkbox]:checked" ).map(function() {
 		    pestType.push($( this ).val());
 		});
 		
+		Cloudinary.upload(file, function(err, res) {
+          console.log("Upload Error: " + err);
+          console.log("Upload Result: " + res);
+          imgURL = res.public_id;
+          Session.set('bannerImage', 'http://res.cloudinary.com/project-sarai/image/upload/' + imgURL);
 		// GET THE VALUES
-		var newCMS = {
-			bannerImage: (Session.get('bannerImage') == undefined) ? CMS.findOne({info: "finalLib"}).bannerImage : Session.get('bannerImage'),
-			bannerText : $("#bannerText").val(),
-			bannerSubText : $("#bannerSubText").val(),
-			searchlabel : $("#searchlabel").val(),
-			pestNumbers : parseInt( $("#pestsperpage").val() ),
-			pestType : pestType
-		}
-		
-		// UPDATES THE DATABASE
-		Meteor.call('cms.updatePestLib', newCMS, (error) => {
-	      if (error) {
-	        alert(error.error);
-	      } else {
-	       	$('#cancelBTN').hide(); 
-	       	$('#viewChangesBTN').show(); 
-	      }
+			var newCMS = {
+				bannerImage: (Session.get('bannerImage') == undefined) ? CMS.findOne({info: "finalLib"}).bannerImage : Session.get('bannerImage'),
+				bannerText : $("#bannerText").val(),
+				bannerSubText : $("#bannerSubText").val(),
+				searchlabel : $("#searchlabel").val(),
+				pestNumbers : parseInt( $("#pestsperpage").val() ),
+				pestType : pestType
+			}
+			
+			// UPDATES THE DATABASE
+			Meteor.call('cms.updatePestLib', newCMS, (error) => {
+		      if (error) {
+		        alert(error.error);
+		      } else {
+		       	$('#cancelBTN').hide(); 
+		       	$('#viewChangesBTN').show(); 
+		      }
+		    });
 	    });
+	    $('.progress .progress-bar').css("width",
+                function() {
+                    return "0%";
+                }
+        )
 	},
 
 	'click #cancelBTN': function(event){

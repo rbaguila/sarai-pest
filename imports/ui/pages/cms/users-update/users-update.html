@@ -27,28 +27,26 @@
               <thead>
                 <tr>
                   <th class="text-center">Username</th>
+                  <th class="text-center">Email</th>
                   <th class="text-center">Role</th>
-       <!--            <th class="text-center"></th> -->
+                  {{#if isInRole 'Admin'}}
+                  <th class="text-center">Edit</th>
+                  {{/if}}
                 </tr>
               </thead>
             <tbody>
                 {{#each getUsers}}
                 <tr>
                   <td>{{username}}</td>
- <!--                  <td>
-                      <select name="userRole" class="form-control">
-                        <option value="admin">Admin</option>
-                        <option value="pests">Pests Admin</option>
-                        <option value="clinic">Clinic Admin</option>
-                        <option value="identification">Identification Admin</option>
-                        <option value="diseases">Diseases Admin</option>  
-                        <option value="normalUser">Registered</option> 
-                      </select>
-                  </td> -->
+                  <td>{{emails.[0].address}}</td>
                   <td>{{roles}}</td>
-<!--             <td>
-                <a href="/"><i class="fa fa-check-circle" aria-hidden="true"></i></a>
-            </td> -->
+                  <td>
+                    <div class="text-center">
+                      <div class="btn-group-xs">
+                        {{> userbutton text="edit" color="primary" id=_id}}
+                      </div>
+                    </div>
+                  </td>
           </tr>
         {{/each}}
       </tbody>
@@ -56,5 +54,48 @@
         </div>
 		</div>
 	</div>
+</template>
+
+<template name="userbutton">
+  <button type="button" class="{{text}} btn btn-{{color}}" data-toggle="tooltip" title="{{text}}" data-placement="right">
+    <span class="glyphicon glyphicon-{{text}}"></span>
+  </button>
+
+  <div class="modal fade" id="editRole">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p>Choose Role</p>
+            <select id="userRole" class="form-control">
+              <option value="Admin1"></option>
+              <option value="Admin">Admin</option>
+              <option value="Pests Admin">Pests Admin</option>
+              <option value="Clinic Admin">Clinic Admin</option>
+              <option value="Id Admin">Id Admin</option>
+              <option value="Diseases Admin">Diseases Admin</option>
+              <option value="Registered">Registered</option>
+            </select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary confirmEdit">Confirm</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="roleUpdated">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p>Role successfully updated!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </template>

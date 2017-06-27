@@ -1,0 +1,134 @@
+{{getDocType}}
+<template name="entity">
+<div class="content">
+    <div class="container">
+        <div class="panel panel-default">
+          <div class="panel-body text-center">
+
+          <div class="sarai-logo">
+                <img src="http://res.cloudinary.com/project-sarai/image/upload/v1498028629/sarai-images/SARAI-white_od5kdd.png" height="60px" />
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <h2 class="col-sm-11 col-md-11 col-lg-11 disease-name"> {{disease.name}} </h2>
+                <br>
+            </div>
+
+            <div class="container" style="float:left">
+                <div class="col-sm-12 col-md-12 col-lg-12 well">
+                    <img src="{{disease.image}}" class="img-thumbnail" alt="{{disease.name}}" width="300" height="300" >
+                </div>
+            </div>
+
+            <div class="container1" style="margin-right: 10px; font-size: 12px; text-align: center;">
+                <ul class="list-group">
+                    <p class="list-group-item">
+                        <p class="labelText"> Common Names </p>
+                        {{disease.eng_name}} 
+                        <p class="labelText"> Filipino Names </p>
+                        {{disease.fil_name}} 
+                    </p>
+                    <p class="list-group-item">
+                        <p class="labelText"> Scientific Names </p>
+                        <i> {{disease.sci_name}} </i> 
+                    </p>
+                    <p class="list-group-item">
+                        <p class="labelText"> Threatening Stage </p>
+                        {{disease.stage_threatening}} 
+                    </p>
+                    <p class="list-group-item">
+                        <p class="labelText"> Plant Affected </p>
+                        {{disease.plant_affected}} 
+                    </p>
+                </ul>
+            </div>
+
+            <div class="container">
+                <div class="container" style="text-align: justify; text-justify: inter-word; font-size: 13px;">
+                    <!-- ENGLISH TAB -->
+                    <br><br><br><br><br>
+                    <p><b><i>ENGLISH</i></b></p>
+                    <div id="english" class="tab-pane fade in active">
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <p class="titleLabel" >How to identify a {{disease.name}}</p>
+                            </div>
+                            <div class="panel-body">
+                                {{#if disease.symptoms}}   
+                                    <p>&emsp;{{disease.symptoms}}</p>
+                                {{/if}}
+
+                                <br>
+
+                                {{#if disease.description}}
+                                    <p>&emsp;{{disease.description}}</p>
+                                {{/if}}
+                            </div>
+                        </div>
+
+                        {{#if disease.effect}}
+                        <div class="panel panel-success">
+                            <div class="panel-heading .panel-success">
+                                <p class="titleLabel">Signs of a {{disease.name}} Infestation</p>
+                            </div>
+                            <div class="panel-body">
+                                <p>&emsp;{{disease.effect}}</p>
+                            </div>
+                        </div>
+                        {{/if}}
+
+
+                        {{#if disease.treatment}}
+                        <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <p class="titleLabel">How to manage {{disease.name}}</p>
+                            </div>
+                            <div class="panel-body">
+                                <p>&emsp;{{disease.treatment}}</p>
+                            </div>
+                        </div>
+                        {{/if}}
+                    </div>
+                    <!-- END OF ENGLISH TAB -->
+
+                    <!-- FILIPINO TAB -->
+                    <br>
+                    <p><b><i>FILIPINO</i></b></p>
+                    <div id="filipino" class="tab-pane fade">
+                        <div class="panel panel-success">       
+                            <div class="panel-heading">
+                                <p class="titleLabel">Paano malalaman ang {{disease.fil_name}}</p>
+                            </div>
+                            <div class="panel-body">
+                                {{#if disease.fil_symptoms}}   
+                                <p>&emsp;{{disease.fil_symptoms}}</p>
+                                {{/if}}
+
+                                <br>
+
+                                {{#if disease.fil_description}}
+                                <p>&emsp;{{disease.fil_description}}</p>
+                                {{/if}}
+                            </div>
+                        </div>
+
+                        {{#if disease.fil_effect}}
+                        <div class="panel panel-success">
+                            <div class="panel-heading"> 
+                                <p class="titleLabel">Mga sinyales na apektado ng {{disease.fil_name}}</p>
+                            </div>
+                            <div class="panel-body">
+                                <p>&emsp;{{disease.fil_effect}}</p>
+                            </div>
+                        </div>
+                        {{/if}}
+                    </div>
+                    <!-- END OF FILIPINO TAB -->
+                </div>
+            </div>
+
+          </div>
+        </div>
+    </div>
+</div>
+</template>
