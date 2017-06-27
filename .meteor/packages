@@ -47,3 +47,8 @@ momentjs:moment
 
 email
 alanning:roles
+highcharts:highcharts-meteor
+
+iron:router
+joshowens:shareit
+lukemadera:social-share

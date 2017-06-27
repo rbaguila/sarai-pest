@@ -9,6 +9,7 @@ import '../../ui/pages/library/library.js';
 import '../../ui/pages/pestId/pest-id.js';
 import '../../ui/pages/clinic/pest-clinic.js';
 import '../../ui/pages/clinic/request-assistance/request-assistance.js';
+import '../../ui/pages/clinic/advance-request-assistance/advance-request-assistance.js';
 import '../../ui/pages/diseases/diseases.js';
 import '../../ui/pages/diseases/entity-page/disease-entity-page.js';
 
@@ -24,7 +25,11 @@ import '../../ui/pages/cms/users-update/users-update.js';
 import '../../ui/pages/cms/pest-clinic-update/experts/experts-cms.js';
 import '../../ui/pages/cms/pest-clinic-update/assistance/assistance-cms.js';
 
-import '../../ui/pages/cms/pest-clinic-email/pest-clinic-email.js';
+import '../../ui/pages/cms/pest-clinic-update/charts/charts.js';
+
+import '../../ui/pages/cms/nav-settings-update/nav-settings-update.js';
+import '../../ui/pages/cms/nav-settings-update/edit-link-entity/edit-link-entity.js';
+import '../../ui/pages/cms/nav-settings-update/insert-link/insert-link.js';
 
 
 // Set up all routes in the app
@@ -63,7 +68,12 @@ FlowRouter.route('/request-assistance', {
     BlazeLayout.render('App_body', { main: "Request_Assistance" });
   }
 });
-
+FlowRouter.route('/advance-request-assistance', {
+  name: 'App.advance-request-assistance',
+  action(){
+    BlazeLayout.render('App_body', { main: "Advance_Request_Assistance" });
+  }
+});
 FlowRouter.route('/diseases', {
   name: 'App.diseases',
   action(){
@@ -130,6 +140,52 @@ FlowRouter.route('/admin/library', {
       });
     }
 });
+
+FlowRouter.route('/nav-settings-update', {
+  name: 'App.nav-settings-update',
+  action: function(params) {
+      Tracker.autorun(function() {
+          if (!Meteor.userId()) {
+            BlazeLayout.render("App_body", {main: "App_home"})
+            alert("User is not allowed to access the page.")
+            FlowRouter.redirect('/');
+          } else {
+            BlazeLayout.render("App_body", {main: "navSettingsUpdate"})
+          }
+      });
+    }
+});
+
+FlowRouter.route('/insert-link', {
+  name: 'App.insert-link',
+  action: function(params) {
+      Tracker.autorun(function() {
+          if (!Meteor.userId()) {
+            BlazeLayout.render("App_body", {main: "App_home"})
+            alert("User is not allowed to access the page.")
+            FlowRouter.redirect('/');
+          } else {
+            BlazeLayout.render("App_body", {main: "insertLink"})
+          }
+      });
+    }
+});
+
+FlowRouter.route("/edit-link/:_id", {
+  name: 'App.edit-link',
+  action: function(params) {
+      Tracker.autorun(function() {
+          if (!Meteor.userId()) {
+            BlazeLayout.render("App_body", {main: "App_home"})
+            alert("User is not allowed to access the page.")
+            FlowRouter.redirect('/');
+          } else {
+            BlazeLayout.render("App_body", {main: "editLinkEntity"})
+          }
+      });
+    }
+});
+
 
 FlowRouter.route('/admin/insert-pest', {
   name: 'App.insert-pest',
@@ -250,13 +306,22 @@ FlowRouter.route("/disease-entity/:_id", {
     BlazeLayout.render("App_body", {main: "diseaseEntityPage"})
   }
 });
-FlowRouter.route('/pests-clinic/email', {
-  name: 'App.pests-clinic-email',
-  action(){
-    BlazeLayout.render('App_body', { main: "App_clinic_email" });
-  }
-});
 
+FlowRouter.route('/admin/activity-log', {
+  name: 'App.activity-log',
+  action: function(params) {
+      Tracker.autorun(function() {
+          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Clinic Admin'])) {
+            BlazeLayout.render("App_body", {main: "App_home"})
+            //alert("User is not allowed to access the page.")
+            FlowRouter.redirect('/');
+          } else {
+            BlazeLayout.render("App_body", {main: "Create_chart"})
+
+          }
+      });
+    }
+});
 FlowRouter.notFound = {
   action() {
     BlazeLayout.render('App_body', { main: 'App_notFound' });

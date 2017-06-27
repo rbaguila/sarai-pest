@@ -2,11 +2,13 @@ import { Meteor } from 'meteor/meteor';
 import { CMS } from '/imports/api/cms/cms.js';
 import { Plant_Problem } from '/imports/api/plant_problem/plant_problem.js';
 import { Assistance } from '/imports/api/assistance/assistance.js';
+import { Logs } from '/imports/api/logs/logs.js';
 import './request-assistance.html';
 
 Template.requestAssistance.onCreated(function () {
 	Meteor.subscribe('plant_problem.all');
 	Meteor.subscribe('assistance.all');
+	Meteor.subscribe('logs.all');
 });
 
 Template.requestAssistance.helpers({
@@ -38,6 +40,7 @@ Template.requestAssistance.events({
 		      if (error) {
 		        alert(error.error);
 		      } else {
+		      	Meteor.call('logs.addlogs',newAssistance);
 		      	$("#email").val(''),
 				$("#subject").val(''),
 				$("#message").val(''),
@@ -53,5 +56,8 @@ Template.requestAssistance.events({
 
 	'click #backBTN': function(event){
 		FlowRouter.go("/pests-clinic");
+	},
+	'click #advanceFormBTN': function(event){
+		FlowRouter.go("/advance-request-assistance");
 	},
 });

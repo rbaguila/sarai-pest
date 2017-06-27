@@ -18,6 +18,7 @@ Template.assistanceUpdate.helpers({
 	assistance(){
 		return Assistance.find().fetch();
 	},
+	
 });
 
 Template.assistanceUpdate.events({
@@ -42,27 +43,45 @@ Template.assistanceUpdate.events({
 	},
 
 	'click #submitBTN': function(event){
-		var filename="";
-		var reply = {
-			subject: $('#subjectField').val(), 
-			message: $('#msgField').val()
-		};
-		var email = {
-            to: name+" <" + emailaddress + ">",
-            from: 'mendozama.angelica@gmail.com',
-            //replyTo: 'abct@failtracker.com',
-            subject: $('#subjectField').val(),
-            text: $('#msgField').val(),
-            attachments:[
-              {
-                filePath: filename
-              }
-            ]
-        };
-        console.log("Sending...");
-        Meteor.call('sendEmail', email);
-        $("#answerFields").hide();
+		if(!($("#subjectField").val()=='') && !($("#msgField").val()=='') ){
+	    	$("#enterCredentials").modal('show');
+	    }else{
+	    	$("#incompleteForm").modal('show');
+	    }
 	},
+	'click #cancelBTN': function(event){
+		$('#subjectField').val('');
+		$('#msgField').val('');
+		$("#answerFields").hide();
+	},
+	
+	'click #confirmSend': function(event) {
+		var regex = /^[a-zA-Z0-9]+[^ ]*@[^ ]*\.(org|net|com|gov\us|edu)$/;
+	    if(regex.test($('#emailField').val())){
+	    	$("#notAcceptedUsername").modal('show');
+	    }else{
+	    	if(!($("#emailField").val()=='') && !($("#pwdField").val()=='') ){
+	    		var email = {
+		            to: name+" <" + emailaddress + ">",
+		            from: $("#emailField").val()+'@gmail.com',
+		            //replyTo: 'abct@failtracker.com',
+		            subject: $('#subjectField').val(),
+		            text: $('#msgField').val()
+		        };
+		        Meteor.call('sendEmail',$("#emailField").val(),$("#pwdField").val(), email);
+		        $('#subjectField').val('');
+				$('#msgField').val('');
+		        $('#emailField').val('');
+		        $('#pwdField').val('');
+		        $("#enterCredentials").modal('hide');
+		        $("#answerFields").hide();
+		        $("#answerSent").modal('show');
+	    	}else{
+	    		$("#incompleteForm").modal('show');
+	    	}
+	    }
+	},
+
 });
 
 Template.assistanceButton.events({

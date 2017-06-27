@@ -1,10 +1,9 @@
 import { Meteor } from 'meteor/meteor';
-//process.env.MAIL_URL = "smtp://" + username+":"+password+"@smtp.gmail.com:465";
-
 Meteor.methods({
-    sendEmail: function (email) {
+    sendEmail: function (username, password,email) {
         //if (this.userId == userId) {
-            Email.send(email);
+        process.env.MAIL_URL = 'smtp://' + encodeURIComponent(username) + ':' + encodeURIComponent(password) + '@smtp.gmail.com:465';
+        Email.send(email);
         //}
     }
 });
