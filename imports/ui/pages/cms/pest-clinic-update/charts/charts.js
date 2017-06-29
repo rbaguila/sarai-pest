@@ -8,7 +8,6 @@ import '../../components/cms-sidenav.html';
 
 changeNumberChart = function () {
     // Gather data: 
-    console.log("bdshbdsghds");
     var year = $('#yearForm').val();
     var count = 0;
 

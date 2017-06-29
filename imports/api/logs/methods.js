@@ -16,7 +16,11 @@ Meteor.methods({
     check( newLog.year, String);
     check( newLog.problem, String);
     check( newLog.control, Number);
-
+    check( newLog.username, String);
+    check( newLog.dateReplied, String);
+    check( newLog.adminUsername, String);
+    check( newLog.adminEmail, String);
+    check( newLog.reply, String);
       Logs.insert(
         { 
           type: 'message',
@@ -28,8 +32,29 @@ Meteor.methods({
           month: newLog.month,
           year: newLog.year,
           problem: newLog.problem,
-          control: newLog.control
+          control: newLog.control,
+          username: newLog.username,
+          dateReplied: newLog.dateReplied,
+          adminUsername: newLog.adminUsername,
+          adminEmail: newLog.adminEmail,
+          reply: newLog.reply
         } 
+    );
+  },
+  'logs.updateLog'( newLog ) {
+    check( newLog.adminUsername, String);
+    check( newLog.adminEmail, String);
+    check( newLog.reply, String);
+
+    Logs.update( {_id: newLog.id},
+      { $set:
+        {
+          dateReplied: newLog.dateReplied,
+          adminUsername: newLog.adminUsername,
+          adminEmail: newLog.adminEmail,
+          reply: newLog.reply
+        }
+      }
     );
   },
 

@@ -1,6 +1,8 @@
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 import { Router } from 'meteor/iron:router';
+import { Logs } from '/imports/api/logs/logs.js';
+
 // Import needed templates
 import '../../ui/layouts/body/body.js';
 import '../../ui/pages/home/home.js';
@@ -9,7 +11,7 @@ import '../../ui/pages/library/library.js';
 import '../../ui/pages/pestId/pest-id.js';
 import '../../ui/pages/clinic/pest-clinic.js';
 import '../../ui/pages/clinic/request-assistance/request-assistance.js';
-import '../../ui/pages/clinic/advance-request-assistance/advance-request-assistance.js';
+import '../../ui/pages/clinic/request-assistance/advance-request-assistance/advance-request-assistance.js';
 import '../../ui/pages/diseases/diseases.js';
 import '../../ui/pages/diseases/entity-page/disease-entity-page.js';
 
@@ -26,11 +28,13 @@ import '../../ui/pages/cms/pest-clinic-update/experts/experts-cms.js';
 import '../../ui/pages/cms/pest-clinic-update/assistance/assistance-cms.js';
 
 import '../../ui/pages/cms/pest-clinic-update/charts/charts.js';
+import '../../ui/pages/cms/pest-clinic-update/form-result/form-result.js';
 
 import '../../ui/pages/cms/nav-settings-update/nav-settings-update.js';
 import '../../ui/pages/cms/nav-settings-update/edit-link-entity/edit-link-entity.js';
 import '../../ui/pages/cms/nav-settings-update/insert-link/insert-link.js';
 
+import '../../ui/pages/clinic/request-assistance/past-requested-assistance/past-requested-assistance.js';
 
 // Set up all routes in the app
 FlowRouter.route('/', {
@@ -73,6 +77,33 @@ FlowRouter.route('/advance-request-assistance', {
   action(){
     BlazeLayout.render('App_body', { main: "Advance_Request_Assistance" });
   }
+});
+FlowRouter.route('/past-requested-assistance', {
+  name: 'App.past-requested-assistance',
+  /*action(){
+    BlazeLayout.render('App_body', { main: "Past_Assistance" });
+  }*/
+  subscriptions: function(params, queryParams) {
+      this.register('getLogs', Meteor.subscribe('logs.all'));
+  },
+  action: function(params) {
+      Tracker.autorun(function() {
+      var ready = FlowRouter.subsReady("getLogs");
+        if(Meteor.user()){
+          if (ready && Logs.find({username: Meteor.user().username}).count() > 0) {
+            BlazeLayout.render("App_body", {main: "Past_Assistance"})
+          }else if(ready){
+            BlazeLayout.render("App_body", {main: "Request_Assistance"})
+            alert("User has no past requested assistance.")
+            FlowRouter.redirect('/request-assistance');
+          }
+        }else if(ready){
+          BlazeLayout.render("App_body", {main: "Request_Assistance"})
+            alert("User is not  logged in.")
+            FlowRouter.redirect('/request-assistance');
+        }
+      });
+    }
 });
 FlowRouter.route('/diseases', {
   name: 'App.diseases',
@@ -376,6 +407,21 @@ FlowRouter.route('/admin/activity-log', {
             FlowRouter.redirect('/');
           } else {
             BlazeLayout.render("App_body", {main: "Create_chart"})
+
+          }
+      });
+    }
+});
+FlowRouter.route('/admin/form-result', {
+  name: 'App.form-result',
+  action: function(params) {
+      Tracker.autorun(function() {
+          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Clinic Admin'])) {
+            BlazeLayout.render("App_body", {main: "App_home"})
+            //alert("User is not allowed to access the page.")
+            FlowRouter.redirect('/');
+          } else {
+            BlazeLayout.render("App_body", {main: "formResult"})
 
           }
       });

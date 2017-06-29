@@ -162,7 +162,102 @@ Meteor.startup(() => {
     ];
 
     data.forEach(assistance => Assistance.insert(assistance));
-    data.forEach(assistance => Logs.insert(assistance));
+  }
+  if (Logs.find().count() === 0) {
+    const data = [
+      {
+        type: 'message',
+        email: 'agamboa@gmail.com',
+        subject: 'Pests seen',
+        message: 'This is sample message number one.',
+        user: 'Alexis Gamboa',
+        date: 'April 16th 2016, 6:27:25 pm',
+        month: 'April',
+        year: '2016',
+        problem: 'Unknown',
+        control: '1',
+        username: 'admin123',
+        dateReplied: '',
+        adminId: '',
+        adminUsername: '',
+        adminEmail: '',
+        reply: ''
+      },
+      {
+        type: 'message',
+        email: 'rdim@gmail.com',
+        subject: 'Bugs alert',
+        message: 'This is sample message number two.',
+        user: 'Ren Dimasalang',
+        date: 'April 16th 2016, 6:37:25 pm',
+        month: 'April',
+        year: '2016',
+        problem: 'Black Bug',
+        control: '2',
+        username: 'admin123',
+        dateReplied: '',
+        adminId: '',
+        adminUsername: '',
+        adminEmail: '',
+        reply: ''
+      },
+      {
+        type: 'message',
+        email: 'hsantos@gmail.com',
+        subject: 'Need Expert',
+        message: 'This is sample message number three. If this works then yehey!',
+        user: 'Harvey Santos',
+        date: 'April 16th 2016, 6:47:25 pm',
+        month: 'April',
+        year: '2016',
+        problem: 'Black Bug',
+        control: '3',
+        username: 'admin123',
+        dateReplied: '',
+        adminId: '',
+        adminUsername: '',
+        adminEmail: '',
+        reply: ''
+      },
+      {
+        type: 'message',
+        email: 'gfernandez@gmail.com',
+        subject: 'Rice bugs',
+        message: 'Thus is sample message number four. Dont know what to do.',
+        user: 'Gail Fernandez',
+        date: 'April 16th 2016, 6:49:25 pm',
+        month: 'April',
+        year: '2016',
+        problem: 'Black Bug',
+        control: '4',
+        username: 'admin123',
+        dateReplied: '',
+        adminId: '',
+        adminUsername: '',
+        adminEmail: '',
+        reply: ''
+      },
+      {
+        type: 'message',
+        email: 'psilva@gmail.com',
+        subject: 'Corn bugs',
+        message: 'This is sample message number five. ',
+        user: 'Penny Silva',
+        date: 'April 16th 2016, 6:53:25 pm',
+        month: 'April',
+        year: '2016',
+        problem: 'Unknown',
+        control: '5',
+        username: 'admin123',
+        dateReplied: '',
+        adminId: '',
+        adminUsername: '',
+        adminEmail: '',
+        reply: ''
+      }
+    ];
+
+    data.forEach(logs => Logs.insert(logs));
   }
 
   // if the CMS collection is empty
