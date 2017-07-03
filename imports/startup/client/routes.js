@@ -432,6 +432,7 @@ FlowRouter.route('/admin/activity-log', {
       });
     }
 });
+
 FlowRouter.route('/admin/form-result', {
   name: 'App.form-result',
   subscriptions: function(params, queryParams) {
@@ -452,8 +453,18 @@ FlowRouter.route('/admin/form-result', {
       });
     }
 });
+
+FlowRouter.route("/pest-form", {
+  name: 'App.pest-form',
+  action() {
+    BlazeLayout.render("App_body", {main: "PestForm"})
+  }
+});
+
 FlowRouter.notFound = {
   action() {
     BlazeLayout.render('App_body', { main: 'App_notFound' });
   },
 };
+
+
