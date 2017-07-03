@@ -310,7 +310,7 @@ Template.pestId.events({
 	},
 
 	'change [name="cropAffected"]' (event, template) {
-		if (!$("input[name='radiopd']:checked").val()) {
+		if (!$('input[name="radiopd"]:checked').val()) {
 		   alert('Choose either Pest or Disease first.');
 		   $.each($('[name="cropAffected"]:checked'), function(index, item){
 				$('[name="cropAffected"]:checked').removeAttr('checked');
