@@ -74,9 +74,22 @@ FlowRouter.route('/request-assistance', {
 });
 FlowRouter.route('/advance-request-assistance', {
   name: 'App.advance-request-assistance',
-  action(){
-    BlazeLayout.render('App_body', { main: "Advance_Request_Assistance" });
-  }
+  subscriptions: function(params, queryParams) {
+      this.register('getUser', Meteor.subscribe('allUsers', Meteor.userId()));
+  },  
+  action: function(params) {
+      Tracker.autorun(function() {
+      var ready = FlowRouter.subsReady("getUser");
+          if (Meteor.user()) {
+            BlazeLayout.render("App_body", {main: "Advance_Request_Assistance"})
+          }else{
+            BlazeLayout.render("App_body", {main: "Request_Assistance"})
+//            alert("User is not allowed to access the page.")
+            alert("User is not  logged in.")
+            FlowRouter.redirect('/request-assistance');
+          }
+      });
+    }
 });
 FlowRouter.route('/past-requested-assistance', {
   name: 'App.past-requested-assistance',
