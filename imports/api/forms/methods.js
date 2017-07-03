@@ -5,9 +5,7 @@ import { check } from 'meteor/check';
 import { Forms } from './forms.js';
 
 Meteor.methods({
-  'Forms.insert'(user, date, email, floc, area, crop, src, variety, cstage, vtype, pesttype, symptoms, parts, distribution, damage, fertilizer, insecticide, herbicide, fungicide, weather, chemapplied, weatherobserved) {
-    //STEP1
-    check(user, String);
+  'Forms.insert'(date, email, floc, area, crop, src, variety, cstage, vtype, pesttype, symptoms, parts, distribution, damage, fertilizer, insecticide, herbicide, fungicide, weather, chemapplied, weatherobserved) {
     check(date, String);
     check(email, String);
     check(floc, String);
@@ -32,7 +30,6 @@ Meteor.methods({
 
 
     Forms.insert({
-      user: user,
       date: date,
       email: email,
       

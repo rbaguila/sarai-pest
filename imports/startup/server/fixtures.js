@@ -7,9 +7,39 @@ import { CMS } from '../../api/cms/cms.js';
 import { Experts } from '../../api/experts/experts.js';
 import { Assistance } from '../../api/assistance/assistance.js';
 import { Logs } from '../../api/logs/logs.js';
-
+import { Forms } from '../../api/forms/forms.js';
 
 Meteor.startup(() => {
+  if (Forms.find().count() === 0) {
+    const data = [
+      {
+        date: 'a', 
+        email: 'a', 
+        floc: 'a', 
+        area: 'a', 
+        crop: 'a', 
+        src: 'a', 
+        variety: 'a', 
+        cstage: 'a', 
+        vtype: 'a', 
+        pesttype: 'a', 
+        symptoms: 'a', 
+        parts: 'a', 
+        distribution: 'a', 
+        damage: 'a', 
+        fertilizer: 'a', 
+        insecticide: 'a', 
+        herbicide: 'a', 
+        fungicide: 'a', 
+        weather: 'a', 
+        chemapplied: 'a', 
+        weatherobserved: 'a',
+      },
+    ];
+
+    data.forEach(form => Forms.insert(form));
+  }
+
   // if the Links collection is empty
   if (Links.find().count() === 0) {
     const data = [
