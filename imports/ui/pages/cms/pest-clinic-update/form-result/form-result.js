@@ -60,7 +60,7 @@ Template.resultButton.events({
 			$('#date').html("<em>" + entry.date + "</em>");
 			$('#problem').html("<br/> Problem: " + entry.problem +"<br/>");
 			$('#message').html("<br/>" + entry.message +"<br/><hr/>");
-			$('#expertUsername').html("<h5><b>"+ adminUsername + "</b> <small>" + entry.adminEmail + "</small></h5>");
+			$('#expertUsername').html("<h5><b>"+ entry.adminUsername + "</b> <small>" + entry.adminEmail + "</small></h5>");
 			$('#dateReplied').html("<em>" + entry.dateReplied + "</em>");
 			$('#reply').html("<br/>" + entry.reply +"<br/><hr/>");
 			$('#close-button').html("<button type='button' class='btn btn-primary answer'>Close</button>");

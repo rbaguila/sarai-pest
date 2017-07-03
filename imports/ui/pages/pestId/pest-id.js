@@ -194,7 +194,7 @@ Template.pestId.helpers({
 							Session.set("spinner", false);
 							Session.set("uploaded", true);
 							Session.set('data',result.data);
-							console.log("mico" + result.data);		
+							console.log(result.data);		
 						},
 						error: function(error){
 							Session.set("spinner", false);
