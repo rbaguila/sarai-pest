@@ -44,6 +44,7 @@ Template.assistanceUpdate.events({
 	    	$('#subject').html('');
 			$('#user').html('');
 			$('#date').html('');
+			$('#problem').html('');
 			$('#message').html('');
 			$('#answer-button').html('');
 			$("#answerFields").hide();
