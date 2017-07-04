@@ -36,6 +36,8 @@ import '../../ui/pages/cms/nav-settings-update/insert-link/insert-link.js';
 
 import '../../ui/pages/clinic/request-assistance/past-requested-assistance/past-requested-assistance.js';
 
+import '../../ui/pages/clinic/pest-form/pest-form.js';
+
 // Set up all routes in the app
 FlowRouter.route('/', {
   name: 'App.home',

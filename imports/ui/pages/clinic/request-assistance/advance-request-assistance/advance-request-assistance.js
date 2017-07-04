@@ -21,6 +21,7 @@ Template.Advance_Request_Assistance.events({
 		'click #back1': function(){
 				$("#geninfo").show();
 				$("#pestprob").hide();
+				console.log($("#cstage").val());
 		},
 		'click #back2': function(){
 				$("#pestprob").show();

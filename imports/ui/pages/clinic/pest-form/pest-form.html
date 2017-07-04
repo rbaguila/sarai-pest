@@ -1,11 +1,17 @@
 <template name="PestForm">
+    {{> top_nav}}
+        {{> FormOnly}}
+    {{> footer}}
+</template>
+
+<template name="FormOnly">
     <!--div class="max mdl-grid">
             {{ >sampleTemplate}}
     </div-->
-    <div class="max">
-        <center>
+    <div class="max" style="position: relative; top:55px;">
+
         <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--3-col">
+            <div class="mdl-cell mdl-cell--3-col" style="float:left; width:20%; padding-left: 150px;">
                 <center>
                     <button class="steps" id="stp1" disabled>Step 1:<br/>Fill up General Information Form</button>
                     <svg width="200" height="35">
@@ -20,499 +26,303 @@
                         <line x1="100" x2="100" y1="5" y2="35" stroke="#5184AF" stroke-width="5" stroke-linecap="round" stroke-dasharray="1,10" />
                     </svg>
                     <button class="steps" id="stp4" disabled>Step 4:<br/>Submit Form</button>
-                    
-                    <!--svg width="200" height="100">
-                        <rect width="200" rx="10" ry="10" height="75" stroke="gray" stroke-width="1" fill="white" />
-                        <text x="0" y="15" fill="black">General Information</text>
-                    </svg>
-                    <svg width="200" height="100">
-                        <rect rx="10" ry="10" width="200" height="75" stroke="gray" stroke-width="1" fill="white" />
-                    </svg>
-                    <svg width="200" height="100">
-                        <rect rx="10" ry="10" width="200" height="75" stroke="gray" stroke-width="1" fill="white" />
-                    </svg>
-                    <svg width="200" height="100">
-                        <rect rx="10" ry="10" width="200" height="75" stroke="gray" stroke-width="1" fill="white" />
-                    </svg-->
                     <br/>
                     
                 </center>
             </div>
-            <div class="mdl-cell mdl-cell--9-col">
-                <div id="geninfo">
+            <div class="mdl-cell mdl-cell--9-col" style="float:center; width:80%; padding-left: 300px;">
+                <div id="geninfo2">
                     {{ >GeneralInformation2}}
                 </div>
-                <div id="pestprob">
+                <div id="pestprob2">
                     {{ >PestProblemForm2}}
                 </div>
-                <div id="addinfo">
+                <div id="addinfo2">
                     {{ >AdditionalInformation2}}
                 </div>
             </div>
         </div>
-        </center>
-    </div>
 
+    </div>
     
 </template>
 
+<!-- ====================================================================================================== -->
 
 <template name="GeneralInformation2">
 
-    <div class="mdl-cell mdl-cell--9-col">
-    <div class="pest-form mdl-card">
+    <div class="whole1" style="width:75%">
         
-        <!--div class="mdl-grid">
-            <h5 style="color:gray">General Information</h5>
-        </div-->
-        <form name="firstForm" class="firstForm">
-        <div class="mdl-grid">
+        <center>
+            <h5 style="color:gray;">General Information</h5>
+        </center>
+        <form name="firstForm2" class="firstForm2">
+
+            <div class="mail">
+                <label id="email" class="error" for="email" style="display: inline; color: black">Enter your e-mail</label><br>
+                <input class="input-form" type="text" id="email2" name="email2" style="width:100%"> 
+            </div>
+            <br>
+            <div class="fLocation">
+                <label id="floc-error" class="error" for="floc2" style="display: inline; color: black">Farm Location</label><br>
+                <input class="input-form" type="text" id="floc2" name="floc2" style="width:100%"> 
+            </div>
+            <br>
+            <div class="sPlant">
+                <label id="src-error" class="error" for="src2" style="display: inline; color: black">Source of Plant</label><br>
+                <input class="input-form" type="text" id="src2" name="src2" style="width:100%"> 
+            </div>
+            <br>
+            <div class="aPlanted">
+                <label id="area-error" class="error" for="area2" style="display: inline; color: black">Area</label><br>
+                <input class="input-form" type="text" id="area2" name="area2" style="width:100%">  
+            </div>
+            <br>
+            <div class="cStages">
+                <label id="cstage2" class="error" for="cstage2" style="display: inline; color: black">Crop Stage</label><br>
+                <select id="cstage2">
+                    <option value="Seeding">Seeding</option>
+                    <option value="Flowering">Flowering</option>
+                    <option value="Maturity">Maturity</option>
+                    <option value="Vegetative">Max Vegetative</option>
+                </select>
+            </div>
+            <br>
+            <div class="cVariety">
+                <label id="crop-error" class="error" for="crop2" style="display: inline; color: black">Crop/Variety (Hybrid/Open Pollinated)</label><br>
+                <input class="input-form" type="text" id="crop2" name="crop2" style="width:100%"> 
+            </div>
+
+            <br><br>
+            <center><button class="btn btn-success" id="con1">Continue to Pest Problem</button></center>
+
         
-                <!--div class="mdl-grid">
-                    <label id="crop-error" class="error" for="crop" style="display: inline;"></label><br/>
-                    <label id="floc-error" class="error" for="floc" style="display: inline;"></label><br/>
-                    <label id="area-error" class="error" for="area" style="display: inline;"></label><br/>
-                    <label id="src-error" class="error" for="src" style="display: inline;"></label><br/>
-                </div-->
-                
-                <div class="mdl-grid">
-                        <div class="mdl-grid">
-                            <div class="mdl-cell mdl-cell--6-col">
-                                <label class="f-left form-text">Farm Location </label> 
-                            </div>
-                            <div class="mdl-cell mdl-cell--6-col">
-                                <label id="floc-error" class="error" for="floc" style="display: inline;"></label>
-                            </div>
-                            <div class="input-fmt mdl-cell mdl-cell--12-col">
-                                <input class="input-form" type="text" id="floc" name="floc">    
-                            </div>
-                        
-                            <div class="mdl-cell mdl-cell--6-col">
-                                <label class="f-left form-text">Source of Plant </label>
-                            </div>
-                            <div class="mdl-cell mdl-cell--6-col">
-                                <label id="src-error" class="error" for="src" style="display: inline;"></label>
-                            </div>
-                            <div class="input-fmt mdl-cell mdl-cell--12-col">
-                                <input class="input-form" type="text" id="src" name="src">  
-                            </div>
-                        
-                        
-                            <div class="mdl-cell mdl-cell--6-col">
-                                <label class="f-left form-text">Area Planted </label>
-                            </div>
-                            
-                            <div class="mdl-cell mdl-cell--6-col">
-                                <label class="f-left form-text">Crop Stage</label>
-                            </div>
-                            <div class="input-fmt mdl-cell mdl-cell--6-col">
-                                <input class="input-form-area" type="text" id="area" name="area">   
-                            </div>
-                            <div class="input-fmt mdl-cell mdl-cell--6-col">
-                            <select id="cstage">
-                                <option value="Seeding">Seeding</option>
-                                <option value="Flowering">Flowering</option>
-                                <option value="Maturity">Maturity</option>
-                                <option value="Vegetative">Max Vegetative</option>
-                            </select>
-                            </div>
-                        
-                            
-                        
-                            <!--div class="mdl-cell mdl-cell-3-col">
-                                <label class="f-left form-text">Crop </label>
-                            </div>
-                            <div class="mdl-cell mdl-cell-4-col">
-                                <label class="f-left mdl-radio mdl-js-radio mdl-js-ripple-effect" for="crice">
-                                    <input type="radio" id="crice" name="cropname" class="mdl-radio__button" >
-                                    <span class="opt-size mdl-radio__label">Rice</span>
-                                </label>
-                            </div>
-                            <div class="mdl-cell mdl-cell-4-col">
-                                <label class="f-left mdl-radio mdl-js-radio mdl-js-ripple-effect" for="ccorn">
-                                    <input type="radio" id="ccorn" name="cropname" class="mdl-radio__button" >
-                                    <span class="opt-size mdl-radio__label">Corn</span>
-                                </label>
-                            </div-->
-                        
-                        
-                        
-                        
-                            <div class="mdl-cell mdl-cell--6-col">
-                                <label class="f-left form-text">Crop/Variety (Hybrid/Open Pollinated)</label>
-                            </div>
-                            <div class="mdl-cell mdl-cell--6-col">
-                                <label id="crop-error" class="error" for="crop" style="display: inline;"></label>
-                            </div>
-                            <div class="input-fmt mdl-cell mdl-cell--12-col">
-                                <input class="input-form" type="text" id="crop" name="crop">
-                            </div>
-                        
-                        </div>
-                        
-                        
-                        
-                        <!--div class="mdl-cell ">
-                            <input id="skill" type="range" min="1" max="1000" value="0">
-                        </div-->
-                        
-                        <div class="mdl-grid">
-                        <div class="mdl-cell mdl-cell--12-col">
-                            <button id="con1" class="continue mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Continue to Pest Problem</button>        
-                        </div>
-                        </div>
-                        
-                </div>
-            
-        </div>
         </form>
-    </div>
     </div>
 </template>
 
+<!-- ====================================================================================================== -->
 
 <template name="PestProblemForm2">
 
-    <div class="pest-form mdl-card">
-        <form name="secondForm" class="secondForm">
-        
-        <div class="mdl-grid">
-            <div class=" mdl-cell mdl-cell--12-col">
-            
-            <div class="mdl-grid">
-                <div class="input-fmt mdl-cell mdl-cell--12-col">
-                    <label class="f-left form-text">Types of Pests</label>
-                </div>
-                <div class="mdl-cell mdl-cell--12-col">
-                <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--4-col">
-                        <label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="insect">
-                            <input type="checkbox" id="insect" class="mdl-checkbox__input">
-                            <p class="opt-size mdl-checkbox__label">Insect</p>
-                        </label>
-                    </div>
-                    <div class="mdl-cell mdl-cell--4-col">
-                        <label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="weed">
-                            <input type="checkbox" id="weed" class="mdl-checkbox__input">
-                            <p class="opt-size mdl-checkbox__label">Weed</p>
-                        </label>
-                    </div>
-                    <div class="mdl-cell mdl-cell--4-col">
-                        <label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="rat">
-                            <input type="checkbox" id="rat" class="mdl-checkbox__input">
-                            <p class="opt-size mdl-checkbox__label">Rat</p>
-                        </label>
-                    </div>
-                    <div class="mdl-cell mdl-cell--4-col">
-                        <label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="bird">
-                            <input type="checkbox" id="bird" class="mdl-checkbox__input">
-                            <p class="opt-size mdl-checkbox__label">Bird</p>
-                        </label>
-                    </div>
-                    <div class="mdl-cell mdl-cell--4-col">
-                        <label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="nematode">
-                            <input type="checkbox" id="nematode" class="mdl-checkbox__input">
-                            <p class="opt-size mdl-checkbox__label">Nematode</p>
-                        </label>
-                    </div>
-                    <div class="mdl-cell mdl-cell--4-col">
-                        <label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="otrf2-1">
-                            <input type="checkbox" id="otrf2-1" class="mdl-checkbox__input">
-                            <p class="opt-size mdl-checkbox__label">Others</p>
-                        </label>
-                    </div>
-                </div>
-                </div>
-            </div>
-            <hr/>
-            <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--12-col">
-                <label class="f-left form-text">Description of Symptoms</label>
-                </div>
-                <div class="mdl-cell mdl-cell--12-col">
-                <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--4-col">
-                        <label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="yellowing">
-                            <input type="checkbox" id="yellowing" class="mdl-checkbox__input">
-                            <span class="opt-size mdl-checkbox__label">Yellowing</span>
-                        </label>
-                    </div>
-                    <div class="mdl-cell mdl-cell--4-col">
-                        <label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="rot">
-                            <input type="checkbox" id="rot" class="mdl-checkbox__input">
-                            <span class="opt-size mdl-checkbox__label">Root/Stem rot</span>
-                        </label>
-                    </div>
-                    <div class="mdl-cell mdl-cell--4-col">
-                        <label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="spot">
-                            <input type="checkbox" id="spot" class="mdl-checkbox__input">
-                            <span class="opt-size mdl-checkbox__label">Leaf spot</span>
-                        </label>
-                    </div>
-                    <div class="mdl-cell mdl-cell--4-col">
-                        <label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="stunting">
-                            <input type="checkbox" id="stunting" class="mdl-checkbox__input">
-                            <span class="opt-size mdl-checkbox__label">Stunting</span>
-                        </label>
-                    </div>
-                    <div class="mdl-cell mdl-cell--4-col">
-                        <label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="otrf2">
-                            <input type="checkbox" id="otrf2" class="mdl-checkbox__input">
-                            <span class=" opt-size mdl-checkbox__label">Others</span>
-                        </label>
-                    </div>
-                </div>
-                </div>
-            </div>
-            <hr/>
-            <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--12-col">
-                <label class="f-left form-text">Parts of plant affected</label>
-            </div>
-            <div class="mdl-cell mdl-cell--12-col">
-            <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--4-col">
-                    <label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="wplant">
-                        <input type="checkbox" id="wplant" class="mdl-checkbox__input">
-                        <p class="opt-size mdl-checkbox__label">Whole Plant</p>
-                    </label>
-                </div>
-                <div class="mdl-cell mdl-cell--4-col">
-                    <label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="frs">
-                        <input type="checkbox" id="frs" class="mdl-checkbox__input">
-                        <p class="opt-size mdl-checkbox__label">Few roots/stem</p>
-                    </label>
-                </div>
-                <div class="mdl-cell mdl-cell--4-col">
-                    <label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="local">
-                        <input type="checkbox" id="local" class="mdl-checkbox__input">
-                        <p class="opt-size mdl-checkbox__label">Localized</p>
-                    </label>
-                </div>
-                <div class="mdl-cell mdl-cell--4-col">
-                    <label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="flt">
-                        <input type="checkbox" id="flt" class="mdl-checkbox__input">
-                        <p class="opt-size mdl-checkbox__label">Few leaves/twigs</p>
-                    </label>
-                </div>
-                <div class="mdl-cell mdl-cell--4-col">
-                    <label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="otrf22">
-                        <input type="checkbox" id="otrf22" class="mdl-checkbox__input">
-                        <p class="opt-size mdl-checkbox__label">Others</p>
-                    </label>
-                </div>
-            </div>
-            </div>
-        </div>
-        <hr/>
-        <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--6-col">
-                <label class="f-left form-text">Distribution of Symptoms</label>
-            </div>
-            <div class="mdl-cell mdl-cell--6-col">
-                <label class="f-left form-text">Insect Damage</label>
-            </div>
-            <div class="mdl-cell mdl-cell--6-col">
-            <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--12-col">
-                    <label class="f-left mdl-radio mdl-js-radio mdl-js-ripple-effect" for="random">
-                        <input type="radio" id="random" name="stage" class="mdl-radio__button" >
-                        <span class="opt-size mdl-radio__label">Random</span>
-                    </label>
-                </div>
-                <div class="mdl-cell mdl-cell--12-col">
-                    <label class="f-left mdl-radio mdl-js-radio mdl-js-ripple-effect" for="sao">
-                        <input type="radio" id="sao" name="stage" class="mdl-radio__button" >
-                        <span class="opt-size mdl-radio__label">Scattered all over</span>
-                    </label>
-                </div>
-                
-                <div class="input-fmt mdl-cell mdl-cell--12-col">
-                    <label class="f-left form-text">Others (Specify)</label> 
-                    <input class="form3-input-fmt" type="text" id="otherf23" name="otherf23">   
-                </div>
+    <div class="whole2" style="width:60%; position:absolute;">
 
-            </div>
-            </div>
-            <div class="mdl-cell mdl-cell--6-col">
-            <div class="mdl-grid">
-                <div class="mdl-cell mdl-cell--12-col">
-                    <label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="chewing">
-                        <input type="checkbox" id="chewing" class="mdl-checkbox__input">
-                        <p class="opt-size mdl-checkbox__label">Chewing Type</p>
-                    </label>
-                </div>
-                <div class="mdl-cell mdl-cell--12-col">
-                    <label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="sucking">
-                        <input type="checkbox" id="sucking" class="mdl-checkbox__input">
-                        <p class="opt-size mdl-checkbox__label">Sucking Type</p>
-                    </label>
-                </div>
-                
-                <div class="mdl-cell mdl-cell--12-col">
-                    <label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="otr-insect-damage">
-                        <input type="checkbox" id="otr-insect-damage" class="mdl-checkbox__input">
-                        <p class="opt-size mdl-checkbox__label">Others</p>
-                    </label>
-                </div>
+        <center>
+            <h5 style="color:gray;">Pest Problem</h5>
+        </center>
 
-            </div>
-            </div>
-        </div>  
-        <hr/>
-        <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--12-col">
-                <label class="f-left form-text">Length of time symptoms is observed</label>
-            </div>
-            <div class="mdl-cell mdl-cell--12-col">
-                <div class="mdl-grid">
+        <form name="secondForm2" class="secondForm2">
+
+            <div class="tPest" style="float:left; width:10%; margin-right: 30px; margin-left: 30px;">
+                <center><label class="f-left form-text">Types of Pests</label></center>
+                <div class="tp1">
+                    <input type="checkbox" id="insect" class="mdl-checkbox__input">
+                    <label for="insect">Insect</label>
+                </div>
+                <div class="tp2">
+                    <input type="checkbox" id="weed" class="mdl-checkbox__input">
+                    <label for="weed">Weed</label>
+                </div>
+                <div class="tp3">
+                    <input type="checkbox" id="rat" class="mdl-checkbox__input">
+                    <label for="rat">Rat</label>
+                </div>
+                <div class="tp4">
+                    <input type="checkbox" id="bird" class="mdl-checkbox__input">
+                    <label for="bird">Bird</label>
+                </div>
+                <div class="tp5">
+                    <input type="checkbox" id="nematode" class="mdl-checkbox__input">
+                    <label for="nematode">Nematode</label>
+                </div>
+                <div class="tp6">
+                    <input type="checkbox" id="otrf2-1" class="mdl-checkbox__input">
+                    <label for="otrf2-1">Others</label>
                 </div>
             </div>
-        </div>
-        <hr/>
+
+            <!-- <div style="border-left:1px solid #000;height:500px"></div> -->
+
+            <div class="dSymptoms" style="float:left; width:15%; margin-right: 30px; margin-left: 30px;">
+                <center><label class="form-text">Description of Symptoms</label></center>
+                <div class="ds1">
+                    <input type="checkbox" id="yellowing" class="mdl-checkbox__input">
+                    <label for="yellowing">Yellowing</label>
+                </div>
+                <div class="ds2">
+                    <input type="checkbox" id="rot" class="mdl-checkbox__input">
+                    <label for="rot">Root/Stem Rot</label>
+                </div>
+                <div class="ds3">
+                    <input type="checkbox" id="spot" class="mdl-checkbox__input">
+                    <label for="spot">Leaf Spot</label>
+                </div>
+                <div class="ds4">
+                    <input type="checkbox" id="stunting" class="mdl-checkbox__input">
+                    <label for="stunting">Stunting</label>
+                </div>
+                <div class="ds5">
+                    <input type="checkbox" id="otrf2" class="mdl-checkbox__input">
+                    <label for="otrf2">Others</label>
+                </div>
+            </div>
+
+            <!-- <div style="border-left:1px solid #000;height:500px"></div> -->
+
+            <div class="pAffected" style="float:left; width:13%; margin-right: 30px; margin-left: 30px;">
+                <center><label class="form-text">Parts of Plant Affected</label></center>
+                <div class="pa1">
+                    <input type="checkbox" id="wplant" class="mdl-checkbox__input">
+                    <label for="wplant">Whole Plant</label>
+                </div>
+                <div class="pa2">
+                    <input type="checkbox" id="frs" class="mdl-checkbox__input">
+                    <label for="frs">Few Roots/Stems</label>
+                </div>
+                <div class="pa3">
+                    <input type="checkbox" id="local" class="mdl-checkbox__input">
+                    <label for="local">Localized</label>
+                </div>
+                <div class="pa4">
+                    <input type="checkbox" id="flt" class="mdl-checkbox__input">
+                    <label for="flt">Few Leaves/Twigs</label>
+                </div>
+                <div class="pa5">
+                    <input type="checkbox" id="otrf22" class="mdl-checkbox__input">
+                    <label for="otrf22">Others</label>
+                </div>
+            </div>
+
+            <!-- <div style="border-left:1px solid #000;height:500px"></div> -->
+
+            <div class="diSymptoms" style="float:left; width:16%; margin-left: 30px;">
+                <center><label class="form-text">Distribution of Symptoms</label></center>
+                <div class="dis1">
+                    <input type="radio" id="random" name="stage" class="mdl-radio__button" >
+                    <label for="random">Random</label>
+                </div>
+                <div class="dis2">
+                    <input type="radio" id="sao" name="stage" class="mdl-radio__button" >
+                    <label for="sao">Scattered All Over</label>
+                </div>
+                <div class="dis3">
+                    <input type="radio" id="otherf23" name="stage" class="mdl-radio__button" >
+                    <label for="otherf23">Others (Specify)</label>
+                    <input class="form3-input-fmt" type="text" id="otherf23" name="otherf23"> 
+                </div>
+            </div>
+
+            <!-- <div style="border-left:1px solid #000;height:500px"></div> -->
+
+            <div class="iDamage" style="float:left; width:10%; margin-right: 90px; margin-left: 30px;">
+                <center><label class="form-text">Insect Damage</label></center>
+                <div class="id1">
+                    <input type="checkbox" id="chewing" class="mdl-checkbox__input">
+                    <label for="chewing">Chewing Type</label>
+                </div>
+                <div class="id1">
+                    <input type="checkbox" id="sucking" class="mdl-checkbox__input">
+                    <label for="sucking">Sucking Type</label>
+                </div>
+                <div class="id1">
+                    <input type="checkbox" id="otr-insect-damage" class="mdl-checkbox__input">
+                    <label for="otr-insect-damage">Others</label>
+                </div>
+            </div>
             
-        </div>
             
-        
-        </div>
-        <div class="mdl-grid">
-                <button id="back1" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Back</button>
-                <button id="con2" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Next</button>
-        </div>
+            <center>
+                <h4><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Length of time symptoms is observed.</h4>
+                <button class="btn btn-danger" id="back1">Go Back</button>
+                <button class="btn btn-success" id="con2">Continue to Additional Information</button>
+            </center>
         </form>
     </div>
 
 </template>
 
-
+<!-- ====================================================================================================== -->
 
 <template name="AdditionalInformation2">
     
     
-        <div class="pest-form mdl-card">
+        <div class="whole3" style="width:75%">
             
-            <!--div class="mdl-grid">
-                <h5 style="color:gray">Additional Information</h5>
-            </div-->
-            <div class="mdl-grid">
-                <!--form action="#"-->
-                
-                        <div class="mdl-grid">
-                            <div class="mdl-cell mdl-cell--6-col">
-                                <label class="f-left form-text">Chemical rate applied</label> <br/>
-                                <div class="mdl-grid">
-                                    <div class="mdl-cell mdl-cell--4-col">
-                                        <label class="f-left form-text">Fertilizer</label> 
-                                    </div>
-                                    <div class="input-fmt mdl-cell mdl-cell--8-col">
-                                        <input class="form3-input-fmt" type="text" id="fertilizer" name="fertilizer">   
-                                    </div>
-                                
-                                    <div class="mdl-cell mdl-cell--4-col">
-                                        <label class="f-left form-text">Insecticide</label> 
-                                    </div>
-                                    <div class="input-fmt mdl-cell mdl-cell--8-col">
-                                        <input class="form3-input-fmt" type="text" id="insecticide" name="insecticide"> 
-                                    </div>
-                                
-                                    <div class="mdl-cell mdl-cell--4-col">
-                                        <label class="f-left form-text">Fungicide</label> 
-                                    </div>
-                                    <div class="input-fmt mdl-cell mdl-cell--8-col">
-                                        <input class="form3-input-fmt" type="text" id="fungicide" name="fungicide"> 
-                                    </div>
-                                
-                                    <div class="mdl-cell mdl-cell--4-col">
-                                        <label class="f-left form-text">Herbicide</label> 
-                                    </div>
-                                    <div class="input-fmt mdl-cell mdl-cell--8-col">
-                                        <input class="form3-input-fmt" type="text" id="herbicide" name="herbicide"> 
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mdl-cell mdl-cell--6-col">
-                                    <div class="mdl-grid">
-                                        <label class="f-left form-text">
-                                            Usually weather condition that occured before the pest/abnormality was observed
-                                        </label> 
-                                    </div>
-                                    <div class="mdl-grid">
-                                        <div class="mdl-cell mdl-cell--6-col">
-                                            <label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="rain">
-                                                <input type="checkbox" id="rain" class="mdl-checkbox__input">
-                                                <span class="opt-size mdl-checkbox__label">Heavy Rain</span>
-                                            </label>
-                                        </div>
-                                        <div class="mdl-cell mdl-cell--6-col">
-                                            <label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="drought">
-                                                <input type="checkbox" id="drought" class="mdl-checkbox__input">
-                                                <span class="opt-size mdl-checkbox__label">Drought</span>
-                                            </label>
-                                        </div>
-                                        <div class="mdl-cell mdl-cell--6-col">
-                                            <label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="flood">
-                                                <input type="checkbox" id="flood" class="mdl-checkbox__input">
-                                                <span class="opt-size mdl-checkbox__label">Flood</span>
-                                            </label>
-                                        </div>
-                                        <div class="mdl-cell mdl-cell--6-col">
-                                            <label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="fog">
-                                                <input type="checkbox" id="fog" class="mdl-checkbox__input">
-                                                <span class="opt-size mdl-checkbox__label">Fog</span>
-                                            </label>
-                                        </div>
-                                        <div class="mdl-cell mdl-cell--4-col">
-                                            <label class="f-left form-text">Others</label> 
-                                        </div>
-                                        <div class="input-fmt mdl-cell mdl-cell--8-col">
-                                            <input class="form3-input-fmt" type="text" id="otr-f3-abn" name="otr-f3-abn">   
-                                        </div>
-                                    </div>
-                                    <br/>
-                            </div>
-                            <div class="mdl-cell mdl-cell--12-col">
-                                <div class="mdl-grid">
-                                    <label class="f-left form-text">Pest was observed </label>
-                                    <input class="d1" type="text" id="d1" name="d1">
-                                    <select id="days">
-                                        <option value="before">days before</option>
-                                        <option value="after">days after</option>
-                                    </select>
-                                    <label class="f-left form-text"> chemical is applied </label>
-                                </div>
-                                <div class="mdl-grid">
-                                    <label class="f-left form-text">Pest was observed </label>
-                                    <input class="d2" type="text" id="d2" name="d2">
-                                    <select id="days2">
-                                        <option value="before2">days before</option>
-                                        <option value="after2">days after</option>
-                                    </select>
-                                    <label class="f-left form-text"> an unusual weather </label>
-                                </div>
-                                <div class="mdl-grid">
-                                    <button id="back2" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Back</button>
-                                    <button id="form-submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Submit</button>
-                                </div>
-                            </div>
-                        </div>  
-                    
-                <!--/form-->
+            <center>
+                <h5 style="color:gray;">Additional Information</h5>
+            </center>
+
+            <div class="chemRate" style="float:left; width:24%; margin-right: 30px; margin-left: 30px;">
+                <label class="f-left form-text">Chemical Rate Applied</label> <br/>
+                <div class="cr1">
+                    <label>Fertilizer</label> 
+                    <input type="text" id="fertilizer" name="fertilizer">   
+                </div>
+                <div class="cr2">
+                    <label>Insecticide</label> 
+                    <input type="text" id="insecticide" name="insecticide">   
+                </div>
+                <div class="cr3">
+                    <label>Fungicide</label> 
+                    <input type="text" id="fungicide" name="fungicide">   
+                </div>
+                <div class="cr4">
+                    <label>Herbicide</label> 
+                    <input type="text" id="herbicide" name="herbicide">   
+                </div>
             </div>
+
+            <div class="uWeather" style="float:left; width:24%; margin-right: 30px; margin-left: 30px;">
+                <center><label class="form-text">Usually weather condition that occured before the pest/abnormality was observed</label></center>
+                <div class="uw1">
+                    <input type="checkbox" id="rain" class="mdl-checkbox__input">
+                    <label>Heavy Rain</label>
+                </div>
+                <div class="uw2">
+                    <input type="checkbox" id="drought" class="mdl-checkbox__input">
+                    <label>Drought</label>
+                </div>
+                <div class="uw3">
+                    <input type="checkbox" id="flood" class="mdl-checkbox__input">
+                    <label>Flood</label>
+                </div>
+                <div class="uw4">
+                    <input type="checkbox" id="fog" class="mdl-checkbox__input">
+                    <label>Fog</label>
+                </div>
+                <div class="uw5">
+                    <input type="checkbox" id="others" class="mdl-checkbox__input">
+                    <label>Others</label>
+                    <input class="form3-input-fmt" type="text" id="otr-f3-abn" name="otr-f3-abn">
+                </div>
+            </div>
+
+            <div class="pObserved" style="float:left; margin-left:20px; width: 32%">
+                <label class="f-left form-text">Pest was observed </label>
+                <input class="d1" type="text" id="d1" name="d1">
+                <select id="days">
+                    <option value="before">days before</option>
+                    <option value="after">days after</option>
+                </select>
+                <h5> chemical is applied </h5>
+            </div>
+
+            <div class="pObserved" style="float:left; margin-left:20px;width: 32%">
+                <label class="f-left form-text">Pest was observed </label>
+                <input class="d2" type="text" id="d2" name="d2">
+                <select id="days2">
+                    <option value="before2">days before</option>
+                    <option value="after2">days after</option>
+                </select>
+                <h5> an unusual weather<br><br><br><br><br><br><br><br><br><br><br><br><br><br> </h5>
+            </div>
+
+            <center>
+                <button class="btn btn-danger" id="back2">Go Back</button>
+                <button class="btn btn-success" id="form-submit">Submit Form</button>
+            </center>
         </div>
+
+        
     
-</template>
-
-
-
-<template name="sampleTemplate">
-
-    <form name="sampleForm" class="sampleForm">
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <input class="mdl-textfield__input" type="text" id="field1" name="field1">
-            <label class="f-left smp-form-color mdl-textfield__label" for="field1">Sample</label>           
-        </div>
-        <br/>
-        <button id="submitBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Submit</button>
-    </form>
-
 </template>
