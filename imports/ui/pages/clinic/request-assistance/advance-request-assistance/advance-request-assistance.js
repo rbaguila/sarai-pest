@@ -13,7 +13,7 @@ Template.Advance_Request_Assistance.onCreated(function() {
 	Meteor.subscribe('advance_assistance.all');
 	Meteor.subscribe('logs.all');
 });
-Template.Advance_Request_Assistance.helpers({
+Template.Advance_Request_Assistance.onRendered({
 	
 });
 
@@ -53,12 +53,11 @@ Template.GeneralInformation.events({
 			$("#pestprob").show();
 			var text = document.getElementById('stp2'); 
 			text.style.color='black';
+			document.getElementById("stp2").style.opacity = "1";
 			
 		}else{
 			$('#incompleteForm').modal('show');
 		}
-		
-		
 		
 	}
 });
@@ -135,7 +134,7 @@ Template.PestProblemForm.events({
 			$("#addinfo").show();
 			var text = document.getElementById('stp3'); 
 			text.style.color='black';
-			
+			document.getElementById("stp3").style.opacity = "1";
 		}else{
 			$('#incompleteForm').modal('show');
 		}
@@ -230,12 +229,14 @@ Template.AdditionalInformation.events({
 						console.log("Added to assistance and log database!");
 					}
 				});
+				document.getElementById("stp4").style.opacity = "1";
 		      	$('#requestSubmitted').modal('show');
-		      }
+		      			      }
 		    });
 		}else{
 			$('#incompleteForm').modal('show');
 		}
+		
 	}
 });
 

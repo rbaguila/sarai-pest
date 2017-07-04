@@ -55,10 +55,10 @@ Template.resultButton.events({
 			var entry = Result.findOne({'_id': this.id});
 			console.log(entry);
 			var adminUsername = 'Expert';
-			$('#subject').html("<h5><b>"+ entry.subject +"</b></h5><hr/>");
+			$('#subject').html("<h5><b><big>"+ entry.subject +"</big></b></h5><hr/>");
 			$('#user').html("<h5><b>"+ entry.user + "</b> <small>" + entry.email + "</small></h5>");
 			$('#date').html("<em>" + entry.date + "</em>");
-			$('#problem').html("<br/> Problem: " + entry.problem +"<br/>");
+			$('#problem').html("<br/> <b>Problem: </b>" + entry.problem +"<br/>");
 			$('#message').html("<br/>" + entry.message +"<br/><hr/>");
 			$('#expertUsername').html("<h5><b>"+ entry.adminUsername + "</b> <small>" + entry.adminEmail + "</small></h5>");
 			$('#dateReplied').html("<em>" + entry.dateReplied + "</em>");
