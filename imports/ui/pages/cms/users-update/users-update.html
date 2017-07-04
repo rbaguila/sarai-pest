@@ -39,11 +39,13 @@
                 <tr>
                   <td>{{username}}</td>
                   <td>{{emails.[0].address}}</td>
-                  <td>{{roles}}</td>
+                  <td>{{roles.[0]}}</td>
                   <td>
                     <div class="text-center">
                       <div class="btn-group-xs">
+                        {{#unless equals _id currUserId}}
                         {{> userbutton text="edit" color="primary" id=_id}}
+                        {{/unless}}
                       </div>
                     </div>
                   </td>
@@ -73,6 +75,7 @@
               <option value="Clinic Admin">Clinic Admin</option>
               <option value="Id Admin">Id Admin</option>
               <option value="Diseases Admin">Diseases Admin</option>
+              <option value="Pest Expert">Pest Expert</option>
               <option value="Registered">Registered</option>
             </select>
         </div>

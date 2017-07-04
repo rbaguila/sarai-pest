@@ -317,6 +317,8 @@ FlowRouter.route('/admin/pests-clinic', {
       var ready = FlowRouter.subsReady("getUser");
           if (ready && Roles.userIsInRole(Meteor.user(), ['Clinic Admin'])) {
             BlazeLayout.render("App_body", {main: "pestClinicUpdate"})
+          }else if(ready && Roles.userIsInRole(Meteor.user(), ['Pest Expert'])) {
+            BlazeLayout.render("App_body", {main: "assistanceUpdate"})            
           }else if(ready){
             BlazeLayout.render("App_body", {main: "App_home"})
 //            alert("User is not allowed to access the page.")
@@ -353,7 +355,9 @@ FlowRouter.route('/admin/assistance', {
   action: function(params) {
       Tracker.autorun(function() {
       var ready = FlowRouter.subsReady("getUser");
-          if (ready && Roles.userIsInRole(Meteor.user(), ['Clinic Admin'])) {
+          if(ready && Roles.userIsInRole(Meteor.user(), ['Pest Expert'])) {
+            BlazeLayout.render("App_body", {main: "assistanceUpdate"});          
+          }else if (ready && Roles.userIsInRole(Meteor.user(), ['Clinic Admin'])) {
             BlazeLayout.render("App_body", {main: "assistanceUpdate"})
           }else if(ready){
             BlazeLayout.render("App_body", {main: "App_home"})
@@ -399,30 +403,38 @@ FlowRouter.route("/disease-entity/:_id", {
 
 FlowRouter.route('/admin/activity-log', {
   name: 'App.activity-log',
+  subscriptions: function(params, queryParams) {
+      this.register('getUser', Meteor.subscribe('allUsers', Meteor.userId()));
+  },
   action: function(params) {
       Tracker.autorun(function() {
-          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Clinic Admin'])) {
-            BlazeLayout.render("App_body", {main: "App_home"})
-            //alert("User is not allowed to access the page.")
-            FlowRouter.redirect('/');
-          } else {
+      var ready = FlowRouter.subsReady("getUser");
+          if (ready && Roles.userIsInRole(Meteor.user(), ['Clinic Admin'])) {
             BlazeLayout.render("App_body", {main: "Create_chart"})
-
+          }else if(ready){
+            BlazeLayout.render("App_body", {main: "App_home"})
+//            alert("User is not allowed to access the page.")
+            FlowRouter.redirect('/');
           }
       });
     }
 });
 FlowRouter.route('/admin/form-result', {
   name: 'App.form-result',
+  subscriptions: function(params, queryParams) {
+      this.register('getUser', Meteor.subscribe('allUsers', Meteor.userId()));
+  },
   action: function(params) {
       Tracker.autorun(function() {
-          if (!Meteor.userId() || !Roles.userIsInRole(Meteor.user(), ['Clinic Admin'])) {
+          var ready = FlowRouter.subsReady("getUser");
+          if(ready && Roles.userIsInRole(Meteor.user(), ['Pest Expert'])) {
+            BlazeLayout.render("App_body", {main: "formResult"});          
+          }else if (ready && Roles.userIsInRole(Meteor.user(), ['Clinic Admin'])) {
+            BlazeLayout.render("App_body", {main: "formResult"});
+          }else if(ready){
             BlazeLayout.render("App_body", {main: "App_home"})
-            //alert("User is not allowed to access the page.")
+//            alert("User is not allowed to access the page.")
             FlowRouter.redirect('/');
-          } else {
-            BlazeLayout.render("App_body", {main: "formResult"})
-
           }
       });
     }
