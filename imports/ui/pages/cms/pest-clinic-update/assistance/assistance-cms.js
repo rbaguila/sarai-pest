@@ -78,6 +78,7 @@ Template.assistanceUpdate.events({
 		        };
 		        Meteor.call('sendEmail',$("#emailField").val(),$("#pwdField").val(), email, (error) => {
 					if (error) {
+						console.log(error);
 					  	alert(error.error);
 					} else {
 						console.log("Email sent!");
