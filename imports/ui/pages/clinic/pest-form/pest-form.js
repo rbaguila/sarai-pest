@@ -21,12 +21,12 @@ Template.FormOnly.events({
             $("#pestprob2").show();
             var text = document.getElementById('stp2'); 
             text.style.color='black';
-            console.log($("#email2").val());
-            console.log($("#floc2").val());
-            console.log($("#src2").val());
-            console.log($("#area2").val());
-            console.log($("#cstage2").val());
-            console.log($("#crop2").val());
+            // console.log($("#email2").val());
+            // console.log($("#floc2").val());
+            // console.log($("#src2").val());
+            // console.log($("#area2").val());
+            // console.log($("#cstage2").val());
+            // console.log($("#crop2").val());
             
     },
     'click #con2': function(){
@@ -34,6 +34,12 @@ Template.FormOnly.events({
             $("#addinfo2").show();
             var text = document.getElementById('stp3'); 
             text.style.color='black';
+            console.log($("#email2").val());
+            console.log($("#floc2").val());
+            console.log($("#src2").val());
+            console.log($("#area2").val());
+            console.log($("#cstage2").val());
+            console.log($("#crop2").val());
     },
     'click #back1': function(){
             $("#geninfo2").show();

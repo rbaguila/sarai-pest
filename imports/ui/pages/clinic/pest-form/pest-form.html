@@ -11,7 +11,7 @@
     <div class="max" style="position: relative; top:55px;">
 
         <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--3-col" style="float:left; width:20%; padding-left: 150px;">
+            <div class="mdl-cell mdl-cell--3-col" style="float:left; width:20%; padding-left: 100px; padding-right: 50px;">
                 <center>
                     <button class="steps" id="stp1" disabled>Step 1:<br/>Fill up General Information Form</button>
                     <svg width="200" height="35">
@@ -30,7 +30,7 @@
                     
                 </center>
             </div>
-            <div class="mdl-cell mdl-cell--9-col" style="float:center; width:80%; padding-left: 100px;">
+            <div class="mdl-cell mdl-cell--9-col" style="float:center; width:80%; padding-left: 100px; padding-right: 100px;">
                 <div id="geninfo2">
                     {{ >GeneralInformation2}}
                 </div>
@@ -51,53 +51,43 @@
 
 <template name="GeneralInformation2">
 
-    <div class="whole1" style="width:75%">
+    <div class="container-fluid">
+        <div class="row">
         
-        <center>
-            <h5 style="color:gray;">General Information</h5>
-        </center>
-        <form name="firstForm2" class="firstForm2">
+            <center>
+                <h5 style="color:gray;">General Information</h5>
+            </center>
+            <form name="firstForm2" class="firstForm2">
 
-            <div class="mail">
-                <label id="email" class="error" for="email" style="display: inline; color: black">Enter your e-mail</label><br>
-                <input class="input-form" type="text" id="email2" name="email2" style="width:100%"> 
-            </div>
-            <br>
-            <div class="fLocation">
-                <label id="floc-error" class="error" for="floc2" style="display: inline; color: black">Farm Location</label><br>
-                <input class="input-form" type="text" id="floc2" name="floc2" style="width:100%"> 
-            </div>
-            <br>
-            <div class="sPlant">
-                <label id="src-error" class="error" for="src2" style="display: inline; color: black">Source of Plant</label><br>
-                <input class="input-form" type="text" id="src2" name="src2" style="width:100%"> 
-            </div>
-            <br>
-            <div class="aPlanted">
-                <label id="area-error" class="error" for="area2" style="display: inline; color: black">Area</label><br>
-                <input class="input-form" type="text" id="area2" name="area2" style="width:100%">  
-            </div>
-            <br>
-            <div class="cStages">
-                <label id="cstage2" class="error" for="cstage2" style="display: inline; color: black">Crop Stage</label><br>
-                <select id="cstage2">
+                <label id="email" for="email" >Enter your e-mail</label><br>
+                <input class="form-control" type="text" id="email2" name="email2"> 
+                <br>
+                <label id="floc-error" for="floc2">Farm Location</label><br>
+                <input class="form-control" type="text" id="floc2" name="floc2"> 
+                <br>
+                <label id="src-error" for="src2">Source of Plant</label><br>
+                <input class="form-control" type="text" id="src2" name="src2"> 
+                <br>
+                <label id="area-error" for="area2">Area</label><br>
+                <input class="form-control" type="text" id="area2" name="area2">  
+                <br>
+                <label id="cstage2" for="cstage2" >Crop Stage</label><br>
+                <select id="cstage2" class="form-control">
                     <option value="Seeding">Seeding</option>
                     <option value="Flowering">Flowering</option>
                     <option value="Maturity">Maturity</option>
                     <option value="Vegetative">Max Vegetative</option>
                 </select>
-            </div>
-            <br>
-            <div class="cVariety">
-                <label id="crop-error" class="error" for="crop2" style="display: inline; color: black">Crop/Variety (Hybrid/Open Pollinated)</label><br>
-                <input class="input-form" type="text" id="crop2" name="crop2" style="width:100%"> 
-            </div>
+                <br>
+                <label id="crop-error" for="crop2">Crop/Variety (Hybrid/Open Pollinated)</label><br>
+                <input class="form-control" type="text" id="crop2" name="crop2"> 
 
-            <br><br>
-            <center><button class="btn btn-success" id="con1">Continue to Pest Problem</button></center>
+                <br><br>
+                <center><button class="btn btn-success" id="con1">Continue to Pest Problem</button></center>
 
-        
-        </form>
+            
+            </form>
+        </div>
     </div>
 </template>
 
@@ -105,138 +95,91 @@
 
 <template name="PestProblemForm2">
 
-    <div class="whole2" style="width:60%; position:absolute;">
+    <div class="container-fluid">
+        <div class="row">
 
-        <center>
-            <h5 style="color:gray;">Pest Problem</h5>
-        </center>
-
-        <form name="secondForm2" class="secondForm2">
-
-            <div class="tPest" style="float:left; width:10%; margin-right: 30px; margin-left: 30px;">
-                <center><label class="f-left form-text">Types of Pests</label></center>
-                <div class="tp1">
-                    <input type="checkbox" id="insect" class="mdl-checkbox__input">
-                    <label for="insect">Insect</label>
-                </div>
-                <div class="tp2">
-                    <input type="checkbox" id="weed" class="mdl-checkbox__input">
-                    <label for="weed">Weed</label>
-                </div>
-                <div class="tp3">
-                    <input type="checkbox" id="rat" class="mdl-checkbox__input">
-                    <label for="rat">Rat</label>
-                </div>
-                <div class="tp4">
-                    <input type="checkbox" id="bird" class="mdl-checkbox__input">
-                    <label for="bird">Bird</label>
-                </div>
-                <div class="tp5">
-                    <input type="checkbox" id="nematode" class="mdl-checkbox__input">
-                    <label for="nematode">Nematode</label>
-                </div>
-                <div class="tp6">
-                    <input type="checkbox" id="otrf2-1" class="mdl-checkbox__input">
-                    <label for="otrf2-1">Others</label>
-                </div>
-            </div>
-
-            <!-- <div style="border-left:1px solid #000;height:500px"></div> -->
-
-            <div class="dSymptoms" style="float:left; width:15%; margin-right: 30px; margin-left: 30px;">
-                <center><label class="form-text">Description of Symptoms</label></center>
-                <div class="ds1">
-                    <input type="checkbox" id="yellowing" class="mdl-checkbox__input">
-                    <label for="yellowing">Yellowing</label>
-                </div>
-                <div class="ds2">
-                    <input type="checkbox" id="rot" class="mdl-checkbox__input">
-                    <label for="rot">Root/Stem Rot</label>
-                </div>
-                <div class="ds3">
-                    <input type="checkbox" id="spot" class="mdl-checkbox__input">
-                    <label for="spot">Leaf Spot</label>
-                </div>
-                <div class="ds4">
-                    <input type="checkbox" id="stunting" class="mdl-checkbox__input">
-                    <label for="stunting">Stunting</label>
-                </div>
-                <div class="ds5">
-                    <input type="checkbox" id="otrf2" class="mdl-checkbox__input">
-                    <label for="otrf2">Others</label>
-                </div>
-            </div>
-
-            <!-- <div style="border-left:1px solid #000;height:500px"></div> -->
-
-            <div class="pAffected" style="float:left; width:13%; margin-right: 30px; margin-left: 30px;">
-                <center><label class="form-text">Parts of Plant Affected</label></center>
-                <div class="pa1">
-                    <input type="checkbox" id="wplant" class="mdl-checkbox__input">
-                    <label for="wplant">Whole Plant</label>
-                </div>
-                <div class="pa2">
-                    <input type="checkbox" id="frs" class="mdl-checkbox__input">
-                    <label for="frs">Few Roots/Stems</label>
-                </div>
-                <div class="pa3">
-                    <input type="checkbox" id="local" class="mdl-checkbox__input">
-                    <label for="local">Localized</label>
-                </div>
-                <div class="pa4">
-                    <input type="checkbox" id="flt" class="mdl-checkbox__input">
-                    <label for="flt">Few Leaves/Twigs</label>
-                </div>
-                <div class="pa5">
-                    <input type="checkbox" id="otrf22" class="mdl-checkbox__input">
-                    <label for="otrf22">Others</label>
-                </div>
-            </div>
-
-            <!-- <div style="border-left:1px solid #000;height:500px"></div> -->
-
-            <div class="diSymptoms" style="float:left; width:16%; margin-left: 30px;">
-                <center><label class="form-text">Distribution of Symptoms</label></center>
-                <div class="dis1">
-                    <input type="radio" id="random" name="stage" class="mdl-radio__button" >
-                    <label for="random">Random</label>
-                </div>
-                <div class="dis2">
-                    <input type="radio" id="sao" name="stage" class="mdl-radio__button" >
-                    <label for="sao">Scattered All Over</label>
-                </div>
-                <div class="dis3">
-                    <input type="radio" id="otherf23" name="stage" class="mdl-radio__button" >
-                    <label for="otherf23">Others (Specify)</label>
-                    <input class="form3-input-fmt" type="text" id="otherf23" name="otherf23"> 
-                </div>
-            </div>
-
-            <!-- <div style="border-left:1px solid #000;height:500px"></div> -->
-
-            <div class="iDamage" style="float:left; width:10%; margin-right: 90px; margin-left: 30px;">
-                <center><label class="form-text">Insect Damage</label></center>
-                <div class="id1">
-                    <input type="checkbox" id="chewing" class="mdl-checkbox__input">
-                    <label for="chewing">Chewing Type</label>
-                </div>
-                <div class="id1">
-                    <input type="checkbox" id="sucking" class="mdl-checkbox__input">
-                    <label for="sucking">Sucking Type</label>
-                </div>
-                <div class="id1">
-                    <input type="checkbox" id="otr-insect-damage" class="mdl-checkbox__input">
-                    <label for="otr-insect-damage">Others</label>
-                </div>
-            </div>
-            
-            
             <center>
-                <h4><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Length of time symptoms is observed.</h4>
-                <button class="btn btn-danger" id="back1">Go Back</button>
-                <button class="btn btn-success" id="con2">Continue to Additional Information</button>
+                <h5 style="color:gray;">Pest Problem</h5>
             </center>
-        </form>
+
+            <form name="secondForm2" class="secondForm2">
+
+                <div class="tPest">
+                    <center><label class="form-text">Types of Pests</label></center>
+                    <br><br>
+                    <div class="checkbox" style="">
+                        <label><input type="checkbox" id="insect2">Insect&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="weed2">Weed&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="rat2">Rat&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="bird2">Bird&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="nematode2">Nematode&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="otrf2-1">Others</label>
+                    </div>
+                </div>
+
+               <hr/>
+
+                <div class="dSymptoms" >
+                    <center><label class="form-text">Description of Symptoms</label></center>
+                    <br><br>
+                    <div class="checkbox">
+                        <label><input type="checkbox" id="yellowing">Yellowing&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="rot">Root/Stem Rot&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="spot">Leaf Spot&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="stunting">Stunting&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="otrf2">Others</label>
+                    </div>
+                </div>
+
+                <hr/>
+
+                <div class="pAffected">
+                    <center><label class="form-text">Parts of Plant Affected</label></center>
+                    <br><br>
+                    <div class="checkbox">
+                        <label><input type="checkbox" id="wplant">Whole Plant&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="frs">Few Roots/Stems&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="local">Localized&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="flt">Few Leaves/Twigs&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="otrf22">Others&emsp;&emsp;</label>
+                    </div>
+                </div>
+
+                <hr/>
+
+                <div class="diSymptoms">
+                    <center><label class="form-text">Distribution of Symptoms</label></center>
+                    <br><br>
+                    <div class="radio">
+                        <label><input type="radio" id="random" name="stage">Random&emsp;&emsp;</label>
+                        <label><input type="radio" id="sao" name="stage">Scattered All Over&emsp;&emsp;</label>
+                        <label><input type="radio" id="otherf23" name="stage">Others (Specify)</label>
+                        <input class="form3-input-fmt" type="text" id="otherf23" name="otherf23"> 
+                    </div>
+                </div>
+
+                <hr/>
+
+                <div class="iDamage">
+                    <center><label class="form-text">Insect Damage</label></center>
+                    <br><br>
+                    <div class="checkbox">
+                        <label><input type="checkbox" id="chewing">Chewing Type&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="sucking">Sucking Type&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="otr-insect-damage">>Others</label>
+                    </div>
+                </div>
+                
+                <hr>
+
+                <label>Length of time symptoms is observed.</label>
+                
+                <center>
+                    <button class="btn btn-danger" id="back1">Go Back</button>
+                    <button class="btn btn-success" id="con2">Continue to Additional Information</button>
+                </center>
+            </form>
+        </div>
     </div>
 
 </template>
@@ -245,83 +188,70 @@
 
 <template name="AdditionalInformation2">
     
-    
-        <div class="whole3" style="width:75%">
-            
+    <div class="container-fluid">
+        <div class="row">
+        
             <center>
                 <h5 style="color:gray;">Additional Information</h5>
             </center>
 
-            <div class="chemRate" style="float:left; width:24%; margin-right: 30px; margin-left: 30px;">
-                <label class="f-left form-text">Chemical Rate Applied</label> <br/>
-                <div class="cr1">
-                    <label>Fertilizer</label> 
-                    <input type="text" id="fertilizer" name="fertilizer">   
-                </div>
-                <div class="cr2">
-                    <label>Insecticide</label> 
-                    <input type="text" id="insecticide" name="insecticide">   
-                </div>
-                <div class="cr3">
-                    <label>Fungicide</label> 
-                    <input type="text" id="fungicide" name="fungicide">   
-                </div>
-                <div class="cr4">
-                    <label>Herbicide</label> 
-                    <input type="text" id="herbicide" name="herbicide">   
+            <div class="chemRate">
+                <label class="form-text">Chemical Rate Applied</label>
+                <br><br>
+                <div class="lol" style="width:25%">
+                    <label>Fertilizer <input type="text" id="fertilizer" name="fertilizer"></label> 
+                    <label>Insecticide <input type="text" id="insecticide" name="insecticide"></label> 
+                    <label>Fungicide <input type="text" id="fungicide" name="fungicide"></label> 
+                    <label>Herbicide <input type="text" id="herbicide" name="herbicide"></label> 
                 </div>
             </div>
 
-            <div class="uWeather" style="float:left; width:24%; margin-right: 30px; margin-left: 30px;">
-                <center><label class="form-text">Usually weather condition that occured before the pest/abnormality was observed</label></center>
-                <div class="uw1">
-                    <input type="checkbox" id="rain" class="mdl-checkbox__input">
-                    <label>Heavy Rain</label>
-                </div>
-                <div class="uw2">
-                    <input type="checkbox" id="drought" class="mdl-checkbox__input">
-                    <label>Drought</label>
-                </div>
-                <div class="uw3">
-                    <input type="checkbox" id="flood" class="mdl-checkbox__input">
-                    <label>Flood</label>
-                </div>
-                <div class="uw4">
-                    <input type="checkbox" id="fog" class="mdl-checkbox__input">
-                    <label>Fog</label>
-                </div>
-                <div class="uw5">
-                    <input type="checkbox" id="others" class="mdl-checkbox__input">
-                    <label>Others</label>
+            <hr/>
+
+            <div class="uWeather">
+                <label class="form-text">Usually weather condition that occured before the pest/abnormality was observed</label>
+                <br><br>
+                <div class="checkbox">
+                    <label><input type="checkbox" id="rain">Heavy Rain &emsp;&emsp;</label>
+                    <label><input type="checkbox" id="drought">Drought &emsp;&emsp;</label>
+                    <label><input type="checkbox" id="flood">Flood &emsp;&emsp;</label>
+                    <label><input type="checkbox" id="fog">Fog &emsp;&emsp;</label>
+                    <label><input type="checkbox" id="others">Others </label>
                     <input class="form3-input-fmt" type="text" id="otr-f3-abn" name="otr-f3-abn">
                 </div>
             </div>
 
-            <div class="pObserved" style="float:left; margin-left:20px; width: 32%">
-                <label class="f-left form-text">Pest was observed </label>
-                <input class="d1" type="text" id="d1" name="d1">
-                <select id="days">
-                    <option value="before">days before</option>
-                    <option value="after">days after</option>
-                </select>
-                <h5> chemical is applied </h5>
-            </div>
+            <hr/>
 
-            <div class="pObserved" style="float:left; margin-left:20px;width: 32%">
-                <label class="f-left form-text">Pest was observed </label>
+            <div class="pObserved2" style="width:25%">
+                <label class="form-text">Pest was observed<br></label>
                 <input class="d2" type="text" id="d2" name="d2">
                 <select id="days2">
                     <option value="before2">days before</option>
                     <option value="after2">days after</option>
                 </select>
-                <h5> an unusual weather<br><br><br><br><br><br><br><br><br><br><br><br><br><br> </h5>
+                <h5> chemical is applied</h5>
+            </div>
+
+            <hr/><br>
+
+            <div class="pObserved2" style="width:25%">
+                <label class="form-text">Pest was observed </label>
+                <input class="d2" type="text" id="d2" name="d2">
+                <select id="days2">
+                    <option value="before2">days before</option>
+                    <option value="after2">days after</option>
+                </select>
+                <h5> an unusual weather</h5>
             </div>
 
             <center>
                 <button class="btn btn-danger" id="back2">Go Back</button>
                 <button class="btn btn-success" id="form-submit">Submit Form</button>
             </center>
+
         </div>
+    </div>
 
         
     
