@@ -5,6 +5,6 @@ Router.configure({
 });
 
 $.cloudinary.config({
-    cloud_name:"project-sarai",
+    cloud_name: 'project-sarai',
     api_key: '165644439513415'
 });

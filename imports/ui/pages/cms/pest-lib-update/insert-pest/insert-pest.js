@@ -5,8 +5,6 @@ import '../../components/library-cms-navbar.html';
 import '../../components/cms-sidenav.html';
 import '../../components/upload.html';
 
-var imageURL = "";
-
 Template.insertPest.onCreated(function () {
 	Meteor.subscribe('usersList');
 	Meteor.subscribe('plant_problem.all');
@@ -17,63 +15,81 @@ Template.insertPest.onRendered(function () {
 });
 
 Template.insertPest.helpers({
-	pestImageFile(){
-		return {
-			finished: function(index, fileInfo, context) {
-				Session.set('pestImageFile', '/upload/' + fileInfo.name);
-			}
-		}
-	}
+
 });
 
+var file;
+var files = [];
 Template.insertPest.events({
-	
+	'submit form': function(e, t){
+        e.preventDefault();
+		file = $('#userimage')[0].files[0];
+		files.push(file);
+		$('.progress .progress-bar').css("width",
+                function() {
+                    return $(this).attr("aria-valuenow") + "%";
+                }
+        )
+    }, 
+
 	'click #saveBTN': function(event){
 		
 		var str = $("#description").val() + $("#symptoms").val();
 
 		if( !(str.length <=0) ) var keywords = extractKeyword(str);
 		else var keywords = [];
+		var imgURL;
+		Cloudinary.upload(file, function(err, res) {
+          console.log("Upload Error: " + err);
+          console.log("Upload Result: " + res);
+          imgURL = res.public_id;
+          Session.set('pestImageFile', 'http://res.cloudinary.com/project-sarai/image/upload/' + imgURL);
 
 		// GET THE VALUES
-		var newPest = {
-			pestName : $("#pestName").val(),
-			engName : $("#engName").val(),
-			sciName : $("#sciName").val(),
-			image: (Session.get('pestImageFile') == undefined) ? "/img/no-image-available.jpg" : Session.get('pestImageFile'),
-			keywords : keywords,
-			// for ENGLISH
-			treatment : $("#treatment").val(),
-			classification : $("#classification").val(),
-			order : $("#order").val(),
-			plantAffected : $("#plantAffected").val()==""? "Uncategorized" : $("#plantAffected").val(),
-			description : $("#description").val(),
-			symptoms : $("#symptoms").val(),
-			stageThreatening : $("#stageThreatening").val(),
-			partDestroyed : $("#partDestroyed").val(),
-			effect : $("#effect").val(),
-			stageAffected : $("#stageAffected").val(),
-			// for FILIPINO
-			filName : $("#filName").val(),
-			filTreatment : $("#filTreatment").val(),
-			filClassification : $("#filClassification").val(),
-			filPlantAffected : $("#filPlantAffected").val(),
-			filDescription : $("#filDescription").val(),
-			filSymptoms : $("#filSymptoms").val(),
-			filStageThreatening : $("#filStageThreatening").val(),
-			filPartDestroyed : $("#filPartDestroyed").val(),
-			filEffect : $("#filEffect").val(),
-			filStageAffected : $("#filStageAffected").val(),
-		}
-		
-		// INSERT THE PEST TO THE DATABASE
-		Meteor.call('pests.addPest', newPest, (error) => {
-	      if (error) {
-	        alert(error.error);
-	      } else {
-	        $('.insertSuccess').modal('show');
-	      }
-	    });
+			var newPest = {
+				pestName : $("#pestName").val(),
+				engName : $("#engName").val(),
+				sciName : $("#sciName").val(),
+				image: (Session.get('pestImageFile') == undefined) ? "/img/no-image-available.jpg" : Session.get('pestImageFile'),
+				keywords : keywords,
+				// for ENGLISH
+				treatment : $("#treatment").val(),
+				classification : $("#classification").val(),
+				order : $("#order").val(),
+				plantAffected : $("#plantAffected").val()==""? "Uncategorized" : $("#plantAffected").val(),
+				description : $("#description").val(),
+				symptoms : $("#symptoms").val(),
+				stageThreatening : $("#stageThreatening").val(),
+				partDestroyed : $("#partDestroyed").val(),
+				effect : $("#effect").val(),
+				stageAffected : $("#stageAffected").val(),
+				// for FILIPINO
+				filName : $("#filName").val(),
+				filTreatment : $("#filTreatment").val(),
+				filClassification : $("#filClassification").val(),
+				filPlantAffected : $("#filPlantAffected").val(),
+				filDescription : $("#filDescription").val(),
+				filSymptoms : $("#filSymptoms").val(),
+				filStageThreatening : $("#filStageThreatening").val(),
+				filPartDestroyed : $("#filPartDestroyed").val(),
+				filEffect : $("#filEffect").val(),
+				filStageAffected : $("#filStageAffected").val(),
+			}
+			
+			// INSERT THE PEST TO THE DATABASE
+			Meteor.call('pests.addPest', newPest, (error) => {
+		      if (error) {
+		        alert(error.error);
+		      } else {
+		        $('.insertSuccess').modal('show');
+		      }
+		    });
+        });
+       	$('.progress .progress-bar').css("width",
+                function() {
+                    return "0%";
+                }
+        )
 	},
 
 	'click #cancelBTN': function(event){
