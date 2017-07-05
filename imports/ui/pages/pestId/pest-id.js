@@ -8,7 +8,6 @@ var currentPests = "";
 var currentType = "";
 var cropAffected = "";
 var classType = "";
-
 Template.pestId.onCreated(function () {
 	Meteor.subscribe('plant_problem.all');
 	Meteor.subscribe('cms.all');
@@ -166,12 +165,15 @@ Template.pestId.helpers({
 				   alert('Choose either Pest or Disease first.');
 				   return false;
 				}
+				var file;
+				var files = [];
 			 	Session.set("showIPS", true);
 			 	Session.set("spinner", true);
 			 	Session.set('data',undefined);
 			 	// filename = "../server/uploads/"+fileInfo.name;
 			 	filename = "http://localhost:3000/upload/"+fileInfo.name;
 			 	//H4Dhw4yPhumNK3PKu.jpg
+
 			 	Session.set("filename",filename);
 			 	var type = Session.get("currentType");
 			 	var crop = Session.get("cropAffected");
@@ -203,7 +205,6 @@ Template.pestId.helpers({
 					});
 			 	}
 			 	else{
-			 		
 					$('.jqDropZone').html("<img src=/upload/"+fileInfo.name+" width='100%' height='295px'/>");
 				 	$.ajax({	
 						type:"POST",
@@ -230,6 +231,8 @@ Template.pestId.helpers({
 						}
 					});
 			 	}
+
+
 			}
 	    }
 	},
@@ -257,6 +260,7 @@ Template.pestId.helpers({
 		return Session.get("spinner");
 	}
 });
+
 
 Template.pestId.events({
 	'change [name="radiopd"]'(event, template) {
@@ -415,4 +419,12 @@ Template.pestId.events({
 		console.log(Session.get("classType"));
 
 	},
+
+	'submit form': function(e, t){
+        e.preventDefault();
+        Cloudinary.upload(file, function(err, res) {
+          console.log("Upload Error: " + err);
+          console.log("Upload Result: " + res);
+		});	
+    },
 });

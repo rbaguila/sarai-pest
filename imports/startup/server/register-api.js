@@ -20,3 +20,9 @@ import '../../api/logs/server/publications.js';
 
 import '../../api/result/methods.js';
 import '../../api/result/server/publications.js';
+
+import '../../api/advance-assistance/methods.js';
+import '../../api/advance-assistance/server/publications.js';
+
+import '../../api/forms/methods.js';
+import '../../api/forms/server/publications.js';

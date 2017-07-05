@@ -1,4 +1,5 @@
 import { Assistance } from '/imports/api/assistance/assistance.js';
+import { advanceAssistance } from '/imports/api/advance-assistance/advance-assistance.js';
 import { Logs } from '/imports/api/logs/logs.js';
 import { Result } from '/imports/api/result/result.js';
 import { Meteor } from 'meteor/meteor';
@@ -15,6 +16,7 @@ Template.assistanceUpdate.onCreated(function() {
 	Meteor.subscribe('assistance.all');
 	Meteor.subscribe('logs.all');
 	Meteor.subscribe('result.all');
+	Meteor.subscribe('advance_assistance.all');
 });
 
 Template.assistanceUpdate.onRendered(function() {
@@ -76,6 +78,7 @@ Template.assistanceUpdate.events({
 		        };
 		        Meteor.call('sendEmail',$("#emailField").val(),$("#pwdField").val(), email, (error) => {
 					if (error) {
+						console.log(error);
 					  	alert(error.error);
 					} else {
 						console.log("Email sent!");

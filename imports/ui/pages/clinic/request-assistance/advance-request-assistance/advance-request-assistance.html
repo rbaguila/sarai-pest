@@ -4,13 +4,11 @@
   {{> footer}}
 </template>
 <template name="advanceRequestAssistance">
-	<!--div class="max mdl-grid">
-			{{ >sampleTemplate}}
-	</div-->
+	{{> stylesheet}}
 	<div class="max">
 		<center>
 		<div class="mdl-grid">
-			<div class="mdl-cell mdl-cell--3-col">
+			<div class="mdl-cell mdl-cell--3-col" style="float:left; width:20%;">
 				<center>
 					<button class="steps" id="stp1" disabled>Step 1:<br/>Fill up General Information Form</button>
 					<svg width="200" height="35">
@@ -25,20 +23,6 @@
 						<line x1="100" x2="100" y1="5" y2="35" stroke="#5184AF" stroke-width="5" stroke-linecap="round" stroke-dasharray="1,10" />
 					</svg>
 					<button class="steps" id="stp4" disabled>Step 4:<br/>Submit Form</button>
-					
-					<!--svg width="200" height="100">
-						<rect width="200" rx="10" ry="10" height="75" stroke="gray" stroke-width="1" fill="white" />
-						<text x="0" y="15" fill="black">General Information</text>
-					</svg>
-					<svg width="200" height="100">
-						<rect rx="10" ry="10" width="200" height="75" stroke="gray" stroke-width="1" fill="white" />
-					</svg>
-					<svg width="200" height="100">
-						<rect rx="10" ry="10" width="200" height="75" stroke="gray" stroke-width="1" fill="white" />
-					</svg>
-					<svg width="200" height="100">
-						<rect rx="10" ry="10" width="200" height="75" stroke="gray" stroke-width="1" fill="white" />
-					</svg-->
 					<br/>
 					
 				</center>
@@ -57,8 +41,35 @@
 		</div>
 		</center>
 	</div>
+	<div class="modal fade" id="requestSubmitted">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<br><br>
+					<p>Your request was successfully submitted!</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary closeModal" data-dismiss="modal" id="closeButton">Close</button>
+				</div>
 
-	
+			</div>
+		</div>
+	</div>
+		
+	<div class="modal fade" id="incompleteForm">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<br><br>
+					<p>Incomplete form! Fill up all the fields.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary closeModal" data-dismiss="modal">Close</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
 </template>
 
 
@@ -122,27 +133,6 @@
 							</select>
 							</div>
 						
-							
-						
-							<!--div class="mdl-cell mdl-cell-3-col">
-								<label class="f-left form-text">Crop </label>
-							</div>
-							<div class="mdl-cell mdl-cell-4-col">
-								<label class="f-left mdl-radio mdl-js-radio mdl-js-ripple-effect" for="crice">
-									<input type="radio" id="crice" name="cropname" class="mdl-radio__button" >
-									<span class="opt-size mdl-radio__label">Rice</span>
-								</label>
-							</div>
-							<div class="mdl-cell mdl-cell-4-col">
-								<label class="f-left mdl-radio mdl-js-radio mdl-js-ripple-effect" for="ccorn">
-									<input type="radio" id="ccorn" name="cropname" class="mdl-radio__button" >
-									<span class="opt-size mdl-radio__label">Corn</span>
-								</label>
-							</div-->
-						
-						
-						
-						
 							<div class="mdl-cell mdl-cell--6-col">
 								<label class="f-left form-text">Crop/Variety (Hybrid/Open Pollinated)</label>
 							</div>
@@ -186,44 +176,44 @@
 			
 			<div class="mdl-grid">
 				<div class="input-fmt mdl-cell mdl-cell--12-col">
-					<label class="f-left form-text">Types of Pests</label>
+					<label class="f-left form-text">Type of Pest</label>
 				</div>
 				<div class="mdl-cell mdl-cell--12-col">
 				<div class="mdl-grid">
 					<div class="mdl-cell mdl-cell--4-col">
 						<label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="insect">
-							<input type="checkbox" id="insect" class="mdl-checkbox__input">
-							<p class="opt-size mdl-checkbox__label">Insect</p>
+							<input type="checkbox" id="insect" class="mdl-checkbox__input" value="Insect">
+							Insect
 						</label>
 					</div>
 					<div class="mdl-cell mdl-cell--4-col">
-						<label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="weed">
-							<input type="checkbox" id="weed" class="mdl-checkbox__input">
-							<p class="opt-size mdl-checkbox__label">Weed</p>
+						<label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="weed">	 
+							<input type="checkbox" id="weed" class="mdl-checkbox__input" value="Weed">
+							Weed
 						</label>
 					</div>
 					<div class="mdl-cell mdl-cell--4-col">
 						<label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="rat">
-							<input type="checkbox" id="rat" class="mdl-checkbox__input">
-							<p class="opt-size mdl-checkbox__label">Rat</p>
+							<input type="checkbox" id="rat" class="mdl-checkbox__input" value="Rat">
+							Rat
 						</label>
 					</div>
 					<div class="mdl-cell mdl-cell--4-col">
 						<label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="bird">
-							<input type="checkbox" id="bird" class="mdl-checkbox__input">
-							<p class="opt-size mdl-checkbox__label">Bird</p>
+							<input type="checkbox" id="bird" class="mdl-checkbox__input" value="Bird">
+							Bird
 						</label>
 					</div>
 					<div class="mdl-cell mdl-cell--4-col">
 						<label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="nematode">
-							<input type="checkbox" id="nematode" class="mdl-checkbox__input">
-							<p class="opt-size mdl-checkbox__label">Nematode</p>
+							<input type="checkbox" id="nematode" class="mdl-checkbox__input" value="Nematode">
+							Nematode
 						</label>
 					</div>
 					<div class="mdl-cell mdl-cell--4-col">
 						<label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="otrf2-1">
-							<input type="checkbox" id="otrf2-1" class="mdl-checkbox__input">
-							<p class="opt-size mdl-checkbox__label">Others</p>
+							<input type="checkbox" id="otrf2-1" class="mdl-checkbox__input" value="Others">
+							Others
 						</label>
 					</div>
 				</div>
@@ -238,31 +228,31 @@
 				<div class="mdl-grid">
 					<div class="mdl-cell mdl-cell--4-col">
 						<label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="yellowing">
-							<input type="checkbox" id="yellowing" class="mdl-checkbox__input">
+							<input type="checkbox" id="yellowing" class="mdl-checkbox__input" value="Yellowing">
 							<span class="opt-size mdl-checkbox__label">Yellowing</span>
 						</label>
 					</div>
 					<div class="mdl-cell mdl-cell--4-col">
 						<label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="rot">
-							<input type="checkbox" id="rot" class="mdl-checkbox__input">
+							<input type="checkbox" id="rot" class="mdl-checkbox__input" value="Root/Stem rot">
 							<span class="opt-size mdl-checkbox__label">Root/Stem rot</span>
 						</label>
 					</div>
 					<div class="mdl-cell mdl-cell--4-col">
 						<label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="spot">
-							<input type="checkbox" id="spot" class="mdl-checkbox__input">
+							<input type="checkbox" id="spot" class="mdl-checkbox__input" value="Leaf spot">
 							<span class="opt-size mdl-checkbox__label">Leaf spot</span>
 						</label>
 					</div>
 					<div class="mdl-cell mdl-cell--4-col">
 						<label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="stunting">
-							<input type="checkbox" id="stunting" class="mdl-checkbox__input">
+							<input type="checkbox" id="stunting" class="mdl-checkbox__input" value="Stunting">
 							<span class="opt-size mdl-checkbox__label">Stunting</span>
 						</label>
 					</div>
 					<div class="mdl-cell mdl-cell--4-col">
 						<label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="otrf2">
-							<input type="checkbox" id="otrf2" class="mdl-checkbox__input">
+							<input type="checkbox" id="otrf2" class="mdl-checkbox__input" value="Others">
 							<span class=" opt-size mdl-checkbox__label">Others</span>
 						</label>
 					</div>
@@ -278,32 +268,32 @@
 			<div class="mdl-grid">
 				<div class="mdl-cell mdl-cell--4-col">
 					<label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="wplant">
-						<input type="checkbox" id="wplant" class="mdl-checkbox__input">
-						<p class="opt-size mdl-checkbox__label">Whole Plant</p>
+						<input type="checkbox" id="wplant" class="mdl-checkbox__input" value="Whole Plant">
+						Whole Plant
 					</label>
 				</div>
 				<div class="mdl-cell mdl-cell--4-col">
 					<label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="frs">
-						<input type="checkbox" id="frs" class="mdl-checkbox__input">
-						<p class="opt-size mdl-checkbox__label">Few roots/stem</p>
+						<input type="checkbox" id="frs" class="mdl-checkbox__input" value="Few roots/stem">
+						Few roots/stem
 					</label>
 				</div>
 				<div class="mdl-cell mdl-cell--4-col">
 					<label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="local">
-						<input type="checkbox" id="local" class="mdl-checkbox__input">
-						<p class="opt-size mdl-checkbox__label">Localized</p>
+						<input type="checkbox" id="local" class="mdl-checkbox__input" value="Localized">
+						Localized
 					</label>
 				</div>
 				<div class="mdl-cell mdl-cell--4-col">
 					<label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="flt">
-						<input type="checkbox" id="flt" class="mdl-checkbox__input">
-						<p class="opt-size mdl-checkbox__label">Few leaves/twigs</p>
+						<input type="checkbox" id="flt" class="mdl-checkbox__input" value="Few leaves/twigs">
+						Few leaves/twigs
 					</label>
 				</div>
 				<div class="mdl-cell mdl-cell--4-col">
 					<label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="otrf22">
-						<input type="checkbox" id="otrf22" class="mdl-checkbox__input">
-						<p class="opt-size mdl-checkbox__label">Others</p>
+						<input type="checkbox" id="otrf22" class="mdl-checkbox__input" value="Others">
+						Others
 					</label>
 				</div>
 			</div>
@@ -321,13 +311,13 @@
 			<div class="mdl-grid">
 				<div class="mdl-cell mdl-cell--12-col">
 					<label class="f-left mdl-radio mdl-js-radio mdl-js-ripple-effect" for="random">
-						<input type="radio" id="random" name="stage" class="mdl-radio__button" >
+						<input type="radio" id="random" name="stage" class="mdl-radio__button" value="Random">
 						<span class="opt-size mdl-radio__label">Random</span>
 					</label>
 				</div>
 				<div class="mdl-cell mdl-cell--12-col">
 					<label class="f-left mdl-radio mdl-js-radio mdl-js-ripple-effect" for="sao">
-						<input type="radio" id="sao" name="stage" class="mdl-radio__button" >
+						<input type="radio" id="sao" name="stage" class="mdl-radio__button" value = "Scattered all over">
 						<span class="opt-size mdl-radio__label">Scattered all over</span>
 					</label>
 				</div>
@@ -343,21 +333,21 @@
 			<div class="mdl-grid">
 				<div class="mdl-cell mdl-cell--12-col">
 					<label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="chewing">
-						<input type="checkbox" id="chewing" class="mdl-checkbox__input">
-						<p class="opt-size mdl-checkbox__label">Chewing Type</p>
+						<input type="checkbox" id="chewing" class="mdl-checkbox__input" value="Chewing Type">
+						Chewing Type
 					</label>
 				</div>
 				<div class="mdl-cell mdl-cell--12-col">
 					<label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="sucking">
-						<input type="checkbox" id="sucking" class="mdl-checkbox__input">
-						<p class="opt-size mdl-checkbox__label">Sucking Type</p>
+						<input type="checkbox" id="sucking" class="mdl-checkbox__input" value="Sucking Type">
+						Sucking Type
 					</label>
 				</div>
 				
 				<div class="mdl-cell mdl-cell--12-col">
 					<label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="otr-insect-damage">
-						<input type="checkbox" id="otr-insect-damage" class="mdl-checkbox__input">
-						<p class="opt-size mdl-checkbox__label">Others</p>
+						<input type="checkbox" id="otr-insect-damage" class="mdl-checkbox__input" value="Others">
+						Others
 					</label>
 				</div>
 
@@ -444,25 +434,25 @@
 									<div class="mdl-grid">
 										<div class="mdl-cell mdl-cell--6-col">
 											<label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="rain">
-												<input type="checkbox" id="rain" class="mdl-checkbox__input">
+												<input type="checkbox" id="rain" class="mdl-checkbox__input" value="Heavy Rain">
 												<span class="opt-size mdl-checkbox__label">Heavy Rain</span>
 											</label>
 										</div>
 										<div class="mdl-cell mdl-cell--6-col">
 											<label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="drought">
-												<input type="checkbox" id="drought" class="mdl-checkbox__input">
+												<input type="checkbox" id="drought" class="mdl-checkbox__input" value="Drought">
 												<span class="opt-size mdl-checkbox__label">Drought</span>
 											</label>
 										</div>
 										<div class="mdl-cell mdl-cell--6-col">
 											<label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="flood">
-												<input type="checkbox" id="flood" class="mdl-checkbox__input">
+												<input type="checkbox" id="flood" class="mdl-checkbox__input" value="Flood">
 												<span class="opt-size mdl-checkbox__label">Flood</span>
 											</label>
 										</div>
 										<div class="mdl-cell mdl-cell--6-col">
 											<label class="f-left mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="fog">
-												<input type="checkbox" id="fog" class="mdl-checkbox__input">
+												<input type="checkbox" id="fog" class="mdl-checkbox__input" value="Fog">
 												<span class="opt-size mdl-checkbox__label">Fog</span>
 											</label>
 										</div>
@@ -480,8 +470,8 @@
 									<label class="f-left form-text">Pest was observed </label>
 									<input class="d1" type="text" id="d1" name="d1">
 									<select id="days">
-										<option value="before">days before</option>
-										<option value="after">days after</option>
+										<option value="days before">days before</option>
+										<option value="days after">days after</option>
 									</select>
 									<label class="f-left form-text"> chemical is applied </label>
 								</div>
@@ -489,8 +479,8 @@
 									<label class="f-left form-text">Pest was observed </label>
 									<input class="d2" type="text" id="d2" name="d2">
 									<select id="days2">
-										<option value="before2">days before</option>
-										<option value="after2">days after</option>
+										<option value="days before">days before</option>
+										<option value="days after">days after</option>
 									</select>
 									<label class="f-left form-text"> an unusual weather </label>
 								</div>
@@ -505,19 +495,4 @@
 			</div>
 		</div>
 	
-</template>
-
-
-
-<template name="sampleTemplate">
-
-	<form name="sampleForm" class="sampleForm">
-		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			<input class="mdl-textfield__input" type="text" id="field1" name="field1">
-			<label class="f-left smp-form-color mdl-textfield__label" for="field1">Sample</label>			
-		</div>
-		<br/>
-		<button id="submitBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Submit</button>
-	</form>
-
 </template>

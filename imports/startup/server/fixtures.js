@@ -7,9 +7,37 @@ import { CMS } from '../../api/cms/cms.js';
 import { Experts } from '../../api/experts/experts.js';
 import { Assistance } from '../../api/assistance/assistance.js';
 import { Logs } from '../../api/logs/logs.js';
-
+import { Forms } from '../../api/forms/forms.js';
 
 Meteor.startup(() => {
+  if (Forms.find().count() === 0) {
+    const data = [
+      {
+        date: 'July 5th 2017, 4:01:38 pm', 
+        email: 'mdlacson@up.edu.ph', 
+        location: 'Laguna',
+        source: 'Rice', 
+        area: 'LB', 
+        cropStage: 'Seeding',  
+        variety: 'Hybrid', 
+        pesttype: 'Insect', 
+        symptoms: 'Stunting', 
+        parts: 'Others', 
+        distribution: 'Random', 
+        damage: 'Chewing Type', 
+        fertilizer: 'None', 
+        insecticide: 'None', 
+        herbicide: 'None', 
+        fungicide: 'None', 
+        weather: 'Drought', 
+        chemapplied: '12 days before', 
+        weatherobserved: '1 day before',
+      },
+    ];
+
+    data.forEach(form => Forms.insert(form));
+  }
+
   // if the Links collection is empty
   if (Links.find().count() === 0) {
     const data = [
@@ -77,7 +105,7 @@ Meteor.startup(() => {
   if (Meteor.users.find().fetch().length === 0) {
       Accounts.createUser({username: 'admin123',email: 'admin@admin.com', password: 'admin123'});
       var id = Meteor.users.findOne({username: "admin123"});
-      Roles.addUsersToRoles(id._id, ['Admin', 'Pests Admin', 'Clinic Admin', 'Id Admin', 'Diseases Admin']);
+      Roles.addUsersToRoles(id._id, ['Admin']);
 
       Accounts.createUser({username: 'pests123',email: 'pests@pests.com', password: 'pests123'});
       var id1 = Meteor.users.findOne({username: "pests123"});
@@ -85,7 +113,7 @@ Meteor.startup(() => {
 
       Accounts.createUser({username: 'clinic123',email: 'clinic@clinic.com', password: 'clinic123'});
       var id2 = Meteor.users.findOne({username: "clinic123"});
-      Roles.addUsersToRoles(id2._id, ['Clinic Admin']);
+      Roles.addUsersToRoles(id2._id, ['Clinic Admin', 'Pest Expert']);
 
       Accounts.createUser({username: 'id1234',email: 'id@id.com', password: 'id1234'});
       var id3 = Meteor.users.findOne({username: "id1234"});
@@ -94,6 +122,22 @@ Meteor.startup(() => {
       Accounts.createUser({username: 'diseases',email: 'diseases@diseases.com', password: 'diseases'});
       var id4 = Meteor.users.findOne({username: "diseases"});
       Roles.addUsersToRoles(id4._id, ['Diseases Admin']);
+
+      Accounts.createUser({username: 'expert1',email: 'expert1@expert.com', password: 'expert1'});
+      var id5 = Meteor.users.findOne({username: "expert1"});
+      Roles.addUsersToRoles(id5._id, ['Pest Expert']);
+
+      Accounts.createUser({username: 'expert2',email: 'expert2@expert.com', password: 'expert2'});
+      var id6 = Meteor.users.findOne({username: "expert2"});
+      Roles.addUsersToRoles(id6._id, ['Pest Expert']);
+
+      Accounts.createUser({username: 'expert3',email: 'expert3@expert.com', password: 'expert3'});
+      var id7 = Meteor.users.findOne({username: "expert3"});
+      Roles.addUsersToRoles(id7._id, ['Pest Expert']);
+
+      Accounts.createUser({username: 'expert4',email: 'expert4@expert.com', password: 'expert4'});
+      var id8 = Meteor.users.findOne({username: "expert4"});
+      Roles.addUsersToRoles(id8._id, ['Pest Expert']);
   }
 
   // if the Assistance collection is empty
