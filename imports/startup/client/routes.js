@@ -135,7 +135,7 @@ FlowRouter.route('/admin/identification', {
   action: function(params) {
       Tracker.autorun(function() {
       var ready = FlowRouter.subsReady("getUser");
-          if (ready && Roles.userIsInRole(Meteor.user(), ['Id Admin'])) {
+          if (ready && Roles.userIsInRole(Meteor.user(), ['Id Admin' , 'Admin'])) {
             BlazeLayout.render("App_body", {main: "pestIdUpdate"})
           }else if(ready){
             BlazeLayout.render("App_body", {main: "App_home"})
@@ -154,7 +154,7 @@ FlowRouter.route('/admin/diseases', {
   action: function(params) {
       Tracker.autorun(function() {
       var ready = FlowRouter.subsReady("getUser");
-          if (ready && Roles.userIsInRole(Meteor.user(), ['Diseases Admin'])) {
+          if (ready && Roles.userIsInRole(Meteor.user(), ['Diseases Admin' , 'Admin'])) {
             BlazeLayout.render("App_body", {main: "diseasesUpdate"})
           }else if(ready){
             BlazeLayout.render("App_body", {main: "App_home"})
@@ -173,10 +173,8 @@ FlowRouter.route('/admin/home', {
     action(params, queryParams) {
         Tracker.autorun(function() {
             var ready = FlowRouter.subsReady("getUser");
-            console.log(ready);
                 if(ready && Roles.userIsInRole(Meteor.userId(), ['Admin'])){
                     BlazeLayout.render("App_body", {main: "homeUpdate"})
-               console.log("mico");
                 }
                 else if(ready){
                     BlazeLayout.render("App_body", {main: "App_home"})
@@ -196,7 +194,7 @@ FlowRouter.route('/admin/library', {
   action: function(params) {
       Tracker.autorun(function() {
       var ready = FlowRouter.subsReady("getUser");
-          if (ready && Roles.userIsInRole(Meteor.user(), ['Pests Admin'])) {
+          if (ready && Roles.userIsInRole(Meteor.user(), ['Pests Admin' , 'Admin'])) {
             BlazeLayout.render("App_body", {main: "pestLibUpdate"})
           }else if(ready){
             BlazeLayout.render("App_body", {main: "App_home"})
@@ -273,7 +271,7 @@ FlowRouter.route('/admin/insert-pest', {
   action: function(params) {
       Tracker.autorun(function() {
       var ready = FlowRouter.subsReady("getUser");
-          if (ready && Roles.userIsInRole(Meteor.user(), ['Pests Admin'])) {
+          if (ready && Roles.userIsInRole(Meteor.user(), ['Pests Admin' , 'Admin'])) {
             BlazeLayout.render("App_body", {main: "insertPest"})
           }else if(ready){
             BlazeLayout.render("App_body", {main: "App_home"})
@@ -292,7 +290,7 @@ FlowRouter.route('/admin/edit-pest', {
   action: function(params) {
       Tracker.autorun(function() {
       var ready = FlowRouter.subsReady("getUser");
-          if (ready && Roles.userIsInRole(Meteor.user(), ['Pests Admin'])) {
+          if (ready && Roles.userIsInRole(Meteor.user(), ['Pests Admin' , 'Admin'])) {
             BlazeLayout.render("App_body", {main: "editPest"})
           }else if(ready){
             BlazeLayout.render("App_body", {main: "App_home"})
@@ -311,7 +309,7 @@ FlowRouter.route("/admin/edit-pest/:_id", {
   action: function(params) {
       Tracker.autorun(function() {
       var ready = FlowRouter.subsReady("getUser");
-          if (ready && Roles.userIsInRole(Meteor.user(), ['Pests Admin'])) {
+          if (ready && Roles.userIsInRole(Meteor.user(), ['Pests Admin' , 'Admin'])) {
             BlazeLayout.render("App_body", {main: "editPestEntity"})
           }else if(ready){
             BlazeLayout.render("App_body", {main: "App_home"})
@@ -330,9 +328,9 @@ FlowRouter.route('/admin/pests-clinic', {
   action: function(params) {
       Tracker.autorun(function() {
       var ready = FlowRouter.subsReady("getUser");
-          if (ready && Roles.userIsInRole(Meteor.user(), ['Clinic Admin'])) {
+          if (ready && Roles.userIsInRole(Meteor.user(), ['Clinic Admin', 'Admin'])) {
             BlazeLayout.render("App_body", {main: "pestClinicUpdate"})
-          }else if(ready && Roles.userIsInRole(Meteor.user(), ['Pest Expert'])) {
+          }else if(ready && Roles.userIsInRole(Meteor.user(), ['Pest Expert', 'Admin'])) {
             BlazeLayout.render("App_body", {main: "assistanceUpdate"})            
           }else if(ready){
             BlazeLayout.render("App_body", {main: "App_home"})
@@ -351,7 +349,7 @@ FlowRouter.route('/admin/experts', {
   action: function(params) {
       Tracker.autorun(function() {
       var ready = FlowRouter.subsReady("getUser");
-          if (ready && Roles.userIsInRole(Meteor.user(), ['Clinic Admin'])) {
+          if (ready && Roles.userIsInRole(Meteor.user(), ['Clinic Admin' , 'Admin'])) {
             BlazeLayout.render("App_body", {main: "expertUpdate"})
           }else if(ready){
             BlazeLayout.render("App_body", {main: "App_home"})
@@ -370,9 +368,9 @@ FlowRouter.route('/admin/assistance', {
   action: function(params) {
       Tracker.autorun(function() {
       var ready = FlowRouter.subsReady("getUser");
-          if(ready && Roles.userIsInRole(Meteor.user(), ['Pest Expert'])) {
+          if(ready && Roles.userIsInRole(Meteor.user(), ['Pest Expert' , 'Admin'])) {
             BlazeLayout.render("App_body", {main: "assistanceUpdate"});          
-          }else if (ready && Roles.userIsInRole(Meteor.user(), ['Clinic Admin'])) {
+          }else if (ready && Roles.userIsInRole(Meteor.user(), ['Clinic Admin' , 'Admin'])) {
             BlazeLayout.render("App_body", {main: "assistanceUpdate"})
           }else if(ready){
             BlazeLayout.render("App_body", {main: "App_home"})
@@ -424,7 +422,7 @@ FlowRouter.route('/admin/activity-log', {
   action: function(params) {
       Tracker.autorun(function() {
       var ready = FlowRouter.subsReady("getUser");
-          if (ready && Roles.userIsInRole(Meteor.user(), ['Clinic Admin'])) {
+          if (ready && Roles.userIsInRole(Meteor.user(), ['Clinic Admin' , 'Admin'])) {
             BlazeLayout.render("App_body", {main: "Create_chart"})
           }else if(ready){
             BlazeLayout.render("App_body", {main: "App_home"})
@@ -443,9 +441,9 @@ FlowRouter.route('/admin/form-result', {
   action: function(params) {
       Tracker.autorun(function() {
           var ready = FlowRouter.subsReady("getUser");
-          if(ready && Roles.userIsInRole(Meteor.user(), ['Pest Expert'])) {
+          if(ready && Roles.userIsInRole(Meteor.user(), ['Pest Expert' , 'Admin'])) {
             BlazeLayout.render("App_body", {main: "formResult"});          
-          }else if (ready && Roles.userIsInRole(Meteor.user(), ['Clinic Admin'])) {
+          }else if (ready && Roles.userIsInRole(Meteor.user(), ['Clinic Admin' , 'Admin'])) {
             BlazeLayout.render("App_body", {main: "formResult"});
           }else if(ready){
             BlazeLayout.render("App_body", {main: "App_home"})

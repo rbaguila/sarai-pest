@@ -6,16 +6,16 @@
 				{{#if isInRole 'Admin'}}
 					<li><a href="/admin/home">Home</a></li>
 				{{/if}}
-				{{#if isInRole 'Pests Admin' 'Admin'}}
+				{{#if isInRole 'Admin'}}
 					<li><a href="/admin/library">Pest Library</a></li>
 				{{/if}}
-				{{#if isInRole 'Clinic Admin' 'Admin'}}
+				{{#if isInRole 'Admin'}}
 					<li><a href="/admin/pests-clinic">Pest Clinic</a></li>
 				{{/if}}
-				{{#if isInRole 'Id Admin' 'Admin'}}
+				{{#if isInRole 'Admin'}}
 					<li><a href="/admin/identification">Pest Identification</a></li>
 				{{/if}}
-				{{#if isInRole 'Diseases Admin' 'Admin'}}
+				{{#if isInRole 'Admin'}}
 					<li><a href="/admin/diseases">Diseases</a></li>
 				{{/if}}
 				{{#if isInRole 'Admin'}}
@@ -23,7 +23,21 @@
 				{{/if}}	
 				{{#if isInRole 'Admin'}}
 					<li><a href="/admin/nav-settings">Settings</a></li>
-				{{/if}}		
+				{{/if}}						
+			
+				{{#if isInRole 'Pests Admin'}}
+					<li><a href="/admin/library">Pest Library</a></li>
+				{{/if}}
+				{{#if isInRole 'Clinic Admin'}}
+					<li><a href="/admin/pests-clinic">Pest Clinic</a></li>
+				{{/if}}
+				{{#if isInRole 'Id Admin'}}
+					<li><a href="/admin/identification">Pest Identification</a></li>
+				{{/if}}
+				{{#if isInRole 'Diseases Admin'}}
+					<li><a href="/admin/diseases">Diseases</a></li>
+				{{/if}}
+
 		</ul>
 	</div>
 </template>

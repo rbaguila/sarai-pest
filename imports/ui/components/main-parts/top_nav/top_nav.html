@@ -31,6 +31,24 @@
         {{#each link in links}}
           <li><a href="{{link.url}}">{{link.title}}</a></li>
         {{/each}}
+        {{#if isInRole 'Admin'}}
+          <li><a href="/admin/home">Admin Page</a></li>
+        {{/if}}
+        {{#if isInRole 'Pests Admin'}}
+          <li><a href="/admin/library">Admin Page</a></li>
+        {{/if}}
+        {{#if isInRole 'Clinic Admin'}}
+          <li><a href="/admin/pests-clinic">Admin Page</a></li>
+        {{/if}}
+        {{#if isInRole 'Id Admin'}}
+          <li><a href="/admin/identification">Admin Page</a></li>
+        {{/if}}
+        {{#if isInRole 'Diseases Admin'}}
+          <li><a href="/admin/diseases">Admin Page</a></li>
+        {{/if}}
+        {{#if isInRole 'Pest Expert'}}
+          <li><a href="/admin/assistance">Admin Page</a></li>
+        {{/if}}
       </ul>
     </div><!--/.nav-collapse -->
 
