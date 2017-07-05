@@ -35,7 +35,7 @@ Template.diseasesUpdate.helpers({
 	},
 });
 
-var file;
+var file = null;
 var files = [];
 Template.diseasesUpdate.events({
 	'submit form': function(e, t){
@@ -56,32 +56,51 @@ Template.diseasesUpdate.events({
 		$( "input[type=checkbox]:checked" ).map(function() {
 		    diseaseType.push($( this ).val());
 		});
-		
-		Cloudinary.upload(file, function(err, res) {
-          console.log("Upload Error: " + err);
-          console.log("Upload Result: " + res);
-          imgURL = res.public_id;
-          Session.set('bannerImage', 'http://res.cloudinary.com/project-sarai/image/upload/' + imgURL);
+		if(file===null){
+				var newCMS = {
+					bannerImage: (Session.get('bannerImage') == undefined) ? CMS.findOne({info: "finalDiseases"}).bannerImage : Session.get('bannerImage'),
+					bannerText : $("#bannerText").val(),
+					bannerSubText : $("#bannerSubText").val(),
+					searchlabel : $("#searchlabel").val(),
+					diseaseNumbers : parseInt( $("#diseasesperpage").val() ),
+					diseaseType : diseaseType
+				}
+				// UPDATES THE DATABASE
+				Meteor.call('cms.updateDiseases', newCMS, (error) => {
+			      if (error) {
+			        alert(error.error);
+			      } else {
+			       	$('#cancelBTN').hide(); 
+			       	$('#viewChangesBTN').show(); 
+			      }
+			    });
+		}else{
+			Cloudinary.upload(file, function(err, res) {
+	          console.log("Upload Error: " + err);
+	          console.log("Upload Result: " + res);
+	          imgURL = res.public_id;
+	          Session.set('bannerImage', 'http://res.cloudinary.com/project-sarai/image/upload/' + imgURL);
 
-			// GET THE VALUES
-			var newCMS = {
-				bannerImage: (Session.get('bannerImage') == undefined) ? CMS.findOne({info: "finalDiseases"}).bannerImage : Session.get('bannerImage'),
-				bannerText : $("#bannerText").val(),
-				bannerSubText : $("#bannerSubText").val(),
-				searchlabel : $("#searchlabel").val(),
-				diseaseNumbers : parseInt( $("#diseasesperpage").val() ),
-				diseaseType : diseaseType
-			}
-			// UPDATES THE DATABASE
-			Meteor.call('cms.updateDiseases', newCMS, (error) => {
-		      if (error) {
-		        alert(error.error);
-		      } else {
-		       	$('#cancelBTN').hide(); 
-		       	$('#viewChangesBTN').show(); 
-		      }
-		    });
-        });
+				// GET THE VALUES
+				var newCMS = {
+					bannerImage: (Session.get('bannerImage') == undefined) ? CMS.findOne({info: "finalDiseases"}).bannerImage : Session.get('bannerImage'),
+					bannerText : $("#bannerText").val(),
+					bannerSubText : $("#bannerSubText").val(),
+					searchlabel : $("#searchlabel").val(),
+					diseaseNumbers : parseInt( $("#diseasesperpage").val() ),
+					diseaseType : diseaseType
+				}
+				// UPDATES THE DATABASE
+				Meteor.call('cms.updateDiseases', newCMS, (error) => {
+			      if (error) {
+			        alert(error.error);
+			      } else {
+			       	$('#cancelBTN').hide(); 
+			       	$('#viewChangesBTN').show(); 
+			      }
+			    });
+	        });		
+		}
 
         $('.progress .progress-bar').css("width",
                 function() {

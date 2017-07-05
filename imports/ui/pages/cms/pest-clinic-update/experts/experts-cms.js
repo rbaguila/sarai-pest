@@ -15,7 +15,7 @@ Template.expertUpdate.helpers({
 	},
 });
 
-var file;
+var file=null;
 var files = [];
 Template.expertUpdate.events({
 	'click .profile': function(event){
@@ -40,40 +40,69 @@ Template.expertUpdate.events({
 
 	'click #editBTN': function(event){
 		var imgURL;
-
-		Cloudinary.upload(file, function(err, res) {
-          console.log("Upload Error: " + err);
-          console.log("Upload Result: " + res);
-          imgURL = res.public_id;
-          Session.set('profileImage', 'http://res.cloudinary.com/project-sarai/image/upload/' + imgURL);
-
-			if( Session.get('newProfile') == undefined ){
-				$('#nothingToEdit').modal('show');
-			} else{
-				var expert = Session.get('newProfile');
-				// GET THE VALUES
-				var newProfile = {
-					id: expert._id,
-					image: (Session.get('profileImage') == undefined) ? expert.profile : Session.get('profileImage'),
-					name: $('#name').val(),
-					position: $('#position').val(),
-					company: $('#company').val(),
-				}
-				
-				if(newProfile.name == "" || newProfile.position == "" || newProfile.company == ""){
-					$('#invalidEdit').modal('show');
+		console.log(file)
+		if(file===null){
+				if( Session.get('newProfile') == undefined ){
+					$('#nothingToEdit').modal('show');
 				} else{
-					// UPDATES THE DATABASE
-					Meteor.call('experts.updateProfile', newProfile, (error) => {
-				      if (error) {
-				        alert(error.error);
-				      } else {
-				      	$('#expertEdited').modal('show');
-				      }
-				    });
+					var expert = Session.get('newProfile');
+					// GET THE VALUES
+					var newProfile = {
+						id: expert._id,
+						image: (Session.get('profileImage') == undefined) ? expert.profile : Session.get('profileImage'),
+						name: $('#name').val(),
+						position: $('#position').val(),
+						company: $('#company').val(),
+					}
+					
+					if(newProfile.name == "" || newProfile.position == "" || newProfile.company == ""){
+						$('#invalidEdit').modal('show');
+					} else{
+						// UPDATES THE DATABASE
+						Meteor.call('experts.updateProfile', newProfile, (error) => {
+					      if (error) {
+					        alert(error.error);
+					      } else {
+					      	$('#expertEdited').modal('show');
+					      }
+					    });
+					}
+				}			
+		}else{
+			Cloudinary.upload(file, function(err, res) {
+	          console.log("Upload Error: " + err);
+	          console.log("Upload Result: " + res);
+	          imgURL = res.public_id;
+	          Session.set('profileImage', 'http://res.cloudinary.com/project-sarai/image/upload/' + imgURL);
+
+				if( Session.get('newProfile') == undefined ){
+					$('#nothingToEdit').modal('show');
+				} else{
+					var expert = Session.get('newProfile');
+					// GET THE VALUES
+					var newProfile = {
+						id: expert._id,
+						image: (Session.get('profileImage') == undefined) ? expert.profile : Session.get('profileImage'),
+						name: $('#name').val(),
+						position: $('#position').val(),
+						company: $('#company').val(),
+					}
+					
+					if(newProfile.name == "" || newProfile.position == "" || newProfile.company == ""){
+						$('#invalidEdit').modal('show');
+					} else{
+						// UPDATES THE DATABASE
+						Meteor.call('experts.updateProfile', newProfile, (error) => {
+					      if (error) {
+					        alert(error.error);
+					      } else {
+					      	$('#expertEdited').modal('show');
+					      }
+					    });
+					}
 				}
-			}
-		});
+			});
+		}
 		$('.progress .progress-bar').css("width",
                 function() {
                     return "0%";

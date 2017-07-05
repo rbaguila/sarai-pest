@@ -23,7 +23,6 @@ Meteor.methods({
       {
         date: newForm.date,
         email: newForm.email,
-        
         location: newForm.location,
         source: newForm.source,
         area: newForm.area,
@@ -45,6 +44,12 @@ Meteor.methods({
         weatherobserved: newForm.weatherobserved
         
       });
+  },  
+  'forms.removeForm'(id){
+    check(id, String);
+
+    Forms.remove( { _id: id } );
   },
 
 });
+

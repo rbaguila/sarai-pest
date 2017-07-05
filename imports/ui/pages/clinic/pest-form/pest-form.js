@@ -72,7 +72,6 @@ Template.GeneralInformation2.events({
             newForm = {
                 date: moment().format('MMMM Do YYYY, h:mm:ss a'),
                 email: $("#email2").val(), 
-
                 location: $("#floc2").val(),
                 source: $("#src2").val(), 
                 area: $("#area2").val(),

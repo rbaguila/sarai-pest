@@ -8,7 +8,6 @@ var currentPests = "";
 var currentType = "";
 var cropAffected = "";
 var classType = "";
-var file;
 Template.pestId.onCreated(function () {
 	Meteor.subscribe('plant_problem.all');
 	Meteor.subscribe('cms.all');
@@ -166,13 +165,15 @@ Template.pestId.helpers({
 				   alert('Choose either Pest or Disease first.');
 				   return false;
 				}
+				var file;
+				var files = [];
 			 	Session.set("showIPS", true);
 			 	Session.set("spinner", true);
 			 	Session.set('data',undefined);
 			 	// filename = "../server/uploads/"+fileInfo.name;
 			 	filename = "http://localhost:3000/upload/"+fileInfo.name;
 			 	//H4Dhw4yPhumNK3PKu.jpg
-			 	file = fileInfo.name;
+
 			 	Session.set("filename",filename);
 			 	var type = Session.get("currentType");
 			 	var crop = Session.get("cropAffected");
