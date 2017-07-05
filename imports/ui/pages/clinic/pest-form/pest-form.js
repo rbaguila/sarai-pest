@@ -1,6 +1,12 @@
 import { Meteor } from 'meteor/meteor';
 import { Forms } from '/imports/api/forms/forms.js';
+import { Assistance } from '/imports/api/assistance/assistance.js';
+import { Logs } from '/imports/api/logs/logs.js';
 import './pest-form.html';
+
+var newForm;
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+var date = new Date();
 
 Template.FormOnly.onCreated(function () {
   Meteor.subscribe('forms.all');
@@ -17,16 +23,11 @@ Template.FormOnly.events({
         e.preventDefault();
     },
     'click #con1': function(){
-            $("#geninfo2").hide();
-            $("#pestprob2").show();
+            // $("#geninfo2").hide();
+            // $("#pestprob2").show();
             var text = document.getElementById('stp2'); 
             text.style.color='black';
-            console.log($("#email2").val());
-            console.log($("#floc2").val());
-            console.log($("#src2").val());
-            console.log($("#area2").val());
-            console.log($("#cstage2").val());
-            console.log($("#crop2").val());
+            console.log($('select[name=cstage2]').val());
             
     },
     'click #con2': function(){
@@ -34,6 +35,7 @@ Template.FormOnly.events({
             $("#addinfo2").show();
             var text = document.getElementById('stp3'); 
             text.style.color='black';
+            console.log($("#insect2")[0].checked);
     },
     'click #back1': function(){
             $("#geninfo2").show();
@@ -61,101 +63,197 @@ Template.FormOnly.events({
 //     }
 // });*/
 
-// Template.GeneralInformation.events({
-//     'submit form': function(e){
-//         e.preventDefault();
-//         var form = e.target;
-//         console.log("testing",form);
-        
-//         var floc = $("#floc").val();
-//         var area = $("#area").val();
-//         var crop = $("#crop").val();
-//         var src = $("#src").val();
-//         console.log(floc);
-//         console.log(area);
-//         console.log(crop);
-//         console.log(src);
-        
-//         ClinicForm.insert({
-//                 location: floc,
-//                 area: area,
-//                 crop: crop,
-//                 source: src
-//             });
+Template.GeneralInformation2.events({
+    'click #con1': function(e){
+        e.preventDefault();
+        //var form = e.target;
+        //console.log("testing",form);
+        if( !($("#email2").val()=='') && !($("#floc2").val()=='') && !($('select[name=cstage2]').val()=='') && !($("#area2").val()=='') && !($(".cstage2").val()=='') && !($("#crop2").val()=='')){
+            newForm = {
+                date: moment().format('MMMM Do YYYY, h:mm:ss a'),
+                email: $("#email2").val(), 
+                location: $("#floc2").val(),
+                source: $("#src2").val(), 
+                area: $("#area2").val(),
+                cropStage: $('select[name=cstage2]').val(),
+                variety: $("#crop2").val(),
+            }
+            $("#geninfo2").hide();
+            $("#pestprob2").show();
+            var text = document.getElementById('stp2'); 
+            text.style.color='black';
             
-//         console.log( ClinicForm.find({limit: 8}));
-        
-//     }
-// });
+        }else{
+            $('#incompleteForm2').modal('show');
+        }
+    }
+});
 
-// Template.PestProblemForm.events({
-//     'submit form': function(e){
-//         e.preventDefault();
+Template.PestProblemForm2.events({
+    'click #con2': function(e){
+        e.preventDefault();
         
-//         /*ClinicForm.insert({
-//                 location: floc,
-//                 area: area,
-//                 crop: crop,
-//                 source: src
-//             });
+        if($("#insect2")[0].checked){
+            newForm.pesttype = $("#insect2").val();
+        }else if($("#weed2")[0].checked){
+            newForm.pesttype = $("#weed2").val();
+        }else if($("#rat2")[0].checked){
+            newForm.pesttype = $("#rat2").val();
+        }else if($("#bird2")[0].checked){
+            newForm.pesttype = $("#bird2").val();
+        }else if($("#nematode2")[0].checked){
+            newForm.pesttype = $("#newForm").val();
+        }else if($("#otrf2-12")[0].checked){
+            newForm.pesttype = $("#others2").val();
+        }else{
+            newForm.pesttype = ""; 
+        }
+        
+        if($("#yellowing2")[0].checked){
+            newForm.symptoms = $("#yellowing2").val();
+        }else if($("#rot2")[0].checked){
+            newForm.symptoms = $("#rot2").val();
+        }else if($("#spot2")[0].checked){
+            newForm.symptoms = $("#spot2").val();
+        }else if($("#stunting2")[0].checked){
+            newForm.symptoms = $("#stunting2").val();
+        }else if($("#otrf22")[0].checked){
+            newForm.symptoms = $("#otrf22").val();
+        }else{
+            newForm.symptoms = "";
+        }
+        
+        if($("#wplant2")[0].checked){
+            newForm.parts = $("#wplant2").val();
+        }else if($("#frs2")[0].checked){
+            newForm.parts = $("#frs2").val();
+        }else if($("#local2")[0].checked){
+            newForm.parts = $("#local2").val();
+        }else if($("#flt2")[0].checked){
+            newForm.parts = $("#flt2").val();
+        }else if($("#otrf222")[0].checked){
+            newForm.parts = $("#otrf222").val();
+        }else{
+            newForm.parts = "";
+        }
+
+        newForm.distribution = "";
+        if($("#random2")[0].checked){
+            newForm.distribution = $("#random2").val();
+        }else if($("#sao2")[0].checked){
+            newForm.distribution = $("#sao2").val();
+        }else{
+            newForm.distribution = $("#otherf232").val();
+        }
+
+        if($("#chewing2")[0].checked){
+            newForm.damage = $("#chewing2").val();
+        }else if($("#sucking2")[0].checked){
+            newForm.damage = $("#sucking2").val();
+        }else if($("otr-insect-damage2")[0].checked){
+            newForm.damage = $("otr-insect-damage2").val();
+        }else{
+            newForm.damage = "";
+        }
+
+        if(!(newForm.pesttype =='') && !(newForm.symptoms =='') && !(newForm.parts =='') && !(newForm.distribution =='') && !(newForm.damage =='')){
+            $("#pestprob2").hide();
+            $("#addinfo2").show();
+            var text = document.getElementById('stp3'); 
+            text.style.color='black';
             
-//         console.log( ClinicForm.find({limit: 8}));
-//         */
-//     }
-// });
-
-// Template.AdditionalInformation.events({
-//     'submit form': function(e){
-//         e.preventDefault();
+        }else{
+            $('#incompleteForm2').modal('show');
+        }
         
-//         /*ClinicForm.insert({
-//                 location: floc,
-//                 area: area,
-//                 crop: crop,
-//                 source: src
-//             });
+    }
+});
+
+Template.AdditionalInformation2.events({
+    'click #form-submit': function(e){
+        e.preventDefault();
+        newForm.fertilizer = "";
+        newForm.insecticide = "";
+        newForm.fungicide = "";
+        newForm.herbicide = "";
+        newForm.weather = "";
+
+        newForm.fertilizer = $("#fertilizer2").val();
+        newForm.insecticide = $("#insecticide2").val();
+        newForm.fungicide = $("#fungicide2").val();
+        newForm.herbicide = $("#herbicide2").val();
+        if($("#rain2")[0].checked){
+            newForm.weather = $("#rain2").val();
+        }else if($("#drought2")[0].checked){
+            newForm.weather = $("#drought2").val();
+        }else if($("#flood2")[0].checked){
+            newForm.weather = $("#flood2").val();
+        }else if($("#fog2")[0].checked){
+            newForm.weather = $("#fog2").val();
+        }else{
+            newForm.weather = $("#otr-f3-abn2").val();
+        }
+
+        newForm.chemapplied = $("#d2").val() + " " + $("#days2 option:selected").val();
+        newForm.weatherobserved = $("#d22").val() + " " + $("#days22 option:selected").val();
+        if(!(newForm.fertilizer =='') && !(newForm.insecticide =='') && !(newForm.fungicide =='') && !(newForm.herbicide =='') && !(newForm.weather =='') && !($("#d1").val() =='') && !($("#d2").val() =='')){
             
-//         console.log( ClinicForm.find({limit: 8}));
-//         */
-//     }
-// });
-
-
-// Template.GeneralInformation.onRendered(function(){
-//      $('.firstForm').validate({
-//         rules: {
-//             floc: {
-//                 required: true,
-//                 minlength: 6
-//             },
-//             area: {
-//                 required: true
-//             },
-//             crop: {
-//                 required: true,
-//                 minlength: 6
-//             },
-//             src: {
-//                 required: true,
-//                 minlength: 6
-//             }
-//         },
-//         messages: {
-//             floc: {
-//                required: "Please fill up this field",
-//                     minlength: "Min length is 6"
-//             },
-//             area: {
-//                required: "Please fill up this field"
-//             },
-//             crop: {
-//                required: "Please fill up this field",
-//                     minlength: "Min length is 6"
-//             },
-//             src: {
-//                required: "Please fill up this field",
-//                     minlength: "Min length is 6"
-//             }
-//         }
-//     });
-// });
+            var newForm2 = {
+                email: newForm.email,
+                subject: "Clinic Form",
+                message: 
+                "Farm Location: " + newForm.location + "<br>" + 
+                "Source of Plant: " + newForm.source + "<br>" + 
+                "Area Planted: " + newForm.area + "<br>" + 
+                "Crop Stage: " + newForm.cropStage + "<br>" +
+                "Crop/Variety: " + newForm.variety + "<br>" + 
+                "Type of Pest: " + newForm.pesttype + "<br>" + 
+                "Description of Symptoms: " + newForm.symptoms + "<br>" +
+                "Parts of Plant Affected: " + newForm.parts + "<br>" + 
+                "Distribution of Symptoms: " + newForm.distribution + "<br>" +
+                "Insect Damage: " + newForm.damage + "<br>" +
+                "Chemical Rate Applied: <br>" + 
+                "Fertilizer: " + newForm.fertilizer + "<br>" +
+                "Insecticide: " + newForm.insecticide + "<br>" +
+                "Fungicide: " + newForm.fungicide + "<br>" +   
+                "Herbicide: " + newForm.herbicide + "<br>" +
+                "Usually weather condition that occured before the pest/abnormality was observed: " + newForm.weather + "<br>" +
+                "Pests was observed " + newForm.chemapplied + " chemical is applied<br>" +
+                "Pests was observed " + newForm.weatherobserved + " an unusual weather<br>",
+                user: newForm.user,
+                date: newForm.date,
+                month: months[date.getMonth()],
+                year: date.getFullYear().toString(),
+                problem: "Others",
+                control: (Assistance.find().count() + 1)
+            };
+            console.log(newForm2);
+            var newLog = {
+                email: newForm2.email,
+                subject: newForm2.subject,
+                message: newForm2.message,
+                date: newForm2.date,
+                month: newForm2.month,
+                year: newForm2.year,
+                problem: newForm2.problem,
+                control: newForm2.control,
+                dateReplied: '',
+                adminUsername: '',
+                adminEmail: '',
+                reply: ''
+            };
+            Meteor.call('Forms.addForm', newForm, (error) => {
+              if (error) {
+                alert(error.error);
+                console.log(error);
+              } else {
+                $('#requestSubmitted2').modal('show');
+                console.log("success");
+                $('.closeModal').attr('href', '/pests-clinic');
+              }
+            });
+        }else{
+            $('#incompleteForm2').modal('show');
+        }
+    }
+});
