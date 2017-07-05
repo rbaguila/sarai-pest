@@ -28,7 +28,7 @@ Meteor.methods({
         source: newForm.source,
         area: newForm.area,
         variety: newForm.variety,
-        cropstage : newForm.cropStage,
+        cropStage : newForm.cropStage,
         
         pesttype : newForm.pesttype,
         symptoms : newForm.symptoms,

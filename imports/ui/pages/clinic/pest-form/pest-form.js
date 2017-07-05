@@ -76,7 +76,7 @@ Template.GeneralInformation2.events({
                 location: $("#floc2").val(),
                 source: $("#src2").val(), 
                 area: $("#area2").val(),
-                cropStage: $("#cstage2").val(),
+                cropStage: $('select[name=cstage2]').val(),
                 variety: $("#crop2").val(),
             }
             $("#geninfo2").hide();
@@ -198,51 +198,6 @@ Template.AdditionalInformation2.events({
         newForm.chemapplied = $("#d2").val() + " " + $("#days2 option:selected").val();
         newForm.weatherobserved = $("#d22").val() + " " + $("#days22 option:selected").val();
         if(!(newForm.fertilizer =='') && !(newForm.insecticide =='') && !(newForm.fungicide =='') && !(newForm.herbicide =='') && !(newForm.weather =='') && !($("#d1").val() =='') && !($("#d2").val() =='')){
-            
-            var newForm2 = {
-                email: newForm.email,
-                subject: "Clinic Form",
-                message: 
-                "Farm Location: " + newForm.location + "<br>" + 
-                "Source of Plant: " + newForm.source + "<br>" + 
-                "Area Planted: " + newForm.area + "<br>" + 
-                "Crop Stage: " + newForm.cropStage + "<br>" +
-                "Crop/Variety: " + newForm.variety + "<br>" + 
-                "Type of Pest: " + newForm.pesttype + "<br>" + 
-                "Description of Symptoms: " + newForm.symptoms + "<br>" +
-                "Parts of Plant Affected: " + newForm.parts + "<br>" + 
-                "Distribution of Symptoms: " + newForm.distribution + "<br>" +
-                "Insect Damage: " + newForm.damage + "<br>" +
-                "Chemical Rate Applied: <br>" + 
-                "Fertilizer: " + newForm.fertilizer + "<br>" +
-                "Insecticide: " + newForm.insecticide + "<br>" +
-                "Fungicide: " + newForm.fungicide + "<br>" +   
-                "Herbicide: " + newForm.herbicide + "<br>" +
-                "Usually weather condition that occured before the pest/abnormality was observed: " + newForm.weather + "<br>" +
-                "Pests was observed " + newForm.chemapplied + " chemical is applied<br>" +
-                "Pests was observed " + newForm.weatherobserved + " an unusual weather<br>",
-                user: newForm.user,
-                date: newForm.date,
-                month: months[date.getMonth()],
-                year: date.getFullYear().toString(),
-                problem: "Others",
-                control: (Assistance.find().count() + 1)
-            };
-            console.log(newForm2);
-            var newLog = {
-                email: newForm2.email,
-                subject: newForm2.subject,
-                message: newForm2.message,
-                date: newForm2.date,
-                month: newForm2.month,
-                year: newForm2.year,
-                problem: newForm2.problem,
-                control: newForm2.control,
-                dateReplied: '',
-                adminUsername: '',
-                adminEmail: '',
-                reply: ''
-            };
             Meteor.call('Forms.addForm', newForm, (error) => {
               if (error) {
                 alert(error.error);
