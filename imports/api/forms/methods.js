@@ -5,97 +5,51 @@ import { check } from 'meteor/check';
 import { Forms } from './forms.js';
 
 Meteor.methods({
-  'Forms.insert'(date, email, floc, area, crop, src, variety, cstage, vtype, pesttype, symptoms, parts, distribution, damage, fertilizer, insecticide, herbicide, fungicide, weather, chemapplied, weatherobserved) {
-    check(date, String);
-    check(email, String);
-    check(floc, String);
-    check(area, String);
-    check(crop, String);
-    check(src, String);
-    check(variety, String);
-    check(cstage, String);
-    check(vtype, String);
-    check(pesttype, String);
-    check(symptoms, String);
-    check(parts, String);
-    check(distribution, String);
-    check(damage, String);
-    check(fertilizer, String);
-    check(insecticide, String);
-    check(herbicide, String);
-    check(fungicide, String);
-    check(weather, String);
-    check(chemapplied, String);
-    check(weatherobserved, String);
+  'Forms.addForm'(newForm) {
+    // check(newForm.date, String);
+    // check(newForm.email, String);
+    // check(newForm.location, String);
+    // check(newForm.area, String);
+    // check(newForm.source, String);
+    // check(newForm.variety, String);
+    // check(newForm.cstage, String);
+    // check(newForm.pesttype, String);
+    // check(newForm.symptoms, String);
+    // check(newForm.parts, String);
+    // check(newForm.distribution, String);
+    // check(newForm.damage, String);
 
+    Forms.insert(
+      {
+        date: newForm.date,
+        email: newForm.email,
+        location: newForm.location,
+        source: newForm.source,
+        area: newForm.area,
+        variety: newForm.variety,
+        cropStage : newForm.cropStage,
+        
+        pesttype : newForm.pesttype,
+        symptoms : newForm.symptoms,
+        parts : newForm.parts,
+        distribution : newForm.distribution,
+        damage : newForm.damage,
+        
+        fertilizer: newForm.fertilizer,
+        insecticide: newForm.insecticide,
+        herbicide: newForm.herbicide,
+        fungicide: newForm.fungicide, 
+        weather: newForm.weather,
+        chemapplied: newForm.chemapplied,
+        weatherobserved: newForm.weatherobserved
+        
+      });
+  },  
+  'forms.removeForm'(id){
+    check(id, String);
 
-    Forms.insert({
-      date: date,
-      email: email,
-      
-      location: floc,
-      area: area,
-      crop: crop,
-      source: src,
-      variety: variety,
-      cropstage : cstage,
-      varietytype: vtype,
-      
-      pesttype : pesttype,
-      symptoms : symptoms,
-      parts : parts,
-      distribution : distribution,
-      damage : damage,
-      
-      fertilizer: fertilizer,
-      insecticide: insecticide,
-      herbicide: herbicide,
-      fungicide: fungicide, 
-      weather: weather,
-      chemapplied: chemapplied,
-      weatherobserved: weatherobserved
-      
-    });
+    Forms.remove( { _id: id } );
   },
 
 });
 
-// Meteor.methods({
-//   'Forms.addForm'( newForm ) {
-//     //STEP1
-//     check(newForm.farmLocation, String);
-//     check(newForm.sourceOfPlant, String);
-//     check(newForm.areaPlanted, String);
-//     check(newForm.cropStage, String);
-//     check(newForm.cropVariety, String);
-//     //STEP2
-//     check(newForm.typeOfPest, String);
-//     check(newForm.descOfSymptoms, String);
-//     check(newForm.distributionOfSymptoms, String);
-//     check(newForm.symptomObservationTime, String);
-//     //STEP3
-//     check(newForm.chemicalRate, String);
-//     check(newForm.weatherCondition, String);
-//     check(newForm.dayObservedChem, String);
-//     check(newForm.dayObservedWeather, String);
-
-//     Forms.insert(
-//         { 
-//             farmLocation: newForm.farmLocation,
-//             sourceOfPlant: newForm.sourceOfPlant,
-//             areaPlanted: newForm.areaPlanted,
-//             cropStage: newForm.cropStage,
-//             cropVariety: newForm.cropVariety,
-//             typeOfPest: newForm.typeOfPest,
-//             descOfSymptoms: newForm.descOfSymptoms,
-//             distributionOfSymptoms: newForm.distributionOfSymptoms,
-//             symptomObservationTime: newForm.symptomObservationTime,
-//             chemicalRate: newForm.chemicalRate,
-//             weatherCondition: newForm.weatherCondition,
-//             dayObservedChem: newForm.dayObservedChem,
-//             dayObservedWeather: newForm.dayObservedWeather
-//         } 
-//     );
-//   },
-
-// });
