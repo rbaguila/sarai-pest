@@ -63,6 +63,11 @@ Template.homeUpdate.events({
 		      }
 		    });
 		});
+		 $('.progress .progress-bar').css("width",
+                function() {
+                    return "0%";
+                }
+        )
 	},
 
 	'click #cancelBTN': function(event){

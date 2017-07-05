@@ -24,7 +24,7 @@ Template.requestAssistance.events({
 		var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 		var date = new Date();
 		var userName = '';
-		if( !($("#email").val()=='') || !($("#subject").val()=='') || !($("#message").val()=='') || !($("#name").val()=='') ){
+		if( !($("#email").val()=='') && !($("#subject").val()=='') && !($("#message").val()=='') && !($("#name").val()=='') ){
 			var newAssistance = {
 				email: $("#email").val(),
 				subject: $("#subject").val(),
