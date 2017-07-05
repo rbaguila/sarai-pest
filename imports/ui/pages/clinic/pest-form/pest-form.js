@@ -35,7 +35,7 @@ Template.FormOnly.events({
             $("#addinfo2").show();
             var text = document.getElementById('stp3'); 
             text.style.color='black';
-            console.log($("#insect2")[0].checked);
+            console.log($(".otherf232").val());
     },
     'click #back1': function(){
             $("#geninfo2").show();
@@ -143,7 +143,7 @@ Template.PestProblemForm2.events({
         }else if($("#sao2")[0].checked){
             newForm.distribution = $("#sao2").val();
         }else{
-            newForm.distribution = $("#otherf232").val();
+            newForm.distribution = $(".otherf232").val();
         }
 
         if($("#chewing2")[0].checked){
