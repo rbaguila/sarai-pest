@@ -90,7 +90,7 @@
             <form name="firstForm2" class="firstForm2">
 
                 <label id="email" for="email" >Enter your e-mail</label><br>
-                <input class="form-control" type="text" id="email2" name="email2"> 
+                <input class="form-control" type="email" id="email2" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"> 
                 <br>
                 <label id="floc-error" for="floc2">Farm Location</label><br>
                 <input class="form-control" type="text" id="floc2" name="floc2"> 
@@ -138,7 +138,7 @@
                 <div class="tPest">
                     <center><label class="form-text">Types of Pests</label></center>
                     <br><br>
-                    <div class="checkbox" id="tpest">
+                    <div class="checkbox">
                         <label><input type="checkbox" id="insect2" value="Insect">Insect&emsp;&emsp;</label>
                         <label><input type="checkbox" id="weed2" value="Weed">Weed&emsp;&emsp;</label>
                         <label><input type="checkbox" id="rat2" value="Rat">Rat&emsp;&emsp;</label>
@@ -153,7 +153,7 @@
                 <div class="dSymptoms" >
                     <center><label class="form-text">Description of Symptoms</label></center>
                     <br><br>
-                    <div class="checkbox" id="dsymp">
+                    <div class="checkbox">
                         <label><input type="checkbox" id="yellowing2" value="Yellowing">Yellowing&emsp;&emsp;</label>
                         <label><input type="checkbox" id="rot2" value="Root/Stem Rot">Root/Stem Rot&emsp;&emsp;</label>
                         <label><input type="checkbox" id="spot2" value="Leaf Spot">Leaf Spot&emsp;&emsp;</label>
@@ -167,7 +167,7 @@
                 <div class="pAffected">
                     <center><label class="form-text">Parts of Plant Affected</label></center>
                     <br><br>
-                    <div class="checkbox" id="pplant">
+                    <div class="checkbox">
                         <label><input type="checkbox" id="wplant2" value="Whole Plant">Whole Plant&emsp;&emsp;</label>
                         <label><input type="checkbox" id="frs2" value="Few Roots/Stems">Few Roots/Stems&emsp;&emsp;</label>
                         <label><input type="checkbox" id="local2" value="Localize">Localized&emsp;&emsp;</label>
@@ -181,11 +181,11 @@
                 <div class="diSymptoms">
                     <center><label class="form-text">Distribution of Symptoms</label></center>
                     <br><br>
-                    <div class="radio" id="disymp">
+                    <div class="radio">
                         <label><input type="radio" id="random2" name="stage" value="Random">Random&emsp;&emsp;</label>
                         <label><input type="radio" id="sao2" name="stage" value="Scattered All Over">Scattered All Over&emsp;&emsp;</label>
-                        <label><input type="radio" id="otherf232" name="stage">Others (Specify)</label>
-                        <input class="form3-input-fmt" type="text" id="otherf232" name="otherf232"> 
+                        <label><input type="radio" id="otherf232" name="stage">Others (Specify)<input class="form3-input-fmt" type="text" id="otherf232text" name="otherf232text"></label>
+                         
                     </div>
                 </div>
 
@@ -197,7 +197,7 @@
                     <div class="checkbox">
                         <label><input type="checkbox" id="chewing2" value="Chewing Type">Chewing Type&emsp;&emsp;</label>
                         <label><input type="checkbox" id="sucking2" value="Sucking Type">Sucking Type&emsp;&emsp;</label>
-                        <label><input type="checkbox" id="otr-insect-damage2" value="Others">Others</label>
+                        <label><input type="checkbox" id="otherdamage2" value="Others">Others&emsp;&emsp;</label>
                     </div>
                 </div>
                 
