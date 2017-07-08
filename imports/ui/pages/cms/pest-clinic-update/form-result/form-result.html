@@ -6,17 +6,17 @@
       	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="main-body">
         	<h3 class="col-sm-12 col-md-12 col-lg-12 text-center"><b>Form Result</b></h3>
           <ul class="list-group col-sm-5">
-            {{#each forms}}
+            {{#each result}}
               <li class="list-group-item">
                 <div class="media">
-                  <h5 class="media-heading"><b>{{email}}</b> <small>{{date}}</small></h5>
-                  <div class="media-body"> <h5>{{floc}}</h5></div>
-                  <div class="media-right">
-                    <div class="btn-group-xs">
-                      {{> resultButton glyphicon="eye-open" color="primary" id=_id text="view" }}
-                      {{> resultButton glyphicon="trash" color="danger" id=_id text="delete" }}
-                    </div>
+                  <h5 class="media-heading"><b>{{user}}</b> <small>{{date}}</small></h5>
+                <div class="media-body"> <h5>{{subject}}</h5></div>
+                <div class="media-right">
+                  <div class="btn-group-xs">
+                    {{> resultButton glyphicon="eye-open" color="primary" id=_id text="view" }}
+                     {{> resultButton glyphicon="trash" color="danger" id=_id text="delete" }}
                   </div>
+                </div>
                 </div>
               </li>
             {{/each}}
@@ -24,6 +24,15 @@
           <div class="list-group col-sm-7 panel panel-default">
             <div class="panel-body">
               <span class="col-sm-12" id="subject"></span>
+              <span class="col-sm-12" id="user"></span>
+              <span class="col-sm-12" id="date"></span>
+              <span class="col-sm-12" id="problem"></span>
+              <span class="col-sm-12" id="message"></span>
+              <span class="col-sm-12" id="expertUsername"></span>
+              <span class="col-sm-12" id="dateReplied"></span>
+              <span class="col-sm-12" id="reply"></span>
+              <span class="col-sm-12 text-center" id="close-button"></span>
+              <!--
               <span class="col-sm-12 text-center" id="floc"></span>
               <span class="col-sm-12 text-center" id="area"></span>
               <span class="col-sm-12 text-center" id="src"></span>
@@ -44,10 +53,10 @@
               <div style="text-align: center;">
                 <span id="answer-button"></span>
                 <span id="close-button"></span>
-              </div>
+              </div> !-->
             </div>
 
-            <div class="panel-body" id="answerField">
+        <!--<div class="panel-body" id="answerField">
               <label for="subjectField"> Subject </label>
                   <input type="text" class="form-control" id="subjectField">
 
@@ -58,7 +67,8 @@
                     <button id="submitBTN" class="btn btn-success cms-button">Submit</button>
                     <button id="cancelBTN" class="btn btn-danger cms-button">Cancel</button>
                   </div>
-            </div>
+
+            </div> -->
           </div> 
   		  </div>
   	</div>
