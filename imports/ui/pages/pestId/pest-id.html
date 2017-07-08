@@ -146,41 +146,45 @@
 						{{#if enableSpinner}}
 							{{> spinner}}
 						{{/if}}
-						<div class="container">
+						<div class="row">
 							<h3 class="pest-category-label">{{imageProcessingResultsHeader}}</h3>
 
-							<div class="mdl-cell mdl-cell--12-col">
+							<div class="col-sm-12 col-md-12">
 								{{#each data}}
-						       		<div class="mdl-cell mdl-cell--12-col">
-							          <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-							           	<div class = "panel panel-default">
-							            	<table>
-							            		<tbody>
-							            			<tr>
-							            				<td width="10"></td>
-							            				<td width="300">
-							            					<div class = "pest-image-result">
-							            						<img src="{{image}}" height="270" width="270">
-							            					</div>
-							            				</td>
-							            				<td>
-							            					<h2>{{numberized @index}} {{name}}</h2>
-								            				<p class="info-font"><b>Order:</b> {{order}} <br>
-								            				<b>English Name:</b> {{eng_name}} <br>
-								            				<b>Filipino Name:</b> {{fil_name}} <br>
-											    			<b>Scientific Name:</b> {{sci_name}}<br>
-											    			<b>Plant Affected:</b> {{plant_affected}}<br>
-											    			<b>Symptoms:</b> {{symptoms}}<br>
-							    							<b>Description:</b> {{description}}</p>
-								              				<p class="text-center">
-								              					<a href="/entity/{{_id}}" type="button" class="btn btn-default">View Page</a>
-								              				</p>
-							            				</td>
-							            				<td width="10"></td>
-							            			</tr>
-							            		</tbody>
-							            	</table>
-							            </div>							            
+						       		<div class="col-sm-12 col-md-12">
+							          <div class="panel panel-success">
+							            <div class="panel-heading">
+							              <h3 class="panel-title">{{numberized @index}} {{name}}</h3>
+							            </div>
+							            <div class="panel-body">
+							              <div class = "pest-image-result">
+			            						<table>
+								            		<tbody>
+								            			<tr>
+								            				<td width="10"></td>
+								            				<td width="300">
+								            					<div class = "pest-image-result">
+								            						<img src="{{image}}" height="270" width="270">
+								            					</div>
+								            				</td>
+								            				<td>
+									            				<p class="info-font"><b>Order:</b> {{order}} <br>
+									            				<b>English Name:</b> {{eng_name}} <br>
+									            				<b>Filipino Name:</b> {{fil_name}} <br>
+												    					<b>Scientific Name:</b> {{sci_name}}<br>
+												    					<b>Plant Affected:</b> {{plant_affected}}<br>
+												    					<b>Symptoms:</b> {{symptoms}}<br>
+								    									<b>Description:</b> {{description}}</p>
+									              				<p class="text-center">
+									              					<a href="/entity/{{_id}}" type="button" class="btn btn-default">View Page</a>
+									              				</p>
+								            				</td>
+								            				<td width="10"></td>
+								            			</tr>
+								            		</tbody>
+								            	</table>
+			            					</div>
+							            </div>
 							          </div>
 							        </div>
 						       	{{/each}}
@@ -201,7 +205,7 @@
 			{{/each}} -->
 			
 		</div>
-
+<!-- 
 		{{#if showOBS}}
 			<div class="col-sm-12 col-md-12 col-lg-12">
 				<h3 class="pest-category-label">Ontology-based Search Results</h3>
@@ -211,7 +215,7 @@
 			    	{{> individualPest}}
 			    {{/each}}
 		    </div>
-		{{/if}}
+		{{/if}} -->
 
 		<div>
 			{{#each getCMS.viewType}}
