@@ -1,4 +1,4 @@
-import { Forms } from '/imports/api/forms/forms.js';
+//import { Forms } from '/imports/api/forms/forms.js';
 import { Result } from '/imports/api/result/result.js';
 import { Meteor } from 'meteor/meteor';
 import './form-result.html'
