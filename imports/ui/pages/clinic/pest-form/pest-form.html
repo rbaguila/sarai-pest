@@ -1,0 +1,287 @@
+<template name="PestForm">
+    {{> top_nav}}
+        {{> FormOnly}}
+    {{> footer}}
+</template>
+
+<template name="FormOnly">
+    <!--div class="max mdl-grid">
+            {{ >sampleTemplate}}
+    </div-->
+    <div class="max" style="position: relative; top:55px;">
+
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--3-col" style="float:left; width:20%; padding-left: 100px; padding-right: 50px;">
+                <center>
+                    <button class="steps" id="stp1" disabled>Step 1:<br/>Fill up General Information Form</button>
+                    <svg width="200" height="35">
+                        <line x1="100" x2="100" y1="5" y2="35" stroke="#5184AF" stroke-width="5" stroke-linecap="round" stroke-dasharray="1,10" />
+                    </svg>
+                    <button class="steps" id="stp2" disabled>Step 2:<br/>Fill up Pest Problem Form</button>
+                    <svg width="200" height="35">
+                        <line x1="100" x2="100" y1="5" y2="35" stroke="#5184AF" stroke-width="5" stroke-linecap="round" stroke-dasharray="1,10" />
+                    </svg>
+                    <button class="steps" id="stp3" disabled>Step 3:<br/>Fill up Additional Information form</button>
+                    <svg width="200" height="35">
+                        <line x1="100" x2="100" y1="5" y2="35" stroke="#5184AF" stroke-width="5" stroke-linecap="round" stroke-dasharray="1,10" />
+                    </svg>
+                    <button class="steps" id="stp4" disabled>Step 4:<br/>Submit Form</button>
+                    <br/>
+                    
+                </center>
+            </div>
+            <div class="mdl-cell mdl-cell--9-col" style="float:center; width:80%; padding-left: 100px; padding-right: 100px;">
+                <div id="geninfo2">
+                    {{ >GeneralInformation2}}
+                </div>
+                <div id="pestprob2">
+                    {{ >PestProblemForm2}}
+                </div>
+                <div id="addinfo2">
+                    {{ >AdditionalInformation2}}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="incompleteForm2">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <br><br>
+                    <p>Incomplete form! Fill up all the fields.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary closeModal" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="requestSubmitted2">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <br><br>
+                    <p>Report successfully submitted.</p>
+                </div>
+                <div class="modal-footer">
+                    <button onclick="location.href = '/pests-clinic';" type="button" class="btn btn-secondary closeModal" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+</template>
+
+<!-- ====================================================================================================== -->
+
+<template name="GeneralInformation2">
+
+    <div class="container-fluid">
+        <div class="row">
+        
+            <center>
+                <h5 style="color:gray;">General Information</h5>
+            </center>
+            <form name="firstForm2" class="firstForm2">
+
+                <label id="email" for="email" >Enter your e-mail</label><br>
+                <input class="form-control" type="email" id="email2" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"> 
+                <br>
+                <label id="floc-error" for="floc2">Farm Location</label><br>
+                <input class="form-control" type="text" id="floc2" name="floc2"> 
+                <br>
+                <label id="src-error" for="src2">Source of Plant</label><br>
+                <input class="form-control" type="text" id="src2" name="src2"> 
+                <br>
+                <label id="area-error" for="area2">Area</label><br>
+                <input class="form-control" type="text" id="area2" name="area2">  
+                <br>
+                <label id="cstage2" for="cstage2" >Crop Stage</label><br>
+                <select id="cstage2" name="cstage2" class="form-control">
+                    <option value="Seeding">Seeding</option>
+                    <option value="Flowering">Flowering</option>
+                    <option value="Maturity">Maturity</option>
+                    <option value="Vegetative">Max Vegetative</option>
+                </select>
+                <br>
+                <label id="crop-error" for="crop2">Crop/Variety (Hybrid/Open Pollinated)</label><br>
+                <input class="form-control" type="text" id="crop2" name="crop2"> 
+
+                <br><br>
+                <center><button class="btn btn-success" id="con1">Continue to Pest Problem</button></center>
+
+            
+            </form>
+        </div>
+    </div>
+
+</template>
+
+<!-- ====================================================================================================== -->
+
+<template name="PestProblemForm2">
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <center>
+                <h5 style="color:gray;">Pest Problem</h5>
+            </center>
+
+            <form name="secondForm2" class="secondForm2">
+
+                <div class="tPest">
+                    <center><label class="form-text">Types of Pests</label></center>
+                    <br><br>
+                    <div class="checkbox">
+                        <label><input type="checkbox" id="insect2" value="Insect">Insect&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="weed2" value="Weed">Weed&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="rat2" value="Rat">Rat&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="bird2" value="Bird">Bird&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="nematode2" value="Nematode">Nematode&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="otrf2-12" value="Others">Others</label>
+                    </div>
+                </div>
+
+               <hr/>
+
+                <div class="dSymptoms" >
+                    <center><label class="form-text">Description of Symptoms</label></center>
+                    <br><br>
+                    <div class="checkbox">
+                        <label><input type="checkbox" id="yellowing2" value="Yellowing">Yellowing&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="rot2" value="Root/Stem Rot">Root/Stem Rot&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="spot2" value="Leaf Spot">Leaf Spot&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="stunting2" value="Stunting">Stunting&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="otrf22" value="Others">Others</label>
+                    </div>
+                </div>
+
+                <hr/>
+
+                <div class="pAffected">
+                    <center><label class="form-text">Parts of Plant Affected</label></center>
+                    <br><br>
+                    <div class="checkbox">
+                        <label><input type="checkbox" id="wplant2" value="Whole Plant">Whole Plant&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="frs2" value="Few Roots/Stems">Few Roots/Stems&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="local2" value="Localize">Localized&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="flt2" value="Few Leaves/Twigs">Few Leaves/Twigs&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="otrf222" value="Others">Others&emsp;&emsp;</label>
+                    </div>
+                </div>
+
+                <hr/>
+
+                <div class="diSymptoms">
+                    <center><label class="form-text">Distribution of Symptoms</label></center>
+                    <br><br>
+                    <div class="radio">
+                        <label><input type="radio" id="random2" name="stage" value="Random">Random&emsp;&emsp;</label>
+                        <label><input type="radio" id="sao2" name="stage" value="Scattered All Over">Scattered All Over&emsp;&emsp;</label>
+                        <label><input type="radio" id="otherf232" name="stage">Others (Specify)<input class="form3-input-fmt" type="text" id="otherf232text" name="otherf232text"></label>
+                         
+                    </div>
+                </div>
+
+                <hr/>
+
+                <div class="iDamage">
+                    <center><label class="form-text">Insect Damage</label></center>
+                    <br><br>
+                    <div class="checkbox">
+                        <label><input type="checkbox" id="chewing2" value="Chewing Type">Chewing Type&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="sucking2" value="Sucking Type">Sucking Type&emsp;&emsp;</label>
+                        <label><input type="checkbox" id="otherdamage2" value="Others">Others&emsp;&emsp;</label>
+                    </div>
+                </div>
+                
+                <hr>
+
+                <label>Length of time symptoms is observed.</label>
+                
+                <center>
+                    <button class="btn btn-danger" id="back1">Go Back</button>
+                    <button class="btn btn-success" id="con2">Continue to Additional Information</button>
+                </center>
+            </form>
+        </div>
+    </div>
+
+</template>
+
+<!-- ====================================================================================================== -->
+
+<template name="AdditionalInformation2">
+    
+    <div class="container-fluid">
+        <div class="row">
+        
+            <center>
+                <h5 style="color:gray;">Additional Information</h5>
+            </center>
+
+            <div class="chemRate">
+                <label class="form-text">Chemical Rate Applied</label>
+                <br><br>
+                <div class="lol" style="width:25%">
+                    <label>Fertilizer <input type="text" id="fertilizer2" name="fertilizer"></label> 
+                    <label>Insecticide <input type="text" id="insecticide2" name="insecticide"></label> 
+                    <label>Fungicide <input type="text" id="fungicide2" name="fungicide"></label> 
+                    <label>Herbicide <input type="text" id="herbicide2" name="herbicide"></label> 
+                </div>
+            </div>
+
+            <hr/>
+
+            <div class="uWeather">
+                <label class="form-text">Usually weather condition that occured before the pest/abnormality was observed</label>
+                <br><br>
+                <div class="checkbox">
+                    <label><input type="checkbox" id="rain2" value="Heavy Rain">Heavy Rain &emsp;&emsp;</label>
+                    <label><input type="checkbox" id="drought2" value="Drought">Drought &emsp;&emsp;</label>
+                    <label><input type="checkbox" id="flood2" value="Flood">Flood &emsp;&emsp;</label>
+                    <label><input type="checkbox" id="fog2" value="Fog">Fog &emsp;&emsp;</label>
+                    <label><input type="checkbox" id="others2">Others </label>
+                    <input class="form3-input-fmt" type="text" id="otr-f3-abn2" name="otr-f3-abn2">
+                </div>
+            </div>
+
+            <hr/>
+
+            <div class="pObserved1" style="width:25%">
+                <label class="form-text">Pest was observed<br></label>
+                <input class="d2" type="text" id="d2" name="d2">
+                <select id="days2">
+                    <option value="days before">day/s before</option>
+                    <option value="days after">day/s after</option>
+                </select>
+                <h5> chemical is applied</h5>
+            </div>
+
+            <hr/><br>
+
+            <div class="pObserved2" style="width:25%">
+                <label class="form-text">Pest was observed </label>
+                <input class="d22" type="text" id="d22" name="d22">
+                <select id="days22">
+                    <option value="days before">day/s before</option>
+                    <option value="days after">day/s after</option>
+                </select>
+                <h5> an unusual weather</h5>
+            </div>
+
+            <center>
+                <button class="btn btn-danger" id="back2">Go Back</button>
+                <button class="btn btn-success" id="form-submit">Submit Form</button>
+            </center>
+
+        </div>
+    </div>
+  
+</template>

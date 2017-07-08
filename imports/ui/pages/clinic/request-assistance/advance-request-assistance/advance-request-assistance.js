@@ -21,6 +21,7 @@ Template.Advance_Request_Assistance.events({
 		'click #back1': function(){
 				$("#geninfo").show();
 				$("#pestprob").hide();
+				console.log($("#cstage").val());
 		},
 		'click #back2': function(){
 				$("#pestprob").show();
@@ -231,7 +232,7 @@ Template.AdditionalInformation.events({
 				});
 				document.getElementById("stp4").style.opacity = "1";
 		      	$('#requestSubmitted').modal('show');
-		      			      }
+		      }
 		    });
 		}else{
 			$('#incompleteForm').modal('show');

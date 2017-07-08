@@ -10,13 +10,13 @@
               <li class="list-group-item">
                 <div class="media">
                   <h5 class="media-heading"><b>{{user}}</b> <small>{{date}}</small></h5>
-                  <div class="media-body"> <h5>{{subject}}</h5></div>
-                  <div class="media-right">
-                    <div class="btn-group-xs">
-                      {{> resultButton glyphicon="eye-open" color="primary" id=_id text="view" }}
-                      {{> resultButton glyphicon="trash" color="danger" id=_id text="delete" }}
-                    </div>
+                <div class="media-body"> <h5>{{subject}}</h5></div>
+                <div class="media-right">
+                  <div class="btn-group-xs">
+                    {{> resultButton glyphicon="eye-open" color="primary" id=_id text="view" }}
+                     {{> resultButton glyphicon="trash" color="danger" id=_id text="delete" }}
                   </div>
+                </div>
                 </div>
               </li>
             {{/each}}
@@ -32,7 +32,43 @@
               <span class="col-sm-12" id="dateReplied"></span>
               <span class="col-sm-12" id="reply"></span>
               <span class="col-sm-12 text-center" id="close-button"></span>
+              <!--
+              <span class="col-sm-12 text-center" id="floc"></span>
+              <span class="col-sm-12 text-center" id="area"></span>
+              <span class="col-sm-12 text-center" id="src"></span>
+              <span class="col-sm-12 text-center" id="variety"></span>
+              <span class="col-sm-12 text-center" id="cstages"></span>
+              <span class="col-sm-12 text-center" id="pesttype"></span>
+              <span class="col-sm-12 text-center" id="symptoms"></span>
+              <span class="col-sm-12 text-center" id="parts"></span>
+              <span class="col-sm-12 text-center" id="distribution"></span>
+              <span class="col-sm-12 text-center" id="damage"></span>
+              <span class="col-sm-12 text-center" id="fertilizer"></span>
+              <span class="col-sm-12 text-center" id="insecticide"></span>
+              <span class="col-sm-12 text-center" id="herbicide"></span>
+              <span class="col-sm-12 text-center" id="fungicide"></span>
+              <span class="col-sm-12 text-center" id="weather"></span>
+              <span class="col-sm-12 text-center" id="chemapplied"></span>
+              <span class="col-sm-12 text-center" id="weatherobserved"></span>
+              <div style="text-align: center;">
+                <span id="answer-button"></span>
+                <span id="close-button"></span>
+              </div> !-->
             </div>
+
+        <!--<div class="panel-body" id="answerField">
+              <label for="subjectField"> Subject </label>
+                  <input type="text" class="form-control" id="subjectField">
+
+                  <label for="msgField"> Message </label>
+                  <textarea class="form-control" id="msgField" rows="5"></textarea>
+
+                  <div class="text-center">
+                    <button id="submitBTN" class="btn btn-success cms-button">Submit</button>
+                    <button id="cancelBTN" class="btn btn-danger cms-button">Cancel</button>
+                  </div>
+
+            </div> -->
           </div> 
   		  </div>
   	</div>
@@ -44,13 +80,14 @@
           <p>Are you sure you want to delete this?</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" id="confirmDelete">Yes</button>
+          <button type="button" class="btn btn-primary deletebtn" id="confirmDelete">Yes</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
         </div>
       </div>
     </div>
   </div>
 </template>
+
 <template name="resultButton">
   <button type="button" class="{{text}} btn btn-{{color}}" data-toggle="tooltip" title="{{text}} entry" data-placement="right">
     <span class="glyphicon glyphicon-{{glyphicon}}"></span>

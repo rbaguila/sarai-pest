@@ -30,7 +30,7 @@ Template.editPestEntity.helpers({
 	},
 });
 
-var file;
+var file=null;
 var files = [];
 Template.editPestEntity.events({
 	'submit form': function(e, t){
@@ -49,13 +49,7 @@ Template.editPestEntity.events({
 
 		var id = FlowRouter.current().params._id;
 		var imgURL;
-		
-		Cloudinary.upload(file, function(err, res) {
-          console.log("Upload Error: " + err);
-          console.log("Upload Result: " + res);
-          imgURL = res.public_id;
-          Session.set('pestImage', 'http://res.cloudinary.com/project-sarai/image/upload/' + imgURL);
-			// GET THE VALUES
+		if(file===null){
 			var editPest = {
 				id : id,
 				pestName : $("#pestName").val(),
@@ -95,12 +89,59 @@ Template.editPestEntity.events({
 		        $('.editSuccess').modal('show');
 		      }
 		    });
-        });
-       	$('.progress .progress-bar').css("width",
-                function() {
-                    return "0%";
-                }
-        )
+		}else{
+			Cloudinary.upload(file, function(err, res) {
+	          console.log("Upload Error: " + err);
+	          console.log("Upload Result: " + res);
+	          imgURL = res.public_id;
+	          Session.set('pestImage', 'http://res.cloudinary.com/project-sarai/image/upload/' + imgURL);
+				// GET THE VALUES
+				var editPest = {
+					id : id,
+					pestName : $("#pestName").val(),
+					engName : $("#engName").val(),
+					sciName : $("#sciName").val(),
+					image: (Session.get('pestImage') == undefined) ? Plant_Problem.findOne({ _id: id }).image : Session.get('pestImage'),
+					keywords : Session.get('keywords'),
+					// for ENGLISH
+					treatment : $("#treatment").val(),
+					classification : $("#classification").val(),
+					order : $("#order").val(),
+					plantAffected : $("#plantAffected").val()==""? "Uncategorized" : $("#plantAffected").val(),
+					description : $("#description").val(),
+					symptoms : $("#symptoms").val(),
+					stageThreatening : $("#stageThreatening").val(),
+					partDestroyed : $("#partDestroyed").val(),
+					effect : $("#effect").val(),
+					stageAffected : $("#stageAffected").val(),
+					// for FILIPINO
+					filName : $("#filName").val(),
+					filTreatment : $("#filTreatment").val(),
+					filClassification : $("#filClassification").val(),
+					filPlantAffected : $("#filPlantAffected").val(),
+					filDescription : $("#filDescription").val(),
+					filSymptoms : $("#filSymptoms").val(),
+					filStageThreatening : $("#filStageThreatening").val(),
+					filPartDestroyed : $("#filPartDestroyed").val(),
+					filEffect : $("#filEffect").val(),
+					filStageAffected : $("#filStageAffected").val(),
+				}
+
+				// UPDATES THE DATABASE
+				Meteor.call('pests.editPest', editPest, (error) => {
+			      if (error) {
+			        alert(error.error);
+			      } else {
+			        $('.editSuccess').modal('show');
+			      }
+			    });
+	        });
+	       	$('.progress .progress-bar').css("width",
+	                function() {
+	                    return "0%";
+	                }
+	        )
+		}
 	},
 
 	'click #cancelBTN': function(event){

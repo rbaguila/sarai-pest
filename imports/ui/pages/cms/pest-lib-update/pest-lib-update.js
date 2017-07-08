@@ -5,6 +5,8 @@ import './pest-lib-update.html';
 import '../components/library-cms-navbar.html';
 import '../components/cms-sidenav.html';
 
+
+
 Template.pestLibUpdate.onCreated(function () {
 	Meteor.subscribe('usersList');
 	Meteor.subscribe('plant_problem.all');
@@ -44,7 +46,7 @@ Template.pestLibUpdate.helpers({
 	},
 });
 
-var file;
+var file=null;
 var files = [];
 Template.pestLibUpdate.events({
 	'submit form': function(e, t){
@@ -65,13 +67,8 @@ Template.pestLibUpdate.events({
 		$( "input[type=checkbox]:checked" ).map(function() {
 		    pestType.push($( this ).val());
 		});
-		
-		Cloudinary.upload(file, function(err, res) {
-          console.log("Upload Error: " + err);
-          console.log("Upload Result: " + res);
-          imgURL = res.public_id;
-          Session.set('bannerImage', 'http://res.cloudinary.com/project-sarai/image/upload/' + imgURL);
-		// GET THE VALUES
+		console.log(file)
+		if(file===null){
 			var newCMS = {
 				bannerImage: (Session.get('bannerImage') == undefined) ? CMS.findOne({info: "finalLib"}).bannerImage : Session.get('bannerImage'),
 				bannerText : $("#bannerText").val(),
@@ -90,12 +87,38 @@ Template.pestLibUpdate.events({
 		       	$('#viewChangesBTN').show(); 
 		      }
 		    });
-	    });
-	    $('.progress .progress-bar').css("width",
-                function() {
-                    return "0%";
-                }
-        )
+		}else{
+			Cloudinary.upload(file, function(err, res) {
+	          console.log("Upload Error: " + err);
+	          console.log("Upload Result: " + res);
+	          imgURL = res.public_id;
+	          Session.set('bannerImage', 'http://res.cloudinary.com/project-sarai/image/upload/' + imgURL);
+			// GET THE VALUES
+				var newCMS = {
+					bannerImage: (Session.get('bannerImage') == undefined) ? CMS.findOne({info: "finalLib"}).bannerImage : Session.get('bannerImage'),
+					bannerText : $("#bannerText").val(),
+					bannerSubText : $("#bannerSubText").val(),
+					searchlabel : $("#searchlabel").val(),
+					pestNumbers : parseInt( $("#pestsperpage").val() ),
+					pestType : pestType
+				}
+				
+				// UPDATES THE DATABASE
+				Meteor.call('cms.updatePestLib', newCMS, (error) => {
+			      if (error) {
+			        alert(error.error);
+			      } else {
+			       	$('#cancelBTN').hide(); 
+			       	$('#viewChangesBTN').show(); 
+			      }
+			    });
+		    });
+		    $('.progress .progress-bar').css("width",
+	                function() {
+	                    return "0%";
+	                }
+	        )
+		}
 	},
 
 	'click #cancelBTN': function(event){
