@@ -116,6 +116,7 @@ reactive-dict@1.1.8
 reactive-var@1.0.11
 reload@1.1.11
 retry@1.0.9
+risul:dropzone@4.2.0
 routepolicy@1.0.12
 sacha:spin@2.3.1
 service-configuration@1.0.11

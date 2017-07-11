@@ -56,9 +56,11 @@ Template.homeUpdate.events({
 		      }
 		    });
 		}else{
+			console.log(file);
 			Cloudinary.upload(file, function(err, res) {
 	          console.log("Upload Error: " + err);
 	          console.log("Upload Result: " + res);
+	          
 	          imgURL = res.public_id;
 	          Session.set('bannerImage', 'http://res.cloudinary.com/project-sarai/image/upload/' + imgURL);		
 			// GET THE VALUES

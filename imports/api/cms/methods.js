@@ -122,5 +122,11 @@ Meteor.methods({
   'updateAccountRole': function(userid, role){
     Meteor.users.update(userid, {$set: {"roles": role}});
   },
+
+  'changePass': function(userid, newpass){
+     if(Meteor.isServer) {
+       return Accounts.setPassword(userid, newpass);
+    }
+  },
   
 });

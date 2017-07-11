@@ -113,7 +113,7 @@ Meteor.startup(() => {
 
       Accounts.createUser({username: 'clinic123',email: 'clinic@clinic.com', password: 'clinic123'});
       var id2 = Meteor.users.findOne({username: "clinic123"});
-      Roles.addUsersToRoles(id2._id, ['Clinic Admin', 'Pest Expert']);
+      Roles.addUsersToRoles(id2._id, ['Clinic Admin']);
 
       Accounts.createUser({username: 'id1234',email: 'id@id.com', password: 'id1234'});
       var id3 = Meteor.users.findOne({username: "id1234"});
