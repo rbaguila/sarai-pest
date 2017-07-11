@@ -122,5 +122,9 @@ Meteor.methods({
   'updateAccountRole': function(userid, role){
     Meteor.users.update(userid, {$set: {"roles": role}});
   },
+
+  deleteUser : function(id){
+    return Meteor.users.remove(id);
+  },
   
 });
