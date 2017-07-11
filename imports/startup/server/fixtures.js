@@ -103,7 +103,7 @@ Meteor.startup(() => {
   }
 
   if (Meteor.users.find().fetch().length === 0) {
-      Accounts.createUser({username: 'admin123',email: 'admin@admin.com', password: 'admin123'});
+      Accounts.createUser({username: 'admin123',email: 'aroinand@gmail.com', password: 'admin123'});
       var id = Meteor.users.findOne({username: "admin123"});
       Roles.addUsersToRoles(id._id, ['Admin']);
 

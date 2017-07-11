@@ -67,6 +67,25 @@ Template.userbutton.events({
 		   	$('#pass').val("");
 	    }
 	},
+    'click .remove': function(event, template) {
+        console.log("DELETE: " + this.id);
+        Session.set('id', this.id);
+        userid2 = this.id;
+        $('#deleteUser').modal('show');
+       
+    },
+
+    'click .confirmDelete' : function(event) {
+        $('#deleteUser').modal('hide');
+        Meteor.call('deleteUser',{_id:userid2}, (error) => {
+          if (error) {
+            alert(error.error);
+          } else {
+            $('#userDeleted').modal('show');
+            event.preventDefault(); 
+          }
+        });
+    },
 
 });
 
