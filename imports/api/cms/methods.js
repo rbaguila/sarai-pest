@@ -123,13 +123,15 @@ Meteor.methods({
     Meteor.users.update(userid, {$set: {"roles": role}});
   },
 
-  'changePass': function(userid, newpass){
-     if(Meteor.isServer) {
-       return Accounts.setPassword(userid, newpass);
-  },
-
   deleteUser : function(id){
     return Meteor.users.remove(id);
   },
-  
+
+  'changePass': function(userid, newpass){
+    if(Meteor.isServer) {
+       return Accounts.setPassword(userid, newpass);
+    }
+  },
+
+
 });
