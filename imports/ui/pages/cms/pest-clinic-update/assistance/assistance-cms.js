@@ -44,6 +44,7 @@ Template.assistanceUpdate.events({
 	    	$('#subject').html('');
 			$('#user').html('');
 			$('#date').html('');
+			$('#problem').html('');
 			$('#message').html('');
 			$('#answer-button').html('');
 			$("#answerFields").hide();
@@ -124,6 +125,7 @@ Template.assistanceUpdate.events({
 									    	$('#subject').html('');
 											$('#user').html('');
 											$('#date').html('');
+											$('#problem').html('');
 											$('#message').html('');
 											$('#answer-button').html('');
 											$("#answerFields").hide();
@@ -170,9 +172,10 @@ Template.assistanceButton.events({
 				problem: entry.problem,
 				control: entry.control
 			});
-			$('#subject').html("<h5><b>"+ entry.subject +"</b></h5><hr/>");
+			$('#subject').html("<h5><b><big>"+ entry.subject +"<big></b></h5><hr/>");
 			$('#user').html("<h5><b>"+ entry.user + "</b> <small>" + entry.email + "</small></h5>");
 			$('#date').html("<em>" + entry.date + "</em>");
+			$('#problem').html("<br/> <b>Problem: </b>" + entry.problem +"<br/>");
 			$('#message').html("<br/>" + entry.message +"<br/><hr/>");
 			$('#answer-button').html("<button type='button' class='btn btn-primary answer'>Answer</button>");
 		}
