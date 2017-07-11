@@ -169,8 +169,8 @@ Template.pestId.helpers({
 			 	Session.set("showIPS", true);
 			 	Session.set("spinner", true);
 			 	Session.set('data',undefined);
-			 	// filename = "../server/uploads/"+fileInfo.name;
-			 	filename = "http://localhost:3000/upload/"+fileInfo.name;
+			 	filename = "http://159.203.253.36/upload/"+fileInfo.name;
+			 	// filename = "http://localhost:3000/upload/"+fileInfo.name;
 			 	//H4Dhw4yPhumNK3PKu.jpg
 				var byteNumbers = new Array(filename.length);
 
@@ -194,7 +194,7 @@ Template.pestId.helpers({
 				 	$('.jqDropZone').html("<img src=/upload/"+fileInfo.name+" width='100%' height='295px'/>");
 				 	$.ajax({	
 						type:"POST",
-						url:"http://localhost:5000/diseaseImageSearch",
+						url:"http://159.203.253.36:8080/diseaseImageSearch",
 						dataType:"json",
 						data: 
 							{
@@ -220,7 +220,8 @@ Template.pestId.helpers({
 					$('.jqDropZone').html("<img src=/upload/"+fileInfo.name+" width='100%' height='295px'/>");
 				 	$.ajax({	
 						type:"POST",
-						url:"http://localhost:5000/pestImageSearch",
+						url:"http://159.203.253.36:8080/pestImageSearch",
+						// url:"http://localhost:5000/pestImageSearch",
 						dataType:"json",
 						data: 
 							{
@@ -374,10 +375,10 @@ Template.pestId.events({
 			Session.set("spinner", true);
 			Template.pestId.__helpers.get('enableSpinner').call();
 			if(currentType == "Pest"){
-				var currentURL = "http://localhost:5000/pestImageSearch";
+				var currentURL = "http://localhost:8080/pestImageSearch";
 			}
 			else{
-				var currentURL = "http://localhost:5000/diseaseImageSearch";
+				var currentURL = "http://localhost:8080/diseaseImageSearch";
 			}
 			//console.log("May image touhl");
 			$.ajax({	
