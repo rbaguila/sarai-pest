@@ -7,7 +7,7 @@ Meteor.methods({
 	      // SETUP
 	      // Grab required packages
 	      var webshot = Meteor.npmRequire('webshot');
-	      var fs      = Npm.require('fs');
+	      var fs = Npm.require('fs');
 	      var Future = Npm.require('fibers/future');
 	 
 	      var fut = new Future();
@@ -32,7 +32,7 @@ Meteor.methods({
 	      var data = {
 	        disease: disease
 	      }
-	 	console.log(data);
+
 	      var html_string = SSR.render('layout', {
 	        css: css,
 	        template: "disease_report",
@@ -40,7 +40,7 @@ Meteor.methods({
 	      });
 	 
 	   var options = {
-	   	renderDelay: 5000,
+	   	renderDelay: 2000,
           "paperSize": {
               "format": "Letter",
               "orientation": "portrait",
@@ -68,13 +68,14 @@ Meteor.methods({
     	}
  
   	},
+
 	'pest/generate_pdf': function(currid1) {
     	if (Meteor.isServer) {
  
 	      // SETUP
 	      // Grab required packages
 	      var webshot = Meteor.npmRequire('webshot');
-	      var fs      = Npm.require('fs');
+	      var fs = Npm.require('fs');
 	      var Future = Npm.require('fibers/future');
 	 
 	      var fut = new Future();
@@ -106,16 +107,15 @@ Meteor.methods({
 	        data: data
 	      });
 	 
-	      console.log(html_string);
-	            var options = {
-          //renderDelay: 2000,
+	    var options = {
+          renderDelay: 2000,
           "paperSize": {
               "format": "Letter",
               "orientation": "portrait",
               "margin": "1cm"
           },
           siteType: 'html'
-      };
+      	};
  
       // Commence Webshot
       console.log("Commencing webshot...");
@@ -124,18 +124,22 @@ Meteor.methods({
               if (err) {
                   return console.log(err);
               }
- 
               fs.unlinkSync(fileName);
               fut.return(data);
- 
           });
-      });
+      });	
       
-      let pdfData = fut.wait();
-      let base64String = new Buffer(pdfData).toString('base64');
- 
-      return base64String;
+	      let pdfData = fut.wait();
+	      let base64String = new Buffer(pdfData).toString('base64');
+	 
+	      return base64String;
     	}
  
   	},
 })
+
+Meteor.users.allow({
+  update: function(userId, user) {
+    return true;
+   }
+});

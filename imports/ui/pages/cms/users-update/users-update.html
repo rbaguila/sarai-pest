@@ -39,7 +39,7 @@
                 <tr>
                   <td>{{username}}</td>
                   <td>{{emails.[0].address}}</td>
-                  <td>{{roles.[0]}}</td>
+                  <td>{{roles}}</td>
                   <td>
                     <div class="text-center">
                       <div class="btn-group-xs">
@@ -68,9 +68,17 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
-          <p>Choose Role</p>
-            <select id="userRole" class="form-control">
-              <option value="Admin1"></option>
+          <p align="left">Edit Username:&emsp;
+            <input type="text" id="uname" disabled>
+          </p>
+          <p align="left">Edit E-mail: &emsp;&emsp;&ensp;  
+            <input type="text" id="emailaddress">
+          </p>
+          <p align="left">Edit Password:&emsp;&thinsp;
+            <input type="text" id="pass" placeholder="Enter new password here">
+          </p>
+          <p align="left">Choose Role:&emsp;&nbsp;&nbsp;&nbsp;
+            <select id="userRole" class="styled">
               <option value="Admin">Admin</option>
               <option value="Pests Admin">Pests Admin</option>
               <option value="Clinic Admin">Clinic Admin</option>
@@ -79,6 +87,7 @@
               <option value="Pest Expert">Pest Expert</option>
               <option value="Registered">Registered</option>
             </select>
+           </p> 
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary confirmEdit">Confirm</button>
@@ -93,7 +102,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
-          <p>Role successfully updated!</p>
+          <p>User successfully updated!</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -165,15 +165,27 @@ Template.pestId.helpers({
 				   alert('Choose either Pest or Disease first.');
 				   return false;
 				}
-				var file;
-				var files = [];
+
 			 	Session.set("showIPS", true);
 			 	Session.set("spinner", true);
 			 	Session.set('data',undefined);
 			 	filename = "http://159.203.253.36/upload/"+fileInfo.name;
 			 	// filename = "http://localhost:3000/upload/"+fileInfo.name;
 			 	//H4Dhw4yPhumNK3PKu.jpg
+				var byteNumbers = new Array(filename.length);
 
+				    for (var i = 0; i < filename.length; i++)
+				    {
+				        byteNumbers[i] = filename.charCodeAt(i);
+				    }
+
+				var img = new File(byteNumbers, fileInfo , { type: "image/jpeg" });			 	
+			
+	 	        Cloudinary.upload(img, function(err, res) {
+			          console.log("Upload Error: " + err);
+			          console.log("Upload Result: " + res);
+				});	
+			 	console.log(img)
 			 	Session.set("filename",filename);
 			 	var type = Session.get("currentType");
 			 	var crop = Session.get("cropAffected");

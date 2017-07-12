@@ -126,5 +126,12 @@ Meteor.methods({
   deleteUser : function(id){
     return Meteor.users.remove(id);
   },
-  
+
+  'changePass': function(userid, newpass){
+    if(Meteor.isServer) {
+       return Accounts.setPassword(userid, newpass);
+    }
+  },
+
+
 });

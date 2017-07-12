@@ -34,9 +34,9 @@ Template.entity.events({
      
         Meteor.call('pest/generate_pdf', FlowRouter.current().params._id,function(err, res) {
           if (err) {
-        console.error(err);
+            console.error(err);
           } else if (res) {
-        window.open("data:application/pdf;base64, " + res);
+            window.open("data:application/pdf;base64, " + res);
           }
         })
     },
