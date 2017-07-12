@@ -29,7 +29,7 @@ Template.diseaseEntity.events({
 	      if (err) {
 			console.error(err);
 	      } else if (res) {
-			window.open("data:application/pdf;base64, " + res);
+            window.location.href = 'data:application/octet-stream;base64,' + res;
 	      }
    		})
 	},
