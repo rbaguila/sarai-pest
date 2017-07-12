@@ -1,7 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 import { Forms } from '/imports/api/forms/forms.js';
-import { Assistance } from '/imports/api/assistance/assistance.js';
-import { Logs } from '/imports/api/logs/logs.js';
 import './pest-form.html';
 
 var newForm;
