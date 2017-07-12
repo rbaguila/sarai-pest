@@ -112,22 +112,39 @@
 
 				<!-- <br/> -->
 				<br/>
+
+				
+
+				
 				<!-- Image Processing -->
 				<!-- Upload Image Here -->
-				<form class="dropzone">
-					<div>
-						<div class="upload_btn">
-							<div class="col-sm-6 col-md-6 col-lg-6 col-md-offset-3 image-processing">
-								<h4 style="margin-left: 30%;"> Browse for an Image or Drop Image directly </h4>
-								<br>
-								<div style="margin-left: 25%; width: 50%;">
-									{{> upload_bootstrap fileTypes='.jpg,.png,.jpeg.,.JPG,.PNG' contentType='images' multiple=false formData=specificFormData callbacks=myCallbacks}}
+				<div>
+					<div class="upload_btn">
+						<div class="col-sm-6 col-md-6 col-lg-6 col-md-offset-3 image-processing">
+							<h4 style="text-align:center;"> Choose between </h4>
+							<br>
+							<div class="up-tab">
+						  		<ul class="nav nav-tabs nav-justified">
+								  <li class="active"><a data-toggle="tab" href="#btn"> Upload Button </a></li>
+								  <li><a data-toggle="tab" href="#drg"> Drag and Drop </a></li>
+								</ul>
+						  	</div>
+							<div class="up-tab tab-content text-center">
+								<!-- ////////////// -->
+								<div id="btn" class="tabcontent">
+									<div style="margin-left: 25%; width: 50%;">
+										{{> upload_bootstrap fileTypes='.jpg,.png,.jpeg.,.JPG,.PNG' contentType='images' multiple=false formData=specificFormData callbacks=myCallbacks}}
+									</div>
 								</div>
-								{{> dropzone fileTypes='.jpg,.png,.jpeg.,.JPG,.PNG' contentType='images' multiple=false formData=specificFormData callbacks=myCallbacks}}
-							</div>	
-						</div>
-					</div>		
-				</form>
+								<!-- ////////////////// -->
+								<div id="drg" class="tabcontent">
+									{{> dropzone fileTypes='.jpg,.png,.jpeg.,.JPG,.PNG' contentType='images' multiple=false formData=specificFormData callbacks=myCallbacks}}
+								</div>
+								<!-- ////////////////// -->
+							</div>
+						</div>	
+					</div>
+				</div>
 
 				<div id="id-guidelines" class="container">
 					<div class="row">
