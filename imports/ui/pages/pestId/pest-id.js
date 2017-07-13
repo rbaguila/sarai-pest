@@ -165,27 +165,15 @@ Template.pestId.helpers({
 				   alert('Choose either Pest or Disease first.');
 				   return false;
 				}
-
+				var file;
+				var files = [];
 			 	Session.set("showIPS", true);
 			 	Session.set("spinner", true);
 			 	Session.set('data',undefined);
 			 	filename = "http://159.203.253.36/upload/"+fileInfo.name;
 			 	// filename = "http://localhost:3000/upload/"+fileInfo.name;
 			 	//H4Dhw4yPhumNK3PKu.jpg
-				var byteNumbers = new Array(filename.length);
 
-				    for (var i = 0; i < filename.length; i++)
-				    {
-				        byteNumbers[i] = filename.charCodeAt(i);
-				    }
-
-				var img = new File(byteNumbers, fileInfo , { type: "image/jpeg" });			 	
-			
-	 	        Cloudinary.upload(img, function(err, res) {
-			          console.log("Upload Error: " + err);
-			          console.log("Upload Result: " + res);
-				});	
-			 	console.log(img)
 			 	Session.set("filename",filename);
 			 	var type = Session.get("currentType");
 			 	var crop = Session.get("cropAffected");
@@ -271,11 +259,37 @@ Template.pestId.helpers({
 
 	enableSpinner: function(){
 		return Session.get("spinner");
-	}
+	},
+	openTab: function(evt, t) {
+	    // Declare all variables
+	    console.log("!!!!!!!");
+	    var i, tabcontent, tablinks;
+
+	    // Get all elements with class="tabcontent" and hide them
+	    tabcontent = document.getElementsByClassName("tabcontent");
+	    for (i = 0; i < tabcontent.length; i++) {
+	        tabcontent[i].style.display = "none";
+	    }
+
+	    // Get all elements with class="tablinks" and remove the class "active"
+	    tablinks = document.getElementsByClassName("tablinks");
+	    for (i = 0; i < tablinks.length; i++) {
+	        tablinks[i].className = tablinks[i].className.replace(" active", "");
+	    }
+
+	    // Show the current tab, and add an "active" class to the button that opened the tab
+	    document.getElementById(t).style.display = "block";
+	    evt.currentTarget.className += " active";
+	},
 });
 
 
 Template.pestId.events({
+	"click tablinks": function(event,template){
+		if(this.onClick){
+			this.openTab(event,template);
+		}
+	},
 	'change [name="radiopd"]'(event, template) {
 		currentType = $(event.target).attr("id");
 		/*cropAffected = template.templateDict.get("cropAffected");
@@ -440,4 +454,6 @@ Template.pestId.events({
           console.log("Upload Result: " + res);
 		});	
     },
+
+    
 });
