@@ -25,13 +25,38 @@ Template.diseaseEntity.events({
 	'click .download': function(e, tmpl) {
 	    e.preventDefault();
 	 
-	    Meteor.call('disease/generate_pdf', FlowRouter.current().params._id,function(err, res) {
-	      if (err) {
-			console.error(err);
-	      } else if (res) {
-            window.location.href = 'data:application/octet-stream;base64,' + res;
-	      }
-   		})
+       var HTML2PDF = function demoFromHTML() {
+          var pdf = new jsPDF('p', 'pt', 'letter');
+          source = $('#diseasetype')[0];
+
+          specialElementHandlers = {
+            '#bypassme': function (element, renderer) {
+              return true
+            }
+          };
+          var diseasename = Plant_Problem.findOne({_id: FlowRouter.current().params._id});
+
+          var disease_name = diseasename.name;
+          margins = {
+              top: 50,
+              bottom: 60,
+              left: 40,
+              width: 522
+          };
+          pdf.fromHTML(
+            source, 
+            margins.left, 
+            margins.top, { 
+                'width': margins.width,
+                'elementHandlers': specialElementHandlers
+            },
+
+            function (dispose) {
+                pdf.save(disease_name + '.pdf');
+            }, margins);
+        };
+
+        return HTML2PDF();
 	},
 });
 

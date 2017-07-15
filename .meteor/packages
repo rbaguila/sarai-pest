@@ -64,4 +64,6 @@ meteorhacks:npm
 npm-container
 lepozepo:cloudinary
 risul:dropzone
+jspdf:core
 
+new3rs:html2canvas

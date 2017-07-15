@@ -19,7 +19,7 @@ Template.entity.onRendered(function () {
 });
 
 Template.entity.helpers({
-	pest(){
+  pest(){
 		return Plant_Problem.findOne({_id: FlowRouter.current().params._id});
 	},
 });
@@ -32,13 +32,38 @@ Template.entity.events({
 	'click .download1': function(e, tmpl) {
         e.preventDefault();
      
-        Meteor.call('pest/generate_pdf', FlowRouter.current().params._id,function(err, res) {
-          if (err) {
-            console.error(err);
-          } else if (res) {
-            window.location.href = 'data:application/octet-stream;base64,' + res;
-          }
-        })
+        var HTML2PDF = function demoFromHTML() {
+          var pdf = new jsPDF('p', 'pt', 'letter');
+          source = $('#pesttype')[0];
+
+          specialElementHandlers = {
+            '#bypassme': function (element, renderer) {
+              return true
+            }
+          };
+          var pestname = Plant_Problem.findOne({_id: FlowRouter.current().params._id});
+          console.log(pestname.name)
+          var pest_name = pestname.name;
+          margins = {
+              top: 50,
+              bottom: 60,
+              left: 40,
+              width: 522
+          };
+          pdf.fromHTML(
+            source, 
+            margins.left, 
+            margins.top, { 
+                'width': margins.width,
+                'elementHandlers': specialElementHandlers
+            },
+
+            function (dispose) {
+                pdf.save(pest_name + '.pdf');
+            }, margins);
+        };
+
+        return HTML2PDF();
     },
 });
 
