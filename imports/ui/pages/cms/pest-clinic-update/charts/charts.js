@@ -116,67 +116,6 @@ Template.columnBar.helpers({
     });
   }
 });
-Template.pieChart.helpers({
-  /////////////////////////////////////////////////////////////////
-
-  createPie: function () {
-    // Gather data: 
-    var pests = Plant_Problem.find({type: 'Pest'}).fetch();
-    var categories = [];
-    var count = [];
-    
-    categories.push('Others');
-    categories.push('Unknown');
-    count.push(Logs.find({problem: 'Others'}).count());
-    count.push(Logs.find({problem: 'Unknown'}).count());
-    
-    for (var i = 0; i<pests.length; i++) {
-      categories.push(pests[i].name);
-      count.push(Logs.find({problem: pests[i].name}).count());
-    }
-    var chartData = [];
-    for (var i = 0; i < categories.length ; i++) {
-      if(count[i]>0){
-        chartData.push({
-          y: count[i],
-          name: categories[i]
-        });
-      }
-    }
-      // Use Meteor.defer() to craete chart after DOM is ready:
-    Meteor.defer(function() {
-        // Create standard Highcharts chart with options:
-      Highcharts.chart('pie_chart', {
-        title: {
-          text: 'Problem Types of Requested Logs'
-        },
-        legend: {
-          enabled: false
-        },
-        tooltip: {
-          headerFormat: '<span style="font-size:11px">{series.name}:</span><br>',
-          pointFormat: '<span style="color:{point.color}">{point.name}</span>'
-        },
-        plotOptions: {
-          pie: {
-            dataLabels: {
-              enabled: true,
-              format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-              style: {
-                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-              }
-            }
-          }
-        },
-        series: [{
-          type: 'pie',
-          name: 'Problem Type',
-          data: chartData
-        }]
-      });
-    });
-  }
-});
 Template.numberChart.onRendered(function() {
     var self = this;
 
@@ -194,7 +133,7 @@ Template.numberChart.events({
 Template.numberChart.helpers({
   createNumberChart: function () {
     // Gather data: 
-    var year = 2020;
+    var year = "2017";
     var count = 0;
 
     //if(pest!="" || pest!=null){
