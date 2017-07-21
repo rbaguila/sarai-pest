@@ -38,20 +38,21 @@ Template.GeneralInformation.events({
 		e.preventDefault();
 		//var form = e.target;
 		//console.log("testing",form);
-		if( !($("#floc").val()=='') && !($("#src").val()=='') && !($("#area").val()=='') && !($("#cstage").val()=='') && !($("#crop").val()=='')){
+		if( !($("#name").val()=='') && !($("#floc").val()=='') && !($("#src").val()=='') && !($("#area").val()=='') && !($("#cstage").val()=='') && !($("#crop").val()=='')){
 			newAdvanceAssistance = {
 				user: Meteor.user().username,
 				date: moment().format('MMMM Do YYYY, h:mm:ss a'),
 				email: Meteor.user().emails[0].address, 
-
+				name: $("#name").val(),
 				location: $("#floc").val(),
-				source: $("#src").val(), 
 				area: $("#area").val(),
+				source: $("#src").val(), 
 				cropStage: $("#cstage").val(),
 				variety: $("#crop").val(),
 			}
 			$("#geninfo").hide();
 			$("#pestprob").show();
+			//$("#addinfo").show();
 			var text = document.getElementById('stp2'); 
 			text.style.color='black';
 			document.getElementById("stp2").style.opacity = "1";
@@ -60,7 +61,19 @@ Template.GeneralInformation.events({
 			$('#incompleteForm').modal('show');
 		}
 		
-	}
+	}, 
+	'click #helpFloc': function(e){
+		e.preventDefault();
+		$('#flocInfo').modal('show');
+	},
+	'click #helpArea': function(e){
+		e.preventDefault();
+		$('#areaInfo').modal('show');
+	},
+	'click #srcArea': function(e){
+		e.preventDefault();
+		$('#srcInfo').modal('show');
+	},
 });
 
 Template.PestProblemForm.events({
@@ -129,7 +142,10 @@ Template.PestProblemForm.events({
 		}else{
 			newAdvanceAssistance.damage = "";
 		}
-
+		newAdvanceAssistance.affectedArea = $("#affectedArea").val();
+		newAdvanceAssistance.lengthDays = Number($("#symptoms_days").val());
+		newAdvanceAssistance.lengthWeeks = Number($("#symptoms_weeks").val());
+		newAdvanceAssistance.lengthMonths = Number($("#symptoms_months").val());
 		if(!(newAdvanceAssistance.pesttype =='') && !(newAdvanceAssistance.symptoms =='') && !(newAdvanceAssistance.parts =='') && !(newAdvanceAssistance.distribution =='') && !(newAdvanceAssistance.damage =='')){
 			$("#pestprob").hide();
 			$("#addinfo").show();
@@ -177,8 +193,8 @@ Template.AdditionalInformation.events({
 				subject: "Advance Assistance Form",
 				message: 
 				"Farm Location: " + newAdvanceAssistance.location + "<br>" + 
-				"Source of Plant: " + newAdvanceAssistance.source + "<br>" + 
 				"Area Planted: " + newAdvanceAssistance.area + "<br>" + 
+				"Source of Plant: " + newAdvanceAssistance.source + "<br>" + 
 				"Crop Stage: " + newAdvanceAssistance.cropStage + "<br>" +
 				"Crop/Variety: " + newAdvanceAssistance.variety + "<br>" + 
 				"Type of Pest: " + newAdvanceAssistance.pesttype + "<br>" + 
@@ -186,15 +202,19 @@ Template.AdditionalInformation.events({
 				"Parts of Plant Affected: " + newAdvanceAssistance.parts + "<br>" + 
 				"Distribution of Symptoms: " + newAdvanceAssistance.distribution + "<br>" +
 				"Insect Damage: " + newAdvanceAssistance.damage + "<br>" +
+				"Percentage of Plant Affected Area: " + newAdvanceAssistance.affectedArea + "<br>" +
+				"Length of Time Symptoms is Observed: " + newAdvanceAssistance.lengthDays + " Day/s, " +
+					newAdvanceAssistance.lengthWeeks+ " Week/s, "+ newAdvanceAssistance.lengthMonths+ 
+					" Month/s<br>" +
 				"Chemical Rate Applied: <br>" + 
-				"Fertilizer: " + newAdvanceAssistance.fertilizer + "<br>" +
-				"Insecticide: " + newAdvanceAssistance.insecticide + "<br>" +
-				"Fungicide: " + newAdvanceAssistance.fungicide + "<br>" +	
-				"Herbicide: " + newAdvanceAssistance.herbicide + "<br>" +
+				"Fertilizer: " + newAdvanceAssistance.fertilizer + "%<br>" +
+				"Insecticide: " + newAdvanceAssistance.insecticide + "%<br>" +
+				"Fungicide: " + newAdvanceAssistance.fungicide + "%<br>" +	
+				"Herbicide: " + newAdvanceAssistance.herbicide + "%<br>" +
 				"Usually weather condition that occured before the pest/abnormality was observed: " + newAdvanceAssistance.weather + "<br>" +
-				"Pests was observed " + newAdvanceAssistance.chemapplied + " chemical is applied<br>" +
-				"Pests was observed " + newAdvanceAssistance.weatherobserved + " an unusual weather<br>",
-				user: newAdvanceAssistance.user,
+				"Pests was observed " + newAdvanceAssistance.chemapplied + " chemical is applied.<br>" +
+				"Pests was observed " + newAdvanceAssistance.weatherobserved + " an unusual weather.<br>",
+				user: newAdvanceAssistance.name,
 				date: newAdvanceAssistance.date,
 				month: months[date.getMonth()],
 				year: date.getFullYear().toString(),
@@ -239,44 +259,4 @@ Template.AdditionalInformation.events({
 		}
 		
 	}
-});
-
-
-Template.GeneralInformation.onRendered(function(){
-    /* $('.firstForm').validate({
-        rules: {
-            floc: {
-                required: true,
-                minlength: 6
-            },
-            area: {
-                required: true
-            },
-            crop: {
-                required: true,
-                minlength: 6
-            },
-            src: {
-                required: true,
-                minlength: 6
-            }
-        },
-        messages: {
-            floc: {
-               required: "Please fill up this field",
-					minlength: "Min length is 6"
-            },
-            area: {
-               required: "Please fill up this field"
-            },
-            crop: {
-               required: "Please fill up this field",
-					minlength: "Min length is 6"
-            },
-            src: {
-               required: "Please fill up this field",
-					minlength: "Min length is 6"
-            }
-        }
-    });*/
 });

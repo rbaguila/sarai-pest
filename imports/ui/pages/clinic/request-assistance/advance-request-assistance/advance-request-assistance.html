@@ -27,7 +27,7 @@
 					
 				</center>
 			</div>
-			<div class="mdl-cell mdl-cell--9-col">
+			<div class="mdl-cell mdl-cell--9-col" style="margin-top: -20px;">
 				<div id="geninfo">
 					{{ >GeneralInformation}}
 				</div>
@@ -70,6 +70,53 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="modal fade" id="flocInfo">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<br><br>
+					<p>Address of your farm. <br>
+					(Lot Number, Street Name, Sitio or Purok, Barangay, City, Province)</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary closeModal" data-dismiss="modal">Close</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="areaInfo">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<br><br>
+					<p>Specific part of the farm the plant is located. <br>
+					(e.g. Quadrant 1, Quadrant 2, North, East, etc.)</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary closeModal" data-dismiss="modal">Close</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="srcInfo">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<br><br>
+					<p>(e.g. rice, corn, banana, coconut, coffee, cacao)</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary closeModal" data-dismiss="modal">Close</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
 </template>
 
 
@@ -93,54 +140,56 @@
 				
 				<div class="mdl-grid">
 						<div class="mdl-grid">
-							<div class="mdl-cell mdl-cell--6-col">
-								<label class="f-left form-text">Farm Location </label> 
+							<div class="input-fmt mdl-cell mdl-cell--10-col">
+								<label class="f-left form-text">Name </label> 
 							</div>
-							<div class="mdl-cell mdl-cell--6-col">
-								<label id="floc-error" class="error" for="floc" style="display: inline;"></label>
+							<div class="input-fmt mdl-cell mdl-cell--12-col">
+								<input class="input-form" type="text" id="name" name="name">	
+							</div>
+
+							<div class="input-fmt mdl-cell mdl-cell--10-col">
+								<label class="f-left form-text">Farm Location </label> 
+								<span role="button" class="glyphicon glyphicon-question-sign" style="margin-top: 18px; margin-left: 5px; " id="helpFloc"></span>
 							</div>
 							<div class="input-fmt mdl-cell mdl-cell--12-col">
 								<input class="input-form" type="text" id="floc" name="floc">	
 							</div>
-						
-							<div class="mdl-cell mdl-cell--6-col">
-								<label class="f-left form-text">Source of Plant </label>
+							
+							<div class="input-fmt mdl-cell mdl-cell--10-col">
+								<label class="f-left form-text">Area Planted </label>
+								<span role="button" class="glyphicon glyphicon-question-sign" style="margin-top: 18px; margin-left: 5px; " id="helpArea"></span>
 							</div>
-							<div class="mdl-cell mdl-cell--6-col">
-								<label id="src-error" class="error" for="src" style="display: inline;"></label>
+							<div class="input-fmt mdl-cell mdl-cell--12-col">
+								<input class="input-form" type="text" id="area" name="src">	
+							</div>
+
+							<div class="input-fmt mdl-cell mdl-cell--10-col">
+								<label class="f-left form-text">Source of Plant </label>
+								<span role="button" class="glyphicon glyphicon-question-sign" style="margin-top: 18px; margin-left: 5px; " id="srcArea"></span>
 							</div>
 							<div class="input-fmt mdl-cell mdl-cell--12-col">
 								<input class="input-form" type="text" id="src" name="src">	
 							</div>
-						
-						
-							<div class="mdl-cell mdl-cell--6-col">
-								<label class="f-left form-text">Area Planted </label>
-							</div>
-							
-							<div class="mdl-cell mdl-cell--6-col">
+
+							<div class="input-fmt mdl-cell mdl-cell--4-col">
 								<label class="f-left form-text">Crop Stage</label>
 							</div>
-							<div class="input-fmt mdl-cell mdl-cell--6-col">
-								<input class="input-form-area" type="text" id="area" name="area">	
-							</div>
-							<div class="input-fmt mdl-cell mdl-cell--6-col">
-							<select id="cstage">
-								<option value="Seeding">Seeding</option>
-								<option value="Flowering">Flowering</option>
-								<option value="Maturity">Maturity</option>
-								<option value="Vegetative">Max Vegetative</option>
-							</select>
-							</div>
-						
-							<div class="mdl-cell mdl-cell--6-col">
-								<label class="f-left form-text">Crop/Variety (Hybrid/Open Pollinated)</label>
-							</div>
-							<div class="mdl-cell mdl-cell--6-col">
-								<label id="crop-error" class="error" for="crop" style="display: inline;"></label>
+							<div class="mdl-cell mdl-cell--8-col">
+								<label class="f-left form-text">Crop/Variety</label>
 							</div>
 							<div class="input-fmt mdl-cell mdl-cell--12-col">
-								<input class="input-form" type="text" id="crop" name="crop">
+								<select id="cstage">
+									<option value="Seeding">Seeding</option>
+									<option value="Flowering">Flowering</option>
+									<option value="Maturity">Maturity</option>
+									<option value="Vegetative">Max Vegetative</option>
+								</select>
+							
+								<select id="crop" style="margin-left: 15%">
+									<option value="Hybrid">Hybrid</option>
+									<option value="Open Pollinated">Open Pollinated</option>
+								</select>
+
 							</div>
 						
 						</div>
@@ -153,7 +202,7 @@
 						
 						<div class="mdl-grid">
 						<div class="mdl-cell mdl-cell--12-col">
-							<button id="con1" class="continue mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Continue to Pest Problem</button>		
+							<button id="con1" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="margin-left: 95%">Next</button>		
 						</div>
 						</div>
 						
@@ -175,7 +224,7 @@
 			<div class=" mdl-cell mdl-cell--12-col">
 			
 			<div class="mdl-grid">
-				<div class="input-fmt mdl-cell mdl-cell--12-col">
+				<div class="mdl-cell mdl-cell--12-col">
 					<label class="f-left form-text">Type of Pest</label>
 				</div>
 				<div class="mdl-cell mdl-cell--12-col">
@@ -262,7 +311,7 @@
 			<hr/>
 			<div class="mdl-grid">
 			<div class="mdl-cell mdl-cell--12-col">
-				<label class="f-left form-text">Parts of plant affected</label>
+				<label class="f-left form-text">Parts of Plant Affected</label>
 			</div>
 			<div class="mdl-cell mdl-cell--12-col">
 			<div class="mdl-grid">
@@ -324,7 +373,7 @@
 				
 				<div class="input-fmt mdl-cell mdl-cell--12-col">
 					<label class="f-left form-text">Others (Specify)</label> 
-					<input class="form3-input-fmt" type="text" id="otherf23" name="otherf23">	
+					<input class="form3-input-fmt" type="text" id="otherf23" name="otherf23" style="margin-left: 10px">	
 				</div>
 
 			</div>
@@ -356,22 +405,89 @@
 		</div>	
 		<hr/>
 		<div class="mdl-grid">
-			<div class="mdl-cell mdl-cell--12-col">
-				<label class="f-left form-text">Length of time symptoms is observed</label>
+			<div class="mdl-cell mdl-cell--4-col">
+				<label class="f-left form-text">Percentage of Plant Affected Area</label>
 			</div>
-			<div class="mdl-cell mdl-cell--12-col">
-				<div class="mdl-grid">
-				</div>
+			<div class="mdl-cell mdl-cell--6-col">
+				<label class="f-left form-text">Length of Time Symptoms is Observed</label>
+			</div>
+			<div class="input-fmt mdl-cell mdl-cell--12-col">
+				<select id="affectedArea" style="margin-left: 10%">
+					<option value="5%">5%</option>
+					<option value="10%">10%</option>
+					<option value="25%">25%</option>
+					<option value="50%">50%</option>
+					<option value="75%">75%</option>
+					<option value="100%">100%</option>
+				</select>
+				<select class="symptoms" id="symptoms_days" style="margin-left: 20%">
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+					<option value="13">13</option>
+					<option value="14">14</option>
+					<option value="15">15</option>
+					<option value="16">16</option>
+					<option value="17">17</option>
+					<option value="18">18</option>
+					<option value="19">19</option>
+					<option value="20">20</option>
+					<option value="21">21</option>
+					<option value="22">22</option>
+					<option value="23">23</option>
+					<option value="24">24</option>
+					<option value="25">25</option>
+					<option value="26">26</option>
+					<option value="27">27</option>
+					<option value="28">28</option>
+					<option value="29">29</option>
+				</select>
+				<label class="f-left form-text" style="margin-left: 5px; margin-top: 4px"> Day/s</label>
+				<select class="symptoms" id="symptoms_weeks" style="margin-left: 20px">
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+				</select>
+				<label class="f-left form-text" style="margin-left: 5px; margin-top: 4px"> Week/s</label>
+				<select class="symptoms" id="symptoms_months" style="margin-left: 20px">
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+				</select>
+				<label class="f-left form-text" style="margin-left: 5px; margin-top: 4px "> Month/s</label>
+
 			</div>
 		</div>
+		
 		<hr/>
 			
 		</div>
 			
 		
 		</div>
-		<div class="mdl-grid">
-				<button id="back1" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Back</button>
+		<div class="mdl-grid" >
+				<button id="back1" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="margin-left: 80%">Back</button>
 				<button id="con2" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Next</button>
 		</div>
 		</form>
@@ -400,28 +516,32 @@
 										<label class="f-left form-text">Fertilizer</label> 
 									</div>
 									<div class="input-fmt mdl-cell mdl-cell--8-col">
-										<input class="form3-input-fmt" type="text" id="fertilizer" name="fertilizer">	
+										<input class="form3-input-fmt" type="number" id="fertilizer" name="fertilizer" min="0"  style="width: 100px;">
+										<label class="f-left form-text" style="margin-left: 5px; margin-top: 5px ; font-size: 25px"> % </label>
 									</div>
 								
 									<div class="mdl-cell mdl-cell--4-col">
 										<label class="f-left form-text">Insecticide</label> 
 									</div>
 									<div class="input-fmt mdl-cell mdl-cell--8-col">
-										<input class="form3-input-fmt" type="text" id="insecticide" name="insecticide">	
+										<input class="form3-input-fmt" type="number" id="insecticide" name="insecticide" min="0"  style="width: 100px;">	
+										<label class="f-left form-text" style="margin-left: 5px; margin-top: 5px ;font-size: 25px"> % </label>
 									</div>
 								
 									<div class="mdl-cell mdl-cell--4-col">
 										<label class="f-left form-text">Fungicide</label> 
 									</div>
 									<div class="input-fmt mdl-cell mdl-cell--8-col">
-										<input class="form3-input-fmt" type="text" id="fungicide" name="fungicide">	
+										<input class="form3-input-fmt" type="number" id="fungicide" name="fungicide" min="0"  style="width: 100px;">	
+										<label class="f-left form-text" style="margin-left: 5px; margin-top: 5px ;font-size: 25px"> % </label>
 									</div>
 								
 									<div class="mdl-cell mdl-cell--4-col">
 										<label class="f-left form-text">Herbicide</label> 
 									</div>
 									<div class="input-fmt mdl-cell mdl-cell--8-col">
-										<input class="form3-input-fmt" type="text" id="herbicide" name="herbicide">	
+										<input class="form3-input-fmt" type="number" id="herbicide" name="herbicide" min="0" style="width: 100px;">	
+										<label class="f-left form-text" style="margin-left: 5px; margin-top: 5px ;font-size: 25px"> % </label>
 									</div>
 								</div>
 							</div>
@@ -468,24 +588,24 @@
 							<div class="mdl-cell mdl-cell--12-col">
 								<div class="mdl-grid">
 									<label class="f-left form-text">Pest was observed </label>
-									<input class="d1" type="text" id="d1" name="d1">
+									<input class="d1" type="number" id="d1" name="d1" min="0" style="width: 100px;margin-left: 10px;">
 									<select id="days">
-										<option value="days before">days before</option>
-										<option value="days after">days after</option>
+										<option value="days before">day/s before</option>
+										<option value="days after">day/s after</option>
 									</select>
-									<label class="f-left form-text"> chemical is applied </label>
+									<label class="f-left form-text" style="margin-left: 10px"> chemical is applied. </label>
 								</div>
 								<div class="mdl-grid">
 									<label class="f-left form-text">Pest was observed </label>
-									<input class="d2" type="text" id="d2" name="d2">
-									<select id="days2">
-										<option value="days before">days before</option>
-										<option value="days after">days after</option>
+									<input class="d2" type="number" id="d2" name="d2" min="0" style="width: 100px;margin-left: 10px;">
+									<select id="days2" >
+										<option value="days before">day/s before</option>
+										<option value="days after">day/s after</option>
 									</select>
-									<label class="f-left form-text"> an unusual weather </label>
+									<label class="f-left form-text" style="margin-left: 10px"> an unusual weather. </label>
 								</div>
 								<div class="mdl-grid">
-									<button id="back2" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Back</button>
+									<button id="back2" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" style="margin-left: 80%">Back</button>
 									<button id="form-submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Submit</button>
 								</div>
 							</div>
