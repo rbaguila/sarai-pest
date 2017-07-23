@@ -9,7 +9,7 @@ Template.pastAssistance.onCreated(function () {
 
 Template.pastAssistance.helpers({
 	past(){
-		return Logs.find({username: Meteor.user().username}).fetch();
+		return Logs.find({email: Meteor.user().emails[0].address}).fetch();
 	},
 });
 
